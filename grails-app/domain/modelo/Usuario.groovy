@@ -9,7 +9,5 @@ class Usuario {
     Boolean activo
 
     static constraints = {
-        
-       
     }
 }

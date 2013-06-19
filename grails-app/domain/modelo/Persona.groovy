@@ -14,7 +14,5 @@ class Persona {
     String sexo
 
     static constraints = {
-        
-       
     }
 }

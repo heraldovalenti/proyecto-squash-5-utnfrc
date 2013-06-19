@@ -7,12 +7,10 @@ class Club {
     Integer telefono
     String domicilio
     String email
-    boolean activo
+	Boolean activo
     Persona encargado
     
     
     static constraints = {
-        
-       
     }
 }

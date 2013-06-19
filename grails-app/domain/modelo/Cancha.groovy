@@ -9,7 +9,5 @@ class Cancha {
     Club club
 
     static constraints = {
-        
-        
     }
 }
