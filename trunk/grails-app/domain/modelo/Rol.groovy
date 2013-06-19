@@ -3,9 +3,9 @@ package modelo
 class Rol {
 
     String nombre
-    Permiso [] permiso 
+    Permiso permiso 
 
     static constraints = {
-        
-    }
+		
+	}
 }
