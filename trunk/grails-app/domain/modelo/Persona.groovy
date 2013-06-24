@@ -5,14 +5,15 @@ class Persona {
     String nombre
     String apellido
     String email
-    Date fechaNac
+    Date fechaNacimiento
     Integer telefono
     String domicilio
     String nombreUsuario
-    String tipoDoc
+    String tipoDocumento
     Integer numDoc
     String sexo
 
     static constraints = {
+		tipoDocumento blank: false, inList: ["DNI","CI","Pasaporte","Libreta Civil"]
     }
 }
