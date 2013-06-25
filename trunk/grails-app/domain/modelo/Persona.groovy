@@ -6,7 +6,7 @@ class Persona {
     String apellido
     String email
     Date fechaNacimiento
-    Integer telefono
+    String telefono
     String domicilio
     String nombreUsuario
     String tipoDocumento
