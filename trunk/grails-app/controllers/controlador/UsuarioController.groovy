@@ -6,7 +6,6 @@ class UsuarioController {
 
 	def loginForm = {
 		if (session.getAttribute("userLogon") != null) {
-			print "Sesion guardada... Redirect a MENU"
 			redirect(action:menu)
 		}
 	}
