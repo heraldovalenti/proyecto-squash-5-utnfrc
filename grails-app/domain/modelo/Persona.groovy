@@ -10,7 +10,7 @@ class Persona {
     String domicilio
     String nombreUsuario
     String tipoDocumento
-    Integer numDoc
+    Integer numeroDocumento
     String sexo
 
     static constraints = {
