@@ -4,33 +4,31 @@ class UsuarioController {
 
 	static scaffold = modelo.Usuario
 
-	def loginForm = {}
+	def loginForm = {
+		if (session.getAttribute("userLogon") != null) {
+			print "Sesion guardada... Redirect a MENU"
+			redirect(action:menu)
+		}
+	}
 
 	def menu = {
 		return [user: session.getAttribute("userLogon")]
 	}
 
 	def login() {
-		if (session.getAttribute("userLogon") != null) {
-			print "Sesion guardada... Redirect a MENU"
+		String nombreUsuario = params.nombreUsuario
+		String password = params.password
+
+		def u = modelo.Usuario.findByNombreUsuarioAndPassword(nombreUsuario,password)
+
+		if (u) {
+			session.setAttribute("userLogon", u)
 			redirect(action:menu)
-			
 		}
 		else {
-			print "Sesion nueva... Redirect a FORM"
-			String nombreUsuario = params.nombreUsuario
-			String password = params.password
-
-			def u = modelo.Usuario.findByNombreUsuarioAndPassword(nombreUsuario,password)
-
-			if (u) {
-				session.setAttribute("userLogon", u)
-				redirect(action:menu)
-			}
-			else {
-				redirect(action: loginForm)
-			}
+			redirect(action: loginForm)
 		}
+
 	}
 
 	def logout() {
