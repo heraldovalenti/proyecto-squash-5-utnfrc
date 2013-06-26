@@ -7,7 +7,14 @@ class Usuario {
     String password
     Rol rol
     Boolean activo
+	
+	String toString()
+	{
+		return nombreUsuario
+	}
 
     static constraints = {
+		
+		
     }
 }

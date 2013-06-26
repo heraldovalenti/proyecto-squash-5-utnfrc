@@ -12,6 +12,11 @@ class Torneo {
 	String estado //puede ser implementado con una clase de java y patron State
 	Integer cupoMaximo
 	Boolean puntuable
+	
+	String toString()
+	{
+		return nombre
+	}
 
     static constraints = {
 		nombre blank: false, maxSize: 150
