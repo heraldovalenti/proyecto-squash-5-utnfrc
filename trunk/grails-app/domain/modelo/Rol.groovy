@@ -3,9 +3,15 @@ package modelo
 class Rol {
 
     String nombre
-    Permiso permiso 
+    static hasMany = [permisos: Permiso]
+	
+	String toString()
+	{
+		return nombre
+	}
 
-    static constraints = {
+    static constraints = {	
+		
 		
 	}
 }

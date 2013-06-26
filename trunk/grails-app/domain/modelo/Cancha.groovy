@@ -8,8 +8,8 @@ class Cancha {
     String tipoSuelo
     String paredes
 
-	static belongsTo = Club
-	
+	static belongsTo = Club	
+		
     static constraints = {
 		ancho blank:false, min: 0.0f
 		largo blank:false, min: 0.0f
