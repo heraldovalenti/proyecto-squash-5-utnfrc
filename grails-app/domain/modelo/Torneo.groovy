@@ -1,5 +1,7 @@
 package modelo
 
+import com.sun.istack.internal.Nullable;
+
 class Torneo {
 	
 	String nombre
@@ -12,6 +14,7 @@ class Torneo {
 	String estado //puede ser implementado con una clase de java y patron State
 	Integer cupoMaximo
 	Boolean puntuable
+	Club club
 	
 	String toString()
 	{
@@ -28,5 +31,6 @@ class Torneo {
 		categoria nullable: false
 		estado blank: false
 		cupoMaximo min: 2		
+		club Nullable:false
     }
 }

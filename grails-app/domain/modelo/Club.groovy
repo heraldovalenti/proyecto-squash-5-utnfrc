@@ -12,6 +12,11 @@ class Club {
     
 	static hasMany = [canchas: Cancha]
     
+	String toString()
+	{
+		return nombre
+	}
+	
     static constraints = {
 		nombre blank: false, unique: true, maxSize: 50
 		razonSocial blank: false, unique: true, maxSize: 50

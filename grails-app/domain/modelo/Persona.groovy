@@ -4,14 +4,14 @@ class Persona {
 
     String nombre
     String apellido
-    String email
+	String nombreUsuario
+	String email
     Date fechaNacimiento
+	String tipoDocumento
+	Integer numeroDocumento
+	String sexo
     String telefono
     String domicilio
-    String nombreUsuario
-    String tipoDocumento
-    Integer numeroDocumento
-    String sexo
 	
 	String toString()
 	{

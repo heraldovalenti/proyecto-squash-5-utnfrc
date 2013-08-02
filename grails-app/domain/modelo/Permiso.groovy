@@ -5,14 +5,11 @@ class Permiso {
 	String nombre
 	String descripcion
 
-	String toString()
-	{
+	String toString(){
 		return nombre
-	}
-
-	static constraints = {
-		
 		
 	}
-
+    static constraints = {
+    }
+    
 }
