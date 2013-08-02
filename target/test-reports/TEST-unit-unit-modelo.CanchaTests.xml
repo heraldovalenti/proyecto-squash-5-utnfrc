@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="1" hostname="eowyn" name="modelo.CanchaTests" tests="1" time="0.94" timestamp="2013-06-25T21:04:44">
+  <properties />
+  <testcase classname="modelo.CanchaTests" name="testSomething" time="0.839">
+    <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at modelo.CanchaTests.testSomething(CanchaTests.groovy:15)
+</failure>
+  </testcase>
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>
