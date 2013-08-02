@@ -10,6 +10,10 @@ class Cancha {
 
 	static belongsTo = Club	
 		
+	String toString()
+	{
+		return ancho +" x "+ largo
+	}
     static constraints = {
 		ancho blank:false, min: 0.0f
 		largo blank:false, min: 0.0f

@@ -89,3 +89,9 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+//con esto en teoria hago de bd a clases...
+//grails.plugin.reveng.packageName = '127.0.0.1:3306'//'com.codeplex.chinookdatabase'
+//grails.plugin.reveng.defaultSchema = 'cooperadora'
+//grails.plugin.reveng.manyToManyBelongsTos = [alumno: 'alumno']
+
