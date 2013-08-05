@@ -1,80 +1,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Head -->     
-<head>
-    
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/common.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />      
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />     
-    <link rel="stylesheet" href="http://www.acsr.com.ar/js/growler/css/examples.css" type="text/css" media="screen" charset="utf-8" />  
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css/view.css" media="all"/>     
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/lightview/css/lightview.css" />
-    
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />  
-    
-    <style>     
-        ul.lof-main-wapper li {
-            position:relative;    
-        }
-    </style>  
-    <link rel="stylesheet" href="http://www.acsr.com.ar/js/prettyphoto/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
-    
-    <!--[if lte IE 9]>
-        <link href="http://www.acsr.com.ar/css/ie.css" type="text/css" rel="stylesheet" />
-    <![endif]-->
-
-    <title> Asociación Cordobesa de Squash</title>    
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="3600" />
-    <meta name="revisit-after" content="7 days" />
-    <meta name="robots" content="index,follow" />
-    <meta name="publisher" content="www.acsr.com.ar" />     
-    <meta name="copyright" content="contextus.com.ar" />  
-    <meta name="Subject" content="Sitio Oficial de la Asociación Cordobesa de Squash" />
-    <meta name="author" content="Designed by www.www.contextus.com.ar" />
-    <meta name="distribution" content="global" />  
-    <meta name="description" content="Asociación que nuclea a los jugadores de squash de la provincia de Córdoba y organiza las actividades del deporte, tiene por misión fomentar el juego del squash y difundir las bondades de la práctica de este deporte. también revisamos los Torneos Oficiale" />
-    <meta name="keywords" content="Asociación Cordobesa de Squash, Squash en Cordoba, Ranking, Calendario 2010, Perfiles de Jugadores, Noticias, Comparativa de Jugadores, Profesores de Squash, Clubes de Squash en Cordoba, Newslleter" /> 
-    <meta name="google-site-verification" content="QnxIEWjyaxxkoPwL-5347XOgZ5ERkW1xzI5IvF6Apy4" />
-    
-     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>   
-    <script src="http://www.acsr.com.ar/js/ajax.js?1375646306" type="text/javascript"></script> 
-    <script type="text/javascript" src="http://www.acsr.com.ar/js/view.js"></script> 
-    <script type="text/javascript" src="http://www.acsr.com.ar/lib/ajax_framework.js"></script> 
-    <script type="text/javascript" src="http://www.acsr.com.ar/js/md5-min.js"></script>
-    
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.acsr.com.ar/favicon.ico" />  
-    
-
-<script language="javascript" type="text/javascript" src="http://www.acsr.com.ar/js/news/js/jquery.easing.js"></script>
-<script language="javascript" type="text/javascript" src="http://www.acsr.com.ar/js/news/js/script.js"></script>
-<script type="text/javascript">
- $(document).ready( function(){    
-        var buttons = { previous:$('#jslidernews2 .button-previous') ,
-                        next:$('#jslidernews2 .button-next') };             
-        $('#jslidernews2').lofJSidernews( { interval:5000,
-                                                 easing:'easeInOutQuad',
-                                                duration:1200,
-                                                auto:true,
-                                                mainWidth:675,
-                                                mainHeight:300,
-                                                navigatorHeight        : 100,
-                                                navigatorWidth        : 310,
-                                                maxItemDisplay:3,
-                                                buttons:buttons } );                        
-    });
-    
-    var dom = 'http://www.acsr.com.ar/';
-    var dom = 'http://www.acsr.com.ar/';
-
-</script>
-<script src="http://www.acsr.com.ar/js/prettyphoto/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
-
-<link rel="image_src" href="http://www.acsr.com.ar/images/logoface.jpg" />
-<script type="text/javascript" src="http://www.acsr.com.ar/js/jquery.tools.min.js"></script>
-
-</head><body>
+	<head>
+	
+		<!-- 
+		Aparentemente, estos son los CSS que usa la pagina solamente.. 
+		Al menos, en la principal 
+		-->    
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />
+	    
+	    
+	    <!-- CSS ORIGINALMENTE EN LA WEB...
+	    
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/common.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />
+	    <link rel="stylesheet" href="http://www.acsr.com.ar/js/growler/css/examples.css" type="text/css" media="screen" charset="utf-8" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css/view.css" media="all"/>
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/lightview/css/lightview.css" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />
+	    <link rel="stylesheet" href="http://www.acsr.com.ar/js/prettyphoto/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+	     
+	     -->
+	    
+	    <style>     
+	        ul.lof-main-wapper li {
+	            position:relative;    
+	        }
+	    </style>  
+	    
+	    
+	    <!--[if lte IE 9]>
+	        <link href="http://www.acsr.com.ar/css/ie.css" type="text/css" rel="stylesheet" />
+	    <![endif]-->
+	
+	    <title> Asociación Cordobesa de Squash</title>    
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+	    <meta http-equiv="cache-control" content="no-cache" />
+	    <meta http-equiv="expires" content="3600" />
+	    <meta name="revisit-after" content="7 days" />
+	    <meta name="robots" content="index,follow" />
+	    <meta name="publisher" content="www.acsr.com.ar" />     
+	    <meta name="copyright" content="contextus.com.ar" />  
+	    <meta name="Subject" content="Sitio Oficial de la Asociación Cordobesa de Squash" />
+	    <meta name="author" content="Designed by www.www.contextus.com.ar" />
+	    <meta name="distribution" content="global" />  
+	    <meta name="description" content="Asociación que nuclea a los jugadores de squash de la provincia de Córdoba y organiza las actividades del deporte, tiene por misión fomentar el juego del squash y difundir las bondades de la práctica de este deporte. también revisamos los Torneos Oficiale" />
+	    <meta name="keywords" content="Asociación Cordobesa de Squash, Squash en Cordoba, Ranking, Calendario 2010, Perfiles de Jugadores, Noticias, Comparativa de Jugadores, Profesores de Squash, Clubes de Squash en Cordoba, Newslleter" /> 
+	    <meta name="google-site-verification" content="QnxIEWjyaxxkoPwL-5347XOgZ5ERkW1xzI5IvF6Apy4" />
+	    
+	     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>   
+	    <script src="http://www.acsr.com.ar/js/ajax.js?1375646306" type="text/javascript"></script> 
+	    <script type="text/javascript" src="http://www.acsr.com.ar/js/view.js"></script> 
+	    <script type="text/javascript" src="http://www.acsr.com.ar/lib/ajax_framework.js"></script> 
+	    <script type="text/javascript" src="http://www.acsr.com.ar/js/md5-min.js"></script>
+	    
+	    <link rel="shortcut icon" type="image/x-icon" href="http://www.acsr.com.ar/favicon.ico" />  
+	    
+	
+	<script language="javascript" type="text/javascript" src="http://www.acsr.com.ar/js/news/js/jquery.easing.js"></script>
+	<script language="javascript" type="text/javascript" src="http://www.acsr.com.ar/js/news/js/script.js"></script>
+	<script type="text/javascript">
+	 $(document).ready( function(){    
+	        var buttons = { previous:$('#jslidernews2 .button-previous') ,
+	                        next:$('#jslidernews2 .button-next') };             
+	        $('#jslidernews2').lofJSidernews( { interval:5000,
+	                                                 easing:'easeInOutQuad',
+	                                                duration:1200,
+	                                                auto:true,
+	                                                mainWidth:675,
+	                                                mainHeight:300,
+	                                                navigatorHeight        : 100,
+	                                                navigatorWidth        : 310,
+	                                                maxItemDisplay:3,
+	                                                buttons:buttons } );                        
+	    });
+	    
+	    var dom = 'http://www.acsr.com.ar/';
+	    var dom = 'http://www.acsr.com.ar/';
+	
+	</script>
+	<script src="http://www.acsr.com.ar/js/prettyphoto/js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
+	
+	<link rel="image_src" href="http://www.acsr.com.ar/images/logoface.jpg" />
+	<script type="text/javascript" src="http://www.acsr.com.ar/js/jquery.tools.min.js"></script>
+	
+	</head>
+	<body>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

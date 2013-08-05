@@ -21,8 +21,4 @@ class Cancha {
 		tipoSuelo blank:false, inList:["Parquet","Cemento","Cesped","Carpeta"]
 		disponibilidad nullable: false
     }
-	
-	String toString() {
-		return nombre
-	}
 }
