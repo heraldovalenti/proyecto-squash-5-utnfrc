@@ -4,14 +4,12 @@ class Rol {
 
     String nombre
     static hasMany = [permisos: Permiso]
-	
-	String toString()
-	{
-		return nombre
-	}
 
     static constraints = {	
-		
-		
+		nombre blank: false		
+	}
+	
+	String toString() {
+		return nombre
 	}
 }

@@ -11,11 +11,6 @@ class Club {
     Persona encargado
     
 	static hasMany = [canchas: Cancha]
-    
-	String toString()
-	{
-		return nombre
-	}
 	
     static constraints = {
 		nombre blank: false, unique: true, maxSize: 50
@@ -24,4 +19,8 @@ class Club {
 		domicilio maxSize: 250
 		email blank: false, maxSize: 100
     }
+	
+	String toString() {
+		return nombre
+	}
 }
