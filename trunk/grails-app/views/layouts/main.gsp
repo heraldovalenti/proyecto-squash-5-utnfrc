@@ -9,22 +9,34 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><g:layoutTitle default="Grails"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/common.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />      
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />     
-    <link rel="stylesheet" href="http://www.acsr.com.ar/js/growler/css/examples.css" type="text/css" media="screen" charset="utf-8" />  
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css/view.css" media="all"/>     
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/lightview/css/lightview.css" />
-    
-    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />  
-    
-    <style>     
-        ul.lof-main-wapper li {
-            position:relative;    
-        }
-    </style>  
-    <link rel="stylesheet" href="http://www.acsr.com.ar/js/prettyphoto/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
-    
+		
+		
+		<!-- 
+		Aparentemente, estos son los CSS que usa la pagina solamente.. 
+		Al menos, en la principal 
+		-->    
+	   	<link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />
+	    
+	    <!-- CSS ORIGINALMENTE EN LA WEB...
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/common.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />
+	    <link rel="stylesheet" href="http://www.acsr.com.ar/js/growler/css/examples.css" type="text/css" media="screen" charset="utf-8" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css/view.css" media="all"/>
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/lightview/css/lightview.css" />
+	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />
+	    <link rel="stylesheet" href="http://www.acsr.com.ar/js/prettyphoto/css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+	     -->
+	         
+	   <style>     
+	       ul.lof-main-wapper li {
+	           position:relative;    
+	       }
+	   </style>  
+	   
+	   
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>

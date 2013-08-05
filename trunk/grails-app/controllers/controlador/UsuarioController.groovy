@@ -4,9 +4,7 @@ class UsuarioController {
 
 	static scaffold = modelo.Usuario
 	
-	def list = {
-		redirect(action:loginForm)
-	}
+	
 	
 	def index = {
 		redirect(action:loginForm)
