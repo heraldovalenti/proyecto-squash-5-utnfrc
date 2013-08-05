@@ -6,20 +6,15 @@ class Torneo {
 	
 	String nombre
 	Date fechaAlta
-	Date fechaInicioInscripcion
-	Date fechaFinInscripcion
 	Date fechaInicioTorneo
 	Date fechaFinTorneo
-	Categoria categoria
-	String estado //puede ser implementado con una clase de java y patron State
-	Integer cupoMaximo
-	Boolean puntuable
+	Date fechaInicioInscripcion
+	Date fechaFinInscripcion
+	String estado
 	Club club
+	Boolean puntuable
 	
-	String toString()
-	{
-		return nombre
-	}
+	static hasMany = [detalles: DetalleTorneo]
 
     static constraints = {
 		nombre blank: false, maxSize: 150
@@ -27,10 +22,13 @@ class Torneo {
 		fechaInicioInscripcion nullable: false
 		fechaFinInscripcion nullable: false
 		fechaInicioTorneo nullable: false
-		fechaFinTorneo nullable: false
-		categoria nullable: false
-		estado blank: false
-		cupoMaximo min: 2		
+		fechaFinTorneo nullable: false	
 		club Nullable:false
+		estado blank: false, inList:["Creado","Inscripcion Abierta","Inscripcion Cerrada",
+			"Diagramado","En Curso","Finalizado", "Ranking Actualizado"]
     }
+	
+	String toString() {
+		return nombre
+	}
 }
