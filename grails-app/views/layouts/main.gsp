@@ -166,7 +166,16 @@
         </a>
     </div>
     
-    <div class="live-tour" ><div id="headerLiveScoreBox1" class="headerLiveScoreBox " style="width:275px"><div class="backgroundFrame"></div><img class="scoreboardLogo" src="http://www.acsr.com.ar/images/img.php?src=http://www.acsr.com.ar/images/afiches/163g.jpg&h=55&zc=1"><p class="headScorebrdTitle"><a href="http://www.acsr.com.ar/torneos/2013/163.html">10º fecha ACS 2013 - Les Courts</a></p><p class="headerScorebrdPlace">24-08 al 01-09</p><p class="headScorebrdTitle" style="margin-top: 5px;"><a href="#" rel="#login" class="button_small green">Inscribite >></a><a href="http://www.acsr.com.ar/torneos/2013/163.html" class="ml10 button_small blue">Info >></a></p></div></div>    <ul class="sponsors">
+    <div class="live-tour" >
+    	<div id="headerLiveScoreBox1" class="headerLiveScoreBox " style="width:275px">
+    		<div class="backgroundFrame">
+    			</div><img class="scoreboardLogo" src="http://www.acsr.com.ar/images/img.php?src=http://www.acsr.com.ar/images/afiches/163g.jpg&h=55&zc=1">
+    				<p class="headScorebrdTitle"><a href="#">10º fecha ACS 2013 - Les Courts</a></p>
+    				<p class="headerScorebrdPlace">24-08 al 01-09</p><p class="headScorebrdTitle" style="margin-top: 5px;">
+    				<a href="/SistemaGestionTorneo/inscripcionTorneo/list" class="button_small green">Inscribite >></a>
+    				<a href="/SistemaGestionTorneo/torneo/list" class="ml10 button_small blue">Info >></a></p></div></div>    
+    				
+	<ul class="sponsors">				
         <li style="border: none;"><a href="#"><img src="http://www.acsr.com.ar/images/mains.png" alt="Sponsors" title="Sponsors"/></a></li>
         <li><a href="http://www.zyngra.com/" target="_blank"><img src="http://www.acsr.com.ar/images/zingra.png"  alt="Sponsors Zingra" title="Sponsors Zingra"/></a></li>
         <li><a href="http://www.movistar.com.ar/" target="_blank"><img src="http://www.acsr.com.ar/images/movistar.png"  alt="Sponsors movistar" title="Sponsors movistar"/></a></li>
@@ -180,15 +189,15 @@
 
 <div class="container_16 nav mt20">
     <ul>
-        <li><a href="http:/SistemaGestionTorneo/">Home</a></li>
-        <li><a href="http://www.acsr.com.ar/acs/">La ACS</a></li>
-        <li><a href="http://www.acsr.com.ar/noticias/">Noticias</a></li>
+        <li><a href="/SistemaGestionTorneo/">Home</a></li>
+        <li><a href="#">La ACS</a></li>
+        <li><a href="#">Noticias</a></li>
         <li><a href="/SistemaGestionTorneo/usuario/list">Jugadores</a></li>
-        <li><a href="/SistemaGestionTorneo/torneo/">Torneos</a></li>
-        <li><a href="http://www.acsr.com.ar/ranking/">Ranking</a></li>
+        <li><a href="/SistemaGestionTorneo/torneo/list">Torneos</a></li>
+        <li><a href="#">Ranking</a></li>
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
-        <li><a href="http://www.acsr.com.ar/media/">Media</a></li>
-        <li><a href="#" rel="#contacto">Contacto</a></li>
+        <li><a href="#">Media</a></li>
+        <li><a href="#">Contacto</a></li>
         <li>
             <form action="#" method="get" name="searchForm" id="headerSearch" onsubmit="return false;">
                 <input type="text" value="Ingresar Jugador" name="search-top" class="autocomplete ac_input" id="search-top" 

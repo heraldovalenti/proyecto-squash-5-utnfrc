@@ -25,7 +25,7 @@
 							<input type="password" name="password" value="" id="password" required=""/>
 						</div>
 						<div class="fieldcontain  required">
-							<label for="password2"> Repita </label> 
+							<label for="password2"> Repita el password </label> 
 							<input type="password" name="password2" value="" id="password2" required=""/>
 						</div>
 						<div class="fieldcontain  required">
