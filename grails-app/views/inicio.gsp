@@ -241,7 +241,7 @@
         <li><a href="http://www.acsr.com.ar/acs/">La ACS</a></li>
         <li><a href="http://www.acsr.com.ar/noticias/">Noticias</a></li>
         <li><a href="/SistemaGestionTorneo/usuario/list">Jugadores</a></li>
-        <li><a href="/SistemaGestionTorneo/torneo/list">Torneos</a></li>
+        <li><a href="/SistemaGestionTorneo/torneo/">Torneos</a></li>
         <li><a href="http://www.acsr.com.ar/ranking/">Ranking</a></li>
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
         <li><a href="http://www.acsr.com.ar/media/">Media</a></li>
@@ -342,9 +342,7 @@
     
     </div>    
         <!-- footer -->             
-        <div class="mt10" id="bottomLine" style="float: left; display: block; width: 100%; text-align: center">
-    <a alt="Contextus, Especialistas en Comercio Electrónico y Diseño Web" title="Contextus, Especialistas en Comercio Electrónico y Diseño Web" href="http://www.contextus.com.ar/" target="contenido"><img width="100" align="top" height="20" src="http://www.acsr.com.ar/images/img.php?src=http://www.acsr.com.ar/images/contextus.png&amp;h=20&amp;w=100&amp;zc=1" alt="Contextus, Especialistas en Comercio Electrónico y Diseño Web" title="Contextus, Especialistas en Comercio Electrónico y Diseño Web"> </a> 
-</div>      
+        
     <div class="forms" style="display: none;">
     <div id="operacion" class="operacion-general"> ## </div> 
     <!--    Login -->       
