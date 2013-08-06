@@ -6,7 +6,7 @@ class Club {
     String razonSocial
     String telefono
     String domicilio
-    String email
+    String correo
 	Boolean activo
     Persona encargado
     
@@ -17,7 +17,8 @@ class Club {
 		razonSocial blank: false, unique: true, maxSize: 50
 		telefono maxSize: 50
 		domicilio maxSize: 250
-		email blank: false, maxSize: 100
+		correo email:true, blank: false, maxSize: 100
+		encargado nullable: true
     }
 	
 	String toString() {
