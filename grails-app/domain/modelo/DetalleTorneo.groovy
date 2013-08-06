@@ -6,6 +6,7 @@ class DetalleTorneo {
 	Integer cupoMaximo
 	
 	static belongsTo = Torneo
+	String toString(){return categoria.nombre}
 	
 	static hasMany = [inscripciones: InscripcionTorneo] 
 	
