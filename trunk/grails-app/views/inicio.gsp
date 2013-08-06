@@ -251,13 +251,12 @@
 <div class="container_16 nav mt20">
     <ul>
         <li><a href="http:/SistemaGestionTorneo/">Home</a></li>
-        <li><a href="http://www.acsr.com.ar/acs/">La ACS</a></li>
-        <li><a href="http://www.acsr.com.ar/noticias/">Noticias</a></li>
+        <li><a href="">La ACS</a></li>
+        <li><a href="">Noticias</a></li>
         <li><a href="/SistemaGestionTorneo/usuario/list">Jugadores</a></li>
-        <li><a href="/SistemaGestionTorneo/torneo/">Torneos</a></li>
-        <li><a href="http://www.acsr.com.ar/ranking/">Ranking</a></li>
+        <li><a href="/SistemaGestionTorneo/torneo/">Torneos</a></li>        
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
-        <li><a href="http://www.acsr.com.ar/media/">Media</a></li>
+        <li><a href="/SistemaGestionTorneo/diagramacion">Diagramación</a></li>
         <li><a href="#" rel="#contacto">Contacto</a></li>
         <li>
             <form action="#" method="get" name="searchForm" id="headerSearch" onsubmit="return false;">

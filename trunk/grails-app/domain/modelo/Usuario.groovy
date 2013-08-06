@@ -12,6 +12,8 @@ class Usuario {
 	DisponibilidadHoraria disponibilidad
 	
 	static hasMany = [roles: Rol]
+	
+	String toString(){return persona.nombre + " " + persona.apellido}
 
     static constraints = {
 		nombreUsuario blank:false, unique:true, minSize:6, maxSize:25
@@ -21,7 +23,5 @@ class Usuario {
 		persona nullable:true
     }
 	
-	String toString() {
-		return nombreUsuario
-	}
+	
 }

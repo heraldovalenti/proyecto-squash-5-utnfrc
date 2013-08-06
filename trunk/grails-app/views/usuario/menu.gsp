@@ -14,8 +14,8 @@
 			<div class="second-part mt10">
 			   <div class="grid_16 inside mt10">  
 					<h3 class="title">MENU DE USUARIO</h3>
-					<p><a href="/SistemaGestionTorneo/persona">Datos personales</a></p>
-					<p><a href="/SistemaGestionTorneo/usuario/logout">Cerrar sesion</a></p>
+					<p><a href="/SistemaGestionTorneo/persona" class="inactivated">Datos personales</a></p>
+					<p><a href="/SistemaGestionTorneo/usuario/logout" class="inactivated">Cerrar sesion</a></p>
 
 				
 				</div>  

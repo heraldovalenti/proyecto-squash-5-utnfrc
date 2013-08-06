@@ -193,10 +193,9 @@
         <li><a href="#">La ACS</a></li>
         <li><a href="#">Noticias</a></li>
         <li><a href="/SistemaGestionTorneo/usuario/list">Jugadores</a></li>
-        <li><a href="/SistemaGestionTorneo/torneo/list">Torneos</a></li>
-        <li><a href="#">Ranking</a></li>
+        <li><a href="/SistemaGestionTorneo/torneo/list">Torneos</a></li>        
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
-        <li><a href="#">Media</a></li>
+        <li><a href="/SistemaGestionTorneo/diagramacion/list">Diagramación</a></li>
         <li><a href="#">Contacto</a></li>
         <li>
             <form action="#" method="get" name="searchForm" id="headerSearch" onsubmit="return false;">
