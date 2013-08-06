@@ -6,11 +6,15 @@
 		<!-- 
 		Aparentemente, estos son los CSS que usa la pagina solamente.. 
 		Al menos, en la principal 
-		-->    
-	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/css.css" media="all" />
 	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar//css/grid_16.css" media="all" />
 	    <link rel="stylesheet" type="text/css" href="http://www.acsr.com.ar/js/news/css/style2.css" />
+		-->    
 	    
+	    
+	    <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
+	 	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
+	 	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
 	    
 	    <!-- CSS ORIGINALMENTE EN LA WEB...
 	    
@@ -154,7 +158,7 @@
         </div>
         
                     <div class=" tour-title tour-more fr">
-                        <a href="/SistemaGestionTorneo/usuario/create" class="button_small blue" style="margin: 3px;">REGISTRARSE </a>
+                        <a href="/SistemaGestionTorneo/usuario/registro" class="button_small blue" style="margin: 3px;">REGISTRARSE </a>
                     </div>
                     <div class=" tour-title tour-more fr">
                         <a href="/SistemaGestionTorneo/usuario/loginForm" class="button_small green" style="margin: 3px;">INGRESAR </a>
