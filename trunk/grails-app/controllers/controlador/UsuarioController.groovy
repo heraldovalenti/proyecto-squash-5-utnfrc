@@ -42,19 +42,15 @@ class UsuarioController {
 
 	def logout() {
 		session.invalidate()
-		redirect(action: loginForm)
+		redirect(url: "/")
 	}
 	
-	def registrar() {
-		String nombreUsuario = params.nombreUsuario
-		String password = params.password
-		String password2 = params.password2
-		String correo = params.correo
-		
+	def registrar() {		
 		def u = new modelo.Usuario(
-			nombreUsuario: nombreUsuario, 
-			password: password, 
-			correo: correo) 
+			nombreUsuario: params.nombreUsuario, 
+			password: params.password, 
+			correo: params.correo,
+			activo: true) 
 		if (u.validate()) {
 			u.save()
 			redirect(action: loginForm)

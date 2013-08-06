@@ -1,45 +1,26 @@
 <html>
 <head>
-<link rel="stylesheet" href="/SistemaGestionTorneo/static/css/main.css"
-	type="text/css">
+	
+	 <meta name="layout" content="main" />
+	 
+	 <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
+	 <link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
+	 <link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
+	 <link href="${resource(dir: 'css', file: 'forms.css') }" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<div id="grailsLogo" role="banner">
-		<a href="http://grails.org"><img
-			src="/SistemaGestionTorneo/static/images/grails_logo.png"
-			alt="Grails" /></a>
-	</div>
-	<a href="#create-usuario" class="skip" tabindex="-1">Skip to
-		content&hellip;</a>
-	<div class="nav" role="navigation">
-		<ul>
-			<li><a class="home" href="/SistemaGestionTorneo/">Principal</a></li>
-			<li><a href="/SistemaGestionTorneo/usuario/list" class="list">Usuario
-					Lista</a></li>
-		</ul>
-	</div>
-	<div id="create-usuario" class="content scaffold-create" role="main">
-		<h1>Bienvenido</h1>
+	<div class="container_16">
+		<div class="slides-home raised">
+			<div class="second-part mt10">
+			   <div class="grid_16 inside mt10">  
+					<h3 class="title">MENU DE USUARIO</h3>
+					<p><a href="/SistemaGestionTorneo/persona">Datos personales</a></p>
+					<p><a href="/SistemaGestionTorneo/usuario/logout">Cerrar sesion</a></p>
 
-		<fieldset class="form">
-
-			<div class="fieldcontain  ">
-				<label for="nombreUsuario"> Nombre Usuario: ${user.nombreUsuario} </label>
+				
+				</div>  
 			</div>
-			<div class="fieldcontain  ">
-				<label for="password"> Password: ${user.password}</label>
-			</div>
-		</fieldset>
-		
-		<fieldset class="buttons">
-			<a href="/SistemaGestionTorneo/usuario/logout" class="delete">Cerrar Sesion</a>
-		</fieldset>
+		</div>
 	</div>
-
-	<div class="footer" role="contentinfo"></div>
-	<div id="spinner" class="spinner" style="display: none;">Loading&hellip;</div>
-
-	<script src="/SistemaGestionTorneo/static/js/application.js"
-		type="text/javascript"></script>
 </body>
 </html>
