@@ -4,10 +4,14 @@ class UsuarioController {
 
 	static scaffold = modelo.Usuario
 	
-	
-	
 	def index = {
 		redirect(action:loginForm)
+	}
+	
+	def registro = {
+		if (session.getAttribute("userLogon") != null) {
+			redirect(action:menu)
+		}
 	}
 
 	def loginForm = {
@@ -39,5 +43,24 @@ class UsuarioController {
 	def logout() {
 		session.invalidate()
 		redirect(action: loginForm)
+	}
+	
+	def registrar() {
+		String nombreUsuario = params.nombreUsuario
+		String password = params.password
+		String password2 = params.password2
+		String correo = params.correo
+		
+		def u = new modelo.Usuario(
+			nombreUsuario: nombreUsuario, 
+			password: password, 
+			correo: correo) 
+		if (u.validate()) {
+			u.save()
+			redirect(action: loginForm)
+		} else {
+			redirect(action: registro)
+			return [usuario: u]
+		}
 	}
 }
