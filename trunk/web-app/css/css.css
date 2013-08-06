@@ -19,7 +19,8 @@ body {
 p  {margin-bottom:1em;}
 ul li {list-style:none outside none;}
 p, li {line-height:16px;}
-a {color:#183353;text-decoration:none;}
+a {color:white;text-decoration:none;}
+
 a:hover {text-decoration:none;}
 
 .floatRight {float:right;}
