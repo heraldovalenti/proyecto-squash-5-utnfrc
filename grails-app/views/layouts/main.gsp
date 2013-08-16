@@ -45,6 +45,9 @@
 		<r:layoutResources />
 	</head>
 	<body>
+	
+	<g:render template="/usuario/barraUsuario" />
+	
 	<div id="atpNavBar">
     <div class="container_16" id="tour">
         <div class="grid_3 tour-title alpha">

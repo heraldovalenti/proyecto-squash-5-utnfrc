@@ -4,23 +4,19 @@ class UsuarioController {
 
 	static scaffold = modelo.Usuario
 	
-	def index = {
+	def index() {
 		redirect(action:loginForm)
 	}
 	
-	def registro = {
-		if (session.getAttribute("userLogon") != null) {
-			redirect(action:menu)
-		}
+	def registro() {
+		
 	}
 
-	def loginForm = {
-		if (session.getAttribute("userLogon") != null) {
-			redirect(action:menu)
-		}
+	def loginForm() {
+		
 	}
 
-	def menu = {
+	def menu() {
 		return [user: session.getAttribute("userLogon")]
 	}
 
@@ -32,7 +28,7 @@ class UsuarioController {
 
 		if (u) {
 			session.setAttribute("userLogon", u)
-			redirect(action:menu)
+			redirect(url: "/")
 		}
 		else {
 			redirect(action: loginForm)
