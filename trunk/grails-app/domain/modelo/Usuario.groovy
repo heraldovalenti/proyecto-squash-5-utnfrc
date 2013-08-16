@@ -13,7 +13,9 @@ class Usuario {
 	
 	static hasMany = [roles: Rol]
 	
-	String toString(){return persona.nombre + " " + persona.apellido}
+	String toString() {
+		return persona
+	}
 
     static constraints = {
 		nombreUsuario blank:false, unique:true, minSize:6, maxSize:25
