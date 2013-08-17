@@ -1,4 +1,6 @@
-package modelo
+package controlador
+
+import modelo.DetalleDisponibilidad;
 
 import org.springframework.dao.DataIntegrityViolationException
 
