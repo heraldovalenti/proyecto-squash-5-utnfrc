@@ -5,7 +5,7 @@ class UsuarioController {
 	static scaffold = modelo.Usuario
 	
 	def index() {
-		redirect(action:loginForm)
+		redirect(action:'loginForm')
 	}
 	
 	def registro() {
@@ -31,7 +31,7 @@ class UsuarioController {
 			redirect(url: "/")
 		}
 		else {
-			redirect(action: loginForm)
+			redirect(action: 'loginForm')
 		}
 
 	}
@@ -49,9 +49,9 @@ class UsuarioController {
 			activo: true) 
 		if (u.validate()) {
 			u.save()
-			redirect(action: loginForm)
+			redirect(action: 'loginForm')
 		} else {
-			redirect(action: registro)
+			redirect(action: 'registro')
 			return [usuario: u]
 		}
 	}

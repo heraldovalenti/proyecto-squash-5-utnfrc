@@ -1,6 +1,9 @@
-package modelo
+package controlador
 
 
+
+import modelo.Disponibilidad;
+import controlador.DisponibilidadController;
 
 import org.junit.*
 import grails.test.mixin.*

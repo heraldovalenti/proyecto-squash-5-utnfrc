@@ -8,13 +8,9 @@ class DetalleDisponibilidad {
 
     static constraints = {
 		dia blank: false, inList:["Lu","Ma","Mi","Ju","Vi","Sa","Do"]
-		desde range: 0..1439
+		desde range: 0..1439, validator: { val, obj ->
+			obj.desde < obj.hasta
+		}
 		hasta range: 0..1439
-		hasta validator: {
-			if (it.hasta >= desde) return false
-		}
-		desde validator: {
-			if (desde <= hasta) return false
-		}
     }
 }
