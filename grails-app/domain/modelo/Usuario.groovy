@@ -1,6 +1,6 @@
 package modelo
 
-import modelo.disponibilidadhoraria.DisponibilidadHoraria
+import modelo.Disponibilidad
 
 class Usuario {
 
@@ -9,7 +9,7 @@ class Usuario {
     String password
 	String correo
     Boolean activo
-	DisponibilidadHoraria disponibilidad
+	Disponibilidad disponibilidad
 	
 	static hasMany = [roles: Rol]
 	
