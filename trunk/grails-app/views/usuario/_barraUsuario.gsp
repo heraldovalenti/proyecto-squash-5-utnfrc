@@ -12,7 +12,7 @@
 				</g:link>
 			</div>
 		</g:if>
-		<g:if test="${ session.getAttribute("userLogon") }">
+		<g:else>
 			<div class="tour-title tour-more fr">
 				<g:link controller="usuario" action="logout" class="button_small blue" style="margin: 3px;">
 					SALIR	
@@ -21,6 +21,6 @@
 			<div class="tour-title tour-more fr">
 				Bienvenido ${ session.getAttribute("userLogon").nombreUsuario }
 			</div>
-		</g:if>
+		</g:else>
 	</div>
 </div>

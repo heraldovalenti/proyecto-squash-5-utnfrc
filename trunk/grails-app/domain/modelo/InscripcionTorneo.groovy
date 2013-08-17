@@ -1,6 +1,6 @@
 package modelo
 
-import modelo.disponibilidadhoraria.DisponibilidadHoraria;
+import modelo.Disponibilidad
 
 
 class InscripcionTorneo {
@@ -8,7 +8,7 @@ class InscripcionTorneo {
 	Usuario usuario
 	String estado
 	Date fecha
-	DisponibilidadHoraria disponibilidad
+	Disponibilidad disponibilidad
    
 	static belongsTo = DetalleTorneo
 		

@@ -1,6 +1,6 @@
 package modelo
 
-import modelo.disponibilidadhoraria.DisponibilidadHoraria
+import modelo.Disponibilidad
 
 class Cancha {
 
@@ -10,7 +10,7 @@ class Cancha {
     String tipoSuelo
     String paredes
 	String nombre
-	DisponibilidadHoraria disponibilidad
+	Disponibilidad disponibilidad
 	
 	static belongsTo = Club	
 	
