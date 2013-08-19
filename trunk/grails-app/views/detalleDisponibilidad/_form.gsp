@@ -1,4 +1,4 @@
-<%@ page import="modelo.DetalleDisponibilidad" %>
+<%@ page import="sgt.DetalleDisponibilidad" %>
 
 
 
