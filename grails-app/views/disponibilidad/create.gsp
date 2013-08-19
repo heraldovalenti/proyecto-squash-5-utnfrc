@@ -1,4 +1,4 @@
-<%@ page import="modelo.Disponibilidad" %>
+<%@ page import="sgt.Disponibilidad" %>
 <!DOCTYPE html>
 <html>
 	<head>

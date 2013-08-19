@@ -1,5 +1,5 @@
 
-<%@ page import="modelo.DetalleDisponibilidad" %>
+<%@ page import="sgt.DetalleDisponibilidad" %>
 <!DOCTYPE html>
 <html>
 	<head>

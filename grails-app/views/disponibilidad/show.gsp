@@ -1,5 +1,5 @@
 
-<%@ page import="modelo.Disponibilidad" %>
+<%@ page import="sgt.Disponibilidad" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list disponibilidad">
 			
+				<g:if test="${disponibilidadInstance?.fechaActualizacion}">
+				<li class="fieldcontain">
+					<span id="fechaActualizacion-label" class="property-label"><g:message code="disponibilidad.fechaActualizacion.label" default="Fecha Actualizacion" /></span>
+					
+						<span class="property-value" aria-labelledby="fechaActualizacion-label"><g:formatDate date="${disponibilidadInstance?.fechaActualizacion}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${disponibilidadInstance?.detalles}">
 				<li class="fieldcontain">
 					<span id="detalles-label" class="property-label"><g:message code="disponibilidad.detalles.label" default="Detalles" /></span>
@@ -30,15 +39,6 @@
 						<g:each in="${disponibilidadInstance.detalles}" var="d">
 						<span class="property-value" aria-labelledby="detalles-label"><g:link controller="detalleDisponibilidad" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${disponibilidadInstance?.fechaActualizacion}">
-				<li class="fieldcontain">
-					<span id="fechaActualizacion-label" class="property-label"><g:message code="disponibilidad.fechaActualizacion.label" default="Fecha Actualizacion" /></span>
-					
-						<span class="property-value" aria-labelledby="fechaActualizacion-label"><g:formatDate date="${disponibilidadInstance?.fechaActualizacion}" /></span>
 					
 				</li>
 				</g:if>
