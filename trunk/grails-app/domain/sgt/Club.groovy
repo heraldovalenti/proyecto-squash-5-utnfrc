@@ -6,6 +6,7 @@ class Club {
     String razonSocial
     String telefono
     String domicilio
+	String sitioWeb
     String correo
 	Boolean activo
     Persona encargado
@@ -18,7 +19,7 @@ class Club {
 		telefono maxSize: 50
 		domicilio maxSize: 250
 		correo email:true, blank: false, maxSize: 100
-		encargado nullable: true
+		sitioWeb blank: true, maxSize: 250
     }
 	
 	String toString() {
