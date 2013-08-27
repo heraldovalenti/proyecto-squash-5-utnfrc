@@ -2,11 +2,7 @@ package sgt
 
 
 
-
 import org.junit.*
-
-import sgt.Disponibilidad;
-import sgt.DisponibilidadController;
 import grails.test.mixin.*
 
 @TestFor(DisponibilidadController)
