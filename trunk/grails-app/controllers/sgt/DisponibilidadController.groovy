@@ -1,6 +1,5 @@
 package sgt
 
-
 import org.springframework.dao.DataIntegrityViolationException
 
 class DisponibilidadController {

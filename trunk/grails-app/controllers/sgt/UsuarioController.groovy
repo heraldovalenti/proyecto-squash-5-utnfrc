@@ -31,6 +31,7 @@ class UsuarioController {
 			redirect(url: "/")
 		}
 		else {
+		flash.message = "Usuario o contraseña no válidos"
 			redirect(action: 'loginForm')
 		}
 
