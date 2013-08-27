@@ -9,4 +9,7 @@ class Disponibilidad {
     static constraints = {
 		fechaActualizacion nullable:true 
     }
+	String toString() {
+		return fechaActualizacion
+	}
 }
