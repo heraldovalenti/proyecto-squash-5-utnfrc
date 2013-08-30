@@ -5,9 +5,12 @@ import org.springframework.dao.DataIntegrityViolationException
 class DetalleDisponibilidadController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	
+	
+	
     def index() {
         redirect(action: "list", params: params)
+		//render (view: 'prueba')
     }
 
     def list(Integer max) {
@@ -20,7 +23,10 @@ class DetalleDisponibilidadController {
     }
 
     def save() {
-        def detalleDisponibilidadInstance = new DetalleDisponibilidad(params)
+		def desde = gestorhorarios.aValor(horas: params.desdeHoras, minutos: params.desdeMinutos)
+		def hasta = gestorhorarios.aValor(horas: params.hastaHoras, minutos: params.hastaMinutos)
+			
+        def detalleDisponibilidadInstance = new DetalleDisponibilidad(dia: params.dia, desde:desde, hasta:hasta)
         if (!detalleDisponibilidadInstance.save(flush: true)) {
             render(view: "create", model: [detalleDisponibilidadInstance: detalleDisponibilidadInstance])
             return
@@ -69,9 +75,12 @@ class DetalleDisponibilidadController {
                 return
             }
         }
-
-        detalleDisponibilidadInstance.properties = params
-
+		
+		
+		def desde = gestorhorarios.aValor(horas: params.desdeHoras, minutos: params.desdeMinutos)
+		def hasta = gestorhorarios.aValor(horas: params.hastaHoras, minutos: params.hastaMinutos)
+        detalleDisponibilidadInstance.properties = [dia: params.dia, desde: desde, hasta: hasta]
+		
         if (!detalleDisponibilidadInstance.save(flush: true)) {
             render(view: "edit", model: [detalleDisponibilidadInstance: detalleDisponibilidadInstance])
             return
