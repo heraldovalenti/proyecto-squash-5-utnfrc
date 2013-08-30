@@ -15,7 +15,7 @@
 		<g:message code="detalleDisponibilidad.desde.label" default="Desde" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="desde" from="${0..1439}" class="range" required="" value="${fieldValue(bean: detalleDisponibilidadInstance, field: 'desde')}"/>
+	<gestorhorarios:selectorHorarios name="desde" value="${ detalleDisponibilidadInstance?.desde }"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: detalleDisponibilidadInstance, field: 'hasta', 'error')} required">
@@ -23,6 +23,6 @@
 		<g:message code="detalleDisponibilidad.hasta.label" default="Hasta" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="hasta" from="${0..1439}" class="range" required="" value="${fieldValue(bean: detalleDisponibilidadInstance, field: 'hasta')}"/>
+	<gestorhorarios:selectorHorarios name="hasta" value="${ detalleDisponibilidadInstance?.hasta }"/>
 </div>
 
