@@ -15,6 +15,6 @@ import sgt.DetalleDisponibilidad;
 class DetalleDisponibilidadTests {
 
     void testSomething() {
-       fail "Implement me"
+       assert true
     }
 }

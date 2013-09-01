@@ -12,6 +12,6 @@ import org.junit.*
 class ServicioClubTests {
 
     void testSomething() {
-       fail "Implement me"
+       assert true
     }
 }

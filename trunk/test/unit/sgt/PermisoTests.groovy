@@ -1,7 +1,5 @@
 package sgt
 
-
-
 import grails.test.mixin.*
 import org.junit.*
 
@@ -13,7 +11,11 @@ import sgt.Permiso;
 @TestFor(Permiso)
 class PermisoTests {
 
-    void testSomething() {
-       fail "Implement me"
-    }
+    def testSetterNombre(){
+		def permiso = new Permiso()
+		def n ="Marcos"
+		permiso.nombre=n
+		assert permiso.nombre.equals(n)
+	}
+	
 }
