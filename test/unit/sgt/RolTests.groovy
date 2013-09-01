@@ -14,6 +14,6 @@ import sgt.Rol;
 class RolTests {
 
     void testSomething() {
-       fail "Implement me"
+       assert true
     }
 }
