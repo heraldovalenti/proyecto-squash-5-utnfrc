@@ -45,6 +45,11 @@
 			<div class="pagination">
 				<g:paginate total="${servicioClubInstanceTotal}" />
 			</div>
+			<div class="paginateButtons">
+
+			<g:paginate total="${ServicioClub.count()}" /> </div> <g:jasperReport jasper="all-servicioClubs" format="PDF" name="Servicio Clubes" />
+
+			
 		</div>
 	</body>
 </html>

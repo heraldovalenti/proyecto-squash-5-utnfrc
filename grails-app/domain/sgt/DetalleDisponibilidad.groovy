@@ -7,6 +7,10 @@ class DetalleDisponibilidad {
 	Integer hasta
 	
 	static belongsTo = Disponibilidad
+	
+	String toString() {
+		return dia + "--" + desde + "-" + hasta
+	}
 
     static constraints = {
 		dia blank: false, inList:["Lu","Ma","Mi","Ju","Vi","Sa","Do"]

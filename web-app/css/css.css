@@ -135,7 +135,57 @@ font-size: 16px;
 font: verdana;
 color: #183555;
 }
+/*boton guardar*/
+input.save {
 
+background:#0b93d2;
+background:-webkit-gradient(linear, left top, left bottom, from(#2db5f4), to(#0b93d2));
+background:-moz-linear-gradient(top, #2db5f4, #0b93d2);
+color:#ffffff;
+line-height: 23px;
+margin:15px;
+height:25px;
+width:50px;
+}
+
+input[type="submit"] {
+
+background:#0b93d2;
+background:-webkit-gradient(linear, left top, left bottom, from(#2db5f4), to(#0b93d2));
+background:-moz-linear-gradient(top, #2db5f4, #0b93d2);
+color:#ffffff;
+line-height: 23px;
+margin:15px;
+height:25px;
+width:50px;
+}
+
+/*cajas de texto de los forms*/
+input[type="text"] {
+background-color: #FFFFFF;
+border: 1px solid #CFCFCF;
+height: 20px;
+margin: 0;
+padding-left: 3px;
+width: 150px;
+}
+
+input[type="password"] {
+background-color: #FFFFFF;
+border: 1px solid #CFCFCF;
+height: 20px;
+margin: 0;
+padding-left: 3px;
+width: 150px;
+}
+
+
+/*etiquetas dentro del form*/
+label {
+margin:10px;
+line-height: 16px;
+
+}
 
 h1.title-news {
   
