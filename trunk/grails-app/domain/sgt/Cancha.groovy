@@ -13,6 +13,9 @@ class Cancha {
 	Disponibilidad disponibilidad
 	
 	static belongsTo = Club	
+	String toString() {
+		return nombre
+	}
 	
     static constraints = {
 		ancho blank:false, min: 0.0f
