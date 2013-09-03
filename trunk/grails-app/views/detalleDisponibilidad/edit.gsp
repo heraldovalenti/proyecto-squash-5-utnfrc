@@ -5,14 +5,17 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		
+		<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+	 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
 	</head>
 	<body>
 		
 		<div class="nav" role="navigation">
 			<ul>
 				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" controller="${ controladorDisponibilidad }" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" controller="${ controladorDisponibilidad }" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="edit-detalleDisponibilidad" class="content scaffold-edit" role="main">
@@ -31,11 +34,11 @@
 				<g:hiddenField name="id" value="${detalleDisponibilidadInstance?.id}" />
 				<g:hiddenField name="version" value="${detalleDisponibilidadInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="/detalleDisponibilidad/form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="save" controller="${ controladorDisponibilidad }" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="delete" controller="${ controladorDisponibilidad }" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>
