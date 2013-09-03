@@ -10,7 +10,6 @@ class DetalleDisponibilidadController {
 	
     def index() {
         redirect(action: "list", params: params)
-		//render (view: 'prueba')
     }
 
     def list(Integer max) {
