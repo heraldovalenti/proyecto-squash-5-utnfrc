@@ -103,17 +103,19 @@
     </ul>
     
     
-</div>
-  		<div class="container_16">
-		<div class="slides-home raised">
-		<div class="second-part mt10">
-			<g:layoutBody/>
-			<div class="footer" role="contentinfo"></div>
-			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-			<g:javascript library="application"/>
-			<r:layoutResources />
+	</div>
+		<div class="container_16">
+			<div class="slides-home raised">
+				<div class="second-part mt10">
+					<g:layoutBody/>
+					<div class="footer" role="contentinfo"></div>
+					<div id="spinner" class="spinner" style="display:none;">
+						<g:message code="spinner.alt" default="Loading&hellip;"/>
+					</div>
+					<g:javascript library="application"/>
+					<r:layoutResources />
+			</div>
 		</div>
-		</div>
-		</div>
-	</body>
+	</div>
+</body>
 </html>

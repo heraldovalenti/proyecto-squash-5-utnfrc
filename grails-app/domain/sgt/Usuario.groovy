@@ -9,6 +9,7 @@ class Usuario {
 	String correo
     Boolean activo
 	Disponibilidad disponibilidad
+	Persona persona
 	
 	static hasMany = [roles: Rol]
 	
@@ -17,6 +18,7 @@ class Usuario {
 		password blank:false, minSize:6, maxSize:50, password:true
 		correo blank:false, email:true, unique:true
 		disponibilidad nullable: true
+		persona nullable: true
     }
 	
 	

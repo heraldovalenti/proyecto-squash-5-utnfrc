@@ -373,14 +373,14 @@ th:hover, tr:hover {
 	text-decoration: underline;
 }
 
-.buttons .delete, .buttons .edit, .buttons .save {
+.buttons .delete, .buttons .edit, .buttons .save, .buttons .enviar {
 	background-position: 0.7em center;
 	background-repeat: no-repeat;
 	text-indent: 25px;
 }
 
-.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save,
-.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save {
+.ie6 .buttons input.delete, .ie6 .buttons input.edit, .ie6 .buttons input.save, .ie6 .buttons input.enviar,
+.ie7 .buttons input.delete, .ie7 .buttons input.edit, .ie7 .buttons input.save, .ie7 .buttons input.enviar, {
 	padding-left: 36px;
 }
 
@@ -396,7 +396,19 @@ th:hover, tr:hover {
 	background-image: url(../images/skin/database_save.png);
 }
 
+.buttons .enviar {
+	background-image: url(../images/skin/form_submit.jpg);
+}
+
 a.skip {
 	position: absolute;
 	left: -9999px;
+}
+
+/* LISTAS - Modificaciones por Heraldo */
+div.scaffold-list, div.scaffold-show, div.scaffold-edit, div.scaffold-create, div.scaffold-head {
+	width:100% !important;
+}
+ul.scaffold-nav {
+	width:100% !important;
 }
