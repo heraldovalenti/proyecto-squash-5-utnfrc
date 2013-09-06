@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<g:if test="${ layout }"> 
+			<meta name="layout" content="${ layout }">
+		</g:if>
+		<g:else> 
+			<meta name="layout" content="main">
+		</g:else>
 		<g:set var="entityName" value="${message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 		
@@ -12,8 +17,8 @@
 	</head>
 	<body>
 		
-		<div class="nav" role="navigation">
-			<ul>
+		<div class="nav scaffold-head" role="navigation">
+			<ul class="scaffold-nav">
 				
 				<li><g:link class="list" controller="disponibilidadUsuario" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>

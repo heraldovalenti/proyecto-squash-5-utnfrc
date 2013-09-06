@@ -10,8 +10,9 @@ class Persona {
 	String sexo
     String telefono
     String domicilio
-	Usuario usuario
-
+	
+	static belongsTo = Usuario
+	
     static constraints = {
 		nombre blank:false
 		apellido blank:false

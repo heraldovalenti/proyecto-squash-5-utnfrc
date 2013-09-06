@@ -15,7 +15,7 @@ class DisponibilidadUsuarioController {
 			u.setDisponibilidad(new Disponibilidad(fechaActualizacion: new Date()).save() )
 			u.save()
 		}
-		redirect(action: 'list')
+		redirect(action: 'list', model: [layout: 'jugador'])
 	}
 	
 	def list(Integer max) {
@@ -26,11 +26,11 @@ class DisponibilidadUsuarioController {
 		
 		def total = u.disponibilidad.detalles ? u.disponibilidad.detalles.count : 10 
 		
-		render(view: '/detalleDisponibilidad/list', model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstanceList: u.disponibilidad.getDetalles(), detalleDisponibilidadInstanceTotal: total, fechaActualizacion: u.disponibilidad.fechaActualizacion])
+		render(view: '/detalleDisponibilidad/list', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstanceList: u.disponibilidad.getDetalles(), detalleDisponibilidadInstanceTotal: total, fechaActualizacion: u.disponibilidad.fechaActualizacion])
 	}
 	
 	def create() {
-		render(view: '/detalleDisponibilidad/create', model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: new DetalleDisponibilidad(params)])
+		render(view: '/detalleDisponibilidad/create', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: new DetalleDisponibilidad(params)])
 	}
 	
 	def save() {
@@ -42,7 +42,7 @@ class DisponibilidadUsuarioController {
 			
 		def detalleDisponibilidadInstance = new DetalleDisponibilidad(dia: params.dia, desde:desde, hasta:hasta)
 		if (!detalleDisponibilidadInstance.save(flush: true)) {
-			render(view: "/detalleDisponibilidad/create", model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
+			render(view: "/detalleDisponibilidad/create", model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
 			return
 		}
 		u.disponibilidad.addToDetalles(detalleDisponibilidadInstance)
@@ -61,7 +61,7 @@ class DisponibilidadUsuarioController {
 			return
 		}
 
-		render(view: '/detalleDisponibilidad/show', model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
+		render(view: '/detalleDisponibilidad/show', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
 	}
 	
 	def edit(Long id) {
@@ -72,7 +72,7 @@ class DisponibilidadUsuarioController {
 			return
 		}
 
-		render(view: '/detalleDisponibilidad/edit', model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
+		render(view: '/detalleDisponibilidad/edit', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
 	}
 	
 	def update(Long id, Long version) {
@@ -88,7 +88,7 @@ class DisponibilidadUsuarioController {
 				detalleDisponibilidadInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
 						  [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad')] as Object[],
 						  "Another user has updated this DetalleDisponibilidad while you were editing")
-				render(view: "/detalleDisponibilidad/edit", model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
+				render(view: "/detalleDisponibilidad/edit", model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
 				return
 			}
 		}
@@ -99,7 +99,7 @@ class DisponibilidadUsuarioController {
 		detalleDisponibilidadInstance.properties = [dia: params.dia, desde: desde, hasta: hasta]
 		
 		if (!detalleDisponibilidadInstance.save(flush: true)) {
-			render(view: "/detalleDisponibilidad/edit", model: [controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
+			render(view: "/detalleDisponibilidad/edit", model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
 			return
 		}
 

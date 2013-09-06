@@ -3,7 +3,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<g:if test="${ layout }"> 
+			<meta name="layout" content="${ layout }">
+		</g:if>
+		<g:else> 
+			<meta name="layout" content="main">
+		</g:else>
+		
+		
 		<g:set var="entityName" value="${message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 		
@@ -12,8 +19,8 @@
 	 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
+		<div class="scaffold-head nav" role="navigation" >
+			<ul class="scaffold-nav">
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" controller="${ controladorDisponibilidad }" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>

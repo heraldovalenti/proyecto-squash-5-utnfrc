@@ -1,0 +1,9 @@
+div.menu_jugador {
+	float: left;
+	width: 20%;
+}
+
+div.contenido_jugador {
+	float: left;
+	width: 80%;
+}
