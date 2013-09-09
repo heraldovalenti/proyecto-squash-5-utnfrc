@@ -1,9 +1,11 @@
 div.menu_jugador {
 	float: left;
 	width: 20%;
+	height: 316px;
 }
 
 div.contenido_jugador {
 	float: left;
 	width: 80%;
+	height:316px;
 }
