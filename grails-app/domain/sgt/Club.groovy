@@ -5,7 +5,7 @@ class Club {
     String nombre
     String razonSocial
     String telefono
-    String domicilio
+    Domicilio domicilio
 	String sitioWeb
     String correo
 	Boolean activo

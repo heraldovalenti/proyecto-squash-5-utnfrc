@@ -7,7 +7,7 @@
 		<g:message code="persona.nombre.label" default="Nombre" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nombre"  value="${personaInstance?.nombre}"/>
+	<g:textField name="nombre" required="" value="${personaInstance?.nombre}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'apellido', 'error')} required">
@@ -15,7 +15,7 @@
 		<g:message code="persona.apellido.label" default="Apellido" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="apellido"  value="${personaInstance?.apellido}"/>
+	<g:textField name="apellido" required="" value="${personaInstance?.apellido}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'fechaNacimiento', 'error')} required">
@@ -55,7 +55,15 @@
 		<g:message code="persona.domicilio.label" default="Domicilio" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="domicilio" maxlength="250" required="" value="${personaInstance?.domicilio}"/>
+	<g:select id="domicilio" name="domicilio.id" from="${sgt.Domicilio.list()}" optionKey="id" required="" value="${personaInstance?.domicilio?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'imagen', 'error')} ">
+	<label for="imagen">
+		<g:message code="persona.imagen.label" default="Imagen" />
+		
+	</label>
+	<g:textField name="imagen" value="${personaInstance?.imagen}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'numeroDocumento', 'error')} required">

@@ -12,8 +12,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list"><g:message code="Lista de Servicios" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="Nuevo" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-servicioClub" class="content scaffold-show" role="main">

@@ -16,28 +16,18 @@ class PersonaController {
     }
 
     def create() {
-        [personaInstance: new Persona(params), layout: params.layout]
+        [personaInstance: new Persona(params)]
     }
 
     def save() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		if (!u) {
-			render(view: '/usuario/loginForm')
-			return
-		}
-		u = Usuario.get(u.id)
-		
         def personaInstance = new Persona(params)
         if (!personaInstance.save(flush: true)) {
-            render(view: "create", model: [personaInstance: personaInstance], params: [layout: params.layout])
+            render(view: "create", model: [personaInstance: personaInstance])
             return
         }
 
-		u.setPersona(personaInstance)
-		u.save()
-		
         flash.message = message(code: 'default.created.message', args: [message(code: 'persona.label', default: 'Persona'), personaInstance.id])
-        redirect(action: "show", id: personaInstance.id, params: [layout: params.layout])
+        redirect(action: "show", id: personaInstance.id)
     }
 
     def show(Long id) {
@@ -48,7 +38,7 @@ class PersonaController {
             return
         }
 
-        [personaInstance: personaInstance, layout: params.layout]
+        [personaInstance: personaInstance]
     }
 
     def edit(Long id) {

@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'cancha.label', default: 'Cancha')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
@@ -9,9 +10,8 @@
 	<body>
 		
 		<div class="nav" role="navigation">
-			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+			<ul>				
+				<li><g:link class="list" action="list"><g:message code="Canchas" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="create-cancha" class="content scaffold-create" role="main">

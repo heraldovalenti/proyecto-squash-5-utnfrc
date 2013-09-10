@@ -2,25 +2,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<g:if test="${ layout }"> 
-			<meta name="layout" content="${ layout }">
-		</g:if>
-		<g:else> 
-			<meta name="layout" content="main">
-		</g:else>
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'persona.label', default: 'Persona')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
-		
-		<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		
+		<a href="#edit-persona" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			<ul>				
+				<li><g:link class="list" action="list"><g:message code="Lista de Personas" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="Nueva Persona" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="edit-persona" class="content scaffold-edit" role="main">

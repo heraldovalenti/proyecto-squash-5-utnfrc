@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'partido.label', default: 'Partido')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
@@ -12,8 +13,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list"><g:message code="Partidos" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="Nuevo Partido" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-partido" class="content scaffold-show" role="main">

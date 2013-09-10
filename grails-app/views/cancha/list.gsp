@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'cancha.label', default: 'Cancha')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -11,8 +12,8 @@
 		<a href="#list-cancha" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				
+				<li><g:link class="create" action="create"><g:message code="Nueva Cancha" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-cancha" class="content scaffold-list" role="main">
