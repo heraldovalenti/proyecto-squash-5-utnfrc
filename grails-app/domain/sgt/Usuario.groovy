@@ -9,9 +9,11 @@ class Usuario {
 	String correo
     Boolean activo
 	Disponibilidad disponibilidad
+	Categoria categoria
 	Persona persona
-	
-	static hasMany = [roles: Rol]
+	Jugador jugador
+		
+	static hasMany = [roles: Rol, rankings: Ranking]
 	
     static constraints = {
 		nombreUsuario blank:false, unique:true, minSize:6, maxSize:25
@@ -19,6 +21,8 @@ class Usuario {
 		correo blank:false, email:true, unique:true
 		disponibilidad nullable: true
 		persona nullable: true
+		jugador nullable: true
+		categoria nullable: true
     }
 	
 	
