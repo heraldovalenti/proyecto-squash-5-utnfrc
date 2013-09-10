@@ -3,25 +3,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<g:if test="${ layout }"> 
-			<meta name="layout" content="${ layout }">
-		</g:if>
-		<g:else> 
-			<meta name="layout" content="main">
-		</g:else>
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'persona.label', default: 'Persona')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
-		
-		<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		
+		<a href="#show-persona" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
 		<div class="nav" role="navigation">
-			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+			<ul>				
+				<li><g:link class="list" action="list"><g:message code="Lista de Personas" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="Nueva Persona" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-persona" class="content scaffold-show" role="main">
@@ -89,7 +81,16 @@
 				<li class="fieldcontain">
 					<span id="domicilio-label" class="property-label"><g:message code="persona.domicilio.label" default="Domicilio" /></span>
 					
-						<span class="property-value" aria-labelledby="domicilio-label"><g:fieldValue bean="${personaInstance}" field="domicilio"/></span>
+						<span class="property-value" aria-labelledby="domicilio-label"><g:link controller="domicilio" action="show" id="${personaInstance?.domicilio?.id}">${personaInstance?.domicilio?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${personaInstance?.imagen}">
+				<li class="fieldcontain">
+					<span id="imagen-label" class="property-label"><g:message code="persona.imagen.label" default="Imagen" /></span>
+					
+						<span class="property-value" aria-labelledby="imagen-label"><g:fieldValue bean="${personaInstance}" field="imagen"/></span>
 					
 				</li>
 				</g:if>
@@ -107,7 +108,8 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${personaInstance?.id}" />
-					<g:actionSubmit class="edit" action="edit" id="${personaInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+					<g:link class="edit" action="edit" id="${personaInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>

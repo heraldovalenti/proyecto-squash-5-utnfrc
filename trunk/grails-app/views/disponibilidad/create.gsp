@@ -9,9 +9,8 @@
 	<body>
 		
 		<div class="nav" role="navigation">
-			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+			<ul>				
+				<li><g:link class="list" action="list"><g:message code="Disponibilidades" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="create-disponibilidad" class="content scaffold-create" role="main">

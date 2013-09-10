@@ -17,9 +17,8 @@
 	<body>
 		
 		<div class="nav scaffold-head" role="navigation">
-			<ul class="scaffold-nav">
-				
-				<li><g:link class="list" controller="${ controladorDisponibilidad }" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+			<ul class="scaffold-nav">				
+				<li><g:link class="list" controller="${ controladorDisponibilidad }" action="list"><g:message code="Detalles Disponibilidad" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="create-detalleDisponibilidad" class="content scaffold-create" role="main">

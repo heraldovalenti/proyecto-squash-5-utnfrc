@@ -9,7 +9,8 @@ class Persona {
 	Integer numeroDocumento
 	String sexo
     String telefono
-    String domicilio
+    Domicilio domicilio
+	String imagen
 	
     static constraints = {
 		nombre blank:false
@@ -19,6 +20,7 @@ class Persona {
 		sexo blank: false, inList: ["Masculino","Femenino"]
 		telefono blank: false
 		domicilio blank: false, maxSize: 250
+		imagen nullable:true;
     }
 	
 	String toString() {

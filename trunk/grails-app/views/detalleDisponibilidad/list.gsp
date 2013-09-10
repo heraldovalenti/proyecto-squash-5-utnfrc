@@ -21,8 +21,8 @@
 	<body>
 		<div class="scaffold-head nav" role="navigation" >
 			<ul class="scaffold-nav">
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" controller="${ controladorDisponibilidad }" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				
+				<li><g:link class="create" controller="${ controladorDisponibilidad }" action="create"><g:message code="Nueva" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-detalleDisponibilidad" class="content scaffold-list" role="main">
