@@ -3,8 +3,8 @@
         <li><a href="/SistemaGestionTorneo/">Home</a></li>
         <li><a href="#">La ACS</a></li>
         <li><a href="#">Noticias</a></li>
-        <li><a href="/SistemaGestionTorneo/usuario/list">Jugadores</a></li>
-        <li><a href="/SistemaGestionTorneo/torneo/list">Torneos</a></li>        
+        <li><a href="/SistemaGestionTorneo/jugador/">Jugadores</a></li>
+        <li><a href="/SistemaGestionTorneo/torneo/">Torneos</a></li>        
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
         <li><a href="/SistemaGestionTorneo/partido/list">Diagramación</a></li>
         <li><a href="#">Contacto</a></li>

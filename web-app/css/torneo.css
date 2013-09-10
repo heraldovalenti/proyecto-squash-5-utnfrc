@@ -1,0 +1,44 @@
+div.caja_contenido {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+div.proxima_fecha {
+	background-color: #FFFFFF;
+	float: right;
+	width: 25%;
+	position: relative;
+}
+
+div.lista_fechas {
+	background-color: #FFFFFF;
+	float: left;
+	width: 75%;
+	position: relative;
+}
+
+div.fecha_puntuable {
+	padding: 0px;
+	color: #FFFFFF;
+	background: #183353;
+	background-image: -webkit-linear-gradient(top, #000000 0%, #183353 100%);
+	float: left;
+	width: 50%;
+	height: 10em;
+	position: relative;
+}
+
+h3.titulo {
+	border: 2px solid #00AFF0;
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 31px;
+	margin: 0;
+	min-height: 31px;
+	text-indent: 10px;
+	text-transform: uppercase;
+	background: #183353;
+	background-image: -webkit-linear-gradient(top, #00AFF0 0%, #183353 100%);
+}
