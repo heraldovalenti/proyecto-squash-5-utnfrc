@@ -103,6 +103,6 @@ class UsuarioController {
 		}
 
 		flash.message = message(code: 'registrousuario.enviar.exito')
-		render(view: 'registro')
+		redirect(controller: 'usuario', action: 'loginForm')
 	}
 }

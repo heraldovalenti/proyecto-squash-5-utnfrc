@@ -7,6 +7,7 @@ class TorneoPuntuable {
 	Date fin
 	Integer ordenAnual
 	Puntaje puntajeTorneo
+	Boolean activo
 	
 	static hasMany = [instanciasTorneo: Torneo]
 

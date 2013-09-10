@@ -2,8 +2,6 @@ package sgt
 
 
 
-import java.util.Date;
-
 import org.junit.*
 import grails.test.mixin.*
 
@@ -13,15 +11,8 @@ class TorneoControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-		params["nombre"] = 'Torneo los muertos'
-		params["fechaAlta"] = new Date()-10
-		params["fechaInicioTorneo"] = new Date()+20
-		params["fechaFinTorneo"] = new Date()+30
-		params["fechaInicioInscripcion"] = new Date()
-		params["fechaFinInscripcion"] = new Date()+10
-		params["estado"] = 'Creado'
-		params["club"] = new Club()
-		params["puntuable"] = true
+        // TODO: Populate valid properties like...
+        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -110,14 +101,7 @@ class TorneoControllerTests {
 
         // test invalid parameters in update
         params.id = torneo.id
-        params["nombre"] = ''
-		params["fechaAlta"] = null
-		params["fechaInicioTorneo"] = null
-		params["fechaFinTorneo"] = null
-		params["fechaInicioInscripcion"] = null
-		params["fechaFinInscripcion"] = null
-		params["estado"] = ''
-		params["club"] = null
+        //TODO: add invalid values to params object
 
         controller.update()
 
