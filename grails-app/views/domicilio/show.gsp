@@ -4,17 +4,13 @@
 <html>
 	<head>
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<meta name="layout" content="main">
+		<meta name="layout" content="jugador">
 		<g:set var="entityName" value="${message(code: 'domicilio.label', default: 'Domicilio')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
 		<a href="#show-domicilio" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
-		<div class="nav" role="navigation">
-			<ul>				
-				<li><g:link class="list" action="list"><g:message code="Domicilio" args="[entityName]" /></g:link></li>				
-			</ul>
-		</div>
+		
 		<div id="show-domicilio" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -90,7 +86,7 @@
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${domicilioInstance?.id}" />
 					<g:link class="edit" action="edit" id="${domicilioInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					
 				</fieldset>
 			</g:form>
 		</div>

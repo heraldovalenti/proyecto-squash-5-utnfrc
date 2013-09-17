@@ -3,24 +3,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<g:if test="${ layout }">
-			<meta name="layout" content="${ layout }">
-		</g:if>
-		<g:else>
-			<meta name="layout" content="main">
-		</g:else>
+		<meta name="layout" content="jugador">
 		<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<g:set var="entityName" value="${message(code: 'persona.label', default: 'Persona')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-persona" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
-		<div class="nav" role="navigation">
-			<ul>				
-				<li><g:link class="list" action="list"><g:message code="Lista de Personas" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="Nueva Persona" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
 		<div id="show-persona" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -84,19 +72,28 @@
 			
 				<g:if test="${personaInstance?.numeroDocumento}">
 				<li class="fieldcontain">
-					<span id="numeroDocumento-label" class="property-label"><g:message code="persona.numeroDocumento.label" default="Numero Documento" /></span>
+					<span id="numeroDocumento-label" class="property-label"><g:message code="persona.numeroDocumento.label" default="Numero de Documento" /></span>
 					
 						<span class="property-value" aria-labelledby="numeroDocumento-label"><g:fieldValue bean="${personaInstance}" field="numeroDocumento"/></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${personaInstance?.lugarNacimiento}">
+				<li class="fieldcontain">
+					<span id="lugarNacimiento" class="property-label"><g:message code="persona.lugarNacimiento.label" default="Lugar de Nacimiento" /></span>
+					
+						<span class="property-value" aria-labelledby="lugarNacimiento-label"><g:fieldValue bean="${personaInstance}" field="lugarNacimiento"/></span>
 					
 				</li>
 				</g:if>
 			
 			</ol>
 			<g:form>
+				
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${personaInstance?.id}" />
 					<g:link class="edit" action="edit" id="${personaInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>
