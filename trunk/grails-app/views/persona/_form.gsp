@@ -52,9 +52,17 @@
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'numeroDocumento', 'error')} required">
 	<label for="numeroDocumento">
-		<g:message code="persona.numeroDocumento.label" default="Numero Documento" />
+		<g:message code="persona.numeroDocumento.label" default="Numero de Documento" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="numeroDocumento" type="number" value="${personaInstance.numeroDocumento}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'lugarNacimiento', 'error')} required">
+	<label for="lugarNacimiento">
+		<g:message code="persona.lugarNacimiento.label" default="Luegar de Nacimiento" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="lugarNacimiento" type="text" value="${personaInstance.lugarNacimiento}" required=""/>
 </div>
 

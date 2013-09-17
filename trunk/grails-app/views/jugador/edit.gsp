@@ -1,30 +1,29 @@
-<%@ page import="sgt.Domicilio" %>
+<%@ page import="sgt.Jugador" %>
 <!DOCTYPE html>
 <html>
 	<head>
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<meta name="layout" content="jugador">
-		<g:set var="entityName" value="${message(code: 'domicilio.label', default: 'Domicilio')}" />
+		<g:set var="entityName" value="${message(code: 'jugador.label', default: 'Jugador')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-domicilio" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		<a href="#edit-jugador" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
-		<div id="edit-domicilio" class="content scaffold-edit" role="main">
+		<div id="edit-jugador" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:hasErrors bean="${domicilioInstance}">
+			<g:hasErrors bean="${jugadorInstance}">
 			<ul class="errors" role="alert">
-				<g:eachError bean="${domicilioInstance}" var="error">
+				<g:eachError bean="${jugadorInstance}" var="error">
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
 			<g:form method="post" >
-				<g:hiddenField name="id" value="${domicilioInstance?.id}" />
-				<g:hiddenField name="version" value="${domicilioInstance?.version}" />
+				<g:hiddenField name="id" value="${jugadorInstance?.id}" />
+				<g:hiddenField name="version" value="${jugadorInstance?.version}" />
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

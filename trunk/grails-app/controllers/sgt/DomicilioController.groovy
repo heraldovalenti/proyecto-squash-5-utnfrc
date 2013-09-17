@@ -20,11 +20,17 @@ class DomicilioController {
     }
 
     def save() {
+		def u = (sgt.Usuario) session.getAttribute("userLogon")
+		u = Usuario.get(u.id)
+		
         def domicilioInstance = new Domicilio(params)
         if (!domicilioInstance.save(flush: true)) {
             render(view: "create", model: [domicilioInstance: domicilioInstance])
             return
         }
+		
+		u.setDomicilio(domicilioInstance)
+		u.save()
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'domicilio.label', default: 'Domicilio'), domicilioInstance.id])
         redirect(action: "show", id: domicilioInstance.id)
@@ -53,6 +59,9 @@ class DomicilioController {
     }
 
     def update(Long id, Long version) {
+		def u = (sgt.Usuario) session.getAttribute("userLogon")
+		u = Usuario.get(u.id)
+		
         def domicilioInstance = Domicilio.get(id)
         if (!domicilioInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'domicilio.label', default: 'Domicilio'), id])

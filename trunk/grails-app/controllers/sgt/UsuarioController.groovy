@@ -105,4 +105,8 @@ class UsuarioController {
 		flash.message = message(code: 'registrousuario.enviar.exito')
 		redirect(controller: 'usuario', action: 'loginForm')
 	}
+	
+	def configuracionCuenta() {
+		render(view: 'configuracionCuenta', model: [layout: 'jugador'])
+	}
 }

@@ -50,7 +50,7 @@
 	<div class="container_16">
 		<div class="slides-home raised">
 			<div class="second-part mt10">
-			<h3 class="title"> PANEL DE CONTROL DE: ${personaInstance?.nombre}</h3>
+			<h3 class="title"> Panel de control personal</h3>
 				<div class="menu_jugador">
 					<g:render template="/jugador/menuJugador" />
 				</div>
