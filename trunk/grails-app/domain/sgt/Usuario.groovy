@@ -12,6 +12,7 @@ class Usuario {
 	Categoria categoria
 	Persona persona
 	Jugador jugador
+	Domicilio domicilio
 		
 	static hasMany = [roles: Rol, rankings: Ranking]
 	
@@ -23,6 +24,7 @@ class Usuario {
 		persona nullable: true
 		jugador nullable: true
 		categoria nullable: true
+		domicilio nullable: true
     }
 	
 	

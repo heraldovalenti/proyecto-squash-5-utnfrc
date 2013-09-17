@@ -3,15 +3,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="administracion">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'torneoPuntuable.label', default: 'TorneoPuntuable')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		
+		<a href="#show-torneoPuntuable" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
 		<div class="nav" role="navigation">
-			<ul>
-				
+			<ul>				
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
@@ -22,44 +21,6 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list torneoPuntuable">
-			
-				<g:if test="${torneoPuntuableInstance?.activo}">
-				<li class="fieldcontain">
-					<span id="activo-label" class="property-label"><g:message code="torneoPuntuable.activo.label" default="Activo" /></span>
-					
-						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${torneoPuntuableInstance?.fin}">
-				<li class="fieldcontain">
-					<span id="fin-label" class="property-label"><g:message code="torneoPuntuable.fin.label" default="Fin" /></span>
-					
-						<span class="property-value" aria-labelledby="fin-label"><g:formatDate date="${torneoPuntuableInstance?.fin}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${torneoPuntuableInstance?.inicio}">
-				<li class="fieldcontain">
-					<span id="inicio-label" class="property-label"><g:message code="torneoPuntuable.inicio.label" default="Inicio" /></span>
-					
-						<span class="property-value" aria-labelledby="inicio-label"><g:formatDate date="${torneoPuntuableInstance?.inicio}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${torneoPuntuableInstance?.instanciasTorneo}">
-				<li class="fieldcontain">
-					<span id="instanciasTorneo-label" class="property-label"><g:message code="torneoPuntuable.instanciasTorneo.label" default="Instancias Torneo" /></span>
-					
-						<g:each in="${torneoPuntuableInstance.instanciasTorneo}" var="i">
-						<span class="property-value" aria-labelledby="instanciasTorneo-label"><g:link controller="torneo" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${torneoPuntuableInstance?.nombre}">
 				<li class="fieldcontain">
@@ -79,21 +40,40 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${torneoPuntuableInstance?.puntajeTorneo}">
+				<g:if test="${torneoPuntuableInstance?.inicio}">
 				<li class="fieldcontain">
-					<span id="puntajeTorneo-label" class="property-label"><g:message code="torneoPuntuable.puntajeTorneo.label" default="Puntaje Torneo" /></span>
+					<span id="inicio-label" class="property-label"><g:message code="torneoPuntuable.inicio.label" default="Inicio" /></span>
 					
-						<span class="property-value" aria-labelledby="puntajeTorneo-label"><g:link controller="puntaje" action="show" id="${torneoPuntuableInstance?.puntajeTorneo?.id}">${torneoPuntuableInstance?.puntajeTorneo?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="inicio-label"><g:formatDate date="${torneoPuntuableInstance?.inicio}" /></span>
 					
 				</li>
 				</g:if>
 			
+				
+			
+				<g:if test="${torneoPuntuableInstance?.fin}">
+				<li class="fieldcontain">
+					<span id="fin-label" class="property-label"><g:message code="torneoPuntuable.fin.label" default="Fin" /></span>
+					
+						<span class="property-value" aria-labelledby="fin-label"><g:formatDate date="${torneoPuntuableInstance?.fin}" /></span>
+					
+				</li>
+				</g:if>
+				
+				<g:if test="${torneoPuntuableInstance?.activo}">
+				<li class="fieldcontain">
+					<span id="activo-label" class="property-label"><g:message code="torneoPuntuable.activo.label" default="Activo" /></span>
+					
+						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" /></span>
+					
+				</li>
+				</g:if>
+							
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${torneoPuntuableInstance?.id}" />
-					<g:actionSubmit class="edit" action="edit" id="${torneoPuntuableInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-					
+					<g:link class="edit" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

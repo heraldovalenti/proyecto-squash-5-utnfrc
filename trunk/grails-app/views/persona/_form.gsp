@@ -50,22 +50,6 @@
 	<g:textField name="telefono" required="" value="${personaInstance?.telefono}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'domicilio', 'error')} required">
-	<label for="domicilio">
-		<g:message code="persona.domicilio.label" default="Domicilio" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="domicilio" name="domicilio.id" from="${sgt.Domicilio.list()}" optionKey="id" required="" value="${personaInstance?.domicilio?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'imagen', 'error')} ">
-	<label for="imagen">
-		<g:message code="persona.imagen.label" default="Imagen" />
-		
-	</label>
-	<g:textField name="imagen" value="${personaInstance?.imagen}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'numeroDocumento', 'error')} required">
 	<label for="numeroDocumento">
 		<g:message code="persona.numeroDocumento.label" default="Numero Documento" />

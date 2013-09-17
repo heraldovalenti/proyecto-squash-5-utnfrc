@@ -134,6 +134,4 @@ class DisponibilidadUsuarioController {
 			redirect(action: "show", id: id)
 		}
 	}
-	
-	
 }

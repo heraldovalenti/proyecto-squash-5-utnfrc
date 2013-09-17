@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="administracion">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'torneoPuntuable.label', default: 'TorneoPuntuable')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
@@ -24,17 +24,15 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="activo" title="${message(code: 'torneoPuntuable.activo.label', default: 'Activo')}" />
-					
-						<g:sortableColumn property="fin" title="${message(code: 'torneoPuntuable.fin.label', default: 'Fin')}" />
-					
-						<g:sortableColumn property="inicio" title="${message(code: 'torneoPuntuable.inicio.label', default: 'Inicio')}" />
-					
 						<g:sortableColumn property="nombre" title="${message(code: 'torneoPuntuable.nombre.label', default: 'Nombre')}" />
 					
 						<g:sortableColumn property="ordenAnual" title="${message(code: 'torneoPuntuable.ordenAnual.label', default: 'Orden Anual')}" />
 					
-						<th><g:message code="torneoPuntuable.puntajeTorneo.label" default="Puntaje Torneo" /></th>
+						<g:sortableColumn property="inicio" title="${message(code: 'torneoPuntuable.inicio.label', default: 'Inicio')}" />
+					
+						<g:sortableColumn property="fin" title="${message(code: 'torneoPuntuable.fin.label', default: 'Fin')}" />
+					
+						<g:sortableColumn property="activo" title="${message(code: 'torneoPuntuable.activo.label', default: 'Activo')}" />
 					
 					</tr>
 				</thead>
@@ -42,17 +40,15 @@
 				<g:each in="${torneoPuntuableInstanceList}" status="i" var="torneoPuntuableInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${torneoPuntuableInstance.id}">${fieldValue(bean: torneoPuntuableInstance, field: "activo")}</g:link></td>
-					
-						<td><g:formatDate date="${torneoPuntuableInstance.fin}" /></td>
-					
-						<td><g:formatDate date="${torneoPuntuableInstance.inicio}" /></td>
-					
-						<td>${fieldValue(bean: torneoPuntuableInstance, field: "nombre")}</td>
+						<td><g:link action="show" id="${torneoPuntuableInstance.id}">${fieldValue(bean: torneoPuntuableInstance, field: "nombre")}</g:link></td>
 					
 						<td>${fieldValue(bean: torneoPuntuableInstance, field: "ordenAnual")}</td>
 					
-						<td>${fieldValue(bean: torneoPuntuableInstance, field: "puntajeTorneo")}</td>
+						<td><g:formatDate date="${torneoPuntuableInstance.inicio}" /></td>
+					
+						<td><g:formatDate date="${torneoPuntuableInstance.fin}" /></td>
+						
+						<td><g:formatBoolean boolean="${torneoPuntuableInstance.activo}" /></td>
 					
 					</tr>
 				</g:each>

@@ -3,8 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<meta name="layout" content="main">
+		<g:if test="${ layout }">
+			<meta name="layout" content="${ layout }">
+		</g:if>
+		<g:else>
+			<meta name="layout" content="main">
+		</g:else>
+		<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<g:set var="entityName" value="${message(code: 'persona.label', default: 'Persona')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -73,24 +78,6 @@
 					<span id="telefono-label" class="property-label"><g:message code="persona.telefono.label" default="Telefono" /></span>
 					
 						<span class="property-value" aria-labelledby="telefono-label"><g:fieldValue bean="${personaInstance}" field="telefono"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${personaInstance?.domicilio}">
-				<li class="fieldcontain">
-					<span id="domicilio-label" class="property-label"><g:message code="persona.domicilio.label" default="Domicilio" /></span>
-					
-						<span class="property-value" aria-labelledby="domicilio-label"><g:link controller="domicilio" action="show" id="${personaInstance?.domicilio?.id}">${personaInstance?.domicilio?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${personaInstance?.imagen}">
-				<li class="fieldcontain">
-					<span id="imagen-label" class="property-label"><g:message code="persona.imagen.label" default="Imagen" /></span>
-					
-						<span class="property-value" aria-labelledby="imagen-label"><g:fieldValue bean="${personaInstance}" field="imagen"/></span>
 					
 				</li>
 				</g:if>
