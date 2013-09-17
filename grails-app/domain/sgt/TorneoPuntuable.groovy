@@ -12,5 +12,10 @@ class TorneoPuntuable {
 	static hasMany = [instanciasTorneo: Torneo]
 
     static constraints = {
+		puntajeTorneo nullable: true
+		ordenAnual min: 0
+		inicio validator: { val, obj ->
+			return ( ( obj.fin.getTime() - obj.inicio.getTime() ) > 0)
+		}
     }
 }

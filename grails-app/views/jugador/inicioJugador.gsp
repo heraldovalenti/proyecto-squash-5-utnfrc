@@ -11,7 +11,7 @@
 				<div id="playerBioHeadShot">
 					<p class="IE6pngFix" id="playerBioHeadShotCopy">&copy; ACS</p>
 					<img width="148" height="198" alt=" Nombre"
-						src="${ resource(dir: 'images/perfiles', file: '0s.jpg') }" />
+						src="${ resource(dir: 'images/perfiles', file: 'default.jpg') }" />
 				</div>
 				<ul id="playerBioInfoList">
 					<li><span>Edad:</span> 2013 (00-00-0000)</li>
