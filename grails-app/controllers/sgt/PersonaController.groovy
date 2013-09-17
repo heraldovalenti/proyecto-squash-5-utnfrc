@@ -20,12 +20,19 @@ class PersonaController {
     }
 
     def save() {
+		def u = (sgt.Usuario)session.getAttribute("userLogon")
+		u = Usuario.get(u.id)
+		
         def personaInstance = new Persona(params)
         if (!personaInstance.save(flush: true)) {
+			println "LAYOUT: ${params.layout}"
             render(view: "create", model: [personaInstance: personaInstance])
             return
         }
 
+		u.setPersona(personaInstance)
+		u.save()
+		
         flash.message = message(code: 'default.created.message', args: [message(code: 'persona.label', default: 'Persona'), personaInstance.id])
         redirect(action: "show", id: personaInstance.id)
     }
