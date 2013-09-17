@@ -60,7 +60,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: personaInstance, field: 'lugarNacimiento', 'error')} required">
 	<label for="lugarNacimiento">
-		<g:message code="persona.lugarNacimiento.label" default="Luegar de Nacimiento" />
+		<g:message code="persona.lugarNacimiento.label" default="Lugar de Nacimiento" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="lugarNacimiento" type="text" value="${personaInstance.lugarNacimiento}" required=""/>
