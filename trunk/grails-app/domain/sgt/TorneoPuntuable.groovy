@@ -3,8 +3,6 @@ package sgt
 class TorneoPuntuable {
 	
 	String nombre
-	Date inicio
-	Date fin
 	Integer ordenAnual
 	Puntaje puntajeTorneo
 	Boolean activo
@@ -12,10 +10,9 @@ class TorneoPuntuable {
 	static hasMany = [instanciasTorneo: Torneo]
 
     static constraints = {
+		nombre blank: false, maxSize: 250
 		puntajeTorneo nullable: true
-		ordenAnual min: 0
-		inicio validator: { val, obj ->
-			return ( ( obj.fin.getTime() - obj.inicio.getTime() ) > 0)
-		}
+		ordenAnual nullable:true, min: 0
+		activo nullable: false
     }
 }

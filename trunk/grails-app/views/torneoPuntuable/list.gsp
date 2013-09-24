@@ -8,17 +8,21 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-torneoPuntuable" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+		
 		<div class="nav" role="navigation">
 			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-torneoPuntuable" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+				<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<g:if test="${ !ordenesAnualesValidos }">
+				<ul class="errors" role="alert">
+					<li>Los órdenes anuales asignados a los torneos activos no son válidos.</li>
+				</ul>
 			</g:if>
 			<table>
 				<thead>
@@ -27,10 +31,6 @@
 						<g:sortableColumn property="nombre" title="${message(code: 'torneoPuntuable.nombre.label', default: 'Nombre')}" />
 					
 						<g:sortableColumn property="ordenAnual" title="${message(code: 'torneoPuntuable.ordenAnual.label', default: 'Orden Anual')}" />
-					
-						<g:sortableColumn property="inicio" title="${message(code: 'torneoPuntuable.inicio.label', default: 'Inicio')}" />
-					
-						<g:sortableColumn property="fin" title="${message(code: 'torneoPuntuable.fin.label', default: 'Fin')}" />
 					
 						<g:sortableColumn property="activo" title="${message(code: 'torneoPuntuable.activo.label', default: 'Activo')}" />
 					
@@ -44,19 +44,17 @@
 					
 						<td>${fieldValue(bean: torneoPuntuableInstance, field: "ordenAnual")}</td>
 					
-						<td><g:formatDate date="${torneoPuntuableInstance.inicio}" /></td>
-					
-						<td><g:formatDate date="${torneoPuntuableInstance.fin}" /></td>
-						
-						<td><g:formatBoolean boolean="${torneoPuntuableInstance.activo}" /></td>
+						<td><g:formatBoolean boolean="${torneoPuntuableInstance.activo}" true="Activo" false="No activo"/></td>
 					
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
+			
 			<div class="pagination">
 				<g:paginate total="${torneoPuntuableInstanceTotal}" />
 			</div>
+			<h2>*Click en algún item para más opciones</h2>
 		</div>
 	</body>
 </html>

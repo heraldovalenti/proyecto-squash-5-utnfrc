@@ -6,13 +6,15 @@ class TorneoPuntuableController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def torneoPuntuableService
+	
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [torneoPuntuableInstanceList: TorneoPuntuable.list(params), torneoPuntuableInstanceTotal: TorneoPuntuable.count()]
+        [torneoPuntuableInstanceList: TorneoPuntuable.list(params), torneoPuntuableInstanceTotal: TorneoPuntuable.count(), ordenesAnualesValidos: torneoPuntuableService.checkOrders()]
     }
 
     def create() {
