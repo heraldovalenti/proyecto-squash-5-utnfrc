@@ -31,6 +31,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${torneoPuntuableInstance?.puntajeTorneo}">
+				<li class="fieldcontain">
+					<span id="puntajeTorneo-label" class="property-label"><g:message code="torneoPuntuable.puntajeTorneo.label" default="Puntaje Torneo" /></span>
+					
+						<span class="property-value" aria-labelledby="puntajeTorneo-label"><g:link controller="puntaje" action="show" id="${torneoPuntuableInstance?.puntajeTorneo?.id}">${torneoPuntuableInstance?.puntajeTorneo?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${torneoPuntuableInstance?.ordenAnual}">
 				<li class="fieldcontain">
 					<span id="ordenAnual-label" class="property-label"><g:message code="torneoPuntuable.ordenAnual.label" default="Orden Anual" /></span>
@@ -40,35 +49,26 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${torneoPuntuableInstance?.inicio}">
-				<li class="fieldcontain">
-					<span id="inicio-label" class="property-label"><g:message code="torneoPuntuable.inicio.label" default="Inicio" /></span>
-					
-						<span class="property-value" aria-labelledby="inicio-label"><g:formatDate date="${torneoPuntuableInstance?.inicio}" /></span>
-					
-				</li>
-				</g:if>
-			
-				
-			
-				<g:if test="${torneoPuntuableInstance?.fin}">
-				<li class="fieldcontain">
-					<span id="fin-label" class="property-label"><g:message code="torneoPuntuable.fin.label" default="Fin" /></span>
-					
-						<span class="property-value" aria-labelledby="fin-label"><g:formatDate date="${torneoPuntuableInstance?.fin}" /></span>
-					
-				</li>
-				</g:if>
-				
 				<g:if test="${torneoPuntuableInstance?.activo}">
 				<li class="fieldcontain">
 					<span id="activo-label" class="property-label"><g:message code="torneoPuntuable.activo.label" default="Activo" /></span>
 					
-						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" /></span>
+						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" true="Sí" false="No" /></span>
 					
 				</li>
 				</g:if>
-							
+			
+				<g:if test="${torneoPuntuableInstance?.instanciasTorneo}">
+				<li class="fieldcontain">
+					<span id="instanciasTorneo-label" class="property-label"><g:message code="torneoPuntuable.instanciasTorneo.label" default="Instancias Torneo" /></span>
+					
+						<g:each in="${torneoPuntuableInstance.instanciasTorneo}" var="i">
+						<span class="property-value" aria-labelledby="instanciasTorneo-label"><g:link controller="torneo" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

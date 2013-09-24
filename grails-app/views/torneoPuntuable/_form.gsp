@@ -1,37 +1,21 @@
 <%@ page import="sgt.TorneoPuntuable" %>
 
-<div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'nombre', 'error')} ">
+
+
+<div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'nombre', 'error')} required">
 	<label for="nombre">
 		<g:message code="torneoPuntuable.nombre.label" default="Nombre" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nombre" value="${torneoPuntuableInstance?.nombre}"/>
+	<g:textField name="nombre" maxlength="250" required="" value="${torneoPuntuableInstance?.nombre}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'ordenAnual', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'ordenAnual', 'error')} ">
 	<label for="ordenAnual">
 		<g:message code="torneoPuntuable.ordenAnual.label" default="Orden Anual" />
-		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="ordenAnual" type="number" min="0" value="${torneoPuntuableInstance.ordenAnual}" required=""/>
+	<g:field name="ordenAnual" type="number" min="0" value="${torneoPuntuableInstance?.ordenAnual}" />
 </div>
-
-<div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'inicio', 'error')} required">
-	<label for="inicio">
-		<g:message code="torneoPuntuable.inicio.label" default="Inicio" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="inicio" precision="day"  value="${torneoPuntuableInstance?.inicio}"  />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'fin', 'error')} required">
-	<label for="fin">
-		<g:message code="torneoPuntuable.fin.label" default="Fin" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="fin" precision="day"  value="${torneoPuntuableInstance?.fin}"  />
-</div>
-
 
 <div class="fieldcontain ${hasErrors(bean: torneoPuntuableInstance, field: 'activo', 'error')} ">
 	<label for="activo">
@@ -40,3 +24,4 @@
 	</label>
 	<g:checkBox name="activo" value="${torneoPuntuableInstance?.activo}" />
 </div>
+
