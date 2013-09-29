@@ -3,18 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<meta name="layout" content="main">
+		<meta name="layout" content="partido">
 		<g:set var="entityName" value="${message(code: 'partido.label', default: 'Partido')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
 		<a href="#list-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>				
-				<li><g:link class="create" action="create"><g:message code="Nuevo Partido" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		
 		<div id="list-partido" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -28,13 +23,13 @@
 					
 						<th><g:message code="partido.arbitro.label" default="Arbitro" /></th>
 					
+						<th><g:message code="partido.resultado.label" default="Resultado" /></th>
+					
 						<th><g:message code="partido.cancha.label" default="Cancha" /></th>
 					
 						<th><g:message code="partido.categoria.label" default="Categoria" /></th>
 					
 						<g:sortableColumn property="fecha" title="${message(code: 'partido.fecha.label', default: 'Fecha')}" />
-					
-						<g:sortableColumn property="horaDesde" title="${message(code: 'partido.horaDesde.label', default: 'Hora Desde')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +41,13 @@
 					
 						<td>${fieldValue(bean: partidoInstance, field: "arbitro")}</td>
 					
+						<td>${fieldValue(bean: partidoInstance, field: "resultado")}</td>
+					
 						<td>${fieldValue(bean: partidoInstance, field: "cancha")}</td>
 					
 						<td>${fieldValue(bean: partidoInstance, field: "categoria")}</td>
 					
 						<td><g:formatDate date="${partidoInstance.fecha}" /></td>
-					
-						<td>${fieldValue(bean: partidoInstance, field: "horaDesde")}</td>
 					
 					</tr>
 				</g:each>

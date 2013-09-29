@@ -3,20 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<meta name="layout" content="main">
+		<meta name="layout" content="partido">
 		<g:set var="entityName" value="${message(code: 'partido.label', default: 'Partido')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
+		<a href="#show-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
 		
-		<div class="nav" role="navigation">
-			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="Partidos" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="Nuevo Partido" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
 		<div id="show-partido" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -37,7 +30,16 @@
 				<li class="fieldcontain">
 					<span id="arbitro-label" class="property-label"><g:message code="partido.arbitro.label" default="Arbitro" /></span>
 					
-						<span class="property-value" aria-labelledby="arbitro-label"><g:link controller="persona" action="show" id="${partidoInstance?.arbitro?.id}">${partidoInstance?.arbitro?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="arbitro-label"><g:link controller="usuario" action="show" id="${partidoInstance?.arbitro?.id}">${partidoInstance?.arbitro?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${partidoInstance?.resultado}">
+				<li class="fieldcontain">
+					<span id="resultado-label" class="property-label"><g:message code="partido.resultado.label" default="Resultado" /></span>
+					
+						<span class="property-value" aria-labelledby="resultado-label"><g:link controller="resultadoPartido" action="show" id="${partidoInstance?.resultado?.id}">${partidoInstance?.resultado?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -91,7 +93,7 @@
 				<li class="fieldcontain">
 					<span id="jugador1-label" class="property-label"><g:message code="partido.jugador1.label" default="Jugador1" /></span>
 					
-						<span class="property-value" aria-labelledby="jugador1-label"><g:link controller="persona" action="show" id="${partidoInstance?.jugador1?.id}">${partidoInstance?.jugador1?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="jugador1-label"><g:link controller="usuario" action="show" id="${partidoInstance?.jugador1?.id}">${partidoInstance?.jugador1?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -100,7 +102,7 @@
 				<li class="fieldcontain">
 					<span id="jugador2-label" class="property-label"><g:message code="partido.jugador2.label" default="Jugador2" /></span>
 					
-						<span class="property-value" aria-labelledby="jugador2-label"><g:link controller="persona" action="show" id="${partidoInstance?.jugador2?.id}">${partidoInstance?.jugador2?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="jugador2-label"><g:link controller="usuario" action="show" id="${partidoInstance?.jugador2?.id}">${partidoInstance?.jugador2?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -109,8 +111,7 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${partidoInstance?.id}" />
-					<g:actionSubmit class="edit" action="edit" id="${partidoInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
-					
+					<g:link class="edit" action="edit" id="${partidoInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

@@ -13,9 +13,14 @@ class Partido {
 	Cancha cancha;
 	Categoria categoria;
 	String estado;
+	ResultadoPartido resultado;
+	
 
     static constraints = {
-		estado blank:false, inList:["Diagramado","En ejecución","Suspendido","Finalizado","Cancelado"]
+
+		estado blank:false, inList:["Diagramado"]		
 		arbitro nullable: true
+		resultado nullable:true
+
 	}	
 }

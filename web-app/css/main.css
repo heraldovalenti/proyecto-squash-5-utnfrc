@@ -229,10 +229,11 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 	margin-bottom: 1em;
+	border: 2px solid;
 }
 
 tr {
-	border: 0;
+	border: 2px solid;
 }
 
 tr>td:first-child, tr>th:first-child {
@@ -248,6 +249,7 @@ td, th {
 	padding: 0.5em 0.6em;
 	text-align: left;
 	vertical-align: top;
+	border: 2px solid;
 }
 
 th {
@@ -302,7 +304,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #E1E9F3;
 }
 
 /* PAGINATION */
