@@ -10,12 +10,20 @@
 	<g:select name="estado" from="${partidoInstance.constraints.estado.inList}" required="" value="${partidoInstance?.estado}" valueMessagePrefix="partido.estado"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'arbitro', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'arbitro', 'error')} ">
 	<label for="arbitro">
 		<g:message code="partido.arbitro.label" default="Arbitro" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="arbitro" name="arbitro.id" from="${sgt.Persona.list()}" optionKey="id" required="" value="${partidoInstance?.arbitro?.id}" class="many-to-one"/>
+	<g:select id="arbitro" name="arbitro.id" from="${sgt.Usuario.list()}" optionKey="id" value="${partidoInstance?.arbitro?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'resultado', 'error')} ">
+	<label for="resultado">
+		<g:message code="partido.resultado.label" default="Resultado" />
+		
+	</label>
+	<g:select id="resultado" name="resultado.id" from="${sgt.ResultadoPartido.list()}" optionKey="id" value="${partidoInstance?.resultado?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'cancha', 'error')} required">
@@ -63,7 +71,7 @@
 		<g:message code="partido.jugador1.label" default="Jugador1" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="jugador1" name="jugador1.id" from="${sgt.Persona.list()}" optionKey="id" required="" value="${partidoInstance?.jugador1?.id}" class="many-to-one"/>
+	<g:select id="jugador1" name="jugador1.id" from="${sgt.Usuario.list()}" optionKey="id" required="" value="${partidoInstance?.jugador1?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'jugador2', 'error')} required">
@@ -71,6 +79,6 @@
 		<g:message code="partido.jugador2.label" default="Jugador2" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="jugador2" name="jugador2.id" from="${sgt.Persona.list()}" optionKey="id" required="" value="${partidoInstance?.jugador2?.id}" class="many-to-one"/>
+	<g:select id="jugador2" name="jugador2.id" from="${sgt.Usuario.list()}" optionKey="id" required="" value="${partidoInstance?.jugador2?.id}" class="many-to-one"/>
 </div>
 

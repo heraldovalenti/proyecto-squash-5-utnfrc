@@ -10,10 +10,7 @@ class AdministracionController {
 		
 		def rolAdministrador = Rol.findByNombre("Administrador")
 		
-		if (!u.roles.contains(rolAdministrador)) {
-			render(view: "/inicio")
-			return
-		}
+		
 		
 		render(view: 'inicio')
 	}	

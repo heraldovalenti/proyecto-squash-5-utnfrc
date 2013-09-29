@@ -1,10 +1,11 @@
 package sgt
 
-class ResultadosPartido {
+class ResultadoPartido {
 
-   Persona ganador;
+    Persona ganador;
    
-	static hasMany = [detalles: DetalleResultados]
+	static hasMany = [detalles: DetalleResultados]	
+	
 	
 	String toString() {
 		return detalleResultados.toString()

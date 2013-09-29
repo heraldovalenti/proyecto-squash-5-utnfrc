@@ -4,6 +4,7 @@
 <html>
 	<head>
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css" rel="stylesheet">
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'detalleResultados.label', default: 'DetalleResultados')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -35,13 +36,13 @@
 				</thead>
 				<tbody>
 				<g:each in="${detalleResultadosInstanceList}" status="i" var="detalleResultadosInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<tr class="tabla">
 					
-						<td><g:link action="show" id="${detalleResultadosInstance.id}">${fieldValue(bean: detalleResultadosInstance, field: "jugador1")}</g:link></td>
+						<td class="tabla.td"><g:link action="show" id="${detalleResultadosInstance.id}">${fieldValue(bean: detalleResultadosInstance, field: "jugador1")}</g:link></td>
 					
-						<td>${fieldValue(bean: detalleResultadosInstance, field: "jugador2")}</td>
+						<td class="tabla.td">${fieldValue(bean: detalleResultadosInstance, field: "jugador2")}</td>
 					
-						<td>${fieldValue(bean: detalleResultadosInstance, field: "set")}</td>
+						<td class="tabla.td">${fieldValue(bean: detalleResultadosInstance, field: "set")}</td>
 					
 					</tr>
 				</g:each>

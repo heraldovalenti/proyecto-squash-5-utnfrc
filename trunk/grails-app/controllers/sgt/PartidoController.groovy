@@ -5,6 +5,23 @@ import org.springframework.dao.DataIntegrityViolationException
 class PartidoController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def cargarResultado(Long id)
+	{
+		def partidoInstance = Partido.get(id)	
+		
+		if (!partidoInstance.resultado) {
+			redirect(controller: 'resultadoPartido', action:'create')
+			return
+		} else {
+			redirect(controller: 'resultadoPartido', action: 'show', id: partidoInstance.resultado.id)
+			return
+		}
+		
+	}
+	
+	
+	//Acciones del Scaffold
 
     def index() {
         redirect(action: "list", params: params)
