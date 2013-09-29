@@ -30,6 +30,8 @@
 						<th><g:message code="partido.categoria.label" default="Categoria" /></th>
 					
 						<g:sortableColumn property="fecha" title="${message(code: 'partido.fecha.label', default: 'Fecha')}" />
+						
+						<th>Cargar resultado</th>
 					
 					</tr>
 				</thead>
@@ -48,6 +50,8 @@
 						<td>${fieldValue(bean: partidoInstance, field: "categoria")}</td>
 					
 						<td><g:formatDate date="${partidoInstance.fecha}" /></td>
+						
+						<td><g:link controller="partido" action="cargarResultado" id="${partidoInstance.id}" >Cargar Resultado</g:link></td>
 					
 					</tr>
 				</g:each>
