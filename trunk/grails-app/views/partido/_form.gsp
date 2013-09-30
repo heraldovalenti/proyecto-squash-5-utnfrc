@@ -1,39 +1,6 @@
 <%@ page import="sgt.Partido" %>
 
 
-
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'estado', 'error')} required">
-	<label for="estado">
-		<g:message code="partido.estado.label" default="Estado" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="estado" from="${partidoInstance.constraints.estado.inList}" required="" value="${partidoInstance?.estado}" valueMessagePrefix="partido.estado"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'arbitro', 'error')} ">
-	<label for="arbitro">
-		<g:message code="partido.arbitro.label" default="Arbitro" />
-		
-	</label>
-	<g:select id="arbitro" name="arbitro.id" from="${sgt.Usuario.list()}" optionKey="id" value="${partidoInstance?.arbitro?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'resultado', 'error')} ">
-	<label for="resultado">
-		<g:message code="partido.resultado.label" default="Resultado" />
-		
-	</label>
-	<g:select id="resultado" name="resultado.id" from="${sgt.ResultadoPartido.list()}" optionKey="id" value="${partidoInstance?.resultado?.id}" class="many-to-one" noSelection="['null': '']"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'cancha', 'error')} required">
-	<label for="cancha">
-		<g:message code="partido.cancha.label" default="Cancha" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="cancha" name="cancha.id" from="${sgt.Cancha.list()}" optionKey="id" required="" value="${partidoInstance?.cancha?.id}" class="many-to-one"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'categoria', 'error')} required">
 	<label for="categoria">
 		<g:message code="partido.categoria.label" default="Categoria" />
@@ -81,4 +48,36 @@
 	</label>
 	<g:select id="jugador2" name="jugador2.id" from="${sgt.Usuario.list()}" optionKey="id" required="" value="${partidoInstance?.jugador2?.id}" class="many-to-one"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'cancha', 'error')} required">
+	<label for="cancha">
+		<g:message code="partido.cancha.label" default="Cancha" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="cancha" name="cancha.id" from="${sgt.Cancha.list()}" optionKey="id" required="" value="${partidoInstance?.cancha?.id}" class="many-to-one"/>
+</div>
+
+
+
+<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'estado', 'error')} required">
+	<label for="estado">
+		<g:message code="partido.estado.label" default="Estado" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select name="estado" from="${partidoInstance.constraints.estado.inList}" required="" value="${partidoInstance?.estado}" valueMessagePrefix="partido.estado"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'arbitro', 'error')} ">
+	<label for="arbitro">
+		<g:message code="partido.arbitro.label" default="Arbitro" />
+		
+	</label>
+	<g:select id="arbitro" name="arbitro.id" from="${sgt.Usuario.list()}" optionKey="id" value="${partidoInstance?.arbitro?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
+
+
+
+
+
 

@@ -33,16 +33,7 @@
 						<span class="property-value" aria-labelledby="arbitro-label"><g:link controller="usuario" action="show" id="${partidoInstance?.arbitro?.id}">${partidoInstance?.arbitro?.encodeAsHTML()}</g:link></span>
 					
 				</li>
-				</g:if>
-			
-				<g:if test="${partidoInstance?.resultado}">
-				<li class="fieldcontain">
-					<span id="resultado-label" class="property-label"><g:message code="partido.resultado.label" default="Resultado" /></span>
-					
-						<span class="property-value" aria-labelledby="resultado-label"><g:link controller="resultadoPartido" action="show" id="${partidoInstance?.resultado?.id}">${partidoInstance?.resultado?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+				</g:if>			
 			
 				<g:if test="${partidoInstance?.cancha}">
 				<li class="fieldcontain">
@@ -114,6 +105,7 @@
 					<g:link class="edit" action="edit" id="${partidoInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 					<g:link controller="partido" action="cargarResultado" id="${ partidoInstance?.id }">Cargar Resultado</g:link>
+					<g:link controller="detalleResultados" action="listarDetalles" id="${ partidoInstance?.id }">Ver Resultado</g:link>
 				</fieldset>
 			</g:form>
 		</div>

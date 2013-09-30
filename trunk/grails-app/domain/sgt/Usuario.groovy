@@ -13,6 +13,11 @@ class Usuario {
 	Persona persona
 	Jugador jugador
 	Domicilio domicilio
+	
+	String toString()
+	{
+		return persona.toString()
+	}
 		
 	static hasMany = [roles: Rol, rankings: Ranking]
 	

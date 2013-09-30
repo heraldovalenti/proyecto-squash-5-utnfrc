@@ -5,7 +5,7 @@
 
 <link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css"	rel="stylesheet">
 <link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"	rel="stylesheet">
-<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
+
 
 <g:layoutHead />
 <r:layoutResources />

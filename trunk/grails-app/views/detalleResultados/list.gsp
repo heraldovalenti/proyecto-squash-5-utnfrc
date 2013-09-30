@@ -51,6 +51,12 @@
 			<div class="pagination">
 				<g:paginate total="${detalleResultadosInstanceTotal}" />
 			</div>
+			<g:form>
+				<fieldset class="buttons">					
+					<g:link controller="detalleResultado" action="create">Nuevo SET</g:link>
+					<g:link controller="resultadoPartido" action="create">Finalizar</g:link>
+				</fieldset>
+			</g:form>
 		</div>
 	</body>
 </html>

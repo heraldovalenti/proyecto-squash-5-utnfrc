@@ -9,7 +9,8 @@ class Persona {
 	Integer numeroDocumento
 	String sexo
     String telefono
-	String lugarNacimiento
+	String lugarNacimiento	
+	
 	
     static constraints = {
 		nombre blank:false

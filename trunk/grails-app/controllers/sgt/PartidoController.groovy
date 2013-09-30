@@ -8,16 +8,9 @@ class PartidoController {
 	
 	def cargarResultado(Long id)
 	{
-		def partidoInstance = Partido.get(id)	
-		
-		if (!partidoInstance.resultado) {
-			redirect(controller: 'resultadoPartido', action:'create')
-			return
-		} else {
-			redirect(controller: 'resultadoPartido', action: 'show', id: partidoInstance.resultado.id)
-			return
-		}
-		
+		def partidoInstance = Partido.get(id)
+		redirect(controller: 'resultadoPartido', action:'cargarResultado', id: id)
+		return
 	}
 	
 	

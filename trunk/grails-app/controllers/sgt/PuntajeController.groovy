@@ -5,6 +5,24 @@ import org.springframework.dao.DataIntegrityViolationException
 class PuntajeController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	def cargarPuntaje(Long id) 
+	{
+		def torneoPuntuableInstance = TorneoPuntuable.get(id)
+		
+		if (!torneoPuntuableInstance.getPuntajeTorneo()) {
+			def puntajeInstance = new Puntaje().save()
+			torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
+			torneoPuntuableInstance.save()
+		}
+		if(!torneoPuntuableInstance.getPuntajeTorneo().getDetalles()) {
+			redirect(controller: 'detallePuntaje', action:'create', id: id)
+		}
+		else {
+			redirect(controller: 'detallePuntaje', action:'listarDetalles', id: id)
+		}
+	}
+	
 
     def index() {
         redirect(action: "list", params: params)
@@ -19,10 +37,12 @@ class PuntajeController {
         [puntajeInstance: new Puntaje(params)]
     }
 
-    def save() {
+    def save(Long id) {
+		def torneoPuntuableInstance = TorneoPuntuable.get(id)
         def puntajeInstance = new Puntaje(params)
         if (!puntajeInstance.save(flush: true)) {
             render(view: "create", model: [puntajeInstance: puntajeInstance])
+			torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
             return
         }
 

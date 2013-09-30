@@ -9,14 +9,21 @@ class DetalleResultadosController {
     def index() {
         redirect(action: "list", params: params)
     }
+	
+	def list(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		[detalleResultadosInstanceList: DetalleResultados.list(), detalleResultadosInstanceTotal: DetalleResultados.count()]
+	}
 
-    def list(Integer max) {
+    def listarDetalles(Integer max, Long id) {
+		def resultadoInstance = ResultadoPartido.get(id)
+		def detalleResultadosInstanceList = resultadoInstance.getDetalles()
         params.max = Math.min(max ?: 10, 100)
-        [detalleResultadosInstanceList: DetalleResultados.list(params), detalleResultadosInstanceTotal: DetalleResultados.count()]
+        [detalleResultadosInstanceList: detalleResultadosInstanceList, detalleResultadosInstanceTotal: DetalleResultados.count()]
     }
 
-    def create() {
-        [detalleResultadosInstance: new DetalleResultados(params)]
+    def create(Long id) {
+        render(view: 'create', model: [detalleResultadosInstance: new DetalleResultados(params), idResultado: id] )
     }
 
     def save() {

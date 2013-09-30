@@ -24,7 +24,8 @@
 				<thead>
 					<tr>
 					
-						<th><g:message code="ranking.categoria.label" default="Categoria" /></th>
+						<g:sortableColumn property="categoria" title="${message(code: 'ranking.categoria.label', default: 'Categoría')}" />				
+						
 					
 						<g:sortableColumn property="puesto" title="${message(code: 'ranking.puesto.label', default: 'Puesto')}" />
 					

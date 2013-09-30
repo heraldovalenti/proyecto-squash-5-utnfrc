@@ -14,6 +14,6 @@ class ResultadoPartido {
 
     static constraints = {
 		
-		ganador blank:false;
+		ganador nullable: true;
     }
 }

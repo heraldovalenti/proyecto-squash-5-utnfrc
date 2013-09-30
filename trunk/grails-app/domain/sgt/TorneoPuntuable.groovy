@@ -8,6 +8,11 @@ class TorneoPuntuable {
 	Boolean activo
 	
 	static hasMany = [instanciasTorneo: Torneo]
+	
+	String toString()
+	{
+		return nombre
+	}
 
     static constraints = {
 		nombre blank: false, maxSize: 250
