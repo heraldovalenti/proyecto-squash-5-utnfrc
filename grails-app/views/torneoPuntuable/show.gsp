@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="administracion">
 		<g:set var="entityName" value="${message(code: 'torneoPuntuable.label', default: 'TorneoPuntuable')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -53,7 +53,7 @@
 				<li class="fieldcontain">
 					<span id="activo-label" class="property-label"><g:message code="torneoPuntuable.activo.label" default="Activo" /></span>
 					
-						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" true="Sí" false="No" /></span>
+						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" /></span>
 					
 				</li>
 				</g:if>
@@ -75,6 +75,8 @@
 					<g:hiddenField name="id" value="${torneoPuntuableInstance?.id}" />
 					<g:link class="edit" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link controller="puntaje" action="cargarPuntaje" id="${ torneoPuntuableInstance?.id }">Cargar Puntaje</g:link>
+					<g:link controller="detallePuntaje" action="listarDetalles" id="${ torneoPuntuableInstance?.id }">Ver Puntajes</g:link>
 				</fieldset>
 			</g:form>
 		</div>

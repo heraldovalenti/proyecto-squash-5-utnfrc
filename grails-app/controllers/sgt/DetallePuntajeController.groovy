@@ -14,9 +14,17 @@ class DetallePuntajeController {
         params.max = Math.min(max ?: 10, 100)
         [detallePuntajeInstanceList: DetallePuntaje.list(params), detallePuntajeInstanceTotal: DetallePuntaje.count()]
     }
+	
+	def listarDetalles(Integer max, Long id) {
+		def puntajeInstance = Puntaje.get(id)
+		def detallePuntajeInstanceList = puntajeInstance.getDetalles()
+		params.max = Math.min(max ?: 10, 100)
+		[detallePuntajeInstanceList: detallePuntajeInstanceList, detallePuntajeInstanceTotal: DetallePuntaje.count()]
+	}
 
-    def create() {
-        [detallePuntajeInstance: new DetallePuntaje(params)]
+    def create(Long id) {
+        render(view: 'create', model: [detallePuntajeInstance: new DetallePuntaje(params),idPuntaje: id ])
+		
     }
 
     def save() {

@@ -19,19 +19,20 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="estado" title="${message(code: 'partido.estado.label', default: 'Estado')}" />
-					
-						<th><g:message code="partido.arbitro.label" default="Arbitro" /></th>
-					
-						<th><g:message code="partido.resultado.label" default="Resultado" /></th>
-					
-						<th><g:message code="partido.cancha.label" default="Cancha" /></th>
+						<g:sortableColumn property="fecha" title="${message(code: 'partido.fecha.label', default: 'Fecha')}" />
 					
 						<th><g:message code="partido.categoria.label" default="Categoria" /></th>
-					
-						<g:sortableColumn property="fecha" title="${message(code: 'partido.fecha.label', default: 'Fecha')}" />
 						
-						<th>Cargar resultado</th>
+						<th><g:message code="partido.jugador1.label" default="Jugador 1" /></th>
+						
+						<th><g:message code="partido.jugador2.label" default="Jugador 2" /></th>				
+						
+					
+						<th><g:message code="partido.cancha.label" default="Cancha" /></th>				
+						
+					
+						<g:sortableColumn property="estado" title="${message(code: 'partido.estado.label', default: 'Estado')}" />					
+						
 					
 					</tr>
 				</thead>
@@ -39,18 +40,18 @@
 				<g:each in="${partidoInstanceList}" status="i" var="partidoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${partidoInstance.id}">${fieldValue(bean: partidoInstance, field: "estado")}</g:link></td>
-					
-						<td>${fieldValue(bean: partidoInstance, field: "arbitro")}</td>
-					
-						<td>${fieldValue(bean: partidoInstance, field: "resultado")}</td>
-					
-						<td>${fieldValue(bean: partidoInstance, field: "cancha")}</td>
+						<td><g:link action="show" id="${partidoInstance.id}">${fieldValue(bean: partidoInstance, field: "fecha")}</g:link></td>
 					
 						<td>${fieldValue(bean: partidoInstance, field: "categoria")}</td>
-					
-						<td><g:formatDate date="${partidoInstance.fecha}" /></td>
 						
+						<td>${fieldValue(bean: partidoInstance, field: "jugador1")}</td>
+						
+						<td>${fieldValue(bean: partidoInstance, field: "jugador2")}</td>
+								
+						<td>${fieldValue(bean: partidoInstance, field: "cancha")}</td>
+						
+						<td>${fieldValue(bean: partidoInstance, field: "estado")}</td>											
+												
 						<td><g:link controller="partido" action="cargarResultado" id="${partidoInstance.id}" >Cargar Resultado</g:link></td>
 					
 					</tr>

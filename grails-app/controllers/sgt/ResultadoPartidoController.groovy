@@ -3,6 +3,30 @@ package sgt
 import org.springframework.dao.DataIntegrityViolationException
 
 class ResultadoPartidoController {
+	
+	def cargarResultado(Long id) {
+		def partidoInstance = Partido.get(id)
+		
+		if (!partidoInstance.getResultado()) {
+			def resultadoInstance = new ResultadoPartido().save()
+			partidoInstance.setResultado(resultadoInstance)
+			partidoInstance.save()
+		}
+		
+		if(!partidoInstance.getResultado().getDetalles()) {
+			redirect(controller: 'detalleResultados', action:'create', id: id)
+		}
+		else {
+			redirect(controller: 'detalleResultados', action:'listarDetalles', id: id)
+		}
+	}
+	
+	def cargarSet(Long id)
+	{
+		redirect(controller: 'detalleResultados', action:'create', id: id)
+	}
+	
+	//Acciones del Scaffold
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -19,15 +43,20 @@ class ResultadoPartidoController {
         [resultadoPartidoInstance: new ResultadoPartido(params)]
     }
 
-    def save() {
+    def save(Long id) {
+		def partidoInstance= Partido.get(id)
+		
         def resultadoPartidoInstance = new ResultadoPartido(params)
         if (!resultadoPartidoInstance.save(flush: true)) {
             render(view: "create", model: [resultadoPartidoInstance: resultadoPartidoInstance])
+			partidoInstance.setResultado(resultadoPartidoInstance)
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), resultadoPartidoInstance.id])
         redirect(action: "show", id: resultadoPartidoInstance.id)
+		
+		
     }
 
     def show(Long id) {
