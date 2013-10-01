@@ -8,18 +8,17 @@ class Club {
     Domicilio domicilio
 	String sitioWeb
     String correo
-	Boolean activo
-    Persona encargado
+	Boolean validado
     
 	static hasMany = [canchas: Cancha]
 	
     static constraints = {
 		nombre blank: false, unique: true, maxSize: 50
 		razonSocial blank: false, unique: true, maxSize: 50
-		telefono maxSize: 50
-		domicilio maxSize: 250
-		correo email:true, blank: false, maxSize: 100
-		sitioWeb blank: true, maxSize: 250
+		telefono nullable: true, blank: false, maxSize: 50
+		domicilio nullable: true
+		correo nullable: true, email:true, blank: false, maxSize: 100
+		sitioWeb nullable: true, blank: false, maxSize: 250, url: true
     }
 	
 	String toString() {

@@ -13,7 +13,8 @@ class UsuarioController {
 	}
 
 	def loginForm() {
-		
+		session.removeAttribute("userLogon")
+		render(view: 'loginForm')
 	}
 
 	def menu() {
@@ -24,7 +25,7 @@ class UsuarioController {
 		String nombreUsuario = params.nombreUsuario
 		String password = params.password
 
-		def u = sgt.Usuario.findByNombreUsuarioAndPassword(nombreUsuario,password)
+		def Usuario u = sgt.Usuario.findByNombreUsuarioAndPassword(nombreUsuario,password)
 
 		//si el usuario se ha encontrado, pero esta deshabilitado:
 		if (u && !u.activo) {
@@ -33,14 +34,15 @@ class UsuarioController {
 			return
 		}
 		
-		//si se encontro el usuario
-		if (u) {
+		//si se encontro el usuario y es un jugador
+		def rolJugador = Rol.findByNombre('Jugador')
+		if (u && u.getRoles().contains(rolJugador)) {
 			session.setAttribute("userLogon", u)
 			render(view: '/jugador/inicioJugador')
 			return
-		} 
+		}
 		
-		//si no se encontrol el usuario
+		//si no se encontro el usuario
 		else {
 			flash.message = message(code: 'iniciosesion.error.usuariopassword.invalido')
 			render(view: 'loginForm')
@@ -108,5 +110,42 @@ class UsuarioController {
 	
 	def configuracionCuenta() {
 		render(view: 'configuracionCuenta', model: [layout: 'jugador'])
+	}
+	
+	
+	/* METODOS PARA CLUB */
+	def loginFormClub() {
+		session.removeAttribute("userLogon")
+		render(view: 'loginClub')
+	}
+	
+	def loginClub() {
+		String nombreUsuario = params.nombreUsuario
+		String password = params.password
+
+		def Usuario u = sgt.Usuario.findByNombreUsuarioAndPassword(nombreUsuario,password)
+
+		//si el usuario se ha encontrado, pero esta deshabilitado:
+		if (u && !u.activo) {
+			flash.message = message(code: 'iniciosesion.error.usuario.inactivo')
+			render(view: 'loginForm')
+			return
+		}
+		
+		//si se encontro el usuario y es un club
+		def rolClub = Rol.findByNombre('Club')
+		if (u && u.getRoles().contains(rolClub)) {
+			session.setAttribute("userLogon", u)
+			render(view: '/club/inicioClub')
+			return
+		}
+		
+		//si no se encontro el usuario
+		else {
+			flash.message = message(code: 'iniciosesion.error.usuariopassword.invalido')
+			render(view: 'loginClub')
+			return
+		}
+
 	}
 }

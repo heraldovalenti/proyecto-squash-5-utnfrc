@@ -13,13 +13,13 @@ class Persona {
 	
 	
     static constraints = {
-		nombre blank:false
-		apellido blank:false
+		nombre blank:false, nullable: false
+		apellido blank:false, nullable: false
 		fechaNacimiento nullable: false
 		tipoDocumento blank: false, inList: ["DNI","CI","Pasaporte","Libreta Civil"]
 		sexo blank: false, inList: ["Masculino","Femenino"]
-		telefono blank: false
-		lugarNacimiento blank:false
+		telefono blank: false, nullable: false
+		lugarNacimiento blank:false, nullable: true
     }
 	
 	String toString() {

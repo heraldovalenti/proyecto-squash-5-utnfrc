@@ -13,11 +13,7 @@ class Usuario {
 	Persona persona
 	Jugador jugador
 	Domicilio domicilio
-	
-	String toString()
-	{
-		return persona.toString()
-	}
+	Club club
 		
 	static hasMany = [roles: Rol, rankings: Ranking]
 	
@@ -30,6 +26,7 @@ class Usuario {
 		jugador nullable: true
 		categoria nullable: true
 		domicilio nullable: true
+		club nullable: true
     }
 	
 	

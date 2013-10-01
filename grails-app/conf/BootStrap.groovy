@@ -13,13 +13,23 @@ class BootStrap {
 	def cargarUsuarios() {
 		def rolJugador = new Rol(nombre: "Jugador").save()
 		def rolAdministrador = new Rol(nombre: "Administrador").save()
+		def rolClub = new Rol(nombre: 'Club').save()
 		
 		def usuarioHeraldov = new Usuario(nombreUsuario: "heraldov", password: "ochoyas", correo: "heraldovalenti@gmail.com",
 			activo: true)
 		usuarioHeraldov.addToRoles(rolJugador)
-		usuarioHeraldov.addToRoles(rolAdministrador)
-		usuarioHeraldov.save()	
+		usuarioHeraldov.save(failOnError: true)	
 		
+		
+		def usuarioAdmin = new Usuario(nombreUsuario: "administrador", password: "administrador", correo: "admin@info.com",
+			activo: true)
+		usuarioAdmin.addToRoles(rolAdministrador)
+		usuarioAdmin.save(failOnError: true)
+		
+		def usuarioBoca = new Usuario(nombreUsuario: "bocajr", password: "bocajr", correo: "info@bocajr.com.ar",
+			activo: true)
+		usuarioBoca.addToRoles(rolClub)
+		usuarioBoca.save(failOnError: true)		
 	}
 	
 	def cargarPartidos()
