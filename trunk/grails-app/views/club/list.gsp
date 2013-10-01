@@ -4,7 +4,7 @@
 <html>
 	<head>
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<meta name="layout" content="main">
+		<meta name="layout" content="club">
 		<g:set var="entityName" value="${message(code: 'club.label', default: 'Club')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>

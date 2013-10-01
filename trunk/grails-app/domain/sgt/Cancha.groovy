@@ -4,12 +4,12 @@ import sgt.Disponibilidad;
 
 class Cancha {
 
+	String nombre
+	String tipoSuelo
     Float ancho
 	Float largo
     Boolean techo
-    String tipoSuelo
     String paredes
-	String nombre
 	Disponibilidad disponibilidad
 	
 	static belongsTo = Club	
@@ -18,10 +18,12 @@ class Cancha {
 	}
 	
     static constraints = {
-		ancho blank:false, min: 0.0f
-		largo blank:false, min: 0.0f
-		nombre blank:false, maxSize: 50
-		tipoSuelo blank:false, inList:["Parquet","Cemento","Cesped","Carpeta"]
-		disponibilidad nullable: false
+		paredes nullable: true, blank: false
+		techo nullable: true
+		ancho nullable: true, min: 0.0f
+		largo nullable: true, min: 0.0f
+		nombre blank:false, maxSize: 50, nullable: false
+		tipoSuelo blank:false, inList:["Parquet","Cemento","Cesped","Carpeta","Otro"]
+		disponibilidad nullable: true
     }
 }

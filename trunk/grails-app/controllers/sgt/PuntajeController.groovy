@@ -11,10 +11,11 @@ class PuntajeController {
 		def torneoPuntuableInstance = TorneoPuntuable.get(id)
 		
 		if (!torneoPuntuableInstance.getPuntajeTorneo()) {
-			def puntajeInstance = new Puntaje().save()
+			def puntajeInstance = new Puntaje().save(failOnError: true)
 			torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
-			torneoPuntuableInstance.save()
-		}
+			torneoPuntuableInstance.save(failOnError: true)
+		} 
+		
 		if(!torneoPuntuableInstance.getPuntajeTorneo().getDetalles()) {
 			redirect(controller: 'detallePuntaje', action:'create', id: id)
 		}

@@ -74,7 +74,7 @@
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${torneoPuntuableInstance?.id}" />
 					<g:link class="edit" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link controller="puntaje" action="cargarPuntaje" id="${torneoPuntuableInstance?.id}">Ver puntajes </g:link>
 					<g:link controller="puntaje" action="cargarPuntaje" id="${ torneoPuntuableInstance?.id }">Cargar Puntaje</g:link>
 					<g:link controller="detallePuntaje" action="listarDetalles" id="${ torneoPuntuableInstance?.id }">Ver Puntajes</g:link>
 				</fieldset>

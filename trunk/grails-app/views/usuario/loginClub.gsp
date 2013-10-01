@@ -10,8 +10,7 @@
 	<div id="div_inicio_sesion" class="content scaffold-create" role="main">
 		
 		<!-- titulo de inicio de sesion -->
-		<h1><g:message code="iniciosesion.titulo" /></h1>
-		<g:link controller="usuario" action="loginFormClub">Inicio de Clubes</g:link>
+		<h1>Ingreso de Club</h1>
 			
 			<!-- control de visualizacion de mensajes de error -->
 			<g:if test="${flash.message}">
@@ -21,7 +20,7 @@
 			</g:if>
 			
 			<!-- formulario de inicio de sesion -->
-			<g:form controller="Usuario" action="login">
+			<g:form controller="Usuario" action="loginClub">
 			
 				<!-- campos del formulario -->
 				<fieldset id="form_inicio_sesion" class="form" >
