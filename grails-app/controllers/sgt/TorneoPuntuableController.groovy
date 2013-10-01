@@ -21,13 +21,14 @@ class TorneoPuntuableController {
         [torneoPuntuableInstance: new TorneoPuntuable(params)]
     }
 
-    def save() {
+    def save(Long id) {
+		def puntajeInstance= Puntaje.get(id)
         def torneoPuntuableInstance = new TorneoPuntuable(params)
         if (!torneoPuntuableInstance.save(flush: true)) {
             render(view: "create", model: [torneoPuntuableInstance: torneoPuntuableInstance])
             return
         }
-
+		torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'torneoPuntuable.label', default: 'TorneoPuntuable'), torneoPuntuableInstance.id])
         redirect(action: "show", id: torneoPuntuableInstance.id)
     }

@@ -4,7 +4,8 @@ import java.util.Date;
 
 class Partido {
 
-    Date fecha;
+    Torneo torneo;
+	Date fecha;
 	String horaDesde;
 	String horaHasta;
 	Usuario jugador1;
@@ -17,6 +18,7 @@ class Partido {
 	
 
     static constraints = {
+		
 
 		estado blank:false, inList:["Diagramado"]		
 		arbitro nullable: true

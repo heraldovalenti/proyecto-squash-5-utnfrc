@@ -14,5 +14,7 @@ class Puntaje {
 	}
 
     static constraints = {
+		
+		categoria nullable:true;
     }
 }

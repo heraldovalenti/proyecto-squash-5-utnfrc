@@ -29,16 +29,8 @@
 						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${torneoPuntuableInstance}" field="nombre"/></span>
 					
 				</li>
-				</g:if>
-			
-				<g:if test="${torneoPuntuableInstance?.puntajeTorneo}">
-				<li class="fieldcontain">
-					<span id="puntajeTorneo-label" class="property-label"><g:message code="torneoPuntuable.puntajeTorneo.label" default="Puntaje Torneo" /></span>
-					
-						<span class="property-value" aria-labelledby="puntajeTorneo-label"><g:link controller="puntaje" action="show" id="${torneoPuntuableInstance?.puntajeTorneo?.id}">${torneoPuntuableInstance?.puntajeTorneo?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
+				</g:if>			
+				
 			
 				<g:if test="${torneoPuntuableInstance?.ordenAnual}">
 				<li class="fieldcontain">
@@ -75,6 +67,8 @@
 					<g:hiddenField name="id" value="${torneoPuntuableInstance?.id}" />
 					<g:link class="edit" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:link controller="puntaje" action="cargarPuntaje" id="${torneoPuntuableInstance?.id}">Ver puntajes </g:link>
+					<g:link controller="puntaje" action="cargarPuntaje" id="${ torneoPuntuableInstance?.id }">Cargar Puntaje</g:link>
+					<g:link controller="detallePuntaje" action="listarDetalles" id="${ torneoPuntuableInstance?.id }">Ver Puntajes</g:link>
 					<g:link controller="puntaje" action="cargarPuntaje" id="${ torneoPuntuableInstance?.id }">Cargar Puntaje</g:link>
 					<g:link controller="detallePuntaje" action="listarDetalles" id="${ torneoPuntuableInstance?.id }">Ver Puntajes</g:link>
 				</fieldset>

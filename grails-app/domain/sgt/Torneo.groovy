@@ -15,6 +15,11 @@ class Torneo {
 	Boolean puntuable
 	
 	static hasMany = [detalles: DetalleTorneo]
+	
+	String toString()
+	{
+		return nombre + " " + fechaInicioTorneo.getYear()
+	}
 
     static constraints = {
 		nombre blank: false, maxSize: 150
@@ -23,12 +28,11 @@ class Torneo {
 		fechaFinInscripcion nullable: false
 		fechaInicioTorneo nullable: false
 		fechaFinTorneo nullable: false	
-		club Nullable:false
+		club nullable:true
 		estado blank: false, inList:["Creado","Inscripcion Abierta","Inscripcion Cerrada",
 			"Diagramado","En Curso","Finalizado", "Ranking Actualizado"]
     }
 	
-	String toString() {
-		return nombre
-	}
 }
+	
+	
