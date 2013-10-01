@@ -57,6 +57,9 @@
 					<g:actionSubmit class="edit" action="edit" id="${detallePuntajeInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
 					
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link controller="detallePuntaje" action="create">Nuevo</g:link>
+					<g:link controller="puntaje" action="create">Finalizar</g:link>					
+					
 				</fieldset>
 			</g:form>
 		</div>

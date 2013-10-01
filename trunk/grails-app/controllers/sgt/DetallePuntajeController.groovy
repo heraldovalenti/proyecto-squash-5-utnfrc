@@ -16,10 +16,10 @@ class DetallePuntajeController {
     }
 	
 	def listarDetalles(Integer max, Long id) {
-		def puntajeInstance = Puntaje.get(id)
-		def detallePuntajeInstanceList = puntajeInstance.getDetalles()
+		def torneoPuntuableInstance = TorneoPuntuable.get(id)		
+		def detallePuntajeInstanceList = torneoPuntuableInstance.getPuntajeTorneo().getDetalles()
 		params.max = Math.min(max ?: 10, 100)
-		[detallePuntajeInstanceList: detallePuntajeInstanceList, detallePuntajeInstanceTotal: DetallePuntaje.count()]
+		render(view: "list", model: [detallePuntajeInstanceList: detallePuntajeInstanceList, detallePuntajeInstanceTotal: detallePuntajeInstanceList.size()])
 	}
 
     def create(Long id) {
@@ -27,13 +27,14 @@ class DetallePuntajeController {
 		
     }
 
-    def save() {
+    def save(Long id) {
+		def puntajeInstance= Puntaje.get(id)
         def detallePuntajeInstance = new DetallePuntaje(params)
         if (!detallePuntajeInstance.save(flush: true)) {
-            render(view: "create", model: [detallePuntajeInstance: detallePuntajeInstance])
+            render(view: "create", model: [detallePuntajeInstance: detallePuntajeInstance])			
             return
         }
-
+		puntajeInstance.addToDetalles(detallePuntajeInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'detallePuntaje.label', default: 'DetallePuntaje'), detallePuntajeInstance.id])
         redirect(action: "show", id: detallePuntajeInstance.id)
     }

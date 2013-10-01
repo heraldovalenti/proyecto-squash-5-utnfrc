@@ -6,18 +6,20 @@ class PuntajeController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
+	static idTorneo
+	
 	def cargarPuntaje(Long id) 
 	{
 		def torneoPuntuableInstance = TorneoPuntuable.get(id)
 		
 		if (!torneoPuntuableInstance.getPuntajeTorneo()) {
-			def puntajeInstance = new Puntaje().save(failOnError: true)
+			def puntajeInstance = new Puntaje().save()
 			torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
-			torneoPuntuableInstance.save(failOnError: true)
-		} 
-		
+			torneoPuntuableInstance.save()
+			idTorneo= torneoPuntuableInstance.id
+		}
 		if(!torneoPuntuableInstance.getPuntajeTorneo().getDetalles()) {
-			redirect(controller: 'detallePuntaje', action:'create', id: id)
+			redirect(controller: 'detallePuntaje', action:'create', id: torneoPuntuableInstance.getPuntajeTorneo().id)
 		}
 		else {
 			redirect(controller: 'detallePuntaje', action:'listarDetalles', id: id)
@@ -39,14 +41,13 @@ class PuntajeController {
     }
 
     def save(Long id) {
-		def torneoPuntuableInstance = TorneoPuntuable.get(id)
+		def torneoPuntuableInstance = TorneoPuntuable.get(idTorneo)
         def puntajeInstance = new Puntaje(params)
         if (!puntajeInstance.save(flush: true)) {
-            render(view: "create", model: [puntajeInstance: puntajeInstance])
-			torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
+            render(view: "create", model: [puntajeInstance: puntajeInstance])						
             return
         }
-
+		torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'puntaje.label', default: 'Puntaje'), puntajeInstance.id])
         redirect(action: "show", id: puntajeInstance.id)
     }

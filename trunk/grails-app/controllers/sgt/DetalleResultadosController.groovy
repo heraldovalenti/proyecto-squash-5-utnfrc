@@ -16,23 +16,23 @@ class DetalleResultadosController {
 	}
 
     def listarDetalles(Integer max, Long id) {
-		def resultadoInstance = ResultadoPartido.get(id)
-		def detalleResultadosInstanceList = resultadoInstance.getDetalles()
+		def partidoInstance = Partido.get(id)
+		def detalleResultadosInstanceList = partidoInstance.getResultado().getDetalles()
         params.max = Math.min(max ?: 10, 100)
-        [detalleResultadosInstanceList: detalleResultadosInstanceList, detalleResultadosInstanceTotal: DetalleResultados.count()]
+        render(view: "list", model: [detalleResultadosInstanceList: detalleResultadosInstanceList, detalleResultadosInstanceTotal: DetalleResultados.count()])
     }
 
     def create(Long id) {
         render(view: 'create', model: [detalleResultadosInstance: new DetalleResultados(params), idResultado: id] )
     }
 
-    def save() {
+    def save(Long id) {
+		def resultadoPartidoInstance= ResultadoPartido.get(id)
         def detalleResultadosInstance = new DetalleResultados(params)
         if (!detalleResultadosInstance.save(flush: true)) {
             render(view: "create", model: [detalleResultadosInstance: detalleResultadosInstance])
             return
-        }
-
+        }		
         flash.message = message(code: 'default.created.message', args: [message(code: 'detalleResultados.label', default: 'DetalleResultados'), detalleResultadosInstance.id])
         redirect(action: "show", id: detalleResultadosInstance.id)
     }

@@ -6,6 +6,13 @@ div.menu_jugador {
 
 div.contenido_jugador {
 	float: left;
-	width: 80%;
+	width: 60%;
+	background: #F5ECCE;
 	height:316px;
+}
+div.noticias{
+	float: left;
+	width: 20%;
+	height:316px;
+	
 }

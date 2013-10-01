@@ -50,6 +50,8 @@
 					<g:actionSubmit class="edit" action="edit" id="${puntajeInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
 					
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link controller="torneoPuntuable" action="save" id="${ puntajeInstance?.id}">Cargar</g:link>
+					
 				</fieldset>
 			</g:form>
 		</div>

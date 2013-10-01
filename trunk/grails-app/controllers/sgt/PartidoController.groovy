@@ -17,10 +17,10 @@ class PartidoController {
 	//Acciones del Scaffold
 
     def index() {
-        redirect(action: "list", params: params)
+        redirect(action: "list1", params: params)
     }
 
-    def list(Integer max) {
+    def list1(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [partidoInstanceList: Partido.list(params), partidoInstanceTotal: Partido.count()]
     }
@@ -37,14 +37,14 @@ class PartidoController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'partido.label', default: 'Partido'), partidoInstance.id])
-        redirect(action: "show", id: partidoInstance.id)
+        redirect(action: "show1", id: partidoInstance.id)
     }
 
-    def show(Long id) {
+    def show1(Long id) {
         def partidoInstance = Partido.get(id)
         if (!partidoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list")
+            redirect(action: "list1")
             return
         }
 
@@ -55,7 +55,7 @@ class PartidoController {
         def partidoInstance = Partido.get(id)
         if (!partidoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list")
+            redirect(action: "list1")
             return
         }
 
@@ -66,7 +66,7 @@ class PartidoController {
         def partidoInstance = Partido.get(id)
         if (!partidoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list")
+            redirect(action: "list1")
             return
         }
 
@@ -88,25 +88,25 @@ class PartidoController {
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'partido.label', default: 'Partido'), partidoInstance.id])
-        redirect(action: "show", id: partidoInstance.id)
+        redirect(action: "show1", id: partidoInstance.id)
     }
 
     def delete(Long id) {
         def partidoInstance = Partido.get(id)
         if (!partidoInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list")
+            redirect(action: "list1")
             return
         }
 
         try {
             partidoInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list")
+            redirect(action: "list1")
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "show", id: id)
+            redirect(action: "show1", id: id)
         }
     }
 }

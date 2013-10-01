@@ -4,6 +4,8 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class ResultadoPartidoController {
 	
+	static idPartido
+	
 	def cargarResultado(Long id) {
 		def partidoInstance = Partido.get(id)
 		
@@ -11,10 +13,11 @@ class ResultadoPartidoController {
 			def resultadoInstance = new ResultadoPartido().save()
 			partidoInstance.setResultado(resultadoInstance)
 			partidoInstance.save()
+			idPartido= partidoInstance.id
 		}
 		
 		if(!partidoInstance.getResultado().getDetalles()) {
-			redirect(controller: 'detalleResultados', action:'create', id: id)
+			redirect(controller: 'detalleResultados', action:'create', id: partidoInstance.getResultado().id)
 		}
 		else {
 			redirect(controller: 'detalleResultados', action:'listarDetalles', id: id)
@@ -44,15 +47,13 @@ class ResultadoPartidoController {
     }
 
     def save(Long id) {
-		def partidoInstance= Partido.get(id)
-		
+		def partidoInstance= Partido.get(idPartido)		
         def resultadoPartidoInstance = new ResultadoPartido(params)
         if (!resultadoPartidoInstance.save(flush: true)) {
-            render(view: "create", model: [resultadoPartidoInstance: resultadoPartidoInstance])
-			partidoInstance.setResultado(resultadoPartidoInstance)
+            render(view: "create", model: [resultadoPartidoInstance: resultadoPartidoInstance])			
             return
         }
-
+		partidoInstance.setResultado(resultadoPartidoInstance)
         flash.message = message(code: 'default.created.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), resultadoPartidoInstance.id])
         redirect(action: "show", id: resultadoPartidoInstance.id)
 		

@@ -22,7 +22,7 @@ class PartidoControllerTests {
 
     void testList() {
 
-        def model = controller.list()
+        def model = controller.list1()
 
         assert model.partidoInstanceList.size() == 0
         assert model.partidoInstanceTotal == 0
@@ -51,7 +51,7 @@ class PartidoControllerTests {
     }
 
     void testShow() {
-        controller.show()
+        controller.show1()
 
         assert flash.message != null
         assert response.redirectedUrl == '/partido/list'
@@ -63,7 +63,7 @@ class PartidoControllerTests {
 
         params.id = partido.id
 
-        def model = controller.show()
+        def model = controller.show1()
 
         assert model.partidoInstance == partido
     }
