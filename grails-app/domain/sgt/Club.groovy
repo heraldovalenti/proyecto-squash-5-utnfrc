@@ -10,7 +10,8 @@ class Club {
     String correo
 	Boolean validado
     
-	static hasMany = [canchas: Cancha]
+	static hasMany = [canchas: Cancha, servicios: ServicioClub]
+	
 	
     static constraints = {
 		nombre blank: false, unique: true, maxSize: 50

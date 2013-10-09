@@ -40,7 +40,10 @@
 					
 						<td><g:link action="show" id="${torneoPuntuableInstance.id}">${fieldValue(bean: torneoPuntuableInstance, field: "nombre")}</g:link></td>
 					
-						<td>${fieldValue(bean: torneoPuntuableInstance, field: "puntajeTorneo")}</td>
+						<td>
+							<g:if test="${ torneoPuntuableInstance.puntajeTorneo }">Si</g:if>
+							<g:else>No</g:else>
+						</td>
 					
 						<td>${fieldValue(bean: torneoPuntuableInstance, field: "ordenAnual")}</td>
 					
