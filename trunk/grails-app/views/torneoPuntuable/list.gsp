@@ -18,7 +18,12 @@
 		<div id="list-torneoPuntuable" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+				<div class="message" role="status">${flash.message}</div>
+			</g:if>
+			<g:if test="${ !ordenesAnualesValidos }">
+				<ul class="errors" role="alert">
+					<li>Los órdenes anuales asignados a los torneos activos no son válidos.</li>
+				</ul>
 			</g:if>
 			<table>
 				<thead>

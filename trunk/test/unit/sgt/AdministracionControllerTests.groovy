@@ -5,6 +5,8 @@ package sgt
 import grails.test.mixin.*
 import org.junit.*
 
+import sgt.administracion.AdministracionController;
+
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
