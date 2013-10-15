@@ -8,15 +8,13 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-torneoPuntuable" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
 		<div class="nav" role="navigation">
 			<ul>				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" controller="torneoPuntuable" action="list">Volver</g:link></li>
 			</ul>
 		</div>
 		<div id="show-torneoPuntuable" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>Torneo Puntuable</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -65,7 +63,7 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${torneoPuntuableInstance?.id}" />
-					<g:link class="edit" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit" controller="torneoPuntuable" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Editar" /></g:link>
 					<g:link controller="puntaje" action="cargarPuntaje" id="${torneoPuntuableInstance?.id}">Ver puntajes </g:link>
 					<g:link controller="puntaje" action="cargarPuntaje" id="${ torneoPuntuableInstance?.id }">Cargar Puntaje</g:link>
 					<g:link controller="detallePuntaje" action="listarDetalles" id="${ torneoPuntuableInstance?.id }">Ver Puntajes</g:link>
