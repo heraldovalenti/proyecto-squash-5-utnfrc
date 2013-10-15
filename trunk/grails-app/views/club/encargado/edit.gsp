@@ -8,6 +8,7 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
+		<g:link controller="encargado" action="datosEncargado">Volver</g:link>
 		<div id="edit-persona" class="content scaffold-edit" role="main">
 			<h1>Encargado de Club</h1>
 			<g:if test="${flash.message}">

@@ -16,7 +16,7 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<g:link controller="club" action="listarCanchas"></g:link>
+		<g:link controller="cancha" action="list" namespace="club">Volver al listado de canchas</g:link>
 		
 		<div id="show-cancha" class="content scaffold-show" role="main">
 			<h1>Datos de cancha</h1>
@@ -84,10 +84,10 @@
 					<span class="property-value" aria-labelledby="disponibilidad-label">
 						
 						<g:if test="${canchaInstance?.disponibilidad}">
-							Cargada - <g:link controller="club" action="index" id="${canchaInstance?.disponibilidad?.id}">Editar</g:link>
+							Cargada - <g:link controller="disponibilidadCancha" id="${canchaInstance?.id}">Ver disponibilidad</g:link>
 						</g:if>
 						<g:else>
-							No especificada	 - <g:link controller="club" action="index" id="${canchaInstance?.disponibilidad?.id}">Cargar</g:link>
+							No especificada	 - <g:link controller="disponibilidadCancha" id="${canchaInstance?.id}">Ver disponibilidad</g:link>
 						</g:else>
 						 
 					</span>
@@ -96,9 +96,9 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${canchaInstance?.id}" />
-					<g:actionSubmit class="edit" controller="club" action="editCancha" id="${canchaInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
+					<g:actionSubmit class="edit" controller="cancha" action="edit" namespace="club" id="${canchaInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
 					
-					<g:actionSubmit class="delete" controller="club" action="deleteCancha" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete" controller="cancha" action="delete" namespace="club" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>

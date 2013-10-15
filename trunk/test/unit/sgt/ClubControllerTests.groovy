@@ -3,6 +3,8 @@ package sgt
 
 
 import org.junit.*
+
+import sgt.club.ClubController;
 import grails.test.mixin.*
 
 @TestFor(ClubController)

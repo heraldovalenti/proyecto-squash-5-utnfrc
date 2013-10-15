@@ -16,9 +16,9 @@
 <title><g:message code="default.edit.label" args="[entityName]" /></title>
 </head>
 <body>
-
+	<g:link controller="cancha" action="show" id="${ canchaInstance?.id }">Volver</g:link>
 	<div id="edit-cancha" class="content scaffold-edit" role="main">
-		<g:link controller="club" action="listarCanchas">Volver al listado de canchas</g:link>
+		
 		<h1>Datos de cancha</h1>
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
@@ -41,9 +41,9 @@
 				<g:render template="/club/canchas/form" />
 			</fieldset>
 			<fieldset class="buttons">
-				<g:actionSubmit class="save" action="updateCancha" controller="cancha"
+				<g:actionSubmit class="save" action="update" controller="cancha" namespace="club"
 					value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				<g:actionSubmit class="delete" action="deleteCancha" controller="cancha"
+				<g:actionSubmit class="delete" action="delete" controller="cancha" namespace="club"
 					value="${message(code: 'default.button.delete.label', default: 'Delete')}"
 					formnovalidate=""
 					onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

@@ -16,8 +16,9 @@
 	value="${message(code: 'cancha.label', default: 'Cancha')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
 </head>
+
 <body>
-	<g:link class="create" action="createCancha" controller="club">Registrar nueva cancha</g:link>
+	<g:link class="create" action="create" controller="cancha" namespace="club">Registrar nueva cancha</g:link>
 
 	<div id="list-cancha" class="content scaffold-list" role="main">
 		<h1>Listado de canchas del club</h1>
@@ -50,7 +51,7 @@
 				<g:each in="${canchaInstanceList}" status="i" var="canchaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-						<td><g:link controller="club" action="showCancha"
+						<td><g:link controller="cancha" action="show" namespace="club"
 								id="${canchaInstance.id}">
 								${fieldValue(bean: canchaInstance, field: "nombre")}
 							</g:link></td>

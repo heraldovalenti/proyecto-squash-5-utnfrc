@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<a href="#edit-club" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		
+		<g:link controller="club" action="datosClub">Volver</g:link>
 		<div id="edit-club" class="content scaffold-edit" role="main">
 			<h1>Datos de Club</h1>
 			<g:if test="${flash.message}">
