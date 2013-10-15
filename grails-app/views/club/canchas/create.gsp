@@ -16,8 +16,9 @@
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
 </head>
+
 <body>
-	<g:link controller="club" action="listarCanchas">Volver al listado de canchas</g:link>
+	<g:link controller="cancha" action="list" namespace="club">Volver al listado de canchas</g:link>
 	<div id="create-cancha" class="content scaffold-create" role="main">
 		<h1>Registro de nueva cancha</h1>
 		<g:if test="${flash.message}">
@@ -34,8 +35,7 @@
 				</g:eachError>
 			</ul>
 		</g:hasErrors>
-		<g:form action="saveCancha">
-			<g:hiddenField name="parentId" value="${ parentId }"/>
+		<g:form action="save">
 			<fieldset class="form">
 				<g:render template="/club/canchas/form" />
 			</fieldset>
