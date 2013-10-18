@@ -1,4 +1,8 @@
-package sgt
+package sgt.administracion.torneos
+import sgt.Puntaje
+import sgt.DetallePuntaje
+import sgt.TorneoPuntuable
+import sgt.PuntajeService
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -6,7 +10,91 @@ class PuntajeController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
-	static idTorneo
+	static namespace = "admin"
+	
+	PuntajeService puntajeService
+	
+	def verPuntajes(Long id) {
+		def TorneoPuntuable torneoPuntuableInstance = TorneoPuntuable.get(id)
+		if (!torneoPuntuableInstance) {
+			flash.message = message(code: 'sgt.registrodatos.noencontrado')
+			redirect(controller: "torneoPuntuable", action: "list")
+			return
+		}
+		
+		session.setAttribute("idTorneo", torneoPuntuableInstance.id)
+		redirect(controller: "puntaje", action: "list")
+	}
+	
+	def volverTorneo() {
+		def Long idTorneo = session.getAttribute("idTorneo")
+		redirect(controller: "torneoPuntuable", action: "show", id: idTorneo)
+	}
+	
+	def list(Integer max) {
+		params.max = Math.min(max ?: 10, 100)
+		def Long idTorneo = session.getAttribute("idTorneo")
+		def TorneoPuntuable torneoPuntuableInstance = TorneoPuntuable.get(idTorneo)
+		def puntajeInstanceList = torneoPuntuableInstance.getPuntajes()
+		
+		render(view: "/administracion/puntajes/list", model: [puntajeInstanceList: puntajeInstanceList, puntajeInstanceTotal: puntajeInstanceList.size()])
+	}
+	
+	def create() {
+		render(view: "/administracion/puntajes/create", model: [puntajeInstance: new Puntaje(params)])
+	}
+	
+	def save() {
+		def idTorneo = session.getAttribute("idTorneo")
+		def puntajeInstance = new Puntaje(params)
+		if (!puntajeInstance.validate()) {
+			render(view: "/administracion/puntajes/create", model: [puntajeInstance: puntajeInstance])
+			return
+		}
+		
+		def String res = puntajeService.agregarPuntajeTorneo(idTorneo, puntajeInstance)
+		if (res != null) {
+			flash.message = (res)
+			render(view: "/administracion/puntajes/create", model: [puntajeInstance: puntajeInstance])
+			return
+		}
+		
+		redirect(action: "verDetalles", id: puntajeInstance.id)
+	}
+	
+	def verDetalles(Long id) {
+		def Puntaje puntajeInstance = Puntaje.get(id)
+		if (!puntajeInstance) {
+			flash.message = messsage(code: 'sgt.registrodatos.noencontrado')
+			redirect(action: "list")
+		}
+		
+		session.setAttribute("idPuntaje", id)
+		def detallePuntajeInstanceList = puntajeInstance.getDetalles()
+		def detallePuntajeInstance = new DetallePuntaje(params)
+		def categoriaInstance = puntajeInstance.getCategoria()
+		render(view: "/administracion/puntajes/detallesPuntaje", model: [detallePuntajeInstanceList: detallePuntajeInstanceList, puntajeInstanceTotal: detallePuntajeInstanceList.size()], categoriaInstance: categoriaInstance, detallePuntajeInstance: detallePuntajeInstance)
+	}
+	
+	def agregarDetalle() {
+		def DetallePuntaje detallePuntajeInstance = new DetallePuntaje(params)
+		if (!detallePuntajeInstance.validate()) {
+			redirect(action: "verDetalles", id: idPuntaje)
+			return
+		}
+		
+		puntajeService = new PuntajeService()
+		def idPuntaje = session.getAttribute("idPuntaje")
+		def String res = puntajeService.agregarDetallePuntaje(idPuntaje, detallePuntajeInstance)
+		if (res != null) {
+			flash.message = (res)
+			redirect(action: "verDetalles", id: idPuntaje)
+			return
+		}
+		
+		flash.message = message(code: 'sgt.registrodatos.exito')
+		redirect(action: "verDetalles", id: idPuntaje)
+	}
 	
 	def cargarPuntaje(Long id) 
 	{
@@ -31,26 +119,7 @@ class PuntajeController {
         redirect(action: "list", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [puntajeInstanceList: Puntaje.list(params), puntajeInstanceTotal: Puntaje.count()]
-    }
-
-    def create() {
-        [puntajeInstance: new Puntaje(params)]
-    }
-
-    def save(Long id) {
-		def torneoPuntuableInstance = TorneoPuntuable.get(idTorneo)
-        def puntajeInstance = new Puntaje(params)
-        if (!puntajeInstance.save(flush: true)) {
-            render(view: "create", model: [puntajeInstance: puntajeInstance])						
-            return
-        }
-		torneoPuntuableInstance.setPuntajeTorneo(puntajeInstance)
-        flash.message = message(code: 'default.created.message', args: [message(code: 'puntaje.label', default: 'Puntaje'), puntajeInstance.id])
-        redirect(action: "show", id: puntajeInstance.id)
-    }
+    
 
     def show(Long id) {
         def puntajeInstance = Puntaje.get(id)

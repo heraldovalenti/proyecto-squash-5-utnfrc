@@ -10,14 +10,13 @@
 		
 		<div class="nav" role="navigation">
 			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" controller="puntaje" action="list">Volver</g:link></li>
 			</ul>
 		</div>
 		<div id="create-puntaje" class="content scaffold-create" role="main">
 			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+				<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${puntajeInstance}">
 			<ul class="errors" role="alert">
@@ -28,7 +27,14 @@
 			</g:hasErrors>
 			<g:form action="save" >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<div class="fieldcontain ${hasErrors(bean: puntajeInstance, field: 'categoria', 'error')} required">
+						<label for="categoria">
+							<g:message code="puntaje.categoria.label" default="Categoria" />
+							<span class="required-indicator">*</span>
+						</label>
+						<g:select id="categoria" name="categoria.id" from="${sgt.Categoria.list()}" optionKey="id" required="" value="${puntajeInstance?.categoria?.id}" class="many-to-one"/>
+					</div>
+
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

@@ -15,5 +15,6 @@ class DetallePuntaje {
 	
 
     static constraints = {
+		descripcion blank: false, maxSize: 50
     }
 }

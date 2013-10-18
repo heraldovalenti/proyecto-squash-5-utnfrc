@@ -7,11 +7,6 @@ class Puntaje {
 	static belongsTo = TorneoPuntuable
 	
 	static hasMany = [detalles: DetallePuntaje]
-	
-	String toString()
-	{
-		return detallePuntaje.toString()
-	}
 
     static constraints = {
 		
