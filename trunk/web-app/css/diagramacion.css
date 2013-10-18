@@ -1,0 +1,28 @@
+/*div del menu de adm*/
+div.posicion {
+	margin-top:25px;
+	float: left;
+	height: 30%;
+	
+}
+/*div del contenido del medio*/
+div.contenido_jugador {
+	margin-top:25px;
+	float: left;
+	height: 30%;
+}
+/*div de la derecha*/
+div.noticias{
+	margin-top:25px;
+	float: left;
+	height: 30%;
+	
+}
+td
+{
+	border: 2px solid;	
+}
+tr
+{
+	border: 2px solid;	
+}

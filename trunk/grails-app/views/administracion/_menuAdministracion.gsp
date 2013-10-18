@@ -1,7 +1,7 @@
 
 <div class="box mb10 box-335">
 	<div id="news-result" class="inner-box">
-		<ul>
+		<ul class="ul-admin">
 			<li><g:link controller="administracion">Panel de inicio</g:link></li>
 			<li><g:link controller="torneoPuntuable">Torneos Puntuables</g:link></li>
 			<li><g:link controller="torneo">Torneos</g:link></li>

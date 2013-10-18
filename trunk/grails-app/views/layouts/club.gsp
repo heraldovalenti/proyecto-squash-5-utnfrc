@@ -6,14 +6,12 @@
 	<title><g:layoutTitle default="Grails"/></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-    <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
+   
  	
  	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
+ 	<link href="${resource(dir: 'css', file: 'club.css') }" type="text/css"	rel="stylesheet">
  	
- 	<link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css" rel="stylesheet">
+ 	
         
    	<style>
    		ul.lof-main-wapper li {
@@ -36,15 +34,10 @@
 	            <img src="http://www.acsr.com.ar/images/acs.png" alt="Logo Asociación Cordobesa de Squash Raquets" 
 	            	title="Logo Asociación Cordobesa de Squash Raquets"/>
 	        </a>
-	    </div>
-    
-    	<!-- TORNEO ACTUAL -->
-	    <g:render template="/secciones/torneoActual" />
-				
+	    </div>  				
 	</div>
 	
-	<!-- BARRA DE NAVEGACION DEL SITIO -->
-	<g:render template="/secciones/barraNavegacion" />
+	
 	
 	<!-- CUERPO GENERAL DE LA PAGINA - A llenarse desde el Layout -->
 	<div class="container_16">

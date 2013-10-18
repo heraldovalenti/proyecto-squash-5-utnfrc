@@ -3,18 +3,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="administracion">
+		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'torneoPuntuable.label', default: 'TorneoPuntuable')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
+		<a href="#show-torneoPuntuable" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
 		<div class="nav" role="navigation">
 			<ul>				
-				<li><g:link class="list" controller="torneoPuntuable" action="list">Volver</g:link></li>
+				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-torneoPuntuable" class="content scaffold-show" role="main">
-			<h1>Torneo Puntuable</h1>
+			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -27,8 +29,16 @@
 						<span class="property-value" aria-labelledby="nombre-label"><g:fieldValue bean="${torneoPuntuableInstance}" field="nombre"/></span>
 					
 				</li>
-				</g:if>			
-				
+				</g:if>
+			
+				<g:if test="${torneoPuntuableInstance?.puntajeTorneo}">
+				<li class="fieldcontain">
+					<span id="puntajeTorneo-label" class="property-label"><g:message code="torneoPuntuable.puntajeTorneo.label" default="Puntaje Torneo" /></span>
+					
+						<span class="property-value" aria-labelledby="puntajeTorneo-label"><g:link controller="puntaje" action="show" id="${torneoPuntuableInstance?.puntajeTorneo?.id}">${torneoPuntuableInstance?.puntajeTorneo?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${torneoPuntuableInstance?.ordenAnual}">
 				<li class="fieldcontain">
@@ -43,7 +53,7 @@
 				<li class="fieldcontain">
 					<span id="activo-label" class="property-label"><g:message code="torneoPuntuable.activo.label" default="Activo" /></span>
 					
-						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" /></span>
+						<span class="property-value" aria-labelledby="activo-label"><g:formatBoolean boolean="${torneoPuntuableInstance?.activo}" true="Sí" false="No" /></span>
 					
 				</li>
 				</g:if>
@@ -63,9 +73,8 @@
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${torneoPuntuableInstance?.id}" />
-					<g:link class="edit" controller="torneoPuntuable" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Editar" /></g:link>
-					<g:link controller="puntaje" action="cargarPuntaje" id="${torneoPuntuableInstance?.id}">Ver puntajes </g:link>
-					<g:link controller="puntaje" action="cargarPuntaje" id="${ torneoPuntuableInstance?.id }">Cargar Puntaje</g:link>					
+					<g:link class="edit" action="edit" id="${torneoPuntuableInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>
