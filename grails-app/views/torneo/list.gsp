@@ -25,17 +25,15 @@
 					<tr>
 					
 						<g:sortableColumn property="nombre" title="${message(code: 'torneo.nombre.label', default: 'Nombre')}" />
-					
-						<g:sortableColumn property="fechaAlta" title="${message(code: 'torneo.fechaAlta.label', default: 'Fecha Alta')}" />
-					
+						
+						<g:sortableColumn property="fechaInicioTorneo" title="${message(code: 'torneo.fechaInicioTorneo.label', default: 'Fecha Inicio Torneo')}" />
+						
+						<g:sortableColumn property="club" title="${message(code: 'torneo.club.label', default: 'Club')}" />
+															
 						<g:sortableColumn property="fechaInicioInscripcion" title="${message(code: 'torneo.fechaInicioInscripcion.label', default: 'Fecha Inicio Inscripcion')}" />
 					
 						<g:sortableColumn property="fechaFinInscripcion" title="${message(code: 'torneo.fechaFinInscripcion.label', default: 'Fecha Fin Inscripcion')}" />
-					
-						<g:sortableColumn property="fechaInicioTorneo" title="${message(code: 'torneo.fechaInicioTorneo.label', default: 'Fecha Inicio Torneo')}" />
-					
-						<g:sortableColumn property="fechaFinTorneo" title="${message(code: 'torneo.fechaFinTorneo.label', default: 'Fecha Fin Torneo')}" />
-					
+																		
 					</tr>
 				</thead>
 				<tbody>

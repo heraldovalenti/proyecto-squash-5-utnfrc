@@ -6,9 +6,10 @@
 	<title><g:layoutTitle default="Grails"/></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-    <link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css"	rel="stylesheet">
+    
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"	rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'administracion.css') }" type="text/css"	rel="stylesheet">
+	
         
    	<style>
    		ul.lof-main-wapper li {
@@ -21,10 +22,11 @@
 </head>
 	
 	
-<body>
-	<!-- BARRA DE USUARIO -->
+<body>	
+
+<!-- BARRA DE USUARIO -->
 	<g:render template="/usuario/barraUsuario" />
-	
+		
 	<div class="header mt20">
 	    <div class="logo" style="width: 100px;">
 	        <a href="http://www.acsr.com.ar/">
@@ -47,8 +49,7 @@
 						<div class="contenido_jugador">
 						<g:layoutBody />
 					</div>
-					<div class="noticias">
-					
+					<div class="noticias">					
 					</div>
 					
 				

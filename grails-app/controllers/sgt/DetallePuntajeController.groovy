@@ -33,8 +33,7 @@ class DetallePuntajeController {
         if (!detallePuntajeInstance.save(flush: true)) {
             render(view: "create", model: [detallePuntajeInstance: detallePuntajeInstance])			
             return
-        }
-		puntajeInstance.addToDetalles(detallePuntajeInstance)
+        }		
         flash.message = message(code: 'default.created.message', args: [message(code: 'detallePuntaje.label', default: 'DetallePuntaje'), detallePuntajeInstance.id])
         redirect(action: "show", id: detallePuntajeInstance.id)
     }

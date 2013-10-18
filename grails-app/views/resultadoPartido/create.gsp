@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="administracion">
 		<g:set var="entityName" value="${message(code: 'resultadoPartido.label', default: 'ResultadoPartido')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>

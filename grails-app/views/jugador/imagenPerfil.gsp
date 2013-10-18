@@ -24,15 +24,15 @@
 			
 			<div class="fieldcontain required">
 				<label for="imagenPerfilActual">
-					Imagen de perfil actual
+					Imagen actual
 				</label>
-				<img width="148" height="198" alt="Imagen de perfil" 
+				<img width="180" height="170" alt="Imagen de perfil" 
 					src="${ resource(dir: 'images/perfiles', file: imagenPerfil) }" />
 			</div>
 			
 			<div class="fieldcontain required">
 				<label for="imagenPerfilNueva">
-					Nueva imagen de perfil
+					Cargar imagen
 				</label>
 				<input type="file" name="imagenPerfil" />
 			</div>

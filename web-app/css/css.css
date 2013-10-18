@@ -113,7 +113,12 @@ a:hover {text-decoration:none;}
 
 .box {padding: 1px; background: white; border: 1px solid #BBB; position: relative; float: left;}
 .inner-box 
-{padding: 10px; height:293px  ; width:200px  ; position: absolute;line-height:20px;}
+{padding: 10px; height:293px  ; width:180px  ; position: absolute;line-height:20px; background: #183353;
+    background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -o-linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -webkit-linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%); }
 .inside-box {display: block; float: none; margin: 15px;}
 
 .box-948 {width: 948px;}
@@ -158,7 +163,7 @@ color:#ffffff;
 line-height: 23px;
 margin:15px;
 height:25px;
-width:100px;
+width:150px;
 }
 
 /*cajas de texto de los forms*/
@@ -1170,7 +1175,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
   height: 200px;
   padding: 8px 10px 9px;
   position: relative;
-  width: 150px;
+  width: 200px;
 }
 
 #playerBioHeadShotCopy {
@@ -1525,7 +1530,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
     margin-top: -12px;
     text-align: left;
 }
-#playerBioHeadShot {float:left;height:200px;padding:8px 10px 9px;position:relative;width:150px;}
+#playerBioHeadShot {float:left;height:200px;padding:8px 10px 9px;position:relative;width:200px;}
 #playerBioHeadShotCopy  {background:url("images/headshot_copy_bg.png") repeat scroll 0 0 transparent;bottom:0;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:15px;left:11px;line-height:15px;padding:0 4px;position:absolute;width:140px;}
 #playerBioHeadShot img {border:1px solid white;}
 #playerBioInfoList {float:left;padding:4px 0;width:342px;}

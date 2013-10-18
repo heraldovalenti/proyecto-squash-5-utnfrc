@@ -4,14 +4,14 @@
 	<meta name="layout" content="main" />
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'login.css') }" type="text/css" rel="stylesheet">
 </head>
 <body>	
 	<!-- div para formulario de inicio de sesion -->
 	<div id="div_inicio_sesion" class="content scaffold-create" role="main">
 		
 		<!-- titulo de inicio de sesion -->
-		<h1><g:message code="iniciosesion.titulo" /></h1>
-		<g:link controller="usuario" action="loginFormClub">Inicio de Clubes</g:link>
+		<h1 class="h1-login"><g:message code="iniciosesion.titulo" /></h1>		
 			
 			<!-- control de visualizacion de mensajes de error -->
 			<g:if test="${flash.message}">
@@ -48,6 +48,7 @@
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="enviar" value="${ message(code: 'iniciosesion.submit.label') }" />
+					<g:link controller="usuario" action="loginFormClub">Inicio de Clubes</g:link>
 				</fieldset>
 			</g:form>
 	</div>

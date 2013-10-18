@@ -41,12 +41,21 @@ class UsuarioController {
 			render(view: '/jugador/inicioJugador')
 			return
 		}
-		
+		else
+		{
+		//si se encontro el usuario y es un Club
+		def rolClub = Rol.findByNombre('Club')
+		if (u && u.getRoles().contains(rolClub)) {
+			session.setAttribute("userLogon", u)
+			render(view: '/club/inicioClub')
+			return
+		}		
 		//si no se encontro el usuario
 		else {
 			flash.message = message(code: 'iniciosesion.error.usuariopassword.invalido')
 			render(view: 'loginForm')
 			return
+		}
 		}
 
 	}
