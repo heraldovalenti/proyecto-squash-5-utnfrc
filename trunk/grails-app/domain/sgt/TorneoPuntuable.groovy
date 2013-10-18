@@ -4,10 +4,9 @@ class TorneoPuntuable {
 	
 	String nombre
 	Integer ordenAnual
-	Puntaje puntajeTorneo
 	Boolean activo
 	
-	static hasMany = [instanciasTorneo: Torneo]
+	static hasMany = [instanciasTorneo: Torneo, puntajes: Puntaje]
 	
 	String toString()
 	{
@@ -16,7 +15,6 @@ class TorneoPuntuable {
 
     static constraints = {
 		nombre blank: false, maxSize: 250
-		puntajeTorneo nullable: true
 		ordenAnual nullable:true, min: 0
 		activo nullable: false
     }
