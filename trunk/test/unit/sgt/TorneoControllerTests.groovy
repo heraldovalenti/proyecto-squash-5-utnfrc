@@ -3,6 +3,8 @@ package sgt
 
 
 import org.junit.*
+
+import sgt.administracion.torneos.TorneoController;
 import grails.test.mixin.*
 
 @TestFor(TorneoController)

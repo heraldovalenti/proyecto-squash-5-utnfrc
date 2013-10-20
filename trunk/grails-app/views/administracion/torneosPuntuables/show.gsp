@@ -54,7 +54,11 @@
 					<span id="instanciasTorneo-label" class="property-label"><g:message code="torneoPuntuable.instanciasTorneo.label" default="Instancias Torneo" /></span>
 					
 						<g:each in="${torneoPuntuableInstance.instanciasTorneo}" var="i">
-						<span class="property-value" aria-labelledby="instanciasTorneo-label"><g:link controller="torneo" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></span>
+							<span class="property-value" aria-labelledby="instanciasTorneo-label">
+								<g:link controller="torneo" action="show" id="${i.id}">
+									${i?.encodeAsHTML()}
+								</g:link>
+							</span>
 						</g:each>
 					
 				</li>
