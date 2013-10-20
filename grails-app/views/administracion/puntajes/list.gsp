@@ -10,7 +10,7 @@
 	<body>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><g:link controller="puntaje" action="volverTorneo">Volver al Torneo Puntuable</g:link></li>
+				<li><g:link controller="puntaje" action="volverTorneo">Volver</g:link></li>
 				<li><g:link class="create" controller="puntaje" action="create">Nuevo puntaje</g:link></li>
 			</ul>
 		</div>
@@ -33,7 +33,7 @@
 						<td>${fieldValue(bean: puntajeInstance, field: "categoria")}</td>
 						<td>
 							<g:link controller="puntaje" action="verDetalles" id="${ puntajeInstance.id }">Ver detalles</g:link>
-							<g:link controller="puntaje" action="eliminar" id="">Eliminar</g:link>
+							<g:link controller="puntaje" action="delete" id="${ puntajeInstance.id }">Eliminar</g:link>
 						</td>
 					</tr>
 				</g:each>

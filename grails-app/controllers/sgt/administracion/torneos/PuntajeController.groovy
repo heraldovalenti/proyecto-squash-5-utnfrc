@@ -8,7 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class PuntajeController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "GET"]
 	
 	static namespace = "admin"
 	
@@ -62,6 +62,11 @@ class PuntajeController {
 		redirect(action: "verDetalles", id: puntajeInstance.id)
 	}
 	
+	def volverDetalles() {
+		def idPuntaje = session.getAttribute("idPuntaje")
+		verDetalles(idPuntaje)
+	}
+	
 	def verDetalles(Long id) {
 		def Puntaje puntajeInstance = Puntaje.get(id)
 		if (!puntajeInstance) {
@@ -70,16 +75,24 @@ class PuntajeController {
 		}
 		
 		session.setAttribute("idPuntaje", id)
-		def detallePuntajeInstanceList = puntajeInstance.getDetalles()
-		def detallePuntajeInstance = new DetallePuntaje(params)
+		def detallePuntajeInstanceList = puntajeInstance.getDetalles()		
+		
 		def categoriaInstance = puntajeInstance.getCategoria()
-		render(view: "/administracion/puntajes/detallesPuntaje", model: [detallePuntajeInstanceList: detallePuntajeInstanceList, puntajeInstanceTotal: detallePuntajeInstanceList.size()], categoriaInstance: categoriaInstance, detallePuntajeInstance: detallePuntajeInstance)
+		render(view: "/administracion/puntajes/detallesPuntaje", 
+			model: [detallePuntajeInstanceList: detallePuntajeInstanceList, 
+				puntajeInstanceTotal: detallePuntajeInstanceList.size(), 
+				categoriaInstance: categoriaInstance])
+	}
+	
+	def createDetalle() {
+		def detallePuntajeInstance = new DetallePuntaje(params)
+		render(view: "/administracion/puntajes/createDetalle", model: [detallePuntajeInstance: detallePuntajeInstance])
 	}
 	
 	def agregarDetalle() {
 		def DetallePuntaje detallePuntajeInstance = new DetallePuntaje(params)
 		if (!detallePuntajeInstance.validate()) {
-			redirect(action: "verDetalles", id: idPuntaje)
+			render(view: "/administracion/puntajes/createDetalle", model: [detallePuntajeInstance: detallePuntajeInstance])
 			return
 		}
 		
@@ -88,12 +101,34 @@ class PuntajeController {
 		def String res = puntajeService.agregarDetallePuntaje(idPuntaje, detallePuntajeInstance)
 		if (res != null) {
 			flash.message = (res)
-			redirect(action: "verDetalles", id: idPuntaje)
+			render(view: "/administracion/puntajes/createDetalle", model: [detallePuntajeInstance: detallePuntajeInstance])
 			return
 		}
 		
 		flash.message = message(code: 'sgt.registrodatos.exito')
 		redirect(action: "verDetalles", id: idPuntaje)
+	}
+	
+	def deleteDetalle(Long id) {
+		def idPuntaje = session.getAttribute("idPuntaje")
+		def puntajeInstance = Puntaje.get(idPuntaje)
+		def detallePuntajeInstance = DetallePuntaje.get(id)
+		if (!detallePuntajeInstance || !puntajeInstance) {
+			flash.message = message(code: 'sgt.registrodatos.noencontrado')
+			volverDetalles()
+		}
+
+		try {
+			puntajeInstance.removeFromDetalles(detallePuntajeInstance)
+			puntajeInstance.save()
+			detallePuntajeInstance.delete(flush: true)
+			flash.message = message(code: 'sgt.registrodatos.exito')
+			volverDetalles()
+		}
+		catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'sgt.registrodatos.fallo')
+			volverDetalles()
+		}
 	}
 	
 	def cargarPuntaje(Long id) 
@@ -175,19 +210,19 @@ class PuntajeController {
     def delete(Long id) {
         def puntajeInstance = Puntaje.get(id)
         if (!puntajeInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'puntaje.label', default: 'Puntaje'), id])
+            flash.message = message(code: 'sgt.registrodatos.noencontrado')
             redirect(action: "list")
             return
         }
 
         try {
             puntajeInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'puntaje.label', default: 'Puntaje'), id])
+            flash.message = message(code: 'sgt.registrodatos.exito')
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'puntaje.label', default: 'Puntaje'), id])
-            redirect(action: "show", id: id)
+            flash.message = message(code: 'sgt.registrodatos.fallo')
+            redirect(action: "list")
         }
     }
 }

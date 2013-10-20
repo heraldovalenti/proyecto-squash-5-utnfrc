@@ -10,13 +10,12 @@
 		
 		<div class="nav" role="navigation">
 			<ul>
-				
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link controller="torneo" action="list">Volver</g:link></li>
 			</ul>
 		</div>
 		<div id="create-torneo" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
+			<h1>Nuevo Torneo</h1>
+				<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${torneoInstance}">
@@ -28,10 +27,10 @@
 			</g:hasErrors>
 			<g:form action="save" >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="/administracion/torneos/form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save" value="Guardar" />
 				</fieldset>
 			</g:form>
 		</div>

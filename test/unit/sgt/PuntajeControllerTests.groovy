@@ -1,5 +1,5 @@
 package sgt
-
+import sgt.administracion.torneos.PuntajeController
 
 
 import org.junit.*
