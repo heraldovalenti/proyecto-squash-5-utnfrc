@@ -1,5 +1,7 @@
-
 <%@ page import="sgt.Torneo" %>
+<%@ page import="sgt.DetalleTorneo" %>
+<%@ page import="sgt.Categoria" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -103,6 +105,20 @@
 					</span>	
 				</li>
 				
+				<li class="fieldcontain">
+					<span id="puntuable-label" class="property-label">
+						Categorias a disputarse
+					</span>
+					<span class="property-value" aria-labelledby="puntuable-label">
+						<g:if test="${ detalleInstanceListTotal == 0 }">
+							Sin asignar - 
+						</g:if>
+						<g:each in="${ detalleInstanceList }" var="detalle" status="i">
+							${ detalle.categoria.nombre } - 
+						</g:each>
+						<g:link controller="torneo" action="verDetalles" id="${ torneoInstance?.id }">Editar</g:link>							
+					</span>	
+				</li>
 			
 			</ol>
 			<g:form>

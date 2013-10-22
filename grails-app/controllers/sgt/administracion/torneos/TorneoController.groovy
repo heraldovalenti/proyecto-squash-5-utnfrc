@@ -1,7 +1,9 @@
 package sgt.administracion.torneos
 
-import sgt.Torneo;
+import sgt.Torneo
 import sgt.TorneoPuntuable
+import sgt.DetalleTorneo
+import sgt.Categoria
 import org.springframework.dao.DataIntegrityViolationException
 
 
@@ -13,10 +15,6 @@ class TorneoController {
     def index() {
         redirect(action: "list", params: params)
     }
-	
-	def listaFechasPuntuables() {
-		
-	}
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,7 +22,8 @@ class TorneoController {
     }
 	
 	def nuevoTorneo() {
-		redirect(action: 'listadoTorneosPuntuables')
+		session.removeAttribute("idTorneoPuntuable")
+		redirect(action: "listadoTorneosPuntuables")
 	}
 
     def listadoTorneosPuntuables() {
@@ -54,7 +53,7 @@ class TorneoController {
 		def torneoInstance = new Torneo(params)
 		torneoInstance.setFechaAlta(new Date())
 		torneoInstance.setEstado("Creado")
-		if (torneoPuntuableInstance) torneoInstance.setPuntuable(true)
+		torneoInstance.setPuntuable(torneoPuntuableInstance != null)
 		
         if (!torneoInstance.save(flush: true)) {
             render(view: "/administracion/torneos/create", model: [torneoInstance: torneoInstance])
@@ -77,8 +76,10 @@ class TorneoController {
             redirect(action: "list")
             return
         }
+		
+		def detalleInstanceList = torneoInstance.getDetalles()
 
-        render(view: "/administracion/torneos/show", model: [torneoInstance: torneoInstance])
+        render(view: "/administracion/torneos/show", model: [torneoInstance: torneoInstance, detalleInstanceList: detalleInstanceList, detalleInstanceListTotal: detalleInstanceList.size()])
     }
 
     def edit(Long id) {
@@ -145,4 +146,77 @@ class TorneoController {
             redirect(action: "show", id: id)
         }
     }
+	
+	def verDetalles(Long id) {
+		def torneoInstance = Torneo.get(id)
+		session.setAttribute("idTorneo", id)
+		def detalleTorneoInstanceList = torneoInstance.getDetalles()
+		render(view: "/administracion/torneos/detallesTorneo", model: [torneoInstance: torneoInstance, detalleTorneoInstanceList: detalleTorneoInstanceList, detalleInstanceTotal: detalleTorneoInstanceList.size()])
+	}
+	
+	def createDetalle() {
+		def idTorneo = session.getAttribute("idTorneo")
+		def torneoInstance = Torneo.get(idTorneo)
+		def categoriaInstanceList = Categoria.list()
+		def detalleTorneoInstance = new DetalleTorneo(params)
+		
+		def detalleTorneoInstanceList = torneoInstance.getDetalles()
+		def Iterator<DetalleTorneo> iter = detalleTorneoInstanceList.iterator()
+		while (iter.hasNext()) {
+			def torneoAux = iter.next()
+			def categoriaAux = torneoAux.categoria
+			categoriaInstanceList.remove(categoriaAux) 
+		}	
+		
+		render(view: "/administracion/torneos/createDetalle", model: [detalleTorneoInstance: detalleTorneoInstance, torneoInstance: torneoInstance, categoriaInstanceList: categoriaInstanceList])
+	}
+	
+	def agregarDetalle() {
+		def idTorneo = session.getAttribute("idTorneo")
+		def torneoInstance = Torneo.get(idTorneo)
+		def detalleTorneoInstance = new DetalleTorneo(params)
+		
+		if (!detalleTorneoInstance.save(flush: true)) {
+			def categoriaInstanceList = Categoria.list()
+			def detalleTorneoInstanceList = torneoInstance.getDetalles()
+			
+			def Iterator<DetalleTorneo> iter = detalleTorneoInstanceList.iterator()
+			while (iter.hasNext()) {
+				def torneoAux = iter.next()
+				def categoriaAux = torneoAux.categoria
+				categoriaInstanceList.remove(categoriaAux)
+			}
+			render(view: "/administracion/torneos/createDetalle", model: [detalleTorneoInstance: detalleTorneoInstance, torneoInstance: torneoInstance, categoriaInstanceList: categoriaInstanceList])
+			return
+		}
+		
+		torneoInstance.addToDetalles(detalleTorneoInstance)
+		torneoInstance.save()
+		
+		flash.message = message(code: 'sgt.registrodatos.exito')
+		redirect(action: "verDetalles", id: torneoInstance.id)
+	}
+	
+	def deleteDetalle(Long id) {
+		def idTorneo = session.getAttribute("idTorneo")
+		def torneoInstance = Torneo.get(idTorneo)
+		def detalleTorneoInstance = DetalleTorneo.get(id)
+		
+		if (!detalleTorneoInstance) {
+			flash.message = message(code: 'sgt.registrodatos.noencontrado')
+			redirect(action: "verDetalles", id: idTorneo)
+		}
+		
+		try {
+			torneoInstance.removeFromDetalles(detalleTorneoInstance)
+			torneoInstance.save()
+			detalleTorneoInstance.delete(flush: true)
+			flash.message = message(code: 'sgt.registrodatos.exito')
+			redirect(action: "verDetalles", id: idTorneo)
+		}
+		catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'sgt.registrodatos.fallo')
+			redirect(action: "verDetalles", id: idTorneo)
+		}
+	}
 }
