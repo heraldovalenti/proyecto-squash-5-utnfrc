@@ -13,8 +13,8 @@ class ClubControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["nombre"] = 'Matias'
+		params["razonSocial"] = '123qwe'
     }
 
     void testIndex() {
@@ -103,7 +103,8 @@ class ClubControllerTests {
 
         // test invalid parameters in update
         params.id = club.id
-        //TODO: add invalid values to params object
+        params["nombre"] = ''
+		params["razonSocial"] = ''
 
         controller.update()
 

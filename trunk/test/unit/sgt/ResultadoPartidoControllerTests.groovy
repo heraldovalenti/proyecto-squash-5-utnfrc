@@ -11,8 +11,7 @@ class ResultadoPartidoControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["ganador"] = null
     }
 
     void testIndex() {

@@ -11,8 +11,13 @@ class PersonaControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["nombre"] = 'Juan'
+        params["apellido"] = 'Pedro'
+        params["fechaNacimiento"] = '04/07/1977'
+        params["tipoDocumento"] = "DNI"
+        params["sexo"] = "Masculino"
+        params["telefono"] = '123123'
+        params["lugarNacimiento"] = 'Cordoba'
     }
 
     void testIndex() {
@@ -101,7 +106,13 @@ class PersonaControllerTests {
 
         // test invalid parameters in update
         params.id = persona.id
-        //TODO: add invalid values to params object
+		params["nombre"] = ''
+		params["apellido"] = ''
+		params["fechaNacimiento"] = ''
+		params["tipoDocumento"] = ""
+		params["sexo"] = ""
+		params["telefono"] = ''
+		params["lugarNacimiento"] = ''
 
         controller.update()
 

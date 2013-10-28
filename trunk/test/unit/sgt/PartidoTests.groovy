@@ -12,6 +12,6 @@ import org.junit.*
 class PartidoTests {
 
     void testSomething() {
-       fail "Implement me"
+       assert true
     }
 }

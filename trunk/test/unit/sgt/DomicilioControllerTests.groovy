@@ -11,8 +11,9 @@ class DomicilioControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+		params["provincia"] = "Córdoba"
+		params["ciudad"] = "Córdoba"
+		params["domicilio"] = "qwea  333"
     }
 
     void testIndex() {
@@ -101,7 +102,7 @@ class DomicilioControllerTests {
 
         // test invalid parameters in update
         params.id = domicilio.id
-        //TODO: add invalid values to params object
+		params["provincia"] = ""
 
         controller.update()
 

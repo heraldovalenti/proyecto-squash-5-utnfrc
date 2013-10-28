@@ -11,8 +11,9 @@ class DetalleDisponibilidadControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["dia"] ="Lu"
+		params["desde"] ='1'
+		params["hasta"] ='5'
     }
 
     void testIndex() {
@@ -101,7 +102,9 @@ class DetalleDisponibilidadControllerTests {
 
         // test invalid parameters in update
         params.id = detalleDisponibilidad.id
-        //TODO: add invalid values to params object
+		params["dia"] =""
+		params["desde"] ='5'
+		params["hasta"] ='1'
 
         controller.update()
 

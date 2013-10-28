@@ -13,8 +13,13 @@ class TorneoControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+		params["nombre"] = 'Juan'
+		params["fechaAlta"] = '04/07/2012'
+		params["fechaInicioInscripcion"] = '04/07/2013'
+		params["fechaFinInscripcion"] ='04/08/2013'
+		params["fechaInicioTorneo"] = '05/09/2013'
+		params["fechaFinTorneo"] ='13/09/2013'
+		params["estado"] = 'Creado'
     }
 
     void testIndex() {
@@ -103,7 +108,13 @@ class TorneoControllerTests {
 
         // test invalid parameters in update
         params.id = torneo.id
-        //TODO: add invalid values to params object
+		params["nombre"] = ''
+		params["fechaAlta"] = ''
+		params["fechaInicioInscripcion"] = ''
+		params["fechaFinInscripcion"] =''
+		params["fechaInicioTorneo"] = ''
+		params["fechaFinTorneo"] =''
+		params["estado"] = ''
 
         controller.update()
 
