@@ -1,16 +1,15 @@
 package sgt
 
-
+import static org.junit.Assert.*
 
 import grails.test.mixin.*
+import grails.test.mixin.support.*
 import org.junit.*
 
-import sgt.Cancha;
-
 /**
- * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
+ * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
-@TestFor(Cancha)
+@TestMixin(GrailsUnitTestMixin)
 class CanchaTests {
 
     void testSomething() {

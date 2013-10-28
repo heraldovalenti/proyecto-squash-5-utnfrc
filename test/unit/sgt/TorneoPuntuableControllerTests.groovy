@@ -1,5 +1,5 @@
 package sgt
-import sgt.administracion.torneos.TorneoPuntuableController
+import sgt.TorneoPuntuableController
 
 
 
@@ -12,8 +12,9 @@ class TorneoPuntuableControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["nombre"] = 'Juan'
+		params["ordenAnual"] = '1'
+		params["activo"] = true
     }
 
     void testIndex() {
@@ -102,7 +103,9 @@ class TorneoPuntuableControllerTests {
 
         // test invalid parameters in update
         params.id = torneoPuntuable.id
-        //TODO: add invalid values to params object
+		params["nombre"] = ''
+		params["ordenAnual"] = null
+		params["activo"] = null
 
         controller.update()
 

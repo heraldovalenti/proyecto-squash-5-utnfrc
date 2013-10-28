@@ -11,8 +11,7 @@ class RankingControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["puntaje"] = '13'
     }
 
     void testIndex() {
