@@ -18,7 +18,7 @@ class PartidoControllerTests {
 
     void testIndex() {
         controller.index()
-        assert "/partido/list" == response.redirectedUrl
+        assert "/partido/list1" == response.redirectedUrl
     }
 
     void testList() {
@@ -55,7 +55,7 @@ class PartidoControllerTests {
         controller.show1()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/partido/list'
+        assert response.redirectedUrl == '/partido/list1'
 
         populateValidParams(params)
         def partido = new Partido(params)
@@ -73,7 +73,7 @@ class PartidoControllerTests {
         controller.edit()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/partido/list'
+        assert response.redirectedUrl == '/partido/list1'
 
         populateValidParams(params)
         def partido = new Partido(params)
@@ -91,7 +91,7 @@ class PartidoControllerTests {
         controller.update()
 
         assert flash.message != null
-        assert response.redirectedUrl == '/partido/list'
+        assert response.redirectedUrl == '/partido/list1'
 
         response.reset()
 
@@ -135,7 +135,7 @@ class PartidoControllerTests {
     void testDelete() {
         controller.delete()
         assert flash.message != null
-        assert response.redirectedUrl == '/partido/list'
+        assert response.redirectedUrl == '/partido/list1'
 
         response.reset()
 
@@ -151,6 +151,6 @@ class PartidoControllerTests {
 
         assert Partido.count() == 0
         assert Partido.get(partido.id) == null
-        assert response.redirectedUrl == '/partido/list'
+        assert response.redirectedUrl == '/partido/list1'
     }
 }

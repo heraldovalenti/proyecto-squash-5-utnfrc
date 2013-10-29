@@ -64,13 +64,13 @@ div.contenido_jugador {
 	float: left;
 	width: 60%;
 	background: #F5ECCE;
-	height:316px;
+	height:100%;
 }
 /*div de la derecha*/
 div.noticias{
 	float: left;
 	width: 20%;
-	height:316px;
+	height:100%;
 	
 }
 /*contenedor del menu adm*/

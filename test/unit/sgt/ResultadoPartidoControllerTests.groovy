@@ -33,7 +33,8 @@ class ResultadoPartidoControllerTests {
         assert model.resultadoPartidoInstance != null
     }
 
-    void testSave() {
+    void testSave() {	
+				
         controller.save()
 
         assert model.resultadoPartidoInstance != null
