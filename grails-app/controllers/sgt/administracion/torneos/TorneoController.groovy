@@ -55,6 +55,15 @@ class TorneoController {
 		torneoInstance.setEstado("Creado")
 		torneoInstance.setPuntuable(torneoPuntuableInstance != null)
 		
+		//def String msg = torneoInstance.fechasCorrectas()
+		def String msg = null
+		
+		if (msg != null) {
+			flash.message = msg
+			render(view: "/administracion/torneos/create", model: [torneoInstance: torneoInstance])
+			return
+		}
+		
         if (!torneoInstance.save(flush: true)) {
             render(view: "/administracion/torneos/create", model: [torneoInstance: torneoInstance])
             return
@@ -100,6 +109,19 @@ class TorneoController {
             redirect(action: "list")
             return
         }
+		
+		if (torneoInstance.estado != "Creado") {
+			flash.message = "El estado del torneo no permite que sea actualizado"
+			render(view: "/administracion/torneos/edit", model: [torneoInstance: torneoInstance])
+			return
+		}
+		
+		def String msg = torneoInstance.fechasCorrectas()
+		if (msg != null) {
+			flash.message = msg
+			render(view: "/administracion/torneos/edit", model: [torneoInstance: torneoInstance])
+			return
+		}
 
         if (version != null) {
             if (torneoInstance.version > version) {

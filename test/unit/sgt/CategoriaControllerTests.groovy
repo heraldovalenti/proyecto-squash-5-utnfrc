@@ -3,6 +3,8 @@ package sgt
 
 
 import org.junit.*
+
+import sgt.administracion.ranking.CategoriaController;
 import grails.test.mixin.*
 
 @TestFor(CategoriaController)
@@ -11,9 +13,8 @@ class CategoriaControllerTests {
 
     def populateValidParams(params) {
         assert params != null
-		params["nombre"] ='Matias'
-		params["descripcion"] ='Que Chabon!!'
-		params["modalidadCategoria"] ="Masculino"
+        // TODO: Populate valid properties like...
+        //params["name"] = 'someValidName'
     }
 
     void testIndex() {
@@ -102,9 +103,7 @@ class CategoriaControllerTests {
 
         // test invalid parameters in update
         params.id = categoria.id
-        params["nombre"] =''
-		params["descripcion"] =''
-		params["modalidadCategoria"] =''
+        //TODO: add invalid values to params object
 
         controller.update()
 
