@@ -8,6 +8,8 @@
 			</div>
 			<div class="tour-title tour-more fr">
 				<g:link controller="usuario" action="loginForm" class="button_small green" style="margin: 3px;">
+				<script type="text/javascript"> function popup(){ littleWindow = window.open("/usuario/loginForm", "littleWindow", "location=center,width=320,height=200"); } </script>
+				
 					INGRESAR	
 				</g:link>
 			</div>

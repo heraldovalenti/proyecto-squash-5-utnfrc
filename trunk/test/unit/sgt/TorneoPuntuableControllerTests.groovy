@@ -1,5 +1,5 @@
 package sgt
-import sgt.TorneoPuntuableController
+import sgt.administracion.torneos.TorneoPuntuableController
 
 
 

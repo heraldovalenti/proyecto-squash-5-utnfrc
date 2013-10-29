@@ -1,17 +1,15 @@
 <html>
 <head>
 	<title><g:message code="iniciosesion.titulo" /></title>
-	<meta name="layout" content="main" />
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+	<meta name="layout" content="login" />
+	
 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'login.css') }" type="text/css" rel="stylesheet">
 </head>
 <body>	
-	<!-- div para formulario de inicio de sesion -->
-	<div id="div_inicio_sesion" class="content scaffold-create" role="main">
-		
+	<!-- div para formulario de inicio de sesion -->		
 		<!-- titulo de inicio de sesion -->
-		<h1 class="h1-login"><g:message code="iniciosesion.titulo" /></h1>		
+		<h3 class="title"><g:message code="iniciosesion.titulo" /></h3>		
 			
 			<!-- control de visualizacion de mensajes de error -->
 			<g:if test="${flash.message}">
@@ -20,14 +18,29 @@
 				</ul>
 			</g:if>
 			
+			<div class="textoUsuario" >
+			<p>
+			Si dispone de nombre de usuario y contraseña, ingrese los datos y haga click en "
+			<b>Iniciar Sesión</b>
+			".Sino dispone de un usuario presione el botón "
+			<b>Crear Cuenta</b>
+			"
+			</p>			
+			</div>
+			
+			
+			
 			<!-- formulario de inicio de sesion -->
 			<g:form controller="Usuario" action="login">
 			
 				<!-- campos del formulario -->
-				<fieldset id="form_inicio_sesion" class="form" >
+				
+			<div class="camposUsuario">
 					
 					<!-- field: nombre de usuario -->
-					<div class="fieldcontain required">
+					<div class="candado">
+					</div>
+					<div class="filaLogin">
 						<label for="nombreUsuario">
 							<g:message code="iniciosesion.nombreusuario.label" />
 							<span class="required-indicator">*</span>
@@ -36,7 +49,7 @@
 					</div>
 					
 					<!-- field: password -->
-					<div class="fieldcontain required">
+					<div class="filaLogin">
 						<label for="password">
 							<g:message code="iniciosesion.password.label" />
 							<span class="required-indicator">*</span>
@@ -44,13 +57,18 @@
 						<g:passwordField name="password" type="password" required="" />
 					</div>
 					
+						
 					<!-- botones de formulario -->
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="enviar" value="${ message(code: 'iniciosesion.submit.label') }" />
-					<g:link controller="usuario" action="loginFormClub">Inicio de Clubes</g:link>
-				</fieldset>
-			</g:form>
-	</div>
+				
+				
+					<g:submitButton name="create" class="enviar" value="${ message(code: 'iniciosesion.submit.label') }" />	
+					<g:submitButton name="Crear Cuenta" class="boton_verde" controller="usuario" action="registro" />
+					
+					<g:link text= "Crear Cuenta" controller="usuario" action="registro" class="boton_verde" style="margin: 3px;" />
+					
+								
+			</div>	
+			</g:form>	
+			
 </body>
 </html>
