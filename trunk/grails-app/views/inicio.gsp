@@ -40,7 +40,7 @@
 	        <link href="http://www.acsr.com.ar/css/ie.css" type="text/css" rel="stylesheet" />
 	    <![endif]-->
 	
-	    <title> Asociación Cordobesa de Squash</title>    
+	    <title>Asociación Cordobesa de Squash</title>    
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 	    <meta http-equiv="cache-control" content="no-cache" />
 	    <meta http-equiv="expires" content="3600" />
