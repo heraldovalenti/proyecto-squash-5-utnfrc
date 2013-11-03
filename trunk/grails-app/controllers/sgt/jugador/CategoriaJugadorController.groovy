@@ -32,7 +32,7 @@ class CategoriaJugadorController {
 	}
 	
 	def solicitarNuevaCategoria() {
-		
+		render(view: "/jugador/categoria/solicitudCategoria")
 	}
 	
 	def cancelarSolicitud() {
