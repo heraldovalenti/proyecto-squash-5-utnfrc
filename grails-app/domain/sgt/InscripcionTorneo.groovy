@@ -14,6 +14,6 @@ class InscripcionTorneo {
 	static constraints = {
 		usuario nullable:false
 		fecha nullable:false
-		estado blanck:false, inList:["Creada","Vinculada","Cerrada","Cancelada","Diagramada"]
+		estado blank:false, inList:["Creada","Vinculada","Cerrada","Cancelada","Diagramada"]
 	}
 }
