@@ -55,8 +55,7 @@ class TorneoController {
 		torneoInstance.setEstado("Creado")
 		torneoInstance.setPuntuable(torneoPuntuableInstance != null)
 		
-		//def String msg = torneoInstance.fechasCorrectas()
-		def String msg = null
+		def String msg = torneoInstance.fechasCorrectas()
 		
 		if (msg != null) {
 			flash.message = msg

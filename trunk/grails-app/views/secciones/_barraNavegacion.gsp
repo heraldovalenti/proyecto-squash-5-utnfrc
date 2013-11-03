@@ -1,10 +1,10 @@
 <div class="container_16 nav mt20">
     <ul>
-        <li><a href="/SistemaGestionTorneo/">Home</a></li>
+        <li><g:link url="/">Home</g:link></li>
         <li><a href="#">La ACS</a></li>
         <li><a href="#">Noticias</a></li>
         <li><a href="/SistemaGestionTorneo/jugador/">Jugadores</a></li>
-        <li><a href="/SistemaGestionTorneo/administracion/torneos/listadoTorneos">Torneos</a></li>        
+        <li><a href="/SistemaGestionTorneo/listaTorneo">Torneos</a></li>        
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
         <li><a href="/SistemaGestionTorneo/partido/list">Diagramación</a></li>
         <li><a href="#">Contacto</a></li>

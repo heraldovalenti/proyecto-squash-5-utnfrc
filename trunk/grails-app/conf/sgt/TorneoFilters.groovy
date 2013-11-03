@@ -11,7 +11,8 @@ class TorneoFilters {
 				def Iterator<Torneo> iter = torneoInstanceList.iterator()
 				while(iter.hasNext()) {
 					Torneo aux = iter.next()
-					if (aux.getFechaInicioInscripcion().before(hoy)) {
+					if (aux.getFechaInicioInscripcion().before(hoy) && 
+						aux.getFechaFinInscripcion().after(hoy)) {
 						aux.abrirInscripcion()
 					}
 				}
@@ -25,7 +26,7 @@ class TorneoFilters {
 				def Iterator<Torneo> iter = torneoInstanceList.iterator()
 				while(iter.hasNext()) {
 					Torneo aux = iter.next()
-					if (aux.getFechaInicioInscripcion().after(hoy)) {
+					if (aux.getFechaFinInscripcion().before(hoy)) {
 						aux.cerrarInscripcion()
 					}
 				}

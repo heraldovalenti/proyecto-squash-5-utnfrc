@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="main">
-<title>Asociación Cordobesa de Squash</title>
+	<meta name="layout" content="main">
 </head>
 <body>
 	<h3>Listado de torneos de la ACS</h3>
-	<div>Opciones de listado</div>
+	<div>
+		<ul>
+			<li>Torneos: Todos - Solo puntuables</li>
+			<li>Año: 2013 2012 2011 2010</li>
+		</ul>
+	</div>
 	<div>
 		<g:render template="/torneo/torneoCard" var="torneoInstance" collection="${ torneoInstanceList }" />
 	</div>

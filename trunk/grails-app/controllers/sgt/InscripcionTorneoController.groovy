@@ -1,15 +1,16 @@
 package sgt
 
 class InscripcionTorneoController {
-	
-	static scaffold = sgt.InscripcionTorneo
-	
-	def inscripcion = {
-		//if () {
-			
-		//}
 		
-		//cargar torneos
+	def inscripcionTorneo(Long id) {
+		def userLogon = session.getAttribute("userLogon")
+		if (!userLogon) {
+			flash.message = "Debe iniciar sesión primero"
+			redirect(controller: "usuario", action: "loginForm")
+			return
+		}
+		
+		def InscripcionTorneoService inscripcionTorneoService = new InscripcionTorneoService()
 		
 		
 	}

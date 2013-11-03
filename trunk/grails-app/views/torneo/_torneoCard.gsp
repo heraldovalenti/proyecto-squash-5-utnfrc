@@ -6,7 +6,7 @@
 	<p>Hasta <g:formatDate date="${ torneoInstance?.fechaFinTorneo }" format="dd/MM/yy"/></p>
 	<p>club asignado</p>
 	<g:if test="${ torneoInstance?.inscripcionAbierta() }">
-		<p><u>>>Inscripcion</u></p>
+		<p><g:link controller="inscripcionTorneo" action="inscripcionTorneo" id="${ torneoInstance?.id }">>>Inscripcion</g:link></p>
 	</g:if>
 	<g:else>
 		<p>>>Inscripcion abre <g:formatDate date="${ torneoInstance?.fechaInicioInscripcion }" format="dd/MM/yy"/></p>

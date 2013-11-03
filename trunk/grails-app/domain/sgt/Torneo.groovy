@@ -34,17 +34,10 @@ class Torneo {
     }
 	
 	def String fechasCorrectas() {
-		def Calendar open = new GregorianCalendar()
-		open.setTime(this.fechaInicioInscripcion)
-		
-		def Calendar close = new GregorianCalendar()
-		close.setTime(this.fechaFinInscripcion)
-		
-		def Calendar init = new GregorianCalendar()
-		init.setTime(this.fechaInicioTorneo)
-		
-		def Calendar finish = new GregorianCalendar()
-		finish.setTime(this.fechaFinTorneo)
+		def Date open = this.fechaInicioInscripcion
+		def Date close = this.fechaFinInscripcion
+		def Date init = this.fechaInicioTorneo
+		def Date finish = this.fechaFinTorneo
 		
 		//cierre de insripcion antes que la apertura
 		if (open.after(close)) {
@@ -62,14 +55,12 @@ class Torneo {
 		}
 		
 		//apertura y cierre de inscripcion el mismo dia
-		if (Math.abs(open.getTime() - close.getTime()) < (24 * 60 * 60 * 1000)) {
-		//if (open.YEAR == close.YEAR && open.DAY_OF_YEAR == close.DAY_OF_YEAR) {
+		if (open.equals(close)) {
 			return "Debe haber al menos un dia entre la apertura y el cierre de inscripcion"
 		}
 		
 		//cierre de insripcion e inicio del torneo el mismo dia
-		if (Math.abs(close.getTime() - init.getTime()) < (24 * 60 * 60 * 1000)) {
-		//if (close.YEAR == init.YEAR && close.DAY_OF_YEAR == init.DAY_OF_YEAR) {
+		if (close.equals(init)) {
 			return "Debe haber al menos un dia entre el cierre de inscripcion y el inicio del torneo"
 		}
 		
