@@ -31,7 +31,7 @@ class CanchaController {
 	def save() {
 		def canchaInstance = new Cancha(params)
 		if (!canchaInstance.save(flush: true)) {
-			render(view: "/club/canchas/create", model: [clubInstance: clubInstance])
+			render(view: "/club/canchas/create", model: [canchaInstance: canchaInstance])
 			return
 		}
 		

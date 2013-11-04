@@ -6,4 +6,5 @@
 <body>
 	Pagina de inicio de administracion en construccion	
 </body>
+
 </html>

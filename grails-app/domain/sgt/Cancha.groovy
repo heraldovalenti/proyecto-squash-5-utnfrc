@@ -20,8 +20,8 @@ class Cancha {
     static constraints = {
 		paredes nullable: true, blank: false
 		techo nullable: true
-		ancho nullable: true, min: 0.0f
-		largo nullable: true, min: 0.0f
+		ancho nullable: true, min: 0.0f, max:10.0f
+		largo nullable: true, min: 0.0f, max:10.0f
 		nombre blank:false, maxSize: 50, nullable: false
 		tipoSuelo blank:false, inList:["Parquet","Cemento","Cesped","Carpeta","Otro"]
 		disponibilidad nullable: true
