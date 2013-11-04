@@ -1,3 +1,7 @@
+<%@ page import="sgt.Torneo" %>
+<%@ page import="sgt.DetalleTorneo" %>
+<%@ page import="sgt.Categoria" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +15,16 @@
 	</g:if>		
 			
 	<div>
-		<ul>
-			<li>Ver mi disponibilidad horaria</li>
-			<li>Inscripcion</li>
-		</ul>
+		<fieldset class="form">
+			<div class="fieldcontain ${hasErrors(bean: categoriaJugadorInstance, field: 'categoria', 'error')} ">
+				<label for="categoria">Inscripción en Categoría:</label>
+				<g:each in="${ detalleTorneoInstanceList }" status="i" var="detalle">
+					<g:link controller="inscripcionTorneo" action="inscribir" id="${ detalle?.id }">
+						${ detalle?.categoria?.toString() } - 
+					</g:link>
+				</g:each>
+			</div>
+		</fieldset>
 	</div>		
 	
 	<div>

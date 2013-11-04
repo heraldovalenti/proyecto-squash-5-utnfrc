@@ -1,6 +1,7 @@
 package sgt
 
 import sgt.Disponibilidad;
+imprt sgt.CategoriaJugador;
 
 class Usuario {
 
@@ -26,6 +27,17 @@ class Usuario {
 		domicilio nullable: true
 		club nullable: true
     }
+	
+	def CategoriaJugador getCategoriaActual() {
+		def Iterator<CategoriaJugador> categoriaJugadorIterator = this.categoriasJugador.iterator()
+		while (categoriaJugadorIterator.hasNext()) {
+			def CategoriaJugador aux = categoriaJugadorIterator.next()
+			if (aux.esAsignada()) {
+				return aux
+			}
+		}
+		return null
+	}
 	
 	
 }

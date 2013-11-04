@@ -28,7 +28,7 @@
 				
 				<div class="fieldcontain ${hasErrors(bean: categoriaJugadorInstance, field: 'categoria', 'error')} ">
 					<label for="categoria">Categoría</label>
-					<g:select name="categoria" from="${ categoriaInstanceList }" value="${categoriaJugadorInstance?.categoria}" valueMessagePrefix="categoriaJugador.categoria" noSelection="['': '']"/>
+					<g:select optionKey="id" optionValue="nombre" name="categoria.id" from="${ categoriaInstanceList }" value="${categoriaJugadorInstance?.categoria?.id}" valueMessagePrefix="categoriaJugador.categoria" noSelection="['': '']"/>
 				</div>
 				
 				<div class="fieldcontain ${hasErrors(bean: categoriaJugadorInstance, field: 'descripcion', 'error')} ">
