@@ -4,7 +4,8 @@
 	<head>
 		<meta name="layout" content="administracion">
 		<g:set var="entityName" value="${message(code: 'partido.label', default: 'Partido')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<title><g:message code="default.create.label" args="[entityName]" /></title>	
+        
 	</head>
 	<body>
 		<a href="#create-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
