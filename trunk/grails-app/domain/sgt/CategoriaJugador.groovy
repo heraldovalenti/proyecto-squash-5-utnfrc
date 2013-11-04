@@ -7,6 +7,8 @@ class CategoriaJugador {
 	String estado
 	Date fechaInicio
 	Date fechaFin
+	
+	static belongsTo = [usuario: Usuario]
 
     static constraints = {
 		categoria nullable: false
@@ -31,11 +33,18 @@ class CategoriaJugador {
 	}
 	
 	def void darBaja() {
-		if (this.estado.equals("Asignada")) this.estado = "De baja"
+		if (this.estado.equals("Asignada")) {
+			this.estado = "De baja"
+			this.fechaFin = new Date()
+		}
 	}
 	
 	def void asignar() {
-		if (this.estado.equals("Solicitada")) this.estado = "Asignada"
+		if (this.estado.equals("Solicitada")) {
+			this.estado = "Asignada"
+			this.fechaInicio = new Date()
+			this.fechaFin = null
+		}
 	}
 	
 	def void solicitar() {

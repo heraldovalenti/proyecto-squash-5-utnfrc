@@ -5,13 +5,12 @@
 </head>
 <body>
 	<h3>Listado de torneos de la ACS</h3>
-	<div>
-		<ul>
-			<li>Torneos: Todos - Solo puntuables</li>
-			<li>Año: 2013 2012 2011 2010</li>
-		</ul>
+	<div id="opciones-filtro">
+		Año: <g:select name="year" from="${2000..2013 }" value="${ year }" />
+		<g:checkBox name="soloPuntuables" value="${ soloPuntuables }" />
+		<g:link controller="listaTorneo" action="listaTorneos">Enviar</g:link>
 	</div>
-	<div>
+	<div id="resultados-filtro">
 		<g:render template="/torneo/torneoCard" var="torneoInstance" collection="${ torneoInstanceList }" />
 	</div>
 </body>

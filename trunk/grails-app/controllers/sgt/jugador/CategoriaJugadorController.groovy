@@ -32,7 +32,9 @@ class CategoriaJugadorController {
 	}
 	
 	def solicitarNuevaCategoria() {
-		render(view: "/jugador/categoria/solicitudCategoria")
+		def categoriaInstanceList = Categoria.list()
+		def categoriaJugadorInstance = new CategoriaJugador(params)
+		render(view: "/jugador/categoria/solicitudCategoria", model: [categoriaJugadorInstance: categoriaJugadorInstance, categoriaInstanceList: categoriaInstanceList])
 	}
 	
 	def cancelarSolicitud() {
@@ -58,9 +60,11 @@ class CategoriaJugadorController {
 	}
 	
 	def save() {
+		def Usuario usuario = session.getAttribute("userLogon")
 		def categoriaJugadorInstance = new CategoriaJugador(params)
 		categoriaJugadorInstance.setFechaInicio(new Date())
 		categoriaJugadorInstance.solicitar()
+		categoriaJugadorInstance.setUsuario(usuario)
 		
 		if (!categoriaJugadorInstance.save()) {
 			def categoriaInstanceList = Categoria.list()
@@ -68,10 +72,10 @@ class CategoriaJugadorController {
 			return
 		}
 		
-		def Usuario usuario = session.getAttribute("userLogon")
-		usuario = Usuario.get(usuario?.id)
-		usuario.addToCategoriasJugador(categoriaJugadorInstance)
-		usuario.save()
+		//def Usuario usuario = session.getAttribute("userLogon")
+		//usuario = Usuario.get(usuario?.id)
+		//usuario.addToCategoriasJugador(categoriaJugadorInstance)
+		//usuario.save()
 		
 		flash.message = "Solicitud de categoría registrada"
 		redirect(action: "index")
