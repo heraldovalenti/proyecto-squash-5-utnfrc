@@ -1,5 +1,7 @@
 package sgt
+import sgt.Persona;
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 class PartidoController {
@@ -11,8 +13,7 @@ class PartidoController {
 		def partidoInstance = Partido.get(id)
 		redirect(controller: 'resultadoPartido', action:'cargarResultado', id: id)
 		return
-	}
-	
+	}		
 	
 	//Acciones del Scaffold
 
@@ -26,11 +27,12 @@ class PartidoController {
     }
 
     def create() {
-        [partidoInstance: new Partido(params)]
+        [partidoInstance: new Partido(params)]		
     }
 
     def save() {
-        def partidoInstance = new Partido(params)
+        def partidoInstance = new Partido(params)	
+		System.out.println(params)	
         if (!partidoInstance.save(flush: true)) {
             render(view: "create", model: [partidoInstance: partidoInstance])
             return

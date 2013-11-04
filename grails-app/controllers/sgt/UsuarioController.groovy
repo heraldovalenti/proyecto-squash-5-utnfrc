@@ -1,8 +1,16 @@
 package sgt
 
+import grails.converters.JSON
+
 class UsuarioController {
 
 	static scaffold = sgt.Usuario
+	
+	def listarPersonas() {
+		def usuarios = Usuario.list()
+		System.out.println(usuarios)
+	 render usuarios as JSON
+	}
 	
 	def index() {
 		redirect(action:'loginForm')

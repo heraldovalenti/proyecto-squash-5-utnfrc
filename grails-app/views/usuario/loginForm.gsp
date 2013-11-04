@@ -61,10 +61,10 @@
 					<!-- botones de formulario -->
 				
 				
-					<g:submitButton name="create" class="enviar" value="${ message(code: 'iniciosesion.submit.label') }" />	
-					<g:submitButton name="Crear Cuenta" class="boton_verde" controller="usuario" action="registro" />
+					<g:submitButton name="create" class="enviar" value="Inicar Sesión" />
+					<g:link controller="usuario" action="registro" class="link_boton_verde">Crear Cuenta</g:link>					
 					
-					<g:link text= "Crear Cuenta" controller="usuario" action="registro" class="boton_verde" style="margin: 3px;" />
+					<g:link value= "Crear Cuenta" controller="usuario" action="registro" class="boton_verde" style="margin: 3px;" />
 					
 								
 			</div>	

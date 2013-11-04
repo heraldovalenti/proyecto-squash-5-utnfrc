@@ -306,6 +306,28 @@ a.blue
 background:-webkit-gradient(linear, left top, left bottom, from(#2db5f4), to(#0b93d2));
 background:-moz-linear-gradient(top, #2db5f4, #0b93d2);
 color:#ffffff;}
+
+.link_boton_verde
+{
+	color:#ffffff;
+    background:#67921c!important;
+    background:-webkit-gradient(linear, left top, left bottom, from(#8fcc26), to(#67921c))!important;
+    background:-moz-linear-gradient(top, #8fcc26, #67921c)!important;
+    float:center;
+    line-height: 23px;	
+	height:21px;
+	width:120px !important;
+	border: 2px outset buttonface;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-radius: 5px;	
+	letter-spacing: normal;
+	text-align: center;		
+	display: inline-block
+}
 	
 .boton_verde
 {

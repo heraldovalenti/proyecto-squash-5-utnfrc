@@ -1,5 +1,12 @@
 <%@ page import="sgt.Partido" %>
+<%@ page import="sgt.Persona" %>
 
+
+<head>
+		<r:require module="jquery-ui"/>
+        <g:javascript library="listaPersonas"/>
+
+</head>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'torneo', 'error')} required">
 	<label for="torneo">
@@ -46,7 +53,9 @@
 		<g:message code="partido.jugador1.label" default="Jugador1" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="jugador1" name="jugador1.id" from="${sgt.Usuario.list()}" optionKey="id" required="" value="${partidoInstance?.jugador1?.id}" class="many-to-one"/>
+	<!----- Campos de Jugador1----->
+	<g:hiddenField name="jugador1.id" id="jugador1.id" value="${partidoInstance?.jugador1?.id}"/>	
+	<g:textField name="jugador1" id="jugador1" value="" placeholder="Ingrese el Jugador.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'jugador2', 'error')} required">
@@ -54,7 +63,9 @@
 		<g:message code="partido.jugador2.label" default="Jugador2" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="jugador2" name="jugador2.id" from="${sgt.Usuario.list()}" optionKey="id" required="" value="${partidoInstance?.jugador2?.id}" class="many-to-one"/>
+	<!----- Campos de Jugador2----->
+	<g:hiddenField name="jugador2.id" id="jugador2.id" value="${partidoInstance?.jugador2?.id}"/>
+	<g:textField name="jugador2" id="jugador2" value="" placeholder="Ingrese el Jugador.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'estado', 'error')} required">
@@ -78,6 +89,8 @@
 		<g:message code="partido.arbitro.label" default="Arbitro" />
 		
 	</label>
-	<g:select id="arbitro" name="arbitro.id" from="${sgt.Usuario.list()}" optionKey="id" value="${partidoInstance?.arbitro?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<!----- Campos de Arbitro----->
+	<g:hiddenField name="arbitro.id" id="arbitro.id" value="${partidoInstance?.arbitro?.id}"/>
+	<g:textField name="arbitro" id="arbitro" value="" placeholder="Ingrese el Arbitro.."/>
 </div>
 

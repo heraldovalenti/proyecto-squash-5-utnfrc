@@ -4,7 +4,10 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class PersonaController {
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]	
+	
+	
+	//Acciones del Scaffold
 
     def index() {
         redirect(action: "list", params: params)
