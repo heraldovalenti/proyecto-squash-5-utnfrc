@@ -1,7 +1,7 @@
 package sgt
 
 import sgt.Disponibilidad;
-imprt sgt.CategoriaJugador;
+import sgt.CategoriaJugador;
 
 class Usuario {
 
@@ -39,5 +39,19 @@ class Usuario {
 		return null
 	}
 	
-	
+	def Integer puestoRanking(Categoria categoria) {
+		def c = Ranking.createCriteria()
+		def rankingList = c.list() {
+			eq("categoria", categoria)
+			and {
+				eq("usuario", this)
+			}
+		}
+		
+		if (rankingList.size() == 0) {
+			return 0
+		}
+		
+		
+	}
 }

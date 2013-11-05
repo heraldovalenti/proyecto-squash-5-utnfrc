@@ -4,6 +4,7 @@ package sgt
 
 import org.junit.*
 import grails.test.mixin.*
+import sgt.club.ServicioClubController
 
 @TestFor(ServicioClubController)
 @Mock(ServicioClub)

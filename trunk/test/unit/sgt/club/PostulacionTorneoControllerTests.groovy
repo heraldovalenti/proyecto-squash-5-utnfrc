@@ -1,4 +1,4 @@
-package sgt
+package sgt.club
 
 
 
@@ -8,8 +8,8 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(FixtureController)
-class FixtureControllerTests {
+@TestFor(PostulacionTorneoController)
+class PostulacionTorneoControllerTests {
 
     void testSomething() {
        fail "Implement me"

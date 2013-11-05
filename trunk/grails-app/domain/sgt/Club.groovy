@@ -10,7 +10,7 @@ class Club {
     String correo
 	Boolean validado
     
-	static hasMany = [canchas: Cancha, servicios: ServicioClub]
+	static hasMany = [canchas: Cancha, servicios: ServicioClub, postulaciones: PostulacionTorneo]
 	
 	
     static constraints = {
@@ -23,6 +23,6 @@ class Club {
     }
 	
 	String toString() {
-		return nombre
+		return razonSocial
 	}
 }

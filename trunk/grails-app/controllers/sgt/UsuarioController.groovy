@@ -3,8 +3,6 @@ package sgt
 import grails.converters.JSON
 
 class UsuarioController {
-
-	static scaffold = sgt.Usuario
 	
 	def listarPersonas() {
 		def usuarios = Usuario.list()

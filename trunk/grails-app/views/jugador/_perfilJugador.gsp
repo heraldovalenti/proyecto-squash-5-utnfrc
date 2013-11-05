@@ -1,12 +1,21 @@
 <div class="grid_16 mt10">
 	<div id="playerBioInfoCard">
 		<div id="playerBioInfoCardMain">
+			
 			<div id="playerBioHeadShot">
+				
 				<p class="IE6pngFix" id="playerBioHeadShotCopy">&copy; ACS</p>
 				<img width="180" height="170" alt="${ perfil.nombre } ${ perfil.apellido }" 
 				src="${ resource(dir: 'images/perfiles', file: perfil.imagenPerfil) }" />
 			</div>
-			<ul id="playerBioInfoList">			
+			
+			<ul id="playerBioInfoList">
+				<li style="
+				color:#FFFFFF; 
+				font-family: inherit;
+				font-size: 100%;
+				font-style: inherit;
+				font-size: 20px">${ perfil.nombre + " " + perfil.apellido}</li>	
 				<g:if test="${ perfil.fechaNacimiento }">
 					<li>
 						<span>Edad: </span> ${ perfil.edad } (<g:formatDate date="${ perfil.fechaNacimiento }" format="dd-MM-yyyy"/>)
@@ -44,6 +53,19 @@
 				<g:if test="${ perfil.juegaDesde }">
 					<li>
 						<span>Juega desde: </span> <g:formatDate date="${ perfil.juegaDesde }" format="dd-MM-yyyy"/>
+					</li>
+				</g:if>
+				
+				<g:if test="${ perfil.categoria }">
+					<li>
+						<span>Categoria: </span>
+						${ perfil.categoria } 
+						<g:if test="${ perfil.ranking }">
+							 - ${ message(code:'none', default: '#') }${ perfil.ranking }
+						</g:if>
+						<g:else>
+							 - ${ message(code:'none', default: '#') }N/A
+						</g:else>
 					</li>
 				</g:if>
 			</ul>

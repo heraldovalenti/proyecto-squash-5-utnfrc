@@ -29,7 +29,8 @@
      		</li>						
 			<li><g:link controller="puntaje">Puntajes</g:link></li>			
 			<li><g:link controller="ranking">Rankings</g:link></li>
-			<li><g:link controller="categoria">Categorias</g:link></li>			
+			<li><g:link controller="categoria">Categorias</g:link></li>
+			<li><g:link controller="solicitudCategoria">Solicitudes de categoria</g:link></li>
 			<li><g:link controller="usuario" action="logout">Cerrar sesión</g:link></li>					
 		</ul>
 	</div>

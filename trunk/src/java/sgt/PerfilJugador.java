@@ -16,7 +16,24 @@ public class PerfilJugador {
 	private Double altura;
 	private Date juegaDesde;
 	private String imagenPerfil;
+	private String categoria;
+	private Integer ranking;
 	
+	public String getCategoria() {
+		return this.categoria;
+	}
+	
+	public Integer getRanking() {
+		return this.ranking;
+	}
+	
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+	
+	public void setRanking(Integer ranking) {
+		this.ranking = ranking;
+	}
 	
 	public void setEdad(Integer edad) {
 		this.edad = edad;

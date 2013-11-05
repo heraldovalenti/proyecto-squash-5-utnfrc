@@ -1,6 +1,6 @@
 <div class="container_16 nav mt20">
     <ul>
-        <li><g:link url="/">Home</g:link></li>
+        <li><a href="/SistemaGestionTorneo">Home</a></li>
         <li><a href="#">La ACS</a></li>
         <li><a href="#">Noticias</a></li>
         <li><a href="/SistemaGestionTorneo/jugador/">Jugadores</a></li>

@@ -30,7 +30,7 @@ class InscripcionTorneoController {
 			return
 		}
 		
-		if (!categoriaJugadorInstance || !categoriaJugadorInstance?.categoria?.equals(etalleTorneoInstance?.categoria)) {
+		if (!categoriaJugadorInstance || !categoriaJugadorInstance?.categoria?.equals(detalleTorneoInstance?.categoria)) {
 			flash.message = "La categoría seleccionada no corresponde a la suya"
 			redirect(action: "inscripcionTorneo", id: idTorneo)
 			return
@@ -45,6 +45,28 @@ class InscripcionTorneoController {
 		
 		flash.message = "Inscripción realizada con éxito"
 		render(view: "/inscripcionTorneo/inscripcionRealizada")
+	}
+	
+	def cancelarInscripcion(Long id) {
+		def inscripcionTorneoInstance = InscripcionTorneo.get(id)
+		
+		if (!inscripcionTorneoInstance) {
+			flash.message = "No se ha encontrado la inscripcion"
+			redirect(controller: "inscripciones", action: "index")
+			return
+		}
+		
+		if (!inscripcionTorneoInstance.puedeCancelar()) {
+			flash.message = "No se puede cancelar la inscripcion"
+			redirect(controller: "inscripciones", action: "index")
+			return
+		}
+		
+		inscripcionTorneoInstance.cancelar()
+		inscripcionTorneoInstance.save()
+		
+		flash.message = "Inscripcion cancelada"
+		redirect(controller: "inscripciones", action: "index")
 	}
 }
 

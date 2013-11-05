@@ -6,7 +6,7 @@ class Ranking {
 	Double puntaje
 	Integer puesto
 	
-	static belongsTo = Usuario
+	static belongsTo = [usuario: Usuario]
 	
 	static hasMany = [detalles: DetalleRanking]
 

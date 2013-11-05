@@ -18,8 +18,16 @@ class InscripcionTorneo {
 		estado blank:false, inList:["Creada","Vinculada","Cerrada","Cancelada","Diagramada"]
 	}
 	
+	def Boolean esVinculada() {
+		return this.estado.equals("Vinculada")
+	}
+	
 	def void diagramar() {
 		if (this.estado.equals("Vinculada")) this.estado = "Diagramada"
+	}
+	
+	def Boolean puedeCancelar() {
+		return this.estado.equals("Vinculada")
 	}
 	
 	def void cancelar() {

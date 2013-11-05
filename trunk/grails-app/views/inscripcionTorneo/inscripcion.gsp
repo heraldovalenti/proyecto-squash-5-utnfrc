@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="layout" content="main">
+	<meta name="layout" content="jugador">
 </head>
 <body>
 	<h3>Inscripcion a torneo</h3>

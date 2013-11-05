@@ -16,12 +16,15 @@ class Torneo {
 	
 	static hasMany = [detalles: DetalleTorneo]
 	
+	static belongsTo = [torneoPuntuable: TorneoPuntuable]
+	
 	String toString()
 	{
-		return nombre + " " + fechaInicioTorneo.getYear()
+		return nombre
 	}
 
     static constraints = {
+		torneoPuntuable nullable: true
 		nombre blank: false, maxSize: 150
 		fechaAlta nullable: false
 		fechaInicioInscripcion nullable: false
@@ -32,6 +35,14 @@ class Torneo {
 		estado blank: false, inList:["Creado","Inscripcion Abierta","Inscripcion Cerrada",
 			"Diagramado","En Curso","Finalizado", "Ranking Actualizado"]
     }
+	
+	def Boolean esPostulable() {
+		if (club == null) return true
+		if (this.creado() || this.inscripcionAbierta() || this.inscripcionCerrada()) {
+			return true
+		}
+		return false
+	}
 	
 	def String fechasCorrectas() {
 		def Date open = this.fechaInicioInscripcion
@@ -81,6 +92,16 @@ class Torneo {
 	
 	def Boolean inscripcionAbierta() {
 		if (this.estado.equals("Inscripcion Abierta")) return true
+		else return false
+	}
+	
+	def Boolean inscripcionCerrada() {
+		if (this.estado.equals("Inscripcion Cerrada")) return true
+		else return false
+	}
+	
+	def Boolean creado() {
+		if (this.estado.equals("Creado")) return true
 		else return false
 	}
 	

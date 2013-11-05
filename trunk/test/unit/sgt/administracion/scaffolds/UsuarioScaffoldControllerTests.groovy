@@ -1,17 +1,15 @@
-package sgt
+package sgt.administracion.scaffolds
 
 
 
 import grails.test.mixin.*
 import org.junit.*
 
-import sgt.jugador.JugadorController;
-
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(JugadorController)
-class JugadorControllerTests {
+@TestFor(UsuarioScaffoldController)
+class UsuarioScaffoldControllerTests {
 
     void testSomething() {
        fail "Implement me"
