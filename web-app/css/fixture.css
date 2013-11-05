@@ -1,0 +1,44 @@
+/* llave */
+
+.llave-arriba {
+	background: url(../images/rama-arriba.png) 100% 100% no-repeat transparent;
+	background-size: 100% 100%;
+	overflow: hidden;
+	border: none;
+}
+
+.llave-abajo {
+	background: url(../images/rama-abajo.png) 100% 100% no-repeat transparent;
+	background-size: 100% 100%;
+	overflow: hidden;
+	border: none;
+}
+
+.jugador-torneo{
+	width:inherit; 
+	height:35px;  
+	display:block;
+	vertical-align: middle; 
+	background-color:#FAFAFA;
+	border: 3px outset #CECEF6; 
+	color:#170B3B;
+}
+
+.info-torneo{
+	width:inherit; 
+	height:5px;  
+	display:block;
+	vertical-align: middle; 
+	font-size:x-small;
+	color:#0174DF;
+}
+
+.fixture-torneo{
+	margin-top:5px; 
+	width: 100%;	
+	max-width: 1260px;	
+	in-width: 780px;
+	background-color: none;
+	overflow: hidden;
+	background: url(../images/copa-dorada.jpg) no-repeat center right;
+}

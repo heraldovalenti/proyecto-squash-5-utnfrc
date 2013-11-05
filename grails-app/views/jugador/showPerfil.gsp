@@ -17,7 +17,7 @@
 	</g:if>
 	<g:else>
 		<ul class="errors" role="alert">
-			<li>Perfil no encontrado</li>
+			<li>Para generar un perfil se deben completar al menos los datos personales.</li>
 		</ul>
 	</g:else>
 </body>

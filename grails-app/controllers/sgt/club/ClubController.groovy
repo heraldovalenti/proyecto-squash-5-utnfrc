@@ -17,6 +17,12 @@ class ClubController {
 	
 	def index() {
 		def Usuario u = session.getAttribute("userLogon")
+		
+		if (!u) {
+			redirect(url: "/")
+			return
+		}
+		
 		u = Usuario.get(u.id)
 		render(view: 'inicioClub')
 		return

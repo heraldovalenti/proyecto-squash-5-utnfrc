@@ -84,7 +84,9 @@
 						<span class="property-value" aria-labelledby="club-label">${ torneoInstance?.club?.toString() }</span>
 					</g:if>	
 					<g:else>
-						<span class="property-value" aria-labelledby="club-label">No asignado</span>
+						<span class="property-value" aria-labelledby="club-label">
+							No asignado - <g:link controller="torneo" action="verPostulaciones" id="${ torneoInstance?.id }">Ver postulaciones</g:link>
+						</span>
 					</g:else>
 				</li>
 				

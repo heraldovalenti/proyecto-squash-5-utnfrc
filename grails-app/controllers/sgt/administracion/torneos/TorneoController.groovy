@@ -5,6 +5,8 @@ import sgt.TorneoPuntuable
 import sgt.DetalleTorneo
 import sgt.Categoria
 import org.springframework.dao.DataIntegrityViolationException
+import sgt.PostulacionTorneo
+import sgt.InscripcionTorneo
 
 
 
@@ -54,6 +56,7 @@ class TorneoController {
 		torneoInstance.setFechaAlta(new Date())
 		torneoInstance.setEstado("Creado")
 		torneoInstance.setPuntuable(torneoPuntuableInstance != null)
+		torneoInstance.setTorneoPuntuable(torneoPuntuableInstance)
 		
 		def String msg = torneoInstance.fechasCorrectas()
 		
@@ -68,11 +71,12 @@ class TorneoController {
             return
         }
 		
-		if (torneoPuntuableInstance) {
+		/*if (torneoPuntuableInstance) {
 			torneoPuntuableInstance.addToInstanciasTorneo(torneoInstance)
 			torneoPuntuableInstance.save()
 		}
-
+		*/
+		
         flash.message = message(code: 'sgt.registrodatos.exito')
         redirect(action: "show", id: torneoInstance.id)
     }
@@ -178,6 +182,7 @@ class TorneoController {
 	def createDetalle() {
 		def idTorneo = session.getAttribute("idTorneo")
 		def torneoInstance = Torneo.get(idTorneo)
+		
 		def categoriaInstanceList = Categoria.list()
 		def detalleTorneoInstance = new DetalleTorneo(params)
 		
@@ -196,6 +201,7 @@ class TorneoController {
 		def idTorneo = session.getAttribute("idTorneo")
 		def torneoInstance = Torneo.get(idTorneo)
 		def detalleTorneoInstance = new DetalleTorneo(params)
+		detalleTorneoInstance.setTorneo(torneoInstance)
 		
 		if (!detalleTorneoInstance.save(flush: true)) {
 			def categoriaInstanceList = Categoria.list()
@@ -210,9 +216,6 @@ class TorneoController {
 			render(view: "/administracion/torneos/createDetalle", model: [detalleTorneoInstance: detalleTorneoInstance, torneoInstance: torneoInstance, categoriaInstanceList: categoriaInstanceList])
 			return
 		}
-		
-		torneoInstance.addToDetalles(detalleTorneoInstance)
-		torneoInstance.save()
 		
 		flash.message = message(code: 'sgt.registrodatos.exito')
 		redirect(action: "verDetalles", id: torneoInstance.id)
@@ -239,5 +242,40 @@ class TorneoController {
 			flash.message = message(code: 'sgt.registrodatos.fallo')
 			redirect(action: "verDetalles", id: idTorneo)
 		}
+	}
+	
+	def verPostulaciones(Long id) {
+		session.setAttribute("idTorneo", id)
+		redirect(action: "listadoPostulaciones")
+	}
+	
+	def listadoPostulaciones() {
+		def idTorneo = session.getAttribute("idTorneo")
+		def torneoInstance = Torneo.get(idTorneo)
+		
+		def c = PostulacionTorneo.createCriteria()
+		def postulacionInstanceList = c.list(params) {
+			eq("torneo", torneoInstance)
+		}
+		
+		render(view: "/administracion/torneos/postulacionesTorneo", model: [postulacionInstanceList: postulacionInstanceList, torneoInstance: torneoInstance])
+	}
+	
+	def verInscripciones(Long id) {
+		session.setAttribute("idTorneo", id)
+		redirect(action: "listadoInscripciones")
+	}
+	
+	def listadoInscripciones() {
+		def idTorneo = session.getAttribute("idTorneo")
+		def torneoInstance = Torneo.get(idTorneo)
+		
+		def c = InscripcionTorneo.createCriteria()
+		def detalleList = torneoInstance.getDetalles()
+		def inscripcionInstanceList = c.list(params) {
+			'in' ("detalleTorneo", detalleList)
+		}
+		
+		render(view: "/administracion/torneos/inscripcionesTorneo", model: [inscripcionInstanceList: inscripcionInstanceList, torneoInstance: torneoInstance])
 	}
 }

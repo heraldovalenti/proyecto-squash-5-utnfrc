@@ -5,8 +5,7 @@ class DetalleTorneo {
 	Categoria categoria
 	Integer cupoMaximo
 	
-	static belongsTo = Torneo
-	String toString(){return categoria.nombre}
+	static belongsTo = [torneo: Torneo]
 	
 	static hasMany = [inscripciones: InscripcionTorneo] 
 	
@@ -19,8 +18,12 @@ class DetalleTorneo {
 		def Iterator<InscripcionTorneo> inscripcionTorneoIterator = this.getInscripciones().iterator()
 		while (inscripcionTorneoIterator.hasNext()) {
 			InscripcionTorneo aux = inscripcionTorneoIterator.next()
-			if (aux.usuario.equals(usuario)) return true
+			if (aux.usuario.equals(usuario) && aux.esVinculada()) return true
 		}
 		return false
+	}
+	
+	String toString() { 
+		return torneo.toString() + "(en " + categoria.toString() + ")"
 	}
 }

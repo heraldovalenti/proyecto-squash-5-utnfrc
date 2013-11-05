@@ -1,12 +1,23 @@
-package sgt
+package sgt.jugador
 
 import java.rmi.server.UID;
+
+import sgt.FileUploadService;
+import sgt.Jugador;
+import sgt.PerfilJugador;
+import sgt.Usuario;
 
 class JugadorController {
 
 	static defaultAction ='index'
 	
-    def index() { 
+    def index() {
+		def Usuario u = session.getAttribute("userLogon")
+		u = Usuario.get(u?.id)
+		if(!u) {
+			redirect(url: "/")
+			return
+		}
 		render(view: '/jugador/inicioJugador')
 		return
 	}
@@ -102,6 +113,9 @@ class JugadorController {
 				perfil.setImagenPerfil(u.jugador.imagen) 
 			} else {
 				perfil.setImagenPerfil("default.jpg")
+			}
+			if (u.getCategoriaActual()) {
+				perfil.setCategoria(u.getCategoriaActual()?.categoria?.toString())
 			}
 			
 			render(view: '/jugador/showPerfil', model: [perfil: perfil, layout: 'jugador'])

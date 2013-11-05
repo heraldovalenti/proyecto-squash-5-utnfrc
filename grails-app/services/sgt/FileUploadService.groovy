@@ -22,11 +22,12 @@ public class FileUploadService {
 				   println "FAILED"
 			   }
 		   }
-	
+		   
 		   // Store file
 		   if (!file.isEmpty()) {
 			   def extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."), file.getOriginalFilename().length())
 			   def temp = new File("${storagePath}/${name}${extension}")
+			   //if (temp.exists()) temp.delete()
 			   file.transferTo(temp)
 			   println "Saved file: ${storagePath}/${name}${extension}"
 			   return "${name}${extension}"
