@@ -41,17 +41,17 @@ class Usuario {
 	
 	def Integer puestoRanking(Categoria categoria) {
 		def c = Ranking.createCriteria()
-		def rankingList = c.list() {
+		def Ranking ranking = c.get() {
 			eq("categoria", categoria)
 			and {
 				eq("usuario", this)
 			}
 		}
 		
-		if (rankingList.size() == 0) {
-			return 0
+		if (ranking) {
+			return ranking.puesto
 		}
 		
-		
+		return 0
 	}
 }

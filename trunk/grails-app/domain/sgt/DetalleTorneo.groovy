@@ -26,4 +26,8 @@ class DetalleTorneo {
 	String toString() { 
 		return torneo.toString() + "(en " + categoria.toString() + ")"
 	}
+	
+	def Integer cantidadInscriptos() {
+		return this.getInscripciones().size()
+	}
 }

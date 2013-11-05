@@ -105,6 +105,11 @@ class Torneo {
 		else return false
 	}
 	
+	def Boolean diagramado() {
+		if (this.estado.equals("Diagramado")) return true
+		else return false
+	}
+	
 }
 	
 	

@@ -23,6 +23,17 @@ public class CalculosTorneo {
     static Club clubes;
     static double diasRonda[]; 
     
+    public static TreeSet<Partido> generarPrimeraRonda(Jugador[] jugadores) {
+    	cargarJugadores(jugadores);        
+        calcularRondas();
+        ordenarJugadores();
+        generarJugadoresVacios();
+        cruzarJugadores();
+        cargarRondasFixture();
+        generarSembrado();
+        return tree;
+    }
+    
     public static void main(String[]args){
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduzca el numero de jugadores: ");
@@ -61,12 +72,12 @@ public class CalculosTorneo {
             tree.add(partidosPrimeraRonda[i]);
         }
         
-        for( Iterator it = tree.iterator(); it.hasNext();) {
-            Partido p = (Partido)it.next();
-            s+="\n "+(p);
-        }
+        //for( Iterator it = tree.iterator(); it.hasNext();) {
+        //    Partido p = (Partido)it.next();
+        //    s+="\n "+(p);
+        //}
         
-        System.out.print(s+"\n");
+        //System.out.print(s+"\n");
     }
     
     private static int binarioADecimal(int arreglo[])
@@ -103,6 +114,23 @@ public class CalculosTorneo {
                 var=true;
             }
             jugadores[i] = new Jugador();
+            jugadores[i].setPos(pos);
+            jugadores[i].setUnranked(var);
+        }            
+    }
+    
+    private static void cargarJugadores(Jugador[] n){
+        for (int i=0;i<n.length;i++){
+            
+            int pos = n[i].getPos();
+            boolean var=false;
+            if(pos==0)
+            {
+                pos=(int)(Math.random()*100)+n.length;
+                var=true;
+            }
+            jugadores[i] = new Jugador();
+            jugadores[i].setId(n[i].getId());
             jugadores[i].setPos(pos);
             jugadores[i].setUnranked(var);
         }            

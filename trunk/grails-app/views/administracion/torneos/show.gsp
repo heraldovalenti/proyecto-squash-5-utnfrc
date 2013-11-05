@@ -128,6 +128,7 @@
 					<g:hiddenField name="id" value="${torneoInstance?.id}" />
 					<g:link class="edit" controller="torneo" action="edit" id="${torneoInstance?.id}">Editar</g:link>
 					<g:actionSubmit class="delete" action="delete" value="Eliminar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:link controller="diagramacion" action="generarDiagramacion" id="${ torneoInstance?.id }">Diagramacion</g:link>
 				</fieldset>
 			</g:form>
 		</div>

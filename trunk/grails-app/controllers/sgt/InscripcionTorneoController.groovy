@@ -30,11 +30,11 @@ class InscripcionTorneoController {
 			return
 		}
 		
-		if (!categoriaJugadorInstance || !categoriaJugadorInstance?.categoria?.equals(detalleTorneoInstance?.categoria)) {
+		/*if (!categoriaJugadorInstance || !categoriaJugadorInstance.categoria.equals(detalleTorneoInstance.categoria)) {
 			flash.message = "La categoría seleccionada no corresponde a la suya"
 			redirect(action: "inscripcionTorneo", id: idTorneo)
 			return
-		}
+		}*/
 		
 		def inscripcionTorneoInstance = new InscripcionTorneo()
 		inscripcionTorneoInstance.setFecha(new Date())
