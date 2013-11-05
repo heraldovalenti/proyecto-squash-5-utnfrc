@@ -10,11 +10,20 @@ package logica;
  */
 public class Jugador {
     
+	private long id;
     private int pos;
     private  int [] rondas;
     private boolean enFixture,vacio=false,unranked=false;
     private DisponibilidadHoraria disponibilidad;
 
+    public void setId(Long id) {
+    	this.id = id;
+    }
+    
+    public Long getId() {
+    	return this.id;
+    }
+    
     public Jugador(int pos) {
         this.pos = pos;
         disponibilidad=new DisponibilidadHoraria();

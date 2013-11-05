@@ -41,4 +41,5 @@
 	background-color: none;
 	overflow: hidden;
 	background: url(../images/copa-dorada.jpg) no-repeat center right;
+	background-size: auto 100%;
 }
