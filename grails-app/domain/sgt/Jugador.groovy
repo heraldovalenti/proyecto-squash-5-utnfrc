@@ -7,6 +7,9 @@ class Jugador {
 	Double altura
 	Double peso
 	Date juegaDesde
+	Disponibilidad disponibilidad
+	
+	static hasMany = [rankings: Ranking, categoriasJugador: CategoriaJugador]
 
     static constraints = {
 		brazo nullable: true, inList: ["Derecho","Izquierdo","Ambidiestro"]
@@ -14,5 +17,6 @@ class Jugador {
 		altura nullable: true
 		peso nullable: true
 		juegaDesde nullable: true
+		disponibilidad nullable: true
     }
 }

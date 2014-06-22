@@ -6,8 +6,7 @@ class UsuarioController {
 	
 	def listarPersonas() {
 		def usuarios = Usuario.list()
-		System.out.println(usuarios)
-	 render usuarios as JSON
+		render usuarios as JSON
 	}
 	
 	def index() {
@@ -43,13 +42,13 @@ class UsuarioController {
 		//si se encontro el usuario y es un Club
 		def rolClub = Rol.findByNombre('Club')
 		def rolJugador = Rol.findByNombre('Jugador')
-		if (u && u.getRoles().contains(rolClub)) {
+		if (u && u.getRol().equals(rolClub)) {
 			session.setAttribute("userLogon", u)
 			render(view: '/club/inicioClub')
 			return
 		}
 		//si se encontro el usuario y es un jugador		
-		if (u && u.getRoles().contains(rolJugador)) {
+		if (u && u.getRol().equals(rolJugador)) {
 			session.setAttribute("userLogon", u)
 			render(view: '/jugador/inicioJugador')
 			return
@@ -104,7 +103,7 @@ class UsuarioController {
 			rolJugador.save()
 		}
 		
-		usuarioInstance.addToRoles(rolJugador)
+		usuarioInstance.setRol(rolJugador)
 		
 		if (!usuarioInstance.save(flush: true)) {
 			render(view: 'registro', model: [usuarioInstance: usuarioInstance])
@@ -148,8 +147,7 @@ class UsuarioController {
 		
 		//si se encontro el usuario y es un club
 		def rolClub = Rol.findByNombre('Club')
-		System.out.println(u.getRoles().contains(rolClub))
-		if (u && u.getRoles().contains(rolClub)) {			
+		if (u && u.getRol().equals(rolClub)) {			
 			session.setAttribute("userLogon", u)
 			render(view: '/club/inicioClub')
 			return
