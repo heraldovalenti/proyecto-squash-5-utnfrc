@@ -17,18 +17,18 @@ class BootStrap {
 		
 		def usuarioHeraldov = new Usuario(nombreUsuario: "heraldov", password: "ochoyas", correo: "heraldovalenti@gmail.com",
 			activo: true)
-		usuarioHeraldov.addToRoles(rolJugador)
+		usuarioHeraldov.setRol(rolJugador)
 		usuarioHeraldov.save(failOnError: true)	
 		
 		
 		def usuarioAdmin = new Usuario(nombreUsuario: "administrador", password: "administrador", correo: "admin@info.com",
 			activo: true)
-		usuarioAdmin.addToRoles(rolAdministrador)
+		usuarioAdmin.setRol(rolAdministrador)
 		usuarioAdmin.save(failOnError: true)
 		
 		def usuarioBoca = new Usuario(nombreUsuario: "bocajr", password: "bocajr", correo: "info@bocajr.com.ar",
 			activo: true)
-		usuarioBoca.addToRoles(rolClub)
+		usuarioBoca.setRol(rolClub)
 		usuarioBoca.save(failOnError: true)		
 	}
 	
