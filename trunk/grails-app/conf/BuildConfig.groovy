@@ -46,24 +46,22 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
+		//default plugins
         runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
-		compile ":jasper:1.6.1"
-		runtime ':jasper:1.6.1'		
-		compile ":clover:3.2.0"
-
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.5"
-
-        build ":tomcat:$grailsVersion"
-
-        runtime ":database-migration:1.3.2"
-
-        compile ':cache:1.0.1'
+		build 	":tomcat:$grailsVersion"
+		runtime ":database-migration:1.3.2"
+		compile ":cache:1.0.1"
+		
+		//sgt plugins
+		compile ":jasper:1.8.0"		
+		//compile ":clover:3.2.0"
+		compile ":quartz:1.0.2"
+		//runtime ":jquery:1.8.3"
+		runtime ":jquery:1.11.1"
+		compile ":jquery-ui:1.10.3"
+		compile ":file-uploader:1.2.1"
+		compile ":google-visualization:0.7"
+		compile ":code-coverage:2.0.3-1"
     }
-	
-	
 }
