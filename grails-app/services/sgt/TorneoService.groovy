@@ -2,37 +2,35 @@ package sgt
 
 import org.springframework.transaction.annotation.Transactional
 
-@Transactional
 class TorneoService {
+	
+	static transactional = true
 	
 	def actualizarEstados() {
 		abrirInscripcionesTorneo()
-		/*cerrarInscripcionesTorneo()*/
+		cerrarInscripcionesTorneo()
 	}
 
     def abrirInscripcionesTorneo() {
 		Date hoy = new Date()
-		List<Torneo> torneosCreados = Torneo.findAll()
+		List<Torneo> torneosCreados = Torneo.findAllWhere(estado: "Creado")
 		for (torneo in torneosCreados) {
-			println "torneo.nombre=" + torneo.nombre
-			println "torneo.estado(before)=" + torneo.estado
 			if (torneo.fechaInicioInscripcion.before(hoy)) {
 				torneo.abrirInscripcion()
 				torneo.save(failOnError: true)
 			}
-			println "torneo.estado(after)=" + torneo.estado
 		}
     }
 	
 	
-	/*def cerrarInscripcionesTorneo() {
+	def cerrarInscripcionesTorneo() {
 		Date hoy = new Date()
-		List<Torneo> inscripcionesAbiertas = Torneo.findAllByEstado("Inscripcion Abierta")
+		List<Torneo> inscripcionesAbiertas = Torneo.findAllWhere(estado: "Inscripcion Abierta")
 		for (torneo in inscripcionesAbiertas) {
 			if (torneo.fechaFinInscripcion.before(hoy)) {
 				torneo.cerrarInscripcion()
 				torneo.save(failOnError: true)
 			}
 		}
-	}*/
+	}
 }
