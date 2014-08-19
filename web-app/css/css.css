@@ -112,13 +112,11 @@ a:hover {text-decoration:none;}
 .h3btn {  position: absolute;  right: 6px;  top: 6px;}
 
 .box {padding: 1px; background: white; border: 1px solid #BBB; position: relative; float: left;}
-.inner-box 
-{padding: 10px; height:293px  ; width:180px  ; position: absolute;line-height:20px; background: #183353;
-    background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -o-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -webkit-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%); }
+.inner-box {
+	padding: 10px;
+	position: relative;
+	line-height: 20px;
+}
 .inside-box {display: block; float: none; margin: 15px;}
 
 .box-948 {width: 948px;}
@@ -857,6 +855,7 @@ width:130px;
 .nav {
   background: url("images/fdotrans.png") repeat scroll 0 0 transparent;  
   width: 972px !important;
+  padding: 10px 10px 0;
 }
 
 .nav ul {height: 40px;
