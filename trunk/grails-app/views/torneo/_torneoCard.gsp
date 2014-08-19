@@ -1,16 +1,24 @@
 <%@ page import="sgt.Torneo" %>
-<div>
-	<p>--------</p>
-	<p>${ torneoInstance?.nombre }</p>
-	<p>Desde <g:formatDate date="${ torneoInstance?.fechaInicioTorneo }" format="dd/MM/yy"/></p>
-	<p>Hasta <g:formatDate date="${ torneoInstance?.fechaFinTorneo }" format="dd/MM/yy"/></p>
-	<p>club asignado</p>
-	<g:if test="${ torneoInstance?.inscripcionAbierta() }">
-		<p><g:link controller="inscripcionTorneo" action="inscripcionTorneo" id="${ torneoInstance?.id }">>>Inscripcion</g:link></p>
-	</g:if>
-	<g:else>
-		<p>>>Inscripcion abre <g:formatDate date="${ torneoInstance?.fechaInicioInscripcion }" format="dd/MM/yy"/></p>
-	</g:else>
-	<u>>>Info</u>
-	<p>--------</p>
+<div class="tourSRankWrap">
+	<div class="rankingProfileImage">
+		<a href="#">
+			<img width="108" height="140" 
+				src="${ resource(dir: 'images', file: 'acs_afiche.JPG') }">
+			<span class="overlayRankings"></span>
+		</a>
+	</div>
+	<div class="singlesInfo">
+		<div class="Singles"></div>
+		<div class="singlesRankName">
+			<span>
+				<a href="#">${ torneoInstance.nombre }</a>
+			</span>
+		</div>
+		<div class="singlesRank">INICIO: <g:formatDate date="${ torneoInstance?.fechaInicioTorneo }" format="dd-MM-yy"/></div>
+		<div class="singlesRank">FIN: <g:formatDate date="${ torneoInstance?.fechaFinTorneo }" format="dd-MM-yy"/></div>
+		<div class="singlesRank">CLUB: </div>
+		<div class="viewFull">
+			<a href="#" class="viewFull">VER MAS>></a>
+		</div>
+	</div>
 </div>

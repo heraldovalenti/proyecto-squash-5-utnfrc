@@ -1,6 +1,7 @@
 package sgt
 
-import org.springframework.transaction.annotation.Transactional
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 
 class TorneoService {
 	
@@ -32,5 +33,22 @@ class TorneoService {
 				torneo.save(failOnError: true)
 			}
 		}
+	}
+	
+	def listaTorneos(Integer year) {
+		def results = new LinkedList()
+		for (Torneo t : Torneo.all) {
+			def torneoYear = t.fechaInicioInscripcion.toCalendar().get(Calendar.YEAR)
+			if (torneoYear.equals(year)) {
+				results.add(t)
+			}
+		}
+		Collections.sort(results, new Comparator<Torneo>() {
+			@Override
+			int compare(Torneo t1, Torneo t2) {
+				return t1.fechaInicioTorneo.getTime() - t2.fechaInicioTorneo.getTime()
+			}
+		})
+		return results
 	}
 }

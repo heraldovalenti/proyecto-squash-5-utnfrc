@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="layout" content="main">
+<meta name="layout" content="main">
 </head>
 <body>
-	<h3>Listado de torneos de la ACS</h3>
-	<div id="opciones-filtro">
-		Año: <g:select name="year" from="${2000..2013 }" value="${ year }" />
-		<g:checkBox name="soloPuntuables" value="${ soloPuntuables }" />
-		<g:link controller="listaTorneo" action="listaTorneos">Enviar</g:link>
+	<div class="grid_16 mt10 mb10">
+		<div class="grid_10">
+			<div class="box box-607">
+				<h3 class="title">
+					Calendario ${ year }
+					<g:select name="year" from="${2014..2000 }" value="${ year }"
+						class="profile-year" id="calendar_year" />
+				</h3>
+				<div class="inner-box">
+					<g:render template="/torneo/torneoCard" var="torneoInstance"
+						collection="${ torneoInstanceList }" />
+				</div>
+			</div>
+		</div>
 	</div>
-	<div id="resultados-filtro">
-		<g:render template="/torneo/torneoCard" var="torneoInstance" collection="${ torneoInstanceList }" />
-	</div>
+	<r:require module="torneos" />
 </body>
 </html>

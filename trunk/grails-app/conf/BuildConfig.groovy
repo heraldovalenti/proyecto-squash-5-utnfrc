@@ -46,7 +46,7 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-		//default plugins
+//		default plugins
         runtime ":hibernate:$grailsVersion"
         runtime ":resources:1.1.6"
 		build 	":tomcat:$grailsVersion"
@@ -54,14 +54,13 @@ grails.project.dependency.resolution = {
 		compile ":cache:1.0.1"
 		
 		//sgt plugins
-		compile ":jasper:1.8.0"		
-		//compile ":clover:3.2.0"
+//		compile ":jasper:1.8.0"		
+//		compile ":clover:3.2.0"
 		compile ":quartz:1.0.2"
-		//runtime ":jquery:1.8.3"
-		runtime ":jquery:1.11.1"
-		compile ":jquery-ui:1.10.3"
-		compile ":file-uploader:1.2.1"
-		compile ":google-visualization:0.7"
-		compile ":code-coverage:2.0.3-1"
+//		compile ":jquery:1.11.1"
+//		compile ":jquery-ui:1.10.3"
+//		compile ":file-uploader:1.2.1"
+//		compile ":google-visualization:0.7"
+//		compile ":code-coverage:2.0.3-1"
     }
 }
