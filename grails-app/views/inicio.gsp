@@ -167,22 +167,11 @@
  	<li><div><img src="images/noticias/2a.jpg" /><h3>MIGUEL ANGEL RODRIGUEZ</h3><span>19.09.2013</span> -Te mostramos algunos momentos del entrenamiento de Miguel Angel Rodriguez...</div></li>
  	<li><div><img src="images/noticias/3a.png" /><h3>Los menores cordobeses obtuvieron excelentes resultados</h3><span>25.08.2013</span> - 
 	
-	Colecci&oacute;n de noticias y documentos de interes contandote como fue ...</div></li></ul></div></div><!----------------- END OF NAVIGATOR ---------------------><div class="button-next">Next</div><!-- BUTTON PLAY-STOP --><div class="button-control"><span></span></div><!-- END OF BUTTON PLAY-STOP --></div></div><div class="grid_10 headlines mt10"><h3 class="title2">HEADLINES</h3><div class="grid_4 alpha new-pri"><h4 class="title">Ramy Ashour en la Argentina </h4><img src="images/img.php?src=http://www.acsr.com.ar/images/articulos/articulo-265-0.jpg&w=88&zc=2" align="left" />29.07.2013<p>
-	Los d&iacute;as 6, 7 y 8 de Septiembre se disputara en la Argentina en Panamericano de Squash, que por si no saben C&oacute;rdoba cuenta con una flamante clasificada... hablamos de Camila Grasso (Ya hablaremos de esto en otro art&iacute;culo como corresponde).</p><a class="moreLink" href="http://www.acsr.com.ar/noticias/a265/ramy-ashour-en-la-argentina.html">Continuar Leyendo</a></div><div class="grid_6 omega news-list"><ul><li>29.07 <a href="http://www.acsr.com.ar/noticias/a266/camila-grasso-clasifica-al-panamericano-de-mayores.html">Camila Grasso clasifica al Panamericano de Mayores</a></li><li>20.06 <a href="http://www.acsr.com.ar/noticias/a263/cronicas-del-capitulo-7-del-2013-botanico.html">Crónicas del Capítulo 7 del 2013 ? Botánico</a></li><li>11.06 <a href="http://www.acsr.com.ar/noticias/a262/club-nuevo-3-canchas-nuevas-.html">Club Nuevo... 3 Canchas Nuevas!</a></li><li>10.06 <a href="http://www.acsr.com.ar/noticias/a261/live-segui-los-partidos-de-hernan-en-vivo-.html">LIVE! Segui los partidos de Hernan en VIVO!</a></li><li>03.06 <a href="http://www.acsr.com.ar/noticias/a256/zonas-del-mundial-de-squash-francia-2013.html">Zonas del Mundial de Squash - Francia 2013</a></li><li>02.06 <a href="http://www.acsr.com.ar/noticias/a257/robertino-pezzota-estuvo-en-la-puerta-de-ganar-el-psa-de-paraguay.html">Robertino Pezzota estuvo en la puerta de ganar el PSA de Paraguay</a></li><li>02.06 <a href="http://www.acsr.com.ar/noticias/a258/guille-pedernera-nos-cuenta-un-poco-del-nacional-de-buenos-aires.html">Guille Pedernera nos cuenta un poco del nacional de Buenos Aires</a></li></ul></div></div><div class="grid_6 headlines-banners mt10">
+	Colecci&oacute;n de noticias y documentos de interes contandote como fue ...</div></li></ul></div></div><!----------------- END OF NAVIGATOR ---------------------><div class="button-next">Next</div><!-- BUTTON PLAY-STOP --><div class="button-control"><span></span></div><!-- END OF BUTTON PLAY-STOP --></div></div>
 	
 	<!----------------- PANEL DE PROPAGANDAS--------------------->
 	
-	<div class="scrollable"><div class="items">
-	<a href="http://reptur.com.ar/wp-content/uploads/2013/10/RepublicaDominicana_05NOV_Venta_Directa.jpg#" target="blank"><img src="images/noticias/puntaCana.jpg" width="357" height="275" border="0" /></a>
-	<a href="https://www.facebook.com/ZyngraSquashCordoba?fref=ts#" target="blank"><img src="images/noticias/zingra.jpg" width="357" height="275" border="0" /></a>
-	<a href="#" target="blank"><img src="images/noticias/subway.png" width="357" height="275" border="0" /></a>
-	<a href="http://www.coquetos.com.ar#" target="blank"><img src="images/noticias/coquetos.png" width="357" height="275" border="0" /></a></div></div></div>
-    <script type="text/javascript">
-    $(function() {
-      // initialize scrollable
-      $(".scrollable").scrollable({circular: true}).autoscroll({ autoplay: true, interval: 5000,  autopause: true});
-    });
-    </script><div class="second-part mt10">
+	<div class="second-part mt10">
      <div class="grid_16 mt10"><div class="grid_10"> 
      <ul class="categorias-home">
      <li class=""><a class="active home-rank-item" rel="tab-1" href="#">1</a></li>
@@ -246,46 +235,12 @@
                                 onkeypress="autosuggest_jugadores('#autoComp2', '#resultsoId', '#oId', 1);"
                                 onblur="if (!this.value) {this.value = 'Ingresar Jugador 2'}" 
                                 onfocus="if (this.value == 'Ingresar Jugador 2') {this.value = ''}"  
-                            > <input type="hidden" name="oId" id="oId" class="autoCompId"> <div id="resultsoId" class="results results-h2h raised"></div><input type="hidden" name="c" id="c" value="head2head"> </div><div class="genericButton"><button type="button" onclick="onSearch();">Enviar</button></div> </form></div></div> </div> </div><!-- Fin Grid 10 -->         
-            <div class="grid_6 adds alpha omega">
-                <div>
-                    <h3 class="title">PRÓXIMO TORNEO</h3>
-                    <div class="next-tournament">
-                        <a href="http://www.acsr.com.ar/torneos/2013/163.html">
-                            <img src="images/img.php?src=http://www.acsr.com.ar/images/afiches/163g.jpg&w=315&h=225&zc=1" />
-                        </a>
-                        <div class="mt10">
-                            <a href="#" rel="#login" class="button green center">Inscripción</a>                            
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                
-                <div class="mt10 fb">
-                    <h3 class="title">SEGUINOS EN FACEBOOK</h3>
-                    <div class="facebook">
-                    <iframe scrolling="no" frameborder="0" allowtransparency="true" class="raised facebook-box" 
-                                    src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/AsociacionCordobesaDeSquash&amp;width=292&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=245"></iframe>                    </div>
-                </div>
-            
-            </div>
-        </div>
-
-        <div class="grid_16 inside mt10"><h3 class="title">DENTRO DE LA ACS</h3><div class="moduleContentOuter mt10"> <div class="insideInner"> <a href="#"  class="insideItem  insideItem Video" title="Comisión Directiva"><span class="insideItem type">ACS</span><img width="178" height="128" alt="Comisión Directiva" title="Comisión Directiva" src="images/img.php?src=http://www.acsr.com.ar/images/articulos/articulo-83-0.jpg&w=178&h=128&zc=1"><span class="insideItem itemTitle">Comisión Directiva</span><span>
-	&iquest;Quer&eacute;s saber como se conforma la Comisi&oacute;n Directiva de la Asociaci&oacute;n Cordobesa de Squash? Segu&iacute; este link
-</span></a><a href="http://www.acsr.com.ar/noticias/a261/live-segui-los-partidos-de-hernan-en-vivo-.html"  class="insideItem  insideItem Video" title="Hernán D'Arcangelo"><span class="insideItem type">Mundial Squash 2013</span><img width="178" height="128" alt="Hernán D'Arcangelo" title="Hernán D'Arcangelo" src="images/img.php?src=http://www.acsr.com.ar/images/articulos/articulo-84-0.JPG&w=178&h=128&zc=1"><span class="insideItem itemTitle">Hernán D'Arcangelo</span><span>
-	Segui la participaci&oacute;n de Hern&aacute;n y la selecci&oacute;n Argentina en el Mundia de Francia
-</span></a><a href="http://www.youtube.com/watch?v=xboIHVjkK6I#video" rel='prettyPhoto' class="insideItem  insideItem Video" title="Hernán Vs. Sean y Gaby"><span class="insideItem playButton IE6pngFix"></span><span class="insideItem type">Desafio</span><img width="178" height="128" alt="Hernán Vs. Sean y Gaby" title="Hernán Vs. Sean y Gaby" src="images/img.php?src=http://www.acsr.com.ar/images/articulos/articulo-85-0.jpg&w=178&h=128&zc=1"><span class="insideItem itemTitle">Hernán Vs. Sean y Gaby</span><span>
-	Se disputo un interesante desafio entre la pareja Sean Towers y Gabriel Salde vs. Hern&aacute;n. &iquest;Que habr&aacute; pasado?
-</span></a><a href="#"  class="insideItem  insideItem Video" title="Temporada 2013"><span class="insideItem type">¡Asociate!</span><img width="178" height="128" alt="Temporada 2013" title="Temporada 2013" src="images/img.php?src=http://www.acsr.com.ar/images/articulos/articulo-86-2.jpg&w=178&h=128&zc=1"><span class="insideItem itemTitle">Temporada 2013</span><span>
-	Adquir&iacute; el Carnet de Socio de la ACS - Temporada 2013&nbsp; y obtene muchos beneficios. Enterate como y donde hacerte de &Eacute;l.
-</span></a><a href="#"  class="insideItem  insideItem Video" title="Segui a los Menores"><span class="insideItem type">Nuestras Promesas</span><img width="178" height="128" alt="Segui a los Menores" title="Segui a los Menores" src="images/img.php?src=http://www.acsr.com.ar/images/articulos/articulo-87-0.jpg&w=178&h=128&zc=1"><span class="insideItem itemTitle">Segui a los Menores</span><span>
-	Toda la informacion referida a entrenamientos, participaciones y resultados de nuestras promesas
-</span></a></div> </div></div>    </div>
-
+                            > <input type="hidden" name="oId" id="oId" class="autoCompId"> <div id="resultsoId" class="results results-h2h raised"></div><input type="hidden" name="c" id="c" value="head2head"> </div><div class="genericButton"><button type="button" onclick="onSearch();">Enviar</button></div> </form></div></div> </div> </div><!-- Fin Grid 10 --> 
+        
 </div>
     
-    </div>    
+    </div> 
+   
         <!-- footer -->             
         
     <div class="forms" style="display: none;">
