@@ -32,17 +32,12 @@ class Torneo {
 		fechaInicioTorneo nullable: false
 		fechaFinTorneo nullable: false	
 		club nullable:true
-		estado blank: false, inList:["Creado","Inscripcion Abierta","Inscripcion Cerrada",
-			"Diagramado","En Curso","Finalizado", "Ranking Actualizado"]
+		estado blank: false, inList:["Creado","Club Asignado",
+			"Inscripcion Abierta","Inscripcion Cerrada","Inscripcion Finalizada",
+			"Diagramado","En Curso","Finalizado", "Ranking Actualizado", "Suspendido"]
     }
 	
-	def Boolean esPostulable() {
-		if (club == null) return true
-		if (this.creado() || this.inscripcionAbierta() || this.inscripcionCerrada()) {
-			return true
-		}
-		return false
-	}
+	
 	
 	def String fechasCorrectas() {
 		def Date open = this.fechaInicioInscripcion
@@ -78,15 +73,32 @@ class Torneo {
 		return null
 	}
 	
-	def void abrirInscripcion() {
+	def esPostulable() {
+		return this.creado()
+	}
+	
+	def asignarClub(Club club) {
+		if (this.estado.equals("Creado")) {
+			this.club = club
+					this.estado = "Club Asignado"
+		}
+	}
+	
+	def abrirInscripcion() {
 		if (this.estado.equals("Creado") || this.estado.equals("Inscripcion Cerrada")) {
 			this.estado = "Inscripcion Abierta"
 		}
 	}
 	
-	def void cerrarInscripcion() {
+	def cerrarInscripcion() {
 		if (this.estado.equals("Inscripcion Abierta")) {
 			this.estado = "Inscripcion Cerrada"
+		}
+	}
+	
+	def finalizarInscripcion() {
+		if (this.estado.equals("Inscripcion Cerrada") || this.estado.equals("Inscripcion Abierta")) {
+			this.estado = "Inscripcion Finalizada"
 		}
 	}
 	
@@ -109,6 +121,7 @@ class Torneo {
 		if (this.estado.equals("Diagramado")) return true
 		else return false
 	}
+	
 	
 }
 	

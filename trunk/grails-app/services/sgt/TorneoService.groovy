@@ -6,6 +6,7 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
 class TorneoService {
 	
 	static transactional = true
+	def notificacionesTorneoService
 	
 	def actualizarEstados() {
 		abrirInscripcionesTorneo()
@@ -19,6 +20,7 @@ class TorneoService {
 			if (torneo.fechaInicioInscripcion.before(hoy)) {
 				torneo.abrirInscripcion()
 				torneo.save(failOnError: true)
+				notificacionesTorneoService.generarNotificacionInscripcionTorneoAbierta(torneo)
 			}
 		}
     }
@@ -31,6 +33,7 @@ class TorneoService {
 			if (torneo.fechaFinInscripcion.before(hoy)) {
 				torneo.cerrarInscripcion()
 				torneo.save(failOnError: true)
+				notificacionesTorneoService.generarNotificacionInscripcionTorneoFinalizada(torneo)
 			}
 		}
 	}
