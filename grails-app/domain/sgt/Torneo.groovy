@@ -73,10 +73,6 @@ class Torneo {
 		return null
 	}
 	
-	def esPostulable() {
-		return this.creado()
-	}
-	
 	def asignarClub(Club club) {
 		if (this.estado.equals("Creado")) {
 			this.club = club
@@ -102,27 +98,79 @@ class Torneo {
 		}
 	}
 	
-	def Boolean inscripcionAbierta() {
-		if (this.estado.equals("Inscripcion Abierta")) return true
-		else return false
+	def diagramar() {
+		if (this.estado.equals("Inscripcion Finalizada")) {
+			this.estado = "Diagramado"
+		}
 	}
 	
-	def Boolean inscripcionCerrada() {
-		if (this.estado.equals("Inscripcion Cerrada")) return true
-		else return false
+	def comenzarTorneo() {
+		if (this.estado.equals("Diagramado")) {
+			this.estado = "En Curso"
+		}
 	}
 	
-	def Boolean creado() {
-		if (this.estado.equals("Creado")) return true
-		else return false
+	def finalizarTorneo() {
+		if (this.estado.equals("En Curso")) {
+			this.estado = "Finalizado"
+		}
 	}
 	
-	def Boolean diagramado() {
-		if (this.estado.equals("Diagramado")) return true
-		else return false
+	def actualizarRankings() {
+		if (this.estado.equals("Finalizado")) {
+			this.estado = "Ranking Actualizado"
+		}
 	}
 	
+	def suspender() {
+		if (this.estado.equals("En Curso")) {
+			this.estado = "Suspendido"
+		}
+	}
 	
+	Boolean creado() {
+		return this.estado.equals("Creado")
+	}
+	
+	Boolean esPostulable() {
+		return this.creado()
+	}
+	
+	Boolean clubAsignado() {
+		return this.club != null
+	}
+	
+	Boolean inscripcionAbierta() {
+		return this.estado.equals("Inscripcion Abierta")
+	}
+	
+	Boolean inscripcionCerrada() {
+		return this.estado.equals("Inscripcion Cerrada")
+	}
+	
+	Boolean inscripcionFinalizada() {
+		return this.estado.equals("Inscripcion Finalizada")
+	}
+	
+	Boolean diagramado() {
+		return this.estado.equals("Diagramado")
+	}
+	
+	Boolean enCurso() {
+		return this.estado.equals("En Curso")
+	}
+	
+	Boolean finalizado() {
+		return this.estado.equals("Finalizado")
+	}
+	
+	Boolean rankingActualizado() {
+		return this.estado.equals("Ranking Actualizado")
+	}
+	
+	Boolean suspendido() {
+		return this.estado.equals("Suspendido")
+	}
 }
 	
 	
