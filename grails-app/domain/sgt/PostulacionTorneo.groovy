@@ -17,19 +17,31 @@ class PostulacionTorneo {
 		club nullable: false
     }
 	
-	def void solicitar() {
+	def solicitar() {
 		this.estado = "Solicitado"
 	}
 	
-	def void rechazar() {
+	def rechazar() {
 		this.estado = "Rechazado"
 	}
 	
-	def void aceptar() {
+	def aceptar() {
 		this.estado = "Aceptado"
 	}
 	
-	def Boolean puedeCancelarse() {
+	Boolean puedeCancelarse() {
 		return this.estado.equals("Solicitado")
+	}
+	
+	Boolean esPendiente() {
+		return this.estado.equals("Solicitado")
+	}
+	
+	Boolean esAceptada() {
+		return this.estado.equals("Aceptado")
+	}
+	
+	Boolean esRechazada() {
+		return this.estado.equals("Rechazado")
 	}
 }

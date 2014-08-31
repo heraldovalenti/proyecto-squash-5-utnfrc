@@ -76,7 +76,7 @@ class Torneo {
 	def asignarClub(Club club) {
 		if (this.estado.equals("Creado")) {
 			this.club = club
-					this.estado = "Club Asignado"
+			this.estado = "Club Asignado"
 		}
 	}
 	
@@ -133,7 +133,7 @@ class Torneo {
 	}
 	
 	Boolean esPostulable() {
-		return this.creado()
+		return this.creado() && !this.clubAsignado()
 	}
 	
 	Boolean clubAsignado() {

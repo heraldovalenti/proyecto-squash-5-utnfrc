@@ -9,7 +9,7 @@
 	<body>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><g:link class="create" controller="torneo" action="show" id="${ torneoInstance?.id }">Volver</g:link></li>
+				<li><g:link class="create" controller="torneo" action="show" id="${ torneoInstance.id }">Volver</g:link></li>
 			</ul>
 		</div>
 		<div id="list-torneo" class="content scaffold-list" role="main">
@@ -21,7 +21,7 @@
 				<thead>
 					<tr>
 					
-						<g:sortableColumn property="postulacion.club" title="Club" />
+						<g:sortableColumn property="club" title="Club" />
 					
 						<g:sortableColumn property="fecha" title="Fecha" />
 					
@@ -45,12 +45,20 @@
 						
 						<td>${postulacionInstance.observaciones}</td>
 						
-						<td>Aceptar Rechazar</td>
-					
+						<td>
+							<g:if test="${postulacionInstance.esPendiente()}">
+								<g:link class="create aceptar-postulacion" controller="torneo" 
+								action="aceptarPostulacionTorneo" id="${ postulacionInstance.id }">Aceptar</g:link>
+								<g:link class="create rechazar-postulacion" controller="torneo" 
+								action="rechazarPostulacionTorneo" id="${ postulacionInstance.id }">Rechazar</g:link>
+							</g:if>
+						</td>
+						
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 		</div>
+		<r:require modules="torneos, dialogs" />
 	</body>
 </html>
