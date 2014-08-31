@@ -1,16 +1,21 @@
 package sgt.administracion.torneos
 
+import grails.converters.*
+
+import org.springframework.dao.DataIntegrityViolationException
+
+import sgt.Categoria
+import sgt.DetalleTorneo
+import sgt.InscripcionTorneo
+import sgt.PostulacionTorneo
 import sgt.Torneo
 import sgt.TorneoPuntuable
-import sgt.DetalleTorneo
-import sgt.Categoria
-import org.springframework.dao.DataIntegrityViolationException
-import sgt.PostulacionTorneo
-import sgt.InscripcionTorneo
 
 
 
 class TorneoController {
+	
+	def postulacionTorneoService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -259,6 +264,19 @@ class TorneoController {
 		}
 		
 		render(view: "/administracion/torneos/postulacionesTorneo", model: [postulacionInstanceList: postulacionInstanceList, torneoInstance: torneoInstance])
+	}
+	
+	def aceptarPostulacionTorneo(Long id) {
+		postulacionTorneoService.aceptarPostulacionTorneo(id)
+		def idTorneo = session.getAttribute("idTorneo")
+		flash.message = "El club ha sido asignado al torneo"
+		redirect(action: "show", id: idTorneo)
+	}
+	
+	def rechazarPostulacionTorneo(Long id) {
+		postulacionTorneoService.rechazarPostulacionTorneo(id)
+		flash.message = "Postulacion rechazada"
+		redirect(action: "listadoPostulaciones")
 	}
 	
 	def verInscripciones(Long id) {

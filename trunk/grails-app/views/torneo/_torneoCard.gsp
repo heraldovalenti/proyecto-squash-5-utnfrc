@@ -16,7 +16,10 @@
 		</div>
 		<div class="singlesRank">INICIO: <g:formatDate date="${ torneoInstance?.fechaInicioTorneo }" format="dd-MM-yy"/></div>
 		<div class="singlesRank">FIN: <g:formatDate date="${ torneoInstance?.fechaFinTorneo }" format="dd-MM-yy"/></div>
-		<div class="singlesRank">CLUB: </div>
+		<div class="singlesRank">CLUB: 
+			<g:if test="${ torneoInstance?.clubAsignado() }">${ torneoInstance.club.toString() }</g:if>
+			<g:else>No asignado</g:else>
+		</div>
 		<div class="viewFull">
 			<a href="#" class="viewFull">VER MAS>></a>
 		</div>
