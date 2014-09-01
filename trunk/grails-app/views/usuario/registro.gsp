@@ -11,23 +11,9 @@
 	<!-- div para el formulario de registro de usuario -->
 		
 		<!-- titulo de registro de usuario -->
-		<h3 class="title"><g:message code="registrousuario.titulo" /></h3>
-		
-		<!-- control de visualizacion de mensajes -->
-		<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-		</g:if>
+		<h3 class="title">Registro de usuario</h3>
 		
 		<!-- control de visualizacion de errores en instancia -->
-		<g:hasErrors bean="${usuarioInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${usuarioInstance}" var="error">
-					<li>
-						<g:message error="${error}"/>
-					</li>
-				</g:eachError>
-			</ul>
-		</g:hasErrors>
 		
 		<div class="textoUsuario" >
 			<p>			
@@ -37,7 +23,7 @@
 		</div>		
 			
 		<!-- formulario de registro -->
-		<g:form controller="Usuario" action="save">
+		<form id="form-registro-usuario">
 			
 			<!-- campos del formulario -->
 			<div class="camposUsuario">
@@ -85,10 +71,10 @@
 			
 			<!-- botones del formulario -->
 			<fieldset class="buttons">
-				<g:submitButton name="create" class="enviar" value="${ message(code: 'registrousuario.enviar.label') }" />
+				<g:submitButton name="create" class="enviar" value="Registrar usuario" />
 			</fieldset>
 		</div>	
-		</g:form>
-			
+		</form>
+	<r:require modules="dialogs, usuarios"/>
 </body>
 </html>

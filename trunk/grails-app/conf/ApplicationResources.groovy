@@ -19,4 +19,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/dialogs.js'
 	}
+	usuarios {
+		dependsOn 'jquery'
+		resource url: 'js/usuarios.js'
+	}
 }
