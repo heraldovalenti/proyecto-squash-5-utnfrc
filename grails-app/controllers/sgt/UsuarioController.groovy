@@ -1,8 +1,11 @@
 package sgt
 
 import grails.converters.JSON
+import grails.validation.ValidationException
 
 class UsuarioController {
+	
+	def usuarioService
 	
 	def listarPersonas() {
 		def usuarios = Usuario.list()
@@ -91,34 +94,20 @@ class UsuarioController {
 	}
 	
 	def save() {
-		def usuarioInstance = new Usuario(
-			nombreUsuario: params.nombreUsuario, 
-			password: params.password, 
-			correo: params.correo,
-			activo: true)
-		
-		def rolJugador = Rol.findByNombre('Jugador')
-		if (!rolJugador) {
-			rolJugador = new Rol(nombre: 'Jugador')
-			rolJugador.save()
+		try {
+			usuarioService.registrarUsuario(params.nombreUsuario,
+				params.password,
+				params.password2,
+				params.correo)
+		} catch (ValidationException e) {
+			response.status = org.springframework.http.HttpStatus.PRECONDITION_FAILED.value
+			render e.errors as JSON
+		} catch (e) {
+			response.status = org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR.value
+			render e as JSON
 		}
 		
-		usuarioInstance.setRol(rolJugador)
-		
-		if (!usuarioInstance.save(flush: true)) {
-			render(view: 'registro', model: [usuarioInstance: usuarioInstance])
-			return
-		}
-		
-		if (params.password != params.password2) {
-			usuarioInstance.errors.rejectValue('password',
-				'registrousuario.password.errorigualdad')
-			render(view: 'registro', model: [usuarioInstance: usuarioInstance])
-			return
-		}
-
-		flash.message = message(code: 'registrousuario.enviar.exito')
-		redirect(controller: 'usuario', action: 'loginForm')
+		render "Registro completado exitosamente"
 	}
 	
 	def configuracionCuenta() {
