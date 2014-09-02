@@ -23,7 +23,7 @@
 		</div>		
 			
 		<!-- formulario de registro -->
-		<form id="form-registro-usuario">
+		<form id="form-registro-usuario" method="POST">
 			
 			<!-- campos del formulario -->
 			<div class="camposUsuario">
