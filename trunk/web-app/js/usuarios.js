@@ -6,13 +6,19 @@ $("#form-registro-usuario").submit( function(event) {
 		url: "save",
 		data: formData,
 		success: function(data,textStatus,jqXHR) {
-			console.log(textStatus);
-			console.log(data);
+			var login_func = function() {
+				window.location = "login?" + formData;
+			}
+			dialogs.showMessageDialog(data,login_func);
 		},
 		error: function(jqXHR,textStatus,errorThrown) {
-			console.log(textStatus);
-			console.log(errorThrown);
-			console.log(jqXHR.responseText);
+			var errorMessages = [];
+			var jsonErrors = $.parseJSON(jqXHR.responseText).errors;
+			for (var i = 0; i < jsonErrors.length; i++) {
+				var errorMessage = jsonErrors[i].message;
+				errorMessages.push({ "error" : errorMessage });
+			}
+			dialogs.showErrorsDialog(errorMessages);
 		}
 	});
 });
