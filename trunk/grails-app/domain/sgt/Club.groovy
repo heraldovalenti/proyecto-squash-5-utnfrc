@@ -3,26 +3,27 @@ package sgt
 class Club {
 
     String nombre
-    String razonSocial
     String telefono
     Domicilio domicilio
 	String sitioWeb
     String correo
 	Boolean validado
+	Imagen imagen
     
-	static hasMany = [canchas: Cancha, servicios: ServicioClub, postulaciones: PostulacionTorneo]
+	static hasMany = [canchas: Cancha, servicios: ServicioClub, postulaciones: PostulacionTorneo, encargados: Usuario]
 	
 	
     static constraints = {
-		nombre blank: false, unique: true, maxSize: 50
-		razonSocial blank: false, unique: true, maxSize: 50
-		telefono nullable: true, blank: false, maxSize: 50
+		nombre blank: false, unique: true, maxSize: 250
+		telefono nullable: true, blank: false, maxSize: 100
 		domicilio nullable: true
+		sitioWeb nullable: true, blank: false, maxSize: 250
 		correo nullable: true, email:true, blank: false, maxSize: 100
-		sitioWeb nullable: true, blank: false, maxSize: 250, url: true
+		validado nullable: false
+		imagen nullable: true
     }
 	
 	String toString() {
-		return razonSocial
+		return nombre
 	}
 }

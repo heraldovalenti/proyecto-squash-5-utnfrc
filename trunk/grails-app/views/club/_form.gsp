@@ -10,28 +10,18 @@
 	<g:textField name="nombre" maxlength="50" required="" value="${clubInstance?.nombre}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: clubInstance, field: 'razonSocial', 'error')} required">
-	<label for="razonSocial">
-		<g:message code="club.razonSocial.label" default="Razon Social" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="razonSocial" maxlength="50" required="" value="${clubInstance?.razonSocial}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: clubInstance, field: 'correo', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: clubInstance, field: 'correo', 'error')} ">
 	<label for="correo">
 		<g:message code="club.correo.label" default="Correo" />
-		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="correo" maxlength="100" required="" value="${clubInstance?.correo}"/>
+	<g:field type="email" name="correo" maxlength="100" value="${clubInstance?.correo}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: clubInstance, field: 'telefono', 'error')} ">
 	<label for="telefono">
 		<g:message code="club.telefono.label" default="Telefono"/>
-		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="telefono" maxlength="50" value="${clubInstance?.telefono}" required="" />
+	<g:textField name="telefono" maxlength="50" value="${clubInstance?.telefono}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: clubInstance, field: 'sitioWeb', 'error')} ">
