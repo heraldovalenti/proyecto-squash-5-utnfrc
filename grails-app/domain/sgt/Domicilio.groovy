@@ -2,24 +2,29 @@ package sgt
 
 class Domicilio {
 	
-	String domicilio
+	String calle
+	String numero
 	String piso
-	String dpto
+	String departamento
 	String ciudad
-	String ciudadOrigen
+	Integer codigoPostal
 	String provincia
-	Integer codPostal
-	
-	String toString(){
-		return domicilio + " " + "(" + ciudad + ")"
-	}
 
     static constraints = {
-		
-		piso blank:true
-		dpto blank:true
-		codPostal blank:true
-		ciudadOrigen blank:true
-		provincia inList:["Córdoba","Santa Fé","San Luis"]	
+		calle blank: false
+		numero blank: false
+		piso nullable: true
+		departamento nullable: true
+		ciudad blank: false
+		codigoPostal min: 0
+		provincia blank: false, inList:["Cordoba","Santa Fe","San Luis",
+			"Mendoza","Buenos Aires","La Pampa","Santiago del Estero",
+			"San Juan","Catamarca","Salta","Tucuman","La Rioja","Formosa",
+			"Entre Rios","Corrientes","Misiones","Rio Negro","Chubut",
+			"Santa Cruz","Tierra del Fuego","Neuquen","Chaco","Jujuy"]
     }
+	
+	String toString(){
+		return calle + " " + numero +  "(" + ciudad + ")"
+	}
 }

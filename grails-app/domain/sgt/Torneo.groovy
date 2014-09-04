@@ -13,6 +13,7 @@ class Torneo {
 	String estado
 	Club club
 	Boolean puntuable
+	Imagen imagen
 	
 	static hasMany = [detalles: DetalleTorneo]
 	
@@ -35,6 +36,7 @@ class Torneo {
 		estado blank: false, inList:["Creado","Club Asignado",
 			"Inscripcion Abierta","Inscripcion Cerrada","Inscripcion Finalizada",
 			"Diagramado","En Curso","Finalizado", "Ranking Actualizado", "Suspendido"]
+		imagen nullable: true
     }
 	
 	
