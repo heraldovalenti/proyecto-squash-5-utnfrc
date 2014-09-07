@@ -69,6 +69,9 @@ environments {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
+	test {
+		fileuploader.image.path = "/home/heril/sgt/images/test/"
+	}
 }
 
 // log4j configuration
@@ -92,14 +95,9 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 fileuploader {
-	avatar {
-		maxSize = 1024 * 256 //256 kbytes
-		allowedExtensions = ["jpg","jpeg","gif","png"]
-		path = "/tmp/avatar/"
-	}
-	docs {
-		maxSize = 1000 * 1024 * 4 //4 mbytes
-		allowedExtensions = ["doc", "docx", "pdf", "rtf"]
-		path = "/tmp/docs/"
+	image {
+		path = "/home/heril/sgt/images/"
+		prefix = "image/"
+		types = ["image/jpeg","image/gif","image/png"]
 	}
 }
