@@ -2,7 +2,7 @@ package sgt.jugador
 
 import java.rmi.server.UID;
 
-import sgt.FileUploadService;
+import sgt.FilesService;
 import sgt.Jugador;
 import sgt.PerfilJugador;
 import sgt.Usuario;
@@ -77,10 +77,10 @@ class JugadorController {
 		}
 		
 		def imagenPerfil = request.getFile("imagenPerfil")
-		def fileUploadService = new FileUploadService()
+		def filesService = new FilesService()
 		
-		if (fileUploadService.isImage(imagenPerfil)) {
-			def res = fileUploadService.uploadFile(imagenPerfil,"${u.id}","images/perfiles")
+		if (filesService.isImage(imagenPerfil)) {
+			def res = filesService.uploadFile(imagenPerfil,"${u.id}","images/perfiles")
 			u.jugador.imagen = res
 			u.jugador.save()
 		} else {
