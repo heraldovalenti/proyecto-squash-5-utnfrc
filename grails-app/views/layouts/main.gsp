@@ -8,6 +8,7 @@
     <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
+ 	<link href="${resource(dir: 'css', file: 'calendar.css')}" type="text/css" rel="stylesheet">  
  	
  	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
@@ -19,6 +20,7 @@
 	</style>  
    
 	<g:layoutHead/>
+	<r:require modules="calendario,jquery"/>
 	<r:layoutResources />
 </head>
 	
@@ -55,7 +57,7 @@
 			</div>
 		</div>
 	</div>
-	<r:require module="application" />
+	<r:require module="application" />	
 	<r:layoutResources />
 </body>
 </html>

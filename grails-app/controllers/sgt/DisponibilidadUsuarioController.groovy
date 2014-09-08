@@ -1,137 +1,127 @@
 package sgt
 
+import grails.converters.JSON
+import grails.web.JSONBuilder
 import org.springframework.dao.DataIntegrityViolationException
 
+
 class DisponibilidadUsuarioController {
-
-	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
-	static defaultAction = 'index'
-	
-    def index() { 
+	def index() {
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
-		if (!u.disponibilidad) {
-			u.setDisponibilidad(new Disponibilidad(fechaActualizacion: new Date()).save() )
-			u.save()
-		}
-		redirect(action: 'list', model: [layout: 'jugador'])
-	}
-	
-	def list(Integer max) {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		
-		params.max = Math.min(max ?: 10, 100)
-		
-		def total = u.disponibilidad.detalles ? u.disponibilidad.detalles.count : 10 
-		
-		render(view: '/detalleDisponibilidad/list', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstanceList: u.disponibilidad.getDetalles(), detalleDisponibilidadInstanceTotal: total, fechaActualizacion: u.disponibilidad.fechaActualizacion])
-	}
-	
-	def create() {
-		render(view: '/detalleDisponibilidad/create', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: new DetalleDisponibilidad(params)])
-	}
-	
-	def save() {
-		def desde = gestorhorarios.aValor(horas: params.desdeHoras, minutos: params.desdeMinutos)
-		def hasta = gestorhorarios.aValor(horas: params.hastaHoras, minutos: params.hastaMinutos)
-		
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-			
-		def detalleDisponibilidadInstance = new DetalleDisponibilidad(dia: params.dia, desde:desde, hasta:hasta)
-		if (!detalleDisponibilidadInstance.save(flush: true)) {
-			render(view: "/detalleDisponibilidad/create", model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
-			return
-		}
-		u.disponibilidad.addToDetalles(detalleDisponibilidadInstance)
-		u.disponibilidad.setFechaActualizacion(new Date())
-		u.save()
-
-		flash.message = message(code: 'default.created.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), detalleDisponibilidadInstance.id])
-		redirect(action: "show", id: detalleDisponibilidadInstance.id)
-	}
-	
-	def show(Long id) {
-		def detalleDisponibilidadInstance = DetalleDisponibilidad.get(id)
-		if (!detalleDisponibilidadInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), id])
-			redirect(action: "list")
-			return
-		}
-
-		render(view: '/detalleDisponibilidad/show', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
-	}
-	
-	def edit(Long id) {
-		def detalleDisponibilidadInstance = DetalleDisponibilidad.get(id)
-		if (!detalleDisponibilidadInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), id])
-			redirect(action: "list")
-			return
-		}
-
-		render(view: '/detalleDisponibilidad/edit', model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
-	}
-	
-	def update(Long id, Long version) {
-		def detalleDisponibilidadInstance = DetalleDisponibilidad.get(id)
-		if (!detalleDisponibilidadInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), id])
-			redirect(action: "list")
-			return
-		}
-
-		if (version != null) {
-			if (detalleDisponibilidadInstance.version > version) {
-				detalleDisponibilidadInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-						  [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad')] as Object[],
-						  "Another user has updated this DetalleDisponibilidad while you were editing")
-				render(view: "/detalleDisponibilidad/edit", model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
+		def disp = (sgt.Disponibilidad)this.disponibilidaUusuarioLogueado()
+		if (!disp) {
+			if(!u.jugador){
+				redirect(controller:"jugador",action:"create")
 				return
 			}
+			u.jugador.disponibilidad= new Disponibilidad(fechaActualizacion: new Date()).save()
+			u.save()
+			render(view: "/disponibilidadUsuario/create")
 		}
-		
-		
-		def desde = gestorhorarios.aValor(horas: params.desdeHoras, minutos: params.desdeMinutos)
-		def hasta = gestorhorarios.aValor(horas: params.hastaHoras, minutos: params.hastaMinutos)
-		detalleDisponibilidadInstance.properties = [dia: params.dia, desde: desde, hasta: hasta]
-		
-		if (!detalleDisponibilidadInstance.save(flush: true)) {
-			render(view: "/detalleDisponibilidad/edit", model: [layout: 'jugador', controladorDisponibilidad: 'DisponibilidadUsuario', detalleDisponibilidadInstance: detalleDisponibilidadInstance])
-			return
+		else{
+			render(view: "/disponibilidadUsuario/show")
 		}
+	}
+
+	def save(){
 
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
-		u.disponibilidad.setFechaActualizacion(new Date())
+
+		if(u.jugador.disponibilidad.detalles!=null){
+			u.jugador.disponibilidad.detalles=null
+			u.save()
+		}
+
+		def arrayDisponibilidad= request.JSON
+		def detalle
+
+		for(int i =0; i<arrayDisponibilidad.size();i++ ){
+
+			detalle= new DetalleDisponibilidad()
+			def horaCortada= arrayDisponibilidad[i].hora.split(':')			
+			detalle.hora=  horaCortada[0] as int
+			detalle.dia= arrayDisponibilidad[i].dia
+
+			if(!detalle.save(flush: true)){
+				System.out.println("entro al return")
+				flash.message = "No se pudo grabar el detalle de disponibilidad"
+				return
+			}
+
+			u.jugador.disponibilidad.addToDetalles(detalle)
+		}
+
+		u.jugador.disponibilidad.setFechaActualizacion(new Date())
 		u.save()
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), detalleDisponibilidadInstance.id])
-		redirect(action: "show", id: detalleDisponibilidadInstance.id)
+		render u.jugador.disponibilidad as JSON
 	}
-	
-	def delete(Long id) {
+
+	def show(){
+
+		render(view: "/disponibilidadUsuario/show")
+	}
+
+	def delete(){
+
+		def disp = (sgt.Disponibilidad)this.disponibilidaUusuarioLogueado()
+		System.out.println("entro a eliminar")
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
-		def detalleDisponibilidadInstance = DetalleDisponibilidad.get(id)
-		if (!detalleDisponibilidadInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), id])
-			redirect(action: "list")
+		if (!disp) {
+			flash.message = "No existe la disponibilidad"
+			redirect(action: "show")
 			return
 		}
-		
+
 		try {
-			u.disponibilidad.removeFromDetalles(detalleDisponibilidadInstance)
-			u.disponibilidad.setFechaActualizacion(new Date())
+
+			def detalles= disp.detalles.findAll()
+			disp.detalles.removeAll(detalles)
+
+			u.jugador.disponibilidad=null
 			u.save()
-			detalleDisponibilidadInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), id])
-			redirect(action: "list")
+			render u.jugador as JSON
 		}
 		catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'detalleDisponibilidad.label', default: 'DetalleDisponibilidad'), id])
-			redirect(action: "show", id: id)
+		}
+	}
+
+	def obtenerDisponibilidad(){
+
+		System.out.println("entro al obtener")
+
+		def u = (sgt.Usuario)session.getAttribute("userLogon")
+		u = Usuario.get(u.id)
+
+		if (!u.jugador.disponibilidad) {
+			return
+		}
+		Disponibilidad disp= u.jugador.disponibilidad
+		def arrayDisp = disp.getDetalles()
+
+		System.out.println(arrayDisp.size().toString())
+
+		render arrayDisp as JSON
+	}
+
+	def disponibilidaUusuarioLogueado(){
+
+		def u = (sgt.Usuario)session.getAttribute("userLogon")
+		u = Usuario.get(u.id)
+		if(!u.jugador){
+			flash.message = "No existe el jugador"
+			return
+		}
+		else if (!u.jugador.disponibilidad) {
+			return null
+		}
+		else{
+			return u.jugador.disponibilidad
 		}
 	}
 }
+
+	
