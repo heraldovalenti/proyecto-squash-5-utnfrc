@@ -258,16 +258,17 @@ tr {
 }
 
 tr>td:first-child, tr>th:first-child {
-	padding-left: 1.25em;
+	padding-left: 0em;
 }
 
 tr>td:last-child, tr>th:last-child {
-	padding-right: 1.25em;
+	padding-right: 0em;
 }
 
 td, th {
 	line-height: 1.5em;
-	padding: 0.5em 0.6em;
+	padding: 0.3em 0.2em;
+	background: #FFFFFF;
 	text-align: left;
 	vertical-align: top;
 	border: 2px solid;

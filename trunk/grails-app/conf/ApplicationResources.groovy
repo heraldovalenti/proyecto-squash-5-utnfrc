@@ -15,6 +15,9 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/torneos.js'
 	}
+	calendario {
+		resource url:'js/calendario.js'
+	}
 	dialogs {
 		dependsOn 'jquery'
 		resource url: 'js/dialogs.js'

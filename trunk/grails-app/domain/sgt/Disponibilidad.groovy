@@ -9,6 +9,10 @@ class Disponibilidad {
 	String toString() {
 		return detalles.toString()
 	}
+	
+	static mapping = {
+		detalles cascade:"all,delete-orphan"		
+		}
 
 	
     static constraints = {
