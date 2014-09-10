@@ -152,7 +152,7 @@ height:25px;
 width:90px;
 }
 
-input[type="submit"] {
+/* input[type="submit"] {
 
 background:#0b93d2;
 background:-webkit-gradient(linear, left top, left bottom, from(#2db5f4), to(#0b93d2));
@@ -163,26 +163,26 @@ margin:15px;
 height:25px;
 padding: 0px 20px;
 font: 14px "helvetica neue",helvetica,arial,verdana;
-}
+} */
 
 /*cajas de texto de los forms*/
-input[type="text"] {
+/* input[type="text"] {
 background-color: #FFFFFF;
 border: 1px solid #CFCFCF;
 height: 20px;
 margin: 0;
 padding-left: 3px;
 width: 150px;
-}
+} */
 
-input[type="password"] {
+/* input[type="password"] {
 background-color: #FFFFFF;
 border: 1px solid #CFCFCF;
 height: 20px;
 margin: 0;
 padding-left: 3px;
 width: 150px;
-}
+} */
 
 
 /*etiquetas dentro del form*/
@@ -216,7 +216,7 @@ span.date-news {
 }
 
 h3.title {
-border: 2px solid #00AFF0;
+/* border: 2px solid #00AFF0; */
     color: #FFFFFF;
     font-size: 16px;
     font-weight: bold;
@@ -225,6 +225,7 @@ border: 2px solid #00AFF0;
     min-height: 31px;
     text-indent: 10px;
     text-transform: uppercase;
+    text-align: center;
     
     background: #183353;
     background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
@@ -2470,12 +2471,12 @@ ul.qj-list li.img img {
   color: white;
   float: left;
   font-size: 10px;
-  height: 53px;
+  height: 6.5em;
   line-height: 14px;
   margin: 5px 3px;
   padding: 3px 6px 6px;
   position: relative;
-  width: 165px;
+  width: 28em;
 }
 #headerLiveScoreBox3 {
     margin-right:0;
