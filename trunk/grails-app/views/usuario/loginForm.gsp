@@ -3,12 +3,17 @@
 	<title><g:message code="iniciosesion.titulo" /></title>
 	<meta name="layout" content="login" />
 	
-	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet"><%--
 	<link href="${resource(dir: 'css', file: 'login.css') }" type="text/css" rel="stylesheet">
-</head>
-<body>	
-	<!-- div para formulario de inicio de sesion -->		
-		<!-- titulo de inicio de sesion -->
+	--%><link href="${resource(dir: 'css', file: 'bootstrap.min.css') }" type="text/css" rel="stylesheet">
+	
+	<%--<r:require modules="bootstrap,jquery"/>
+	<r:layoutResources />
+	
+--%></head>
+<body><%--	
+	 div para formulario de inicio de sesion -->		
+		--%><!-- titulo de inicio de sesion -->
 		<h3 class="title"><g:message code="iniciosesion.titulo" /></h3>		
 			
 			<!-- control de visualizacion de mensajes de error -->
@@ -35,40 +40,35 @@
 			
 				<!-- campos del formulario -->
 				
-			<div class="camposUsuario">
-					
-					<!-- field: nombre de usuario -->
-					<div class="candado">
-					</div>
-					<div class="filaLogin">
-						<label for="nombreUsuario">
-							<g:message code="iniciosesion.nombreusuario.label" />
-							<span class="required-indicator">*</span>
-						</label>
-						<g:textField name="nombreUsuario" type="text" required=""/>
+			<div class="camposUsuario">					
+					<!-- field: nombre de usuario -->					
+					<div class="filaLogin">						
+						<input type="text" name="nombreUsuario" class="form-control" placeholder="Nombre de usuario"/>
 					</div>
 					
 					<!-- field: password -->
-					<div class="filaLogin">
-						<label for="password">
-							<g:message code="iniciosesion.password.label" />
-							<span class="required-indicator">*</span>
-						</label>
-						<g:passwordField name="password" type="password" required="" />
-					</div>
-					
+					<div class="filaLogin">						
+						<input type="password" name="password"  class="form-control" placeholder="Contraseña" />
+					</div>									
+					<%--<div class="candado">
+					</div>				
 						
-					<!-- botones de formulario -->
-				
-				
-					<g:submitButton name="create" class="enviar" value="Inicar Sesión" />
-					<g:link controller="usuario" action="registro" class="link_boton_verde">Crear Cuenta</g:link>					
+					--%><!-- botones de formulario -->
+			<div class="filaLogin">
+				<g:submitButton name="create" class="btn btn-primary"
+					value="Inicar Sesión" />
+				<g:actionSubmit value="Crear Cuenta" controller="usuario"
+					action="registro" class="btn btn-success" />
+				Olvide mi contraseña
+			</div>
 					
-					<g:link value= "Crear Cuenta" controller="usuario" action="registro" class="boton_verde" style="margin: 3px;" />
+			<%--<div class="filaLogin">
+				<g:link value="Olvide mi contraseña" controller="usuario"
+					action="registro"/>
+			</div>
 					
 								
-			</div>	
+			--%></div>	
 			</g:form>	
-			
 </body>
 </html>

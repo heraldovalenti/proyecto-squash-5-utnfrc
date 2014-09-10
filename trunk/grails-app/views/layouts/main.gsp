@@ -9,8 +9,8 @@
  	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'calendar.css')}" type="text/css" rel="stylesheet">  
- 	
- 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+ 	<%--<link href="${resource(dir: 'css', file: 'bootstrap.min.css') }" type="text/css" rel="stylesheet">
+ 	--%><link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
         
    	<style>
@@ -20,7 +20,8 @@
 	</style>  
    
 	<g:layoutHead/>
-	<r:require modules="calendario,jquery"/>
+	<%--<r:require modules="bootstrap,jquery"/>
+	--%><r:require modules="calendario,jquery"/>
 	<r:layoutResources />
 </head>
 	

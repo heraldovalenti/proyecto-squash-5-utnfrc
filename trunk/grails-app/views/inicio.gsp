@@ -116,7 +116,7 @@
     </div>
     
     <div class="live-tour" >
-    	<div id="headerLiveScoreBox1" class="headerLiveScoreBox " style="width:275px">
+    	<div id="headerLiveScoreBox1" class="headerLiveScoreBox ">
     		<div class="backgroundFrame">
     			</div><img class="scoreboardLogo" src="http://www.acsr.com.ar/images/img.php?src=http://www.acsr.com.ar/images/afiches/163g.jpg&h=55&zc=1">
     				<p class="headScorebrdTitle"><a href="#">10º fecha ACS 2013 - Les Courts</a></p>

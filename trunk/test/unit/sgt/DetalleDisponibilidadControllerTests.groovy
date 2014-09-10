@@ -5,7 +5,7 @@ package sgt
 import org.junit.*
 import grails.test.mixin.*
 
-@TestFor(DetalleDisponibilidadController)
+//@TestFor(DetalleDisponibilidadController)
 @Mock(DetalleDisponibilidad)
 class DetalleDisponibilidadControllerTests {
 

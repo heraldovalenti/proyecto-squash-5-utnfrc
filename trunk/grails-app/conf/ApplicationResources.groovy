@@ -26,4 +26,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/usuarios.js'
 	}
+	bootstrap{
+		dependsOn 'jquery'
+		resource url: 'js/bootstrap.min.js'
+	}
 }

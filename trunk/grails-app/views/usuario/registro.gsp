@@ -4,8 +4,9 @@
 <head>
 	<title><g:message code="registrousuario.titulo" /></title>
 	<meta name="layout" content="registroUsuario" />
-	<link href="${resource(dir: 'css', file: 'login.css') }" type="text/css" rel="stylesheet">
-	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
+	<%--<link href="${resource(dir: 'css', file: 'login.css') }" type="text/css" rel="stylesheet">
+	--%><link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'bootstrap.min.css') }" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<!-- div para el formulario de registro de usuario -->
@@ -37,7 +38,7 @@
 						<g:message code="registrousuario.nombreusuario.label" />
 						<span class="required-indicator">*</span>
 					</label>
-					<g:textField name="nombreUsuario" type="text" required="" value="${ usuarioInstance?.nombreUsuario }"/>
+					<g:textField name="nombreUsuario" type="text" class="form-control" required="" placeholder="Nombre de usuario" value="${ usuarioInstance?.nombreUsuario }"/>
 				</div>
 				
 				<!-- field: password -->
@@ -46,7 +47,7 @@
 						<g:message code="registrousuario.password.label" />
 						<span class="required-indicator">*</span>
 					</label>
-					<g:passwordField name="password" type="password" required=""/>
+					<g:passwordField name="password" type="password" required="" class="form-control" placeholder="Contraseña"/>
 				</div>
 				
 				<!-- field: password2 -->
@@ -55,7 +56,7 @@
 						<g:message code="registrousuario.password.reingresolabel" />
 						<span class="required-indicator">*</span>
 					</label>
-					<g:passwordField name="password2" type="password" required=""/>
+					<g:passwordField name="password2" type="password" required="" class="form-control" placeholder="Contraseña"/>
 				</div>
 				
 				<!-- field: correo electronico -->
@@ -64,15 +65,17 @@
 						<g:message code="registrousuario.correo.label" />
 						<span class="required-indicator">*</span>
 					</label>
-					<g:textField name="correo" type="text" required="" value="${ usuarioInstance?.correo }"/>
+					<g:textField name="correo" type="text" required="" class="form-control" placeholder="Correo electrónico"  value="${ usuarioInstance?.correo }"/>
 				</div>
 				
 			</fieldset>
 			
 			<!-- botones del formulario -->
+			<div class="filaLogin">
 			<fieldset class="buttons">
-				<g:submitButton name="create" class="enviar" value="Registrar usuario" />
+				<g:submitButton name="create" class="margenBoton btn btn-primary "  value="Registrar usuario" />
 			</fieldset>
+			</div>
 		</div>	
 		</form>
 	<r:require modules="dialogs, usuarios"/>
