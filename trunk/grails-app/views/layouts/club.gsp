@@ -7,9 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
    
- 	
- 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+ 	<%--<link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
+ 	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
+ 	--%><link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'club.css') }" type="text/css"	rel="stylesheet">
+ 	<link href="${resource(dir: 'css', file: 'calendar-cancha.css')}" type="text/css" rel="stylesheet"> 
  	
  	
         
@@ -20,6 +22,7 @@
 	</style>  
    
 	<g:layoutHead/>
+	<r:require modules="calendario,jquery"/>	
 	<r:layoutResources />
 </head>
 	

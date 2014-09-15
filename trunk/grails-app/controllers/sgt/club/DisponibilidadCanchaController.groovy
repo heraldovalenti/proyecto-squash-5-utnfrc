@@ -2,45 +2,69 @@ package sgt.club
 import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 import sgt.Cancha
+import sgt.ClubService;
 import sgt.Disponibilidad
 import sgt.DetalleDisponibilidad
 
 class DisponibilidadCanchaController {
+	
+	ClubService clubService	
 
-	def index() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
+	def index(Long id) {		
+		def club=clubService.clubLogon(session.getAttribute("userLogon"))
+		if(session.getAttribute("idCancha")==null){
+			session.setAttribute("idCancha", id)
+		}
+		
+		int idCancha= session.getAttribute("idTorneo")
+		
+		System.out.println(idCancha)
+		
+		
+		 def canchaInstance = Cancha.get(idCancha)
+		 
+		 System.out.println("paso el index")
+		
+		
+		//u = Usuario.get(u.id)
 		def disp = (sgt.Disponibilidad)this.disponibilidadCanchaSeleccionada()
 		if (!disp) {
-			if(!u.club){
+			if(!club){
 				redirect(controller:"club",action:"create")
 				return
 			}
-			if(!u.club.cancha[id]){
+			if(!canchaInstance){
 				redirect(controller:"cancha",action:"create")
 				return
 			}
-			u.club.canchas[id].disponibilidad= new Disponibilidad(fechaActualizacion: new Date()).save()
-			u.save()
+			
+			canchaInstance.disponibilidad= new Disponibilidad(fechaActualizacion: new Date()).save()
+			canchaInstance.save()
 			render(view: "/disponibilidadCancha/create")
 		}
 		else{
 			render(view: "/disponibilidadCancha/show")
+			//render(view: "/disponibilidadCancha/show")
 		}
 	}
 
-	def save(Long id){
+	def save(){
+		System.out.println("entro al save")
 
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
+		def club=clubService.clubLogon(session.getAttribute("userLogon"))
+		
+		int idCancha= session.getAttribute("idCancha")
+		
+		def canchaInstance = Cancha.get(idCancha)
 
-		if(u.club.canchas[id].disponibilidad.detalles!=null){
-			u.club.canchas[id].disponibilidad.detalles=null
-			u.save()
+		if(canchaInstance.disponibilidad.detalles!=null){
+			canchaInstance.disponibilidad.detalles=null
+			canchaInstance.save()
 		}
 
 		def arrayDisponibilidad= request.JSON
-		def detalle
+		def detalle		
+		
 
 		for(int i =0; i<arrayDisponibilidad.size();i++ ){
 
@@ -55,12 +79,13 @@ class DisponibilidadCanchaController {
 				return
 			}
 
-			u.club.canchas[id].disponibilidad.addToDetalles(detalle)
+			canchaInstance.disponibilidad.addToDetalles(detalle)
 		}
 
-		u.club.canchas[id].disponibilidad.setFechaActualizacion(new Date())
-		u.save()
-		render u.club.canchas[id].disponibilidad as JSON
+		canchaInstance.disponibilidad.setFechaActualizacion(new Date())
+		canchaInstance.save()
+		System.out.println("renderizaa")
+		render canchaInstance.disponibilidad as JSON
 	}
 
 	def show(){
@@ -71,8 +96,9 @@ class DisponibilidadCanchaController {
 	def delete(){
 
 		def disp = (sgt.Disponibilidad)this.disponibilidadCanchaSeleccionada()		
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
+		def club=clubService.clubLogon(session.getAttribute("userLogon"))
+		int idCancha= session.getAttribute("idCancha")		
+		def canchaInstance = Cancha.get(idCancha)
 		if (!disp) {
 			flash.message = "No existe la disponibilidad"
 			redirect(action: "show")
@@ -84,47 +110,53 @@ class DisponibilidadCanchaController {
 			def detalles= disp.detalles.findAll()
 			disp.detalles.removeAll(detalles)
 
-			u.club.canchas[id].disponibilidad=null
-			u.save()
-			render u.club.canchas as JSON
+			canchaInstance.disponibilidad=null
+			club.save()
+			render canchaInstance as JSON
 		}
 		catch (DataIntegrityViolationException e) {
 		}
 	}
 
-	def obtenerDisponibilidad(Long id){
+	def obtenerDisponibilidad(){
 
 		System.out.println("entro al obtener")
+		def club=clubService.clubLogon(session.getAttribute("userLogon"))
+		
+		if(club==null){
+			System.out.println("es nulo")
+			return
+		}		
+		int idCancha= session.getAttribute("idCancha")		
+		def canchaInstance = Cancha.get(idCancha)
 
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-
-		if (!u.club.canchas.disponibilidad) {
+		if (!canchaInstance.disponibilidad) {
 			return
 		}
-		Disponibilidad disp= u.club.canchas[id].disponibilidad
+		Disponibilidad disp= canchaInstance.disponibilidad
 		def arrayDisp = disp.getDetalles()
 
 		render arrayDisp as JSON
 	}
 
-	def disponibilidadCanchaSeleccionada(Long id){
+	def disponibilidadCanchaSeleccionada(){
 
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		if(!u.club){
+		def club=clubService.clubLogon(session.getAttribute("userLogon"))
+		int idCancha= session.getAttribute("idCancha")		
+		def canchaInstance = Cancha.get(idCancha)
+		if(!club){
 			flash.message = "No existe el club"
 			return
 		}
-		else if(u.club.canchas[id]){
+		else if(!canchaInstance){
 			flash.message = "No existe la cancha"
 			return
 		}
-		else if (!u.club.canchas[id].disponibilidad) {
+		else if (!canchaInstance.disponibilidad) {
 			return null
 		}
 		else{
-			return u.club.canchas[id].disponibilidad
+			return canchaInstance.disponibilidad
 		}
 	}
 }

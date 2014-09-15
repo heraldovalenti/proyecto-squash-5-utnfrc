@@ -96,7 +96,7 @@ $(function() {
 
 
 $(function() {
-	$('.save')
+	$('#guardarDisponibilidad')
 			.click(
 					function() {
 						var disponibilidad = [];
@@ -199,12 +199,13 @@ $(function() {
 							dataType : "json",
 							url : "save",
 							success : function(data) {
+								alert('grabo');
 								window.location = "show";
 							}
 						});
 
 					}),
-	$('.delete').click(
+	$('#borrarDisponibilidad').click(
 			function(){
 				
 				$.ajax({
