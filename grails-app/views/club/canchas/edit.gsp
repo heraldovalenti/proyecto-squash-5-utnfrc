@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"
+<%--<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"
 	rel="stylesheet">
 <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css"
 	rel="stylesheet">
@@ -10,7 +10,7 @@
 	type="text/css" rel="stylesheet">
 <link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css"
 	rel="stylesheet">
-<meta name="layout" content="club">
+--%><meta name="layout" content="club">
 <g:set var="entityName"
 	value="${message(code: 'cancha.label', default: 'Cancha')}" />
 <title><g:message code="default.edit.label" args="[entityName]" /></title>

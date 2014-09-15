@@ -1,0 +1,45 @@
+table.calendar {
+    border: 1px solid #000000;
+}
+
+table.calendar td.time-hour {
+    border-top: 1px solid #A9A9A9;
+    border-right: 1px solid #A9A9A9;    
+    background-color: #efefef;
+	background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));
+	    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
+	color: #666666;	
+	line-height: 1.7em;
+	padding: 0.2em 0.6em;
+    text-align: center;
+    font-weight: bold; 
+}
+
+table.calendar td.time-half-hour {
+    border-right: 1px solid #A9A9A9;
+    background-color: #efefef;
+}
+
+table.calendar td.entry-hour {	
+    border-top: 1px solid #666666;
+    border-right: 1px solid #666666;
+}
+
+table.calendar td.entry-half-hour {
+    border-top: 1px dotted #A9A9A9;
+    border-right: 1px solid #A9A9A9;
+}
+
+td:hover {
+	background: #E1F2B6;
+}
+td.selected {
+	background: #5882FA;
+	
+}
+td.unselected {
+	background: #FFFFFF;
+	
+}
