@@ -69,9 +69,6 @@ environments {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
-	test {
-		fileuploader.image.path = "/home/heril/sgt/images/test/"
-	}
 }
 
 // log4j configuration
@@ -94,9 +91,11 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
 fileuploader {
 	image {
-		path = "/home/heril/sgt/images/"
+		path = "/home/heril/grails-workspace/SistemaGestionTorneo/web-app/images/perfiles/"
+		serverPath = "images/perfiles"
 		prefix = "image/"
 		types = ["image/jpeg","image/gif","image/png"]
 	}

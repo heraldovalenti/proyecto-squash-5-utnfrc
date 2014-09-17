@@ -49,4 +49,24 @@ class Usuario {
 		
 		return 0
 	}
+	
+	Boolean esClub() {
+		Rol r = Rol.findByNombre("Club")
+		return rol.equals(r)
+	}
+	
+	Boolean esJugador() {
+		Rol r = Rol.findByNombre("Jugador")
+		return rol.equals(r)
+	}
+	
+	Boolean esEncargado() {
+		Rol r = Rol.findByNombre("Encargado")
+		return rol.equals(r)
+	}
+	
+	Boolean esAdministrador() {
+		Rol r = Rol.findByNombre("Encargado club")
+		return rol.equals(r)
+	}
 }

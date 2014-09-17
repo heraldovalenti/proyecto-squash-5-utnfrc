@@ -1,16 +1,10 @@
-
 <%@ page import="sgt.Club" %>
 <!DOCTYPE html>
 <html>
 	<head>
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 		<meta name="layout" content="club">
-		<g:set var="entityName" value="${message(code: 'club.label', default: 'Club')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
-	<body>
-		<a href="#show-club" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
-		
+	<body>		
 		<div id="show-club" class="content scaffold-show" role="main">
 			<h1>Datos de club</h1>
 			<g:if test="${flash.message}">
@@ -63,12 +57,25 @@
 					</span>
 				</li>
 				</g:if>
+				
+				<g:if test="${ clubLogo }">
+				<li class="fieldcontain">
+					<span id="clubLogo-label" class="property-label">
+						Logo
+					</span>
+					<div class="vista-previa"
+						style="background-image: url(
+						<g:resource dir="${ imagesDir }" file="${ clubLogo }"/>
+						);"
+						>
+					</div>
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${clubInstance?.id}" />
-					<g:link class="edit" action="edit" id="${clubInstance?.id}">
+					<g:link class="edit" action="edit">
 						<g:message code="default.button.edit.label" default="Edit" />
 					</g:link>
 				</fieldset>

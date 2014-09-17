@@ -26,6 +26,14 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/usuarios.js'
 	}
+	imagenes {
+		dependsOn 'jquery'
+		resource url: 'js/imagenes.js'
+	}
+	club {
+		dependsOn 'jquery'
+		resource url: 'js/club.js'
+	}
 	bootstrap{
 		dependsOn 'jquery'
 		resource url: 'js/bootstrap.min.js'

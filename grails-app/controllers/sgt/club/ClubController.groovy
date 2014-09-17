@@ -1,20 +1,15 @@
 package sgt.club
 
-import org.springframework.dao.DataIntegrityViolationException
-
-import sgt.Cancha;
-import sgt.Club;
-import sgt.Persona;
-import sgt.Usuario;
+import grails.converters.JSON
+import grails.validation.ValidationException
+import sgt.Club
+import sgt.Usuario
 
 class ClubController {
-
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
-	static defaultAction = 'index'
-	
-	static namespace = 'club'
-	
+	def clubService
+	def filesService
+		
 	def index() {
 		def Usuario u = session.getAttribute("userLogon")
 		
@@ -24,18 +19,18 @@ class ClubController {
 		}
 		
 		u = Usuario.get(u.id)
-		render(view: 'inicioClub')
+		render(view: "inicioClub")
 		return
 	}
 	
 	def datosClub() {
-		def Usuario u = session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		if (u.getClub()) {
-			redirect(action: 'show', id: u.getClub().id)
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club c = clubService.clubLogon(userLogon)
+		if (c) {
+			redirect(action: "show")
 			return
 		} else {
-			redirect(action: 'create')
+			redirect(action: "create")
 			return
 		}
 	}
@@ -47,75 +42,57 @@ class ClubController {
     }
 
     def create() {
-        [clubInstance: new Club(params)]
+        render (view: "create", model: [clubInstance: new Club(params)])
     }
+	
+	def show() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def club = clubService.clubLogon(userLogon)
+		def clubLogo = (club.imagen != null) ? club.imagen.nombre : null
+		def imagesDir = filesService.retrieveImagesDir()
+		render(view: "show", model: [clubInstance: club, imagesDir: imagesDir, clubLogo : clubLogo])
+	}
+	
+	def edit() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def club = clubService.clubLogon(userLogon)
+		def clubLogo = (club.imagen != null) ? club.imagen.nombre : null
+		def imagesDir = filesService.retrieveImagesDir()
+		render(view: "edit", model: [clubInstance: club, imagesDir: imagesDir, clubLogo : clubLogo])
+	}
 
     def save() {
-		def Usuario u = session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		
-        def Club clubInstance = new Club(params)
-		clubInstance.validado = false
-        if (!clubInstance.save(flush: true)) {
-            render(view: "create", model: [clubInstance: clubInstance])
-            return
-        }
-		
-		u.setClub(clubInstance)
-		u.save()
-
-        flash.message = message(code: 'sgt.registrodatos.exito')
-        redirect(action: "show", id: clubInstance.id)
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club clubInstance = clubService.clubLogon(userLogon)
+		def logoClub = request.getFile("logoClub")
+		try {
+			clubService.registrarDatosClub(userLogon, clubInstance, logoClub)
+			flash.message = "Datos de club registrados"
+			redirect(action: "show")
+		} catch (ValidationException e) {
+			flash.errors = e.errors
+			render (view: "create", model: [clubInstance: clubInstance])
+		} catch (e) {
+			flash.exception = e
+			render (view: "create", model: [clubInstance: clubInstance])
+		}
     }
 
-    def show(Long id) {
-        def clubInstance = Club.get(id)
-        if (!clubInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'club.label', default: 'Club'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [clubInstance: clubInstance]
-    }
-
-    def edit(Long id) {
-        def clubInstance = Club.get(id)
-        if (!clubInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'club.label', default: 'Club'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [clubInstance: clubInstance]
-    }
-
-    def update(Long id, Long version) {
-        def clubInstance = Club.get(id)
-        if (!clubInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'club.label', default: 'Club'), id])
-            redirect(action: "list")
-            return
-        }
-
-        if (version != null) {
-            if (clubInstance.version > version) {
-                clubInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'club.label', default: 'Club')] as Object[],
-                          "Another user has updated this Club while you were editing")
-                render(view: "edit", model: [clubInstance: clubInstance])
-                return
-            }
-        }
-		
-        clubInstance.properties = params
-
-        if (!clubInstance.save(flush: true)) {
-            render(view: "edit", model: [clubInstance: clubInstance])
-            return
-        }
-
-        flash.message = message(code: 'sgt.registrodatos.exito')
-        redirect(action: "show", id: clubInstance.id)
+    def update() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club clubInstance = clubService.clubLogon(userLogon)
+		bindData(clubInstance,params)
+		def logoClub = request.getFile("logoClub")
+		try {
+			clubService.actualizarDatosClub(clubInstance, logoClub)
+			flash.message = "Datos de club registrados"
+			redirect(action: "show")
+		} catch (ValidationException e) {
+			flash.errors = e.errors
+			render (view: "edit", model: [clubInstance: clubInstance])
+		} catch (e) {
+			flash.exception = e
+			render (view: "edit", model: [clubInstance: clubInstance])
+		}
     }
 }

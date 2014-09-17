@@ -1,38 +1,39 @@
 <%@ page import="sgt.Club" %>
 <!DOCTYPE html>
 <html>
-	<head>
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
-		<meta name="layout" content="club">
-		<g:set var="entityName" value="${message(code: 'club.label', default: 'Club')}" />
-		<title><g:message code="default.edit.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#edit-club" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<g:link controller="club" action="datosClub">Volver</g:link>
-		<div id="edit-club" class="content scaffold-edit" role="main">
-			<h1>Datos de Club</h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${clubInstance}">
+<head>
+	<meta name="layout" content="club">
+</head>
+<body>
+	<g:link controller="club" action="datosClub">Volver</g:link>
+	<div id="edit-club" class="content scaffold-edit" role="main">
+		<h1>Datos de Club</h1>
+		<g:if test="${ flash.message }">
+			<div class="message" role="status">
+				${ flash.message }
+			</div>
+		</g:if>
+		<g:if test="${ flash.errors }">
 			<ul class="errors" role="alert">
-				<g:eachError bean="${clubInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
+				<g:each in="${ flash.errors }" var="error">
+					<li>${ error }</li>
+				</g:each>
 			</ul>
-			</g:hasErrors>
-			<g:form method="post" >
-				<g:hiddenField name="id" value="${clubInstance?.id}" />
-				<g:hiddenField name="version" value="${clubInstance?.version}" />
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-					
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+		</g:if>
+		<g:if test="${ flash.exception }">
+			<ul class="errors" role="alert">
+				<li>${ flash.exception.message }</li>
+			</ul>
+		</g:if>
+		<g:form action="update" method="post" name="form-datos-club" enctype="multipart/form-data">
+			<fieldset class="form">
+				<g:render template="form"/>
+			</fieldset>
+			<fieldset class="buttons">
+				<g:submitButton name="create" class="save" value="Guardar" />
+			</fieldset>
+		</g:form>
+	</div>
+	<r:require modules="imagenes, club"/>
+</body>
 </html>

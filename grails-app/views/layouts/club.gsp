@@ -5,16 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title><g:layoutTitle default="Grails"/></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-   
- 	<%--<link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
- 	--%><link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'club.css') }" type="text/css"	rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'calendar-cancha.css')}" type="text/css" rel="stylesheet"> 
  	
- 	
-        
    	<style>
    		ul.lof-main-wapper li {
   			position:relative;    
@@ -59,10 +53,9 @@
 				<div id="spinner" class="spinner" style="display:none;">
 					<g:message code="spinner.alt" default="Loading&hellip;"/>
 				</div>
-				<g:javascript library="application"/>
-				<r:layoutResources />
 			</div>
 		</div>
 	</div>
+	<r:layoutResources />
 </body>
 </html>
