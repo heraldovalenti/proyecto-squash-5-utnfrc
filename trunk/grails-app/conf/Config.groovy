@@ -92,9 +92,10 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
+def localProjectPath = "/home/heril/grails-workspace"
 fileuploader {
 	image {
-		path = "/home/heril/grails-workspace/SistemaGestionTorneo/web-app/images/perfiles/"
+		path = localProjectPath + "/SistemaGestionTorneo/web-app/images/perfiles/"
 		serverPath = "images/perfiles"
 		prefix = "image/"
 		types = ["image/jpeg","image/gif","image/png"]
