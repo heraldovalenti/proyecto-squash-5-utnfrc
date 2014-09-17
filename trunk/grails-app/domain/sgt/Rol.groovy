@@ -12,4 +12,10 @@ class Rol {
 	String toString() {
 		return nombre
 	}
+	
+	boolean equals(Object obj) {
+		if ( !(obj instanceof Rol) ) return false
+		Rol other = obj
+		return other.id == this.id
+	}
 }

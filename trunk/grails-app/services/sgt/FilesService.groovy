@@ -77,11 +77,26 @@ public class FilesService {
 		return image
 	}
 	
-	def retrieveImageFile(Long id) {
+	byte[] retrieveImageData(Long id) {
 		Imagen imagen = Imagen.get(id)
 		String imagesDir = grailsApplication.config.fileuploader.image.path
 		File imageFile = new File(imagesDir + imagen.nombre)
 		return Files.readAllBytes(Paths.get(imageFile.toURI()));
+	}
+	
+	File retrieveImageFile(Long id) {
+		Imagen imagen = Imagen.get(id)
+		String imagesDir = grailsApplication.config.fileuploader.image.path
+		return new File(imagesDir + imagen.nombre)
+	}
+	
+	String retrieveImageURI(Long id) {
+		return retrieveImageFile(id).toURI()
+	}
+	
+	String retrieveImagesDir() {
+		String imagesDir = grailsApplication.config.fileuploader.image.serverPath
+		return imagesDir
 	}
 	
 	String formatForType(String mimeType) {

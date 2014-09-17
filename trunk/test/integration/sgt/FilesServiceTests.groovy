@@ -50,18 +50,24 @@ class FilesServiceTests {
 	void uploadImageTest() {
 		MockMultipartFile file = new MockMultipartFile("name", "orig_name.gif", "image/gif", new Byte[1])
 		String dir = grailsApplication.config.fileuploader.image.path
+		File imageDir = new File(dir)
 		
+		int initFilesAmount = imageDir.listFiles().length
 		Imagen res = filesService.uploadImage(file)
+		
 		File f = new File(dir + res.nombre)
-		File imageFile = new File(dir).listFiles()[0]
 		Assert.assertTrue(f.exists())
-		Assert.assertEquals(imageFile.getAbsolutePath(), dir + res.nombre)
-		Assert.assertEquals(1, Imagen.list().size())		
+		Assert.assertEquals(f.getAbsolutePath(), dir + res.nombre)	
+		Assert.assertEquals(initFilesAmount + 1, imageDir.listFiles().length)
+		
+		f.delete()
+		Assert.assertFalse(f.exists())
+		Assert.assertEquals(initFilesAmount, imageDir.listFiles().length)
 	}
 	
 	@Test
 	void testingDirectoryTest() {
 		String dir = grailsApplication.config.fileuploader.image.path
-		Assert.assertEquals("/home/heril/sgt/images/test/",dir)
+		Assert.assertEquals("/home/heril/grails-workspace/SistemaGestionTorneo/web-app/images/perfiles/",dir)
 	}
 }

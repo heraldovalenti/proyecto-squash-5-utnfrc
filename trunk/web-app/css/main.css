@@ -86,6 +86,27 @@ fieldset,
 	margin-left: 27%;
 }
 
+.fieldcontain input,
+.fieldcontain select,
+.fieldcontain textarea {
+	width: 162px;
+}
+
+.fieldcontain label.vista-previa {
+	float: left;
+}
+
+.fieldcontain div.vista-previa {
+	height: 200px;
+	width: 160px;
+	background-color: white;
+	float: left;
+	margin: 0px 4px;
+	border: 1px solid #cccccc;
+	background-repeat: no-repeat;
+    background-position: center center;
+}
+
 label {
 	cursor: pointer;
 	display: inline-block;
