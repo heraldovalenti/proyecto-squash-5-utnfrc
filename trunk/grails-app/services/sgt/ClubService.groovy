@@ -44,7 +44,7 @@ class ClubService {
 		
 		if (logo != null && !logo.isEmpty() && filesService.isImage(logo)) {
 			Imagen logoClub = filesService.uploadImage(logo)
-			club.imagen = logoClub						
+			club.imagen = logoClub
 		}
 		club.save(failOnError: true)
 		
