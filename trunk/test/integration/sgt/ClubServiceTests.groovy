@@ -142,7 +142,7 @@ class ClubServiceTests {
 		c.save(flush: true)
 		Assert.assertNotNull(c.encargados)
 		
-		clubService.modificarEncargado([idUsuario: u.id, nombre: "Mengano", password: "le_password"])
+		clubService.modificarEncargado([encargado: u.id, nombre: "Mengano", password: "le_password"])
 		
 		u = Usuario.findByNombreUsuario("nuevo_encargado")
 		Assert.assertEquals("Mengano", u.persona.nombre)

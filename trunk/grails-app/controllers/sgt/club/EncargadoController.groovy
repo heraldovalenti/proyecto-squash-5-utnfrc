@@ -47,7 +47,7 @@ class EncargadoController {
 	}
 	
 	def show() {
-		Usuario u = Usuario.get(params.idUsuario)
+		Usuario u = Usuario.get(params.encargado)
 		Usuario userLogon = session.getAttribute("userLogon")
 		Club c = clubService.clubLogon(userLogon)
 		u = clubService.verEncargado(c, u)
@@ -60,7 +60,7 @@ class EncargadoController {
 	}
 	
 	def edit() {
-		Usuario u = Usuario.get(params.idUsuario)
+		Usuario u = Usuario.get(params.encargado)
 		Usuario userLogon = session.getAttribute("userLogon")
 		Club c = clubService.clubLogon(userLogon)
 		u = clubService.verEncargado(c, u)
@@ -73,10 +73,11 @@ class EncargadoController {
 	}
 	
 	def update() {
-		Usuario u = Usuario.get(params.idUsuario)
+		Usuario u = Usuario.get(params.encargado)
 		Usuario userLogon = session.getAttribute("userLogon")
 		Club c = clubService.clubLogon(userLogon)
 		u = clubService.verEncargado(c, u)
+		Persona p = u.persona
 		if (u == null) {
 			flash.message = "Encargado no encontrado"
 			redirect(action: "index")
