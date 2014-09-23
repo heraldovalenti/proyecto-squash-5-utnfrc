@@ -30,7 +30,7 @@
 		Activo
 		<span class="required-indicator">*</span>
 	</label>
-	<g:checkBox name="activo" required="" value="${usuarioEncargado?.activo}"/>
+	<g:checkBox name="activo" value="${usuarioEncargado?.activo}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: datosEncargado, field: 'apellido', 'error')} required">

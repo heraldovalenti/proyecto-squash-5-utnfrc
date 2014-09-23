@@ -6,7 +6,7 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link action="show" id="${usuarioEncargado.id}">Volver</g:link>
+		<g:link action="show" params="[encargado: usuarioEncargado.id]">Volver</g:link>
 		<div id="edit-encargado" class="content scaffold-edit" role="main">
 			<h1>Encargado de Club</h1>
 			<g:if test="${ flash.message }">
@@ -23,12 +23,12 @@
 			</g:if>
 			<g:if test="${ flash.exception }">
 				<ul class="errors" role="alert">
-					<li>${ flash.exception.message }</li>
+					<li>${ flash.exception.message }asdf</li>
 				</ul>
 			</g:if>
 			
 			<g:form action="update">
-				<g:hiddenField name="idUsuario" value="${usuarioEncargado?.id}" />
+				<g:hiddenField name="encargado" value="${usuarioEncargado?.id}" />
 				
 				<fieldset class="form">
 					<g:render template="/club/encargado/form"/>

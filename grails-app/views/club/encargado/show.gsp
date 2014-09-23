@@ -92,7 +92,7 @@
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" params="[usuarioId: '${usuarioEncargado?.id}']">Editar</g:link>
+					<g:link class="edit" action="edit" params="[encargado: usuarioEncargado.id]">Editar</g:link>
 				</fieldset>
 			</g:form>
 		</div>

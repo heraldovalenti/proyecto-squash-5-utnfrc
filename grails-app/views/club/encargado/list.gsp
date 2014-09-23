@@ -30,7 +30,7 @@
 					<g:each in="${encargadosClub}" status="i" var="encargado">
 						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 							<td>
-								<g:link action="show" params="[usuarioId: '${encargado.id}' ]">
+								<g:link action="show" params="[encargado: encargado.id ]">
 									${ encargado.nombreUsuario }
 								</g:link>
 							</td>

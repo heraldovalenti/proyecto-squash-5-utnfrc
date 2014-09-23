@@ -65,11 +65,9 @@ class ClubService {
 	
 	Usuario verEncargado(Club club, Usuario usuarioEncargado) {
 		def encargados = verEncargados(club)
-		if (encargados != null) {
-			for (Usuario encargado : encargados) {
-				if (encargado.id == usuarioEncargado.id) {
-					return encargado
-				}
+		for (Usuario encargado : encargados) {
+			if (encargado.id == usuarioEncargado.id) {
+				return encargado
 			}
 		}
 		return null
@@ -93,7 +91,7 @@ class ClubService {
 	}
 	
 	def modificarEncargado(Map params) {
-		Usuario usuarioEncargado = Usuario.get(params.idUsuario)
+		Usuario usuarioEncargado = Usuario.get(params.encargado)
 		Persona datosEncargado = usuarioEncargado.persona
 		
 		usuarioEncargado.properties = params
