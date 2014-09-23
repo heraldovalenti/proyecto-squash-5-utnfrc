@@ -21,7 +21,7 @@
 		</g:if>
 		<g:if test="${ flash.exception }">
 			<ul class="errors" role="alert">
-				<li>${ flash.exception.message }</li>
+				<li>${ flash.exception }</li>
 			</ul>
 		</g:if>
 		<g:form action="save" method="post" name="form-datos-club" enctype="multipart/form-data">

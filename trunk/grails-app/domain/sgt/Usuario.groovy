@@ -13,6 +13,7 @@ class Usuario {
 	Jugador jugador
 	Club club
 	Rol rol
+	Club encargadoEn
 	
     static constraints = {
 		nombreUsuario blank:false, unique:true, minSize:6, maxSize:25
@@ -21,6 +22,7 @@ class Usuario {
 		persona nullable: true
 		jugador nullable: true
 		club nullable: true
+		encargadoEn nullable: true
     }
 	
 	def CategoriaJugador getCategoriaActual() {

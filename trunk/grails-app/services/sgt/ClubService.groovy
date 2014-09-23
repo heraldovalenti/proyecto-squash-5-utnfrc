@@ -2,20 +2,24 @@ package sgt
 
 import grails.validation.ValidationException
 
+import org.junit.Assert
+import org.springframework.transaction.annotation.Propagation
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.multipart.MultipartFile
+
+import sgt.exceptions.UnregisteredClubException
 
 class ClubService {
 	
 	def filesService
 		
     Club clubLogon(Usuario userLogon) {
-		userLogon.refresh()
-		userLogon = userLogon.merge()
-		return userLogon.club
+		Usuario u = Usuario.get(userLogon.id)
+		return u.club
     }
 	
 	def registrarDatosClub(Usuario userLogon, Club club, MultipartFile logo) {
-		userLogon = userLogon.merge()
+		userLogon = Usuario.get(userLogon.id)
 		if (!userLogon.esClub()) {
 			userLogon.errors.rejectValue("club", "", "No es un club")
 			throw new ValidationException("No se pudieron registrar los datos de club", userLogon.errors)
@@ -49,5 +53,53 @@ class ClubService {
 		club.save(failOnError: true)
 		
 		return club
+	}
+	
+	def verEncargados(Club club) {
+		if (club == null) {
+			throw new UnregisteredClubException()
+		}
+		club = Club.get(club.id)
+		return club.encargados
+	}
+	
+	Usuario verEncargado(Club club, Usuario usuarioEncargado) {
+		def encargados = verEncargados(club)
+		if (encargados != null) {
+			for (Usuario encargado : encargados) {
+				if (encargado.id == usuarioEncargado.id) {
+					return encargado
+				}
+			}
+		}
+		return null
+	}
+	
+	def agregarEncargado(Club club, Usuario usuarioEncargado, Persona datosEncargado) {
+		if (club == null) {
+			throw new UnregisteredClubException()
+		}
+		datosEncargado.save(failOnError: true)
+		
+		Rol rolEncargado = Rol.findByNombre("Encargado club")
+		usuarioEncargado.persona = datosEncargado
+		usuarioEncargado.rol = rolEncargado
+		usuarioEncargado.club = club
+		usuarioEncargado.activo = true
+		usuarioEncargado.save(failOnError: true)
+		
+		club.addToEncargados(usuarioEncargado)
+		club.save(failOnError: true)
+	}
+	
+	def modificarEncargado(Map params) {
+		Usuario usuarioEncargado = Usuario.get(params.idUsuario)
+		Persona datosEncargado = usuarioEncargado.persona
+		
+		usuarioEncargado.properties = params
+		datosEncargado.properties = params
+		
+		datosEncargado.save(failOnError: true)
+		usuarioEncargado.save(failOnError: true)
 	}
 }

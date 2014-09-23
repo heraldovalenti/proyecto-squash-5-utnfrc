@@ -16,7 +16,7 @@
 	</style>  
    
 	<g:layoutHead/>
-	<r:require modules="calendario,jquery"/>	
+	
 	<r:layoutResources />
 </head>
 	

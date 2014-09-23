@@ -12,6 +12,8 @@ class Club {
     
 	static hasMany = [canchas: Cancha, servicios: ServicioClub, postulaciones: PostulacionTorneo, encargados: Usuario]
 	
+	static mappedBy = [encargados: 'encargadoEn']
+	
 	
     static constraints = {
 		nombre blank: false, unique: true, maxSize: 250

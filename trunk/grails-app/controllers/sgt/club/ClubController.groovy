@@ -63,7 +63,7 @@ class ClubController {
 
     def save() {
 		Usuario userLogon = session.getAttribute("userLogon")
-		Club clubInstance = clubService.clubLogon(userLogon)
+		Club clubInstance = new Club(params)
 		def logoClub = request.getFile("logoClub")
 		try {
 			clubService.registrarDatosClub(userLogon, clubInstance, logoClub)
