@@ -19,7 +19,7 @@ class ServicioClubController {
 		u = Usuario.get(u.id) 
 		
 		if (!u.getClub()) {
-			flash.message = "Deben registrarse los datos del club para gestionar las canchas"
+			flash.message = "Deben registrarse los datos del club para gestionar los servicios ofrecidos"
 			redirect(controller: "club", action: "create", namespace: "club")
 			return
 		}

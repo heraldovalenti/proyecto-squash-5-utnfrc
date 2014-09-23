@@ -17,7 +17,7 @@ insert into usuario (id,version,activo,nombre_usuario,password,correo,rol_id,clu
 insert into usuario (id,version,activo,nombre_usuario,password,correo,rol_id,club_id,jugador_id,persona_id) values
 (7, 1,true,'bocajr','manager','info@boca.com',3,null,null,null),
 (8, 1,true,'quality','manager','info@quality.com.ar',3,null,null,null),
-(9, 1,true,'bucor','manager','info@bucor.com.ar',3,null,null,null),
+(9, 1,true,'bucorr','manager','info@bucor.com.ar',3,null,null,null),
 (10,1,true,'talleres','manager','info@talleres.com',3,null,null,null);
 /* Administrador */
 insert into usuario (id,version,activo,nombre_usuario,password,correo,rol_id,club_id,jugador_id,persona_id) values
