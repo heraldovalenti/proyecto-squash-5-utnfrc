@@ -148,4 +148,24 @@ class ClubServiceTests {
 		Assert.assertEquals("Mengano", u.persona.nombre)
 		Assert.assertEquals("le_password", u.password)
 	}
+	
+	@Test
+	void saveDomicilioTest() {
+		Club c = Club.findByNombre("nuevo_club")
+		Assert.assertNull(c.domicilio)
+		
+		Domicilio d = new Domicilio(calle: "San Juan", numero: 19, departamento: "12A Torre III",
+			ciudad: "Cordoba Capital", provincia: "Cordoba", codigoPostal: 5000)
+		
+		clubService.saveDomicilio(c,d)
+		
+		c = Club.findByNombre("nuevo_club")
+		Assert.assertNotNull(c.domicilio)
+		Assert.assertEquals("San Juan", c.domicilio.calle)
+		Assert.assertEquals("12A Torre III", c.domicilio.departamento)
+		Assert.assertEquals("Cordoba Capital", c.domicilio.ciudad)
+		Assert.assertEquals(5000, c.domicilio.codigoPostal)
+		Assert.assertEquals("19", c.domicilio.numero)
+		Assert.assertEquals("Cordoba", c.domicilio.provincia)
+	}
 }
