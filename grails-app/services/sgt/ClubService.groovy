@@ -100,4 +100,14 @@ class ClubService {
 		datosEncargado.save(failOnError: true)
 		usuarioEncargado.save(failOnError: true)
 	}
+	
+	def saveDomicilio(Club club, Domicilio domicilio) {
+		if (club == null) {
+			throw new UnregisteredClubException()
+		}
+		
+		domicilio.save(failOnError: true)
+		club.domicilio = domicilio
+		club.save(failOnError: true)
+	}
 }

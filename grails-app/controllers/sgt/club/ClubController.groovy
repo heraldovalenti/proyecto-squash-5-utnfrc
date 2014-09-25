@@ -3,6 +3,7 @@ package sgt.club
 import grails.converters.JSON
 import grails.validation.ValidationException
 import sgt.Club
+import sgt.Domicilio
 import sgt.Usuario
 
 class ClubController {
@@ -34,12 +35,6 @@ class ClubController {
 			return
 		}
 	}
-
-	/* METODOS PARA GESTION DE DATOS DE CLUB*/
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [clubInstanceList: Club.list(params), clubInstanceTotal: Club.count()]
-    }
 
     def create() {
         render (view: "create", model: [clubInstance: new Club(params)])
@@ -95,4 +90,46 @@ class ClubController {
 			render (view: "edit", model: [clubInstance: clubInstance])
 		}
     }
+	
+	def showDomicilio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club clubInstance = clubService.clubLogon(userLogon)
+		
+		if (!clubInstance) {
+			flash.message = "Deben registrarse los datos del club para gestionar el domicilio"
+			forward controller: "club", action: "datosClub"
+			return
+		}
+		
+		if (clubInstance.domicilio) {
+			render(view: "/club/domicilio/show", model: [domicilioInstance: clubInstance.domicilio])			
+		} else {
+			render(view: "/club/domicilio/edit", model: [domicilioInstance: new Domicilio()])
+		}
+	}
+	
+	def editDomicilio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club clubInstance = clubService.clubLogon(userLogon)
+		Domicilio domicilioClub = clubInstance.domicilio
+		render(view: "/club/domicilio/edit", model: [domicilioInstance: domicilioClub])
+	}
+	
+	def saveDomicilio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club clubInstance = clubService.clubLogon(userLogon)
+		Domicilio domicilioClub = (clubInstance.domicilio) ? clubInstance.domicilio : new Domicilio()
+		bindData(domicilioClub,params)
+		try {
+			clubService.saveDomicilio(clubInstance, domicilioClub)
+			flash.message = "Domicilio registrado"
+			render(view: "/club/domicilio/show", model: [domicilioInstance: clubInstance.domicilio])
+		} catch (ValidationException e) {
+			flash.errors = e.errors
+			render(view: "/club/domicilio/edit", model: [domicilioInstance: domicilioClub])
+		} catch (e) {
+			flash.exception = e
+			render(view: "/club/domicilio/edit", model: [domicilioInstance: domicilioClub])
+		}
+	}
 }
