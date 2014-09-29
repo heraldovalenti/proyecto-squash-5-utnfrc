@@ -1,15 +1,16 @@
 package sgt.club
 
-import grails.converters.JSON
 import grails.validation.ValidationException
 import sgt.Club
 import sgt.Domicilio
+import sgt.ServicioClub
 import sgt.Usuario
 
 class ClubController {
 	
 	def clubService
 	def filesService
+	def servicioClubService
 		
 	def index() {
 		def Usuario u = session.getAttribute("userLogon")
@@ -131,5 +132,54 @@ class ClubController {
 			flash.exception = e
 			render(view: "/club/domicilio/edit", model: [domicilioInstance: domicilioClub])
 		}
+	}
+	
+	def serviciosClub() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club clubInstance = clubService.clubLogon(userLogon)
+		if (!clubInstance) {
+			flash.message = "Deben registrarse los datos del club para gestionar los servicios"
+			forward controller: "club", action: "datosClub"
+			return
+		}
+		def serviciosClub = clubInstance.servicios
+		def serviciosDisponibles = servicioClubService.serviciosDisponibles(clubInstance)
+		render(view: "/club/servicios/list", model: [serviciosClub: serviciosClub, 
+			serviciosDisponibles: serviciosDisponibles])
+	}
+	
+	def agregarServicio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		ServicioClub servicio = new ServicioClub(params)
+		try {
+			servicioClubService.agregarServicioClub(club, servicio)
+			flash.message = "Servicio registrado"
+		} catch (ValidationException e) {
+			flash.errors = e.errors
+		} catch (e) {
+			flash.exception = e
+		}
+		forward controller: "club", action: "serviciosClub"
+	}
+	
+	def quitarServicio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		ServicioClub servicio = ServicioClub.get(params.servicio)
+		if (!servicio) {
+			flash.message = "Servicio no encontrado"
+			forward controller: "club", action: "serviciosClub"
+			return
+		}
+		try {
+			servicioClubService.quitarServicioClub(club, servicio)
+			flash.message = "Servicio eliminado"
+		} catch (ValidationException e) {
+			flash.errors = e.errors
+		} catch (e) {
+			flash.exception = e
+		}
+		forward controller: "club", action: "serviciosClub"
 	}
 }
