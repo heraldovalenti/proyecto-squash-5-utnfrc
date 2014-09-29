@@ -16,7 +16,9 @@ modules = {
 		resource url: 'js/torneos.js'
 	}
 	calendario {
-		resource url:'js/calendario.js'
+		dependsOn 'dialogs'		
+		resource url: 'js/calendario.js'
+		resource url: 'css/calendar.css', disposition: 'head'
 	}
 	dialogs {
 		dependsOn 'jquery'

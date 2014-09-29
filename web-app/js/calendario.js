@@ -99,6 +99,7 @@ $(function() {
 	$('#guardarDisponibilidad')
 			.click(
 					function() {
+						dialogs.showLoadingDialog("Guardando disponibilidad...");
 						var disponibilidad = [];
 						$('td')
 								.each(
@@ -199,8 +200,13 @@ $(function() {
 							dataType : "json",
 							url : "save",
 							success : function(data) {
-								alert('grabo');
-								window.location = "show";
+								dialogs.hideLoadingDialog();
+								var callback = function() { window.location = "show"; };
+								var text = "Disponibilidad registrada";
+								dialogs.showMessageDialog(text,callback)
+							},
+							error : function(a,b,c) {
+								console.log("error...");
 							}
 						});
 
@@ -208,21 +214,24 @@ $(function() {
 	$('#borrarDisponibilidad').click(
 			function(){
 				
-				$.ajax({
-					type : "GET",
-					contentType : "application/json",
-					dataType : "json",
-					url : "delete",
-					success : function(data) {
-						window.location = "index";
-					}
-				});	
-				
-				
-				
+				var text = "¿Esta seguro que desea eliminar la disponibilidad horaria?";
+				var yes_callback = function() {
+					dialogs.showLoadingDialog("Eliminando disponibilidad...");
+					$.ajax({
+						type : "GET",
+						contentType : "application/json",
+						dataType : "json",
+						url : "delete",
+						success : function(data) {
+							dialogs.hideLoadingDialog();
+							var callback = function() { window.location = "index"; };
+							var text = "Disponibilidad eliminada";
+							dialogs.showMessageDialog(text,callback)
+						}
+					});	
+				};
+				dialogs.showConfirmDialog(text,yes_callback);
 			})
-					
-
 });
 
 $(function(){	

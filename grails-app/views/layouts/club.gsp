@@ -6,8 +6,7 @@
 	<title><g:layoutTitle default="Grails"/></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'club.css') }" type="text/css"	rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'calendar-cancha.css')}" type="text/css" rel="stylesheet"> 
+ 	<link href="${resource(dir: 'css', file: 'club.css') }" type="text/css"	rel="stylesheet"> 
  	
    	<style>
    		ul.lof-main-wapper li {

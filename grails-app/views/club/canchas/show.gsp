@@ -2,18 +2,8 @@
 <%@ page import="sgt.Cancha" %>
 <!DOCTYPE html>
 <html>
-	<head><%--
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"
-	rel="stylesheet">
-<link href="${resource(dir: 'css', file: 'css.css') }" type="text/css"
-	rel="stylesheet">
-	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css"
-	rel="stylesheet">
-<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css"
-	rel="stylesheet">
---%><meta name="layout" content="club">
-		<g:set var="entityName" value="${message(code: 'cancha.label', default: 'Cancha')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
+	<head>
+		<meta name="layout" content="club">
 	</head>
 	<body>
 		<g:link controller="cancha" action="list" namespace="club">Volver al listado de canchas</g:link>
@@ -82,14 +72,8 @@
 				<li class="fieldcontain">
 					<span id="disponibilidad-label" class="property-label">Disp. Horaria</span>
 					<span class="property-value" aria-labelledby="disponibilidad-label">
-						
-						<g:if test="${canchaInstance?.disponibilidad}">
-							Cargada - <g:link controller="disponibilidadCancha" id="${canchaInstance?.id}">Ver disponibilidad</g:link>
-						</g:if>
-						<g:else>
-							No especificada	 - <g:link controller="disponibilidadCancha" id="${canchaInstance?.id}">Ver disponibilidad</g:link>
-						</g:else>
-						 
+						 <g:link controller="disponibilidadCancha" 
+							params="[idCancha: canchaInstance.id]">Ver disponibilidad</g:link>
 					</span>
 				</li>
 			</ol>

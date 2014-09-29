@@ -2,15 +2,13 @@
     <head>
         <meta name="layout" content="club">
         <title>Disponibilidad Horaria</title>
-        <%--<link rel="stylesheet" href="${resource(dir: 'css', file: 'calendar.css')}" type="text/css">        
-        --%><%--<r:require modules="calendario,jquery"/>                   
-        <r:layoutResources/>              
-    --%></head>
+        <r:require modules="calendario,jquery"/>                       
+    </head>
     <body>
+    	<g:link controller="cancha" action="show" id="${ idCancha }">Volver</g:link>
         <g:weekly/>
-	<fieldset class="buttons">
-		<g:actionSubmit id="guardarDisponibilidad" class="save" action="save"
-			value="${message(code: 'default.button.save.label', default: 'Guardar')}" />
-	</fieldset>
+		<fieldset class="buttons">
+			<g:actionSubmit id="guardarDisponibilidad" class="save" value="Guardar" />
+		</fieldset>
 </body>
 </html>

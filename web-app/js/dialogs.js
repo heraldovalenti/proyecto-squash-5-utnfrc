@@ -76,5 +76,27 @@ var dialogs = {
 			modal : true,
 			buttons : dialogButtons
 		});
+	},
+	showLoadingDialog : function(text) {
+		$("#showDialogDiv").remove();
+		var $dialogDiv = $("<div/>")
+			.attr("id","showDialogDiv")
+			.html(text)
+			.appendTo("body");
+		var closeFunc = function() { };
+		var dialogButtons = [{
+			text : "Aceptar",
+			click : closeFunc
+		}];
+		$dialogDiv.dialog({
+			title: "Mensaje",
+			modal : true,
+			buttons : dialogButtons
+		});
+		$(".ui-dialog-titlebar-close").hide();
+	},
+	hideLoadingDialog : function() {
+		$("#showDialogDiv").dialog("close");
+		$("#showDialogDiv").remove();
 	}
 };

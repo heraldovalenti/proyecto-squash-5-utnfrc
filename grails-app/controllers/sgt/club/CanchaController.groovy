@@ -13,14 +13,15 @@ class CanchaController {
 	def list() {
 		def Usuario u = session.getAttribute("userLogon")
 		u = Usuario.get(u.id) 
+		def club = clubService.clubLogon(u)
 		
-		if (!u.getClub()) {
+		if (!club) {
 			flash.message = "Deben registrarse los datos del club para gestionar las canchas"
 			redirect(controller: 'club', action: 'create', namespace: 'club')
 			return
 		}
 		
-		def canchaList = u.getClub().getCanchas()
+		def canchaList = club.canchas
 		render(view: "/club/canchas/list", model: [canchaInstanceList: canchaList, canchaInstanceTotal: canchaList.size()])
 	}
 	

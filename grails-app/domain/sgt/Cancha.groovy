@@ -26,4 +26,9 @@ class Cancha {
 		tipoSuelo blank:false, inList:["Parquet","Cemento","Cesped","Carpeta","Otro"]
 		disponibilidad nullable: true
     }
+	
+	@Override
+	public int hashCode() {
+		return this.nombre.hashCode()
+	}
 }
