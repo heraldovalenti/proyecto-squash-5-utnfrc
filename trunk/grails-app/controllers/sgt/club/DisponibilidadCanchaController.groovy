@@ -10,47 +10,36 @@ class DisponibilidadCanchaController {
 	
 	ClubService clubService	
 
-	def index(Long id) {		
+	def index() {
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
-		if(session.getAttribute("idCancha")==null){
-			session.setAttribute("idCancha", id)
-		}
 		
-		int idCancha= session.getAttribute("idTorneo")
+		session.setAttribute("idCancha", params.idCancha)
 		
-		System.out.println(idCancha)
+		def idCancha = session.getAttribute("idCancha")
+
+		def canchaInstance = Cancha.get(idCancha)
 		
-		
-		 def canchaInstance = Cancha.get(idCancha)
-		 
-		 System.out.println("paso el index")
-		
-		
-		//u = Usuario.get(u.id)
 		def disp = (sgt.Disponibilidad)this.disponibilidadCanchaSeleccionada()
 		if (!disp) {
 			if(!club){
-				redirect(controller:"club",action:"create")
-				return
+				flash.message = "Deben registrarse los datos del club para gestionar la disponibilidad"
+				redirect(controller: "club", action: "datosClub")
 			}
 			if(!canchaInstance){
-				redirect(controller:"cancha",action:"create")
-				return
+				flash.message = "Cancha no encontrada"
+				redirect(controller: "cancha", action: "list")
 			}
 			
-			canchaInstance.disponibilidad= new Disponibilidad(fechaActualizacion: new Date()).save()
+			canchaInstance.disponibilidad = new Disponibilidad(fechaActualizacion: new Date()).save()
 			canchaInstance.save()
-			render(view: "/disponibilidadCancha/create")
+			render(view: "/disponibilidadCancha/create", model: [idCancha: idCancha])
 		}
 		else{
-			render(view: "/disponibilidadCancha/show")
-			//render(view: "/disponibilidadCancha/show")
+			render(view: "/disponibilidadCancha/show", model: [idCancha: idCancha])
 		}
 	}
 
 	def save(){
-		System.out.println("entro al save")
-
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
 		
 		int idCancha= session.getAttribute("idCancha")
@@ -65,7 +54,6 @@ class DisponibilidadCanchaController {
 		def arrayDisponibilidad= request.JSON
 		def detalle		
 		
-
 		for(int i =0; i<arrayDisponibilidad.size();i++ ){
 
 			detalle= new DetalleDisponibilidad()
@@ -74,7 +62,6 @@ class DisponibilidadCanchaController {
 			detalle.dia= arrayDisponibilidad[i].dia
 
 			if(!detalle.save(flush: true)){
-				System.out.println("entro al return")
 				flash.message = "No se pudo grabar el detalle de disponibilidad"
 				return
 			}
@@ -84,17 +71,14 @@ class DisponibilidadCanchaController {
 
 		canchaInstance.disponibilidad.setFechaActualizacion(new Date())
 		canchaInstance.save()
-		System.out.println("renderizaa")
 		render canchaInstance.disponibilidad as JSON
 	}
 
 	def show(){
-
 		render(view: "/disponibilidadCancha/show")
 	}
 
 	def delete(){
-
 		def disp = (sgt.Disponibilidad)this.disponibilidadCanchaSeleccionada()		
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
 		int idCancha= session.getAttribute("idCancha")		
@@ -102,7 +86,6 @@ class DisponibilidadCanchaController {
 		if (!disp) {
 			flash.message = "No existe la disponibilidad"
 			redirect(action: "show")
-			return
 		}
 
 		try {
@@ -119,12 +102,9 @@ class DisponibilidadCanchaController {
 	}
 
 	def obtenerDisponibilidad(){
-
-		System.out.println("entro al obtener")
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
 		
 		if(club==null){
-			System.out.println("es nulo")
 			return
 		}		
 		int idCancha= session.getAttribute("idCancha")		
@@ -160,5 +140,3 @@ class DisponibilidadCanchaController {
 		}
 	}
 }
-
-	

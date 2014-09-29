@@ -3,18 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%--<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"
-	rel="stylesheet">
-<link href="${resource(dir: 'css', file: 'css.css') }" type="text/css"
-	rel="stylesheet">
-<link href="${resource(dir: 'css', file: 'errors.css') }"
-	type="text/css" rel="stylesheet">
-<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css"
-	rel="stylesheet">
---%><meta name="layout" content="club">
-<g:set var="entityName"
-	value="${message(code: 'cancha.label', default: 'Cancha')}" />
-<title><g:message code="default.list.label" args="[entityName]" /></title>
+	<meta name="layout" content="club">
 </head>
 
 <body>
@@ -76,9 +65,6 @@
 			</tbody>
 		</table>
 		* Click en alguna cancha para más opciones
-		<div class="pagination">
-			<g:paginate total="${canchaInstanceTotal}" />
-		</div>
 	</div>
 </body>
 </html>

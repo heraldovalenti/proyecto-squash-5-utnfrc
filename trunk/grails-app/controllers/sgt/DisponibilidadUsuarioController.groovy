@@ -46,7 +46,6 @@ class DisponibilidadUsuarioController {
 			detalle.dia= arrayDisponibilidad[i].dia
 
 			if(!detalle.save(flush: true)){
-				System.out.println("entro al return")
 				flash.message = "No se pudo grabar el detalle de disponibilidad"
 				return
 			}
@@ -67,7 +66,6 @@ class DisponibilidadUsuarioController {
 	def delete(){
 
 		def disp = (sgt.Disponibilidad)this.disponibilidaUusuarioLogueado()
-		System.out.println("entro a eliminar")
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
 		if (!disp) {
@@ -90,9 +88,6 @@ class DisponibilidadUsuarioController {
 	}
 
 	def obtenerDisponibilidad(){
-
-		System.out.println("entro al obtener")
-
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
 
@@ -101,8 +96,6 @@ class DisponibilidadUsuarioController {
 		}
 		Disponibilidad disp= u.jugador.disponibilidad
 		def arrayDisp = disp.getDetalles()
-
-		System.out.println(arrayDisp.size().toString())
 
 		render arrayDisp as JSON
 	}
