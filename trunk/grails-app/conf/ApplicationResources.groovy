@@ -40,4 +40,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/bootstrap.min.js'
 	}
+	deletion {
+		dependsOn 'dialogs'
+		resource url: 'js/deletion.js'
+	}
 }
