@@ -3,14 +3,14 @@ package sgt
 class DetallePuntaje {
 	
 	Integer puesto
-	Double puntaje	
+	Double puntos	
 	String descripcion
 	
-	static belongsTo = Puntaje
+	static belongsTo = [puntaje: Puntaje]
 	
 	String toString()
 	{
-		return descripcion + " = " + puntaje + "pts"
+		return descripcion + " = " + puntos + "pts"
 	}
 	
 

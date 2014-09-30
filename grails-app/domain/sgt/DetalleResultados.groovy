@@ -6,7 +6,7 @@ class DetalleResultados {
 	Integer jugador1
 	Integer jugador2
 	
-	static belongsTo = ResultadoPartido
+	static belongsTo = [resultado: ResultadoPartido]
 	
 	String toString(){return set + "  " + jugador1 + " - " + jugador2}
 	

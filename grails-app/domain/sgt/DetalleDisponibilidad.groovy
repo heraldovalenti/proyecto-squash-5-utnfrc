@@ -5,8 +5,7 @@ class DetalleDisponibilidad {
 	String dia
 	Integer hora
 	
-	
-	static belongsTo = Disponibilidad
+	static belongsTo = [disponibilidad: Disponibilidad]
 	
 	String toString() {
 		return dia + "--" + hora

@@ -9,7 +9,7 @@ class DetalleRanking {
 	Date desde
 	Date hasta
 	
-	static belongsTo = Ranking
+	static belongsTo = [ranking: Ranking]
 
     static constraints = {
     }

@@ -8,7 +8,7 @@ class CategoriaJugador {
 	Date fechaInicio
 	Date fechaFin
 	
-	static belongsTo = [usuario: Usuario]
+	static belongsTo = [jugador: Jugador]
 
     static constraints = {
 		categoria nullable: false
