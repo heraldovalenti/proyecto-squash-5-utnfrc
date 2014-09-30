@@ -1,49 +1,34 @@
 <%@ page import="sgt.Cancha" %>
 
-<div class="fieldcontain ${hasErrors(bean: canchaInstance, field: 'nombre', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: cancha, field: 'numero', 'error')} required">
+	<label for="numero">
+		Numero
+		<span class="required-indicator">*</span>
+	</label>
+	<input name="numero" type="text" value="${ cancha?.numero }" required="" readonly="readonly"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: cancha, field: 'nombre', 'error')} required">
 	<label for="nombre">
-		<g:message code="cancha.nombre.label" default="Nombre" />
+		Nombre
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nombre" maxlength="50" required="" value="${canchaInstance?.nombre}"/>
+	<g:textField name="nombre" value="${cancha?.nombre}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: canchaInstance, field: 'tipoSuelo', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: cancha, field: 'tipoSuelo', 'error')} required">
 	<label for="tipoSuelo">
-		<g:message code="cancha.tipoSuelo.label" default="Tipo Suelo" />
+		Tipo Suelo
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="tipoSuelo" from="${canchaInstance.constraints.tipoSuelo.inList}" required="" value="${canchaInstance?.tipoSuelo}" valueMessagePrefix="cancha.tipoSuelo"/>
+	<g:select name="tipoSuelo" from="${cancha.constraints.tipoSuelo.inList}" 
+		required="" value="${cancha?.tipoSuelo}" valueMessagePrefix="cancha.tipoSuelo"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: canchaInstance, field: 'ancho', 'error')} ">
-	<label for="ancho">
-		<g:message code="cancha.ancho.label" default="Ancho (Mts)"/>
-		
+<div class="fieldcontain ${hasErrors(bean: cancha, field: 'techada', 'error')}">
+	<label for="techada">
+		Techada
+		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="ancho" value="${fieldValue(bean: canchaInstance, field: 'ancho')}" type="number" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: canchaInstance, field: 'largo', 'error')} ">
-	<label for="largo">
-		<g:message code="cancha.largo.label" default="Largo (Mts)" />
-		
-	</label>
-	<g:field name="largo" value="${fieldValue(bean: canchaInstance, field: 'largo')}" type="number" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: canchaInstance, field: 'techo', 'error')}">
-	<label for="techo">
-		<g:message code="cancha.techo.label" default="Techo" />
-		
-	</label>
-	<g:checkBox name="techo" value="${canchaInstance?.techo}" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: canchaInstance, field: 'paredes', 'error')} ">
-	<label for="paredes">
-		<g:message code="cancha.paredes.label" default="Paredes" />
-		
-	</label>
-	<g:textField name="paredes" value="${canchaInstance?.paredes}"/>
+	<g:checkBox name="techada" checked="${ cancha?.techada }" />
 </div>

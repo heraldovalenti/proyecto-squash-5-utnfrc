@@ -14,7 +14,7 @@ class Cancha implements Comparable {
 	
     static constraints = {
 		numero min: 1
-		nombre blank: true, maxSize: 50
+		nombre blank: false, maxSize: 50
 		tipoSuelo inList: ["Parquet","Cemento","Cesped","Carpeta","Otro"]
 		disponibilidad nullable: true
     }

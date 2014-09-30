@@ -5,39 +5,24 @@
 	<meta name="layout" content="club">
 </head>
 <body>
-	<g:link controller="cancha" action="show" id="${ canchaInstance?.id }">Volver</g:link>
-	<div id="edit-cancha" class="content scaffold-edit" role="main">
+	<g:link controller="cancha" action="show" params="[cancha: cancha.id]">Volver</g:link>
+	<div id="edit-cancha" class="content scaffold-edit" >
 		
 		<h1>Datos de cancha</h1>
-		<g:if test="${flash.message}">
-			<div class="message" role="status">
-				${flash.message}
-			</div>
-		</g:if>
-		<g:hasErrors bean="${canchaInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${canchaInstance}" var="error">
-					<li
-						<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-							error="${error}" /></li>
-				</g:eachError>
-			</ul>
-		</g:hasErrors>
-		<g:form method="post">
-			<g:hiddenField name="id" value="${canchaInstance?.id}" />
-			<g:hiddenField name="version" value="${canchaInstance?.version}" />
+		<g:render template="/utils/messages"/>
+		
+		<g:form method="post" action="update" >
+			<g:hiddenField name="cancha" value="${cancha?.id}" />
 			<fieldset class="form">
 				<g:render template="/club/canchas/form" />
 			</fieldset>
 			<fieldset class="buttons">
-				<g:actionSubmit class="save" action="update" controller="cancha" namespace="club"
-					value="${message(code: 'default.button.update.label', default: 'Update')}" />
-				<g:actionSubmit class="delete" action="delete" controller="cancha" namespace="club"
-					value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-					formnovalidate=""
-					onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+				<g:submitButton name="create" class="save" value="Guardar" />			
+				<g:link elementId="deletion-button" class="delete" controller="cancha" 
+					action="delete"	params="[cancha: cancha.id]">Eliminar</g:link>
 			</fieldset>
 		</g:form>
 	</div>
+	<r:require modules="deletion"/>
 </body>
 </html>

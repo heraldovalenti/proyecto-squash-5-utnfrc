@@ -1,4 +1,3 @@
-
 <%@ page import="sgt.Cancha"%>
 <!DOCTYPE html>
 <html>
@@ -7,64 +6,55 @@
 </head>
 
 <body>
-	<g:link class="create" action="create" controller="cancha" namespace="club">Registrar nueva cancha</g:link>
-
-	<div id="list-cancha" class="content scaffold-list" role="main">
+	<g:link class="create" action="create" controller="cancha" >Registrar nueva cancha</g:link>
+	<div id="list-cancha" class="content scaffold-list" >
 		<h1>Listado de canchas del club</h1>
 		<g:if test="${flash.message}">
-			<div class="message" role="status">
+			<div class="message" >
 				${flash.message}
 			</div>
 		</g:if>
 		<table>
 			<thead>
 				<tr>
-
-					<g:sortableColumn property="nombre"
-						title="${message(code: 'cancha.nombre.label', default: 'Nombre')}" />
-
-					<g:sortableColumn property="tipoSuelo"
-						title="${message(code: 'cancha.tipoSuelo.label', default: 'Tipo Suelo')}" />
-
-					<g:sortableColumn property="ancho"
-						title="${message(code: 'cancha.ancho.label', default: 'Ancho')}" />
-
-					<g:sortableColumn property="largo"
-						title="${message(code: 'cancha.largo.label', default: 'Largo')}" />
-
-					<th>Disp. horaria</th>
-
+					<th>Numero</th>
+					<th>Nombre</th>
+					<th>Techada</th>
+					<th>Tipo piso</th>
+					<th>Disponibilidad</th>
 				</tr>
 			</thead>
 			<tbody>
-				<g:each in="${canchaInstanceList}" status="i" var="canchaInstance">
+				<g:each in="${canchas}" status="i" var="cancha">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-						<td><g:link controller="cancha" action="show" namespace="club"
-								id="${canchaInstance.id}">
-								${fieldValue(bean: canchaInstance, field: "nombre")}
-							</g:link></td>
-
-						<td>
-							${fieldValue(bean: canchaInstance, field: "tipoSuelo")}
+					
+						<td style="text-align: center;">
+							<g:link controller="cancha" action="show" params="[cancha: cancha.id]">
+								${ cancha.numero }
+							</g:link>
+						</td>
+						
+						<td>	
+							${ cancha.nombre }
 						</td>
 
-						<td><g:link action="show" id="${canchaInstance.id}">
-								${fieldValue(bean: canchaInstance, field: "ancho")}
-							</g:link></td>
-
 						<td>
-							${fieldValue(bean: canchaInstance, field: "largo")}
+							<g:formatBoolean boolean="${ cancha.techada }" true="Si" false="No"/>
 						</td>
-
-						<td><g:if test="${ canchaInstance.disponibilidad }">Cargada</g:if>
-							<g:else>Sin especificar</g:else></td>
-
+						
+						<td>
+							${ cancha.tipoSuelo }
+						</td>
+						
+						<td>
+							<g:link controller="disponibilidadCancha" 
+							params="[idCancha: cancha.id]">Ver disponibilidad</g:link>
+						</td>
 					</tr>
 				</g:each>
 			</tbody>
 		</table>
-		* Click en alguna cancha para más opciones
+		<div class="message">* Click sobre el numero de alguna cancha para más opciones</div>
 	</div>
 </body>
 </html>

@@ -1,120 +1,118 @@
 package sgt.club
+
+import grails.validation.ValidationException
+
 import org.springframework.dao.DataIntegrityViolationException
+
 import sgt.*
+import sgt.exceptions.UnregisteredClubException;
 
 class CanchaController {
 	
-	static namespace = 'club'
+	static defaultAction = "list"
 	
-	ClubService clubService
-	
+	def clubService
+	def canchaService
 
-    /* METODOS PARA GESTION DE CANCHAS DE CLUB */
 	def list() {
-		def Usuario u = session.getAttribute("userLogon")
-		u = Usuario.get(u.id) 
-		def club = clubService.clubLogon(u)
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
 		
-		if (!club) {
+		try {
+			def canchas = canchaService.getCanchasClub(club)
+			render(view: "/club/canchas/list", model: [canchas: canchas])			
+		} catch (UnregisteredClubException e) {
 			flash.message = "Deben registrarse los datos del club para gestionar las canchas"
-			redirect(controller: 'club', action: 'create', namespace: 'club')
-			return
+			forward controller: "club", action: "datosClub"
+		} catch (e) {
+			flash.message = "Deben registrarse los datos del club para gestionar las canchas"
+			forward controller: "club", action: "datosClub"
 		}
-		
-		def canchaList = club.canchas
-		render(view: "/club/canchas/list", model: [canchaInstanceList: canchaList, canchaInstanceTotal: canchaList.size()])
 	}
 	
 	def create() {
-		render(view: "/club/canchas/create", model: [canchaInstance: new Cancha(params)])
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)	
+		Cancha c = canchaService.crearCancha(club) 
+		render(view: "/club/canchas/create", model: [cancha: c])
 	}
 	
 	def save() {
-		def canchaInstance = new Cancha(params)
-		if (!canchaInstance.save(flush: true)) {
-			render(view: "/club/canchas/create", model: [canchaInstance: canchaInstance])
-			return
-		}
-		
-		def Club clubInstance = clubService.clubLogon(session.getAttribute("userLogon"))
-		clubInstance.addToCanchas(canchaInstance)
-		clubInstance.save()	
-
-		flash.message = message(code: 'sgt.registrodatos.exito')
-		redirect(action: "list")
-	}
-	
-	def show(Long id) {
-		def canchaInstance = Cancha.get(id)
-		if (!canchaInstance) {
-			flash.message = message(code: 'sgt.registrodatos.noencontrado')
-			redirect(action: "list")
-			return
-		}
-		render(view: "/club/canchas/show", model: [canchaInstance: canchaInstance])
-	}
-	
-	def edit(Long id) {
-		def canchaInstance = Cancha.get(id)
-		if (!canchaInstance) {
-			flash.message = message(code: 'sgt.registrodatos.noencontrado')
-			redirect(action: "list")
-			return
-		}
-		render(view: "/club/canchas/edit", model: [canchaInstance: canchaInstance])
-	}
-	
-	def update(Long id, Long version) {
-		def canchaInstance = Cancha.get(id)
-		if (!canchaInstance) {
-			flash.message = message(code: 'sgt.registrodatos.noencontrado')
-			redirect(action: "list")
-			return
-		}
-
-		if (version != null) {
-			if (canchaInstance.version > version) {
-				canchaInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-						  [message(code: 'sgt.registrodatos.fallo')] as Object[],
-						  "Another user has updated this Cancha while you were editing")
-				render(view: "/club/cancha/edit", model: [canchaInstance: canchaInstance])
-				return
-			}
-		}
-		
-		canchaInstance.properties = params
-
-		if (!canchaInstance.save(flush: true)) {
-			render(view: "/club/cancha/edit", model: [canchaInstance: canchaInstance])
-			return
-		}
-
-		flash.message = message(code: 'sgt.registrodatos.exito')
-		redirect(action: "show", id: canchaInstance.id)
-	}
-	
-	def delete(Long id) {
-		def Usuario u = session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		def Club clubInstance = u.getClub() 
-		
-		def canchaInstance = Cancha.get(id)
-		if (!canchaInstance) {
-			flash.message = message(code: 'sgt.registrodatos.noencontrado')
-			redirect(action: "list")
-			return
-		}
-
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		def cancha = new Cancha(params)
 		try {
-			clubInstance.removeFromCanchas(canchaInstance)
-			clubInstance.save()
-			canchaInstance.delete(flush: true)
-			flash.message = message(code: 'sgt.registrodatos.exito')
+			canchaService.registrarCancha(club, cancha)
+			flash.message = "Cancha registrada"
+			redirect(action: "show", params: [cancha: cancha.id])
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			render(view: "/club/canchas/create", model: [cancha: cancha])
+		} catch (e) {
+			flash.exception = e
+			render(view: "/club/canchas/create", model: [cancha: cancha])
+		}
+	}
+	
+	def show() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		def cancha = canchaService.getCanchaClub(club, Cancha.get(params.cancha))
+		if (!cancha) {
+			flash.message = "Cancha no encontrada"
 			redirect(action: "list")
 		}
-		catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'sgt.registrodatos.fallo')
-			redirect(action: "show", id: id)
+		render(view: "/club/canchas/show", model: [cancha: cancha])
+	}
+	
+	def edit() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		def cancha = canchaService.getCanchaClub(club, Cancha.get(params.cancha))
+		if (!cancha) {
+			flash.message = "Cancha no encontrada"
+			redirect(action: "list")
 		}
+		render(view: "/club/canchas/edit", model: [cancha: cancha])
+	}
+	
+	def update() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		def cancha = canchaService.getCanchaClub(club, Cancha.get(params.cancha))
+		
+		if (!cancha) {
+			flash.message = "Cancha no encontrada"
+			redirect(action: "list")
+		}
+		
+		bindData(cancha, params, [exclude: ["numero"]])
+		
+		try {
+			canchaService.updateCancha(cancha)
+			flash.message = "Cancha actualizada"
+			redirect(action: "show", params: [cancha: cancha.id])
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			render(view: "/club/canchas/edit", model: [cancha: cancha])
+		} catch (e) {
+			flash.exception = e
+			render(view: "/club/canchas/edit", model: [cancha: cancha])
+		}
+	}
+	
+	def delete() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Club club = clubService.clubLogon(userLogon)
+		def cancha = canchaService.getCanchaClub(club, Cancha.get(params.cancha))
+		
+		if (!cancha) {
+			flash.message = "Cancha no encontrada"
+			redirect(action: "list")
+		}
+			
+		canchaService.eliminarCancha(club,cancha)
+		flash.message = "Cancha eliminada"
+		redirect(action: "list")
 	}
 }
