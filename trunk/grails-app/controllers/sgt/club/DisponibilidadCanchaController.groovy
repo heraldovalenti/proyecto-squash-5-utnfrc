@@ -13,7 +13,9 @@ class DisponibilidadCanchaController {
 	def index() {
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
 		
-		session.setAttribute("idCancha", params.idCancha)
+		if (params.idCancha != null) {
+			session.setAttribute("idCancha", params.idCancha) 
+		}
 		
 		def idCancha = session.getAttribute("idCancha")
 
@@ -24,25 +26,27 @@ class DisponibilidadCanchaController {
 			if(!club){
 				flash.message = "Deben registrarse los datos del club para gestionar la disponibilidad"
 				redirect(controller: "club", action: "datosClub")
+				return
 			}
 			if(!canchaInstance){
 				flash.message = "Cancha no encontrada"
 				redirect(controller: "cancha", action: "list")
+				return
 			}
 			
-			canchaInstance.disponibilidad = new Disponibilidad(fechaActualizacion: new Date()).save()
-			canchaInstance.save()
-			render(view: "/disponibilidadCancha/create", model: [idCancha: idCancha])
+			canchaInstance.disponibilidad = new Disponibilidad(fechaActualizacion: new Date()).save(failOnError: true, flush: true)
+			canchaInstance.save(failOnError: true, flush: true)
+			render(view: "/disponibilidadCancha/create", model: [cancha: canchaInstance])
 		}
 		else{
-			render(view: "/disponibilidadCancha/show", model: [idCancha: idCancha])
+			render(view: "/disponibilidadCancha/show", model: [cancha: canchaInstance])
 		}
 	}
 
 	def save(){
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
 		
-		int idCancha= session.getAttribute("idCancha")
+		def idCancha= session.getAttribute("idCancha")
 		
 		def canchaInstance = Cancha.get(idCancha)
 
@@ -61,27 +65,30 @@ class DisponibilidadCanchaController {
 			detalle.hora=  horaCortada[0] as int
 			detalle.dia= arrayDisponibilidad[i].dia
 
-			if(!detalle.save(flush: true)){
+			/*if(!detalle.save(flush: true, failOnError: true)){
 				flash.message = "No se pudo grabar el detalle de disponibilidad"
 				return
-			}
+			}*/
 
 			canchaInstance.disponibilidad.addToDetalles(detalle)
 		}
 
 		canchaInstance.disponibilidad.setFechaActualizacion(new Date())
-		canchaInstance.save()
+		canchaInstance.save(failOnError: true)
 		render canchaInstance.disponibilidad as JSON
 	}
 
 	def show(){
-		render(view: "/disponibilidadCancha/show")
+		 
+		def idCancha= session.getAttribute("idCancha")		
+		def canchaInstance = Cancha.get(idCancha)
+		render(view: "/disponibilidadCancha/show", model: [cancha: canchaInstance])
 	}
 
 	def delete(){
 		def disp = (sgt.Disponibilidad)this.disponibilidadCanchaSeleccionada()		
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
-		int idCancha= session.getAttribute("idCancha")		
+		def idCancha= session.getAttribute("idCancha")		
 		def canchaInstance = Cancha.get(idCancha)
 		if (!disp) {
 			flash.message = "No existe la disponibilidad"
@@ -89,7 +96,14 @@ class DisponibilidadCanchaController {
 		}
 
 		try {
-
+			//
+			canchaInstance.disponibilidad=null
+			canchaInstance.save(failOnError: true, flush: true)
+			disp.delete()
+			render canchaInstance as JSON
+			return
+			//
+			
 			def detalles= disp.detalles.findAll()
 			disp.detalles.removeAll(detalles)
 
@@ -107,10 +121,11 @@ class DisponibilidadCanchaController {
 		if(club==null){
 			return
 		}		
-		int idCancha= session.getAttribute("idCancha")		
+		def idCancha = session.getAttribute("idCancha")
+		
 		def canchaInstance = Cancha.get(idCancha)
-
-		if (!canchaInstance.disponibilidad) {
+		
+		if (!canchaInstance || !canchaInstance.disponibilidad) {
 			return
 		}
 		Disponibilidad disp= canchaInstance.disponibilidad
@@ -122,7 +137,7 @@ class DisponibilidadCanchaController {
 	def disponibilidadCanchaSeleccionada(){
 
 		def club=clubService.clubLogon(session.getAttribute("userLogon"))
-		int idCancha= session.getAttribute("idCancha")		
+		def idCancha= session.getAttribute("idCancha")		
 		def canchaInstance = Cancha.get(idCancha)
 		if(!club){
 			flash.message = "No existe el club"

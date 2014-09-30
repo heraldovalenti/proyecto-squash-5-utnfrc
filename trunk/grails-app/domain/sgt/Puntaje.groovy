@@ -4,12 +4,11 @@ class Puntaje {
 	
 	Categoria categoria
 	
-	static belongsTo = TorneoPuntuable
+	static belongsTo = [torneoPuntuable: TorneoPuntuable]
 	
 	static hasMany = [detalles: DetallePuntaje]
 
     static constraints = {
-		
-		categoria nullable:true;
+		categoria nullable: true;
     }
 }

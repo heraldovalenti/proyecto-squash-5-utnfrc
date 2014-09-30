@@ -45,10 +45,10 @@ class DisponibilidadUsuarioController {
 			detalle.hora=  horaCortada[0] as int
 			detalle.dia= arrayDisponibilidad[i].dia
 
-			if(!detalle.save(flush: true)){
+			/*if(!detalle.save(flush: true)){
 				flash.message = "No se pudo grabar el detalle de disponibilidad"
 				return
-			}
+			}*/
 
 			u.jugador.disponibilidad.addToDetalles(detalle)
 		}

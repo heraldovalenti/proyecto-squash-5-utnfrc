@@ -2,33 +2,48 @@ package sgt
 
 import sgt.Disponibilidad;
 
-class Cancha {
+class Cancha implements Comparable {
 
+	Integer numero
 	String nombre
 	String tipoSuelo
-    Float ancho
-	Float largo
-    Boolean techo
-    String paredes
+    Boolean techada
 	Disponibilidad disponibilidad
 	
-	static belongsTo = Club	
-	String toString() {
-		return nombre
-	}
+	static belongsTo = [club: Club]
 	
     static constraints = {
-		paredes nullable: true, blank: false
-		techo nullable: true
-		ancho nullable: true, min: 0.0f, max:10.0f
-		largo nullable: true, min: 0.0f, max:10.0f
-		nombre blank:false, maxSize: 50, nullable: false
-		tipoSuelo blank:false, inList:["Parquet","Cemento","Cesped","Carpeta","Otro"]
+		numero min: 1
+		nombre blank: true, maxSize: 50
+		tipoSuelo inList: ["Parquet","Cemento","Cesped","Carpeta","Otro"]
 		disponibilidad nullable: true
     }
 	
 	@Override
 	public int hashCode() {
-		return this.nombre.hashCode()
+		int res = (nombre != null) ? nombre.hashCode() : 0
+		return res
 	}
+	
+	@Override
+	public String toString() {
+		return numero + " - " + nombre
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null || !(obj instanceof Cancha)) {
+			return false
+		}
+		Cancha other = obj
+		return other.id == this.id
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		Cancha other = o
+		return this.numero - o.numero
+	}
+	
+	
 }
