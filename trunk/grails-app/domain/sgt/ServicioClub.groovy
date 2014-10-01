@@ -23,4 +23,9 @@ class ServicioClub {
 		ServicioClub other = o;
 		return this.nombre.equals(other.nombre)
 	}
+	
+	@Override
+	public String toString() {
+		return this.nombre
+	}
 }
