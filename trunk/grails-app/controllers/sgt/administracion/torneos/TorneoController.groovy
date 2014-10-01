@@ -296,4 +296,10 @@ class TorneoController {
 		
 		render(view: "/administracion/torneos/inscripcionesTorneo", model: [inscripcionInstanceList: inscripcionInstanceList, torneoInstance: torneoInstance])
 	}
+	
+	def listaPaginada() {
+		def result = Torneo.list(params)
+		def total = Torneo.count()
+		render(view: "lista", model: [torneos: result, torneosTotal: total])
+	}
 }
