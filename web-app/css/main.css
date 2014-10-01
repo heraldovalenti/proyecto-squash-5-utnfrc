@@ -74,7 +74,7 @@ fieldset,
 .fieldcontain .property-label {
 	color: #666666;
 	text-align: right;
-	width: 25%;
+	width: 30%;
 }
 
 .fieldcontain .property-label {
@@ -83,7 +83,7 @@ fieldset,
 
 .fieldcontain .property-value {
 	display: block;
-	margin-left: 27%;
+	margin-left: 35%;
 }
 
 .fieldcontain input,
