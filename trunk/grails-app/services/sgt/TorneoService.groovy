@@ -49,7 +49,10 @@ class TorneoService {
 		Collections.sort(results, new Comparator<Torneo>() {
 			@Override
 			int compare(Torneo t1, Torneo t2) {
-				return t1.fechaInicioTorneo.getTime() - t2.fechaInicioTorneo.getTime()
+				long diff = t1.fechaInicioTorneo.getTime() - t2.fechaInicioTorneo.getTime()
+				if (diff == 0) return 0
+				if (diff > 0) return 1
+				if (diff < 0) return -1
 			}
 		})
 		return results
