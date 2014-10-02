@@ -21,12 +21,7 @@ class ClubController {
 		}
 		
 		def club = clubService.clubLogon(u)
-		def imagesDir = filesService.retrieveImagesDir()
-		def imageSource = "default_club.JPG"
-		if (club && club.imagen) {
-			imageSource = club.imagen.nombre
-		}
-		render(view: "inicioClub", model: [club: club, imagesDir: imagesDir, imageSource: imageSource])
+		render(view: "inicioClub", model: [club: club])
 	}
 	
 	def datosClub() {

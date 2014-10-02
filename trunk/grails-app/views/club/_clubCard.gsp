@@ -1,15 +1,15 @@
 <%@ page import="sgt.Club"%>
 
-<div style="margin: 10px; padding: 10px; background-color: #FFFFFF; width: 770px; position: relative; float: left;">
+<div id="perfil-club" >
 	<h3 class="title">${ club.nombre }</h3>
-	<div style="width: 170px; position: relative; float: left;">
+	<div class="perfil-club-logo">
 		<div class="fieldcontain">
 			<div class="vista-previa" 
-				style="background-image: url(<g:resource dir="${ imagesDir }" file="${ imageSource }"/>);">
+				style="background-image: url(<g:imagenPerfilClub club="${ club }"/>);">
 			</div>
 		</div>
 	</div>
-	<div style="width: 600px; position: relative; float: left;">
+	<div class="perfil-club-info">
 		<ol class="property-list club">
 			
 			<g:if test="${ club.sitioWeb }">
