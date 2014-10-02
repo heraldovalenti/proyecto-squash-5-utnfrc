@@ -26,10 +26,18 @@ h1
     background: #efefef;
     
 }
+/* div contenedor de menu y contenido central */
+div.main_club {
+	position: relative;
+	float: left;
+	width: 100%;
+	margin: 0px;
+}
 /*Titulo panel de administracion*/
-h3
+h3.title
 {
-	border: 2px solid #D3DADD;
+	border: solid #D3DADD;
+	border-width: 2px 0px;
     color: #FFFFFF;
     font-size: 16px;
     font-weight: bold;
@@ -38,22 +46,23 @@ h3
     min-height: 31px;
     text-indent: 10px;
     text-transform: uppercase;
-    
     background: #183353;
     background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
     background-image: -o-linear-gradient(top , #00AFF0 0%, #183353 100%);
     background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    
 	background-image: -webkit-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%); 
+    background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%);
+    float: left;
+	position: relative;
+	width: 100%;
 }
-/*div del menu de adm*/
+/*div del menu */
 div.menu_jugador {
 	float: left;
 	width: 20%;
-	height: 316px;
+	margin-top:25px;
 }
-/*div del contenido del medio*/
+/*div del contenido central */
 div.contenido_jugador {
 	margin-top:25px;
 	float: left;
@@ -79,6 +88,9 @@ div.noticias{
 	margin-left: -10px;
 }
 
+#news-result ul {
+	margin: 0px;
+}
 #news-result li:hover a{ color: black;}
 
 /*item del menu de adm*/
@@ -91,7 +103,6 @@ div.noticias{
 	text-overflow: ellipsis;
 	overflow: hidden;
 	border: 1px solid;
-	width: 100%;
 	height: 20px;	
 	list-style-type: none;
 	font: 18px arial;
@@ -171,7 +182,7 @@ color:#ffffff;}
 	
 a.button_small:hover,a.button_small:active{
 	text-decoration:none;
-	opacity:0.8;
+	opacity:0.8;main-content
 	filter:alpha(opacity=90);
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=90);
 	-moz-opacity:0.90;-webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);

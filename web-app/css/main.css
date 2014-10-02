@@ -477,3 +477,24 @@ div.scaffold-list, div.scaffold-show, div.scaffold-edit, div.scaffold-create, di
 ul.scaffold-nav {
 	width:100% !important;
 }
+
+#perfil-club {
+	margin: 10px;
+	padding: 10px;
+	background-color: #FFFFFF;
+	width: 700px;
+	position: relative;
+	float: left;
+}
+
+#perfil-club div.perfil-club-logo {
+	width: 170px;
+	position: relative;
+	float: left;
+}
+
+#perfil-club div.perfil-club-info {
+	width: 530px;
+	position: relative;
+	float: left;
+}

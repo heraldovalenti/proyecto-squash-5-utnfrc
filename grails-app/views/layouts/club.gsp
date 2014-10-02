@@ -36,25 +36,21 @@
 	
 	
 	<!-- CUERPO GENERAL DE LA PAGINA - A llenarse desde el Layout -->
-	<div class="container_16">
-		<div class="slides-home raised">
-			<div class="second-part mt10">
-			<h3 class="title"> Panel de control personal</h3>
-				<div class="menu_jugador">
-					<g:render template="/club/menuClub" />
-				</div>
-				<div class="contenido_jugador">
-					<g:layoutBody/>
-				</div>
-				
-				<!-- PIE DE PAGINA -->
-				<div class="footer" role="contentinfo"></div>
-				<div id="spinner" class="spinner" style="display:none;">
-					<g:message code="spinner.alt" default="Loading&hellip;"/>
-				</div>
+	<div class="main_club">
+		<h3 class="title"> Panel de control personal</h3>
+			<div class="menu_jugador">
+				<g:render template="/club/menuClub" />
+			</div>
+			<div class="contenido_jugador">
+				<g:layoutBody/>
+			</div>
+			
+			<!-- PIE DE PAGINA -->
+			<div class="footer" role="contentinfo"></div>
+			<div id="spinner" class="spinner" style="display:none;">
+				<g:message code="spinner.alt" default="Loading&hellip;"/>
 			</div>
 		</div>
-	</div>
 	<r:layoutResources />
 </body>
 </html>
