@@ -27,7 +27,7 @@ class ServicioClubController {
 			flash.message = "Servicio registrado"
 			render(view: "/administracion/serviciosClub/show", model: [servicio: servicio])
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render(view: "/administracion/serviciosClub/create", model: [servicio: servicio])
 		} catch (e) {
 			flash.exception = e
@@ -58,7 +58,7 @@ class ServicioClubController {
 			flash.message = "Servicio actualizado"
 			render(view: "/administracion/serviciosClub/show", model: [servicio: servicio])
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render(view: "/administracion/serviciosClub/edit", model: [servicio: servicio])
 		} catch (e) {
 			flash.exception = e
@@ -73,7 +73,7 @@ class ServicioClubController {
 			flash.message = "Servicio eliminado"
 			redirect(action: "list")
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render(view: "/administracion/serviciosClub/show", model: [servicio: servicio])
 		} catch (e) {
 			flash.exception = e

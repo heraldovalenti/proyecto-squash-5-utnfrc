@@ -38,7 +38,7 @@ class EncargadoController {
 			flash.message = "Encargado registrado"
 			redirect(action: "index")
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render (view: "/club/encargado/create", model: [usuarioEncargado: u, datosEncargado: p])
 		} catch (e) {
 			flash.exception = e
@@ -87,7 +87,7 @@ class EncargadoController {
 				flash.message = "Encargado actualizado"
 				redirect(action: "show", params: params)
 			} catch (ValidationException e) {
-				flash.errors = e.errors
+				flash.errors = e.errors.allErrors
 				render (view: "/club/encargado/edit", model: [usuarioEncargado: u, datosEncargado: p])
 			} catch (e) {
 				flash.exception = e

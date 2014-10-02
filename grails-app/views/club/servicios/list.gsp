@@ -7,9 +7,7 @@
 	<body>
 		<div id="list-servicios" class="content scaffold-list" role="main">
 			<h1>Servicios ofrecidos en Club</h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			<g:render template="/utils/messages"/>
 			
 			<div id="servicios-club">
 				<ul>

@@ -7,16 +7,11 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="create" controller="postulacionTorneo" action="listadoTorneosPostulables">Postularse a torneos</g:link></li>
-			</ul>
-		</div>
+		<g:link class="create" controller="postulacionTorneo" action="listadoTorneosPostulables">Postularse a torneos</g:link>
 		<div id="list-club" class="content scaffold-list" role="main">
 			<h1>Postulaciones a torneo</h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			<g:render template="/utils/messages"/>
+			
 			<table>
 				<thead>
 					<tr>	

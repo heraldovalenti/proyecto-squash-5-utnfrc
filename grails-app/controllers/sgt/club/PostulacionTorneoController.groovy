@@ -15,8 +15,8 @@ class PostulacionTorneoController {
 		}
 		
 		if (!usuario.club) {
-			flash.message = "Debe completar los datos de Club para realizar esta accion"
-			redirect(controller: "club", action: "datosClub")
+			flash.message = "Deben registrarse los datos del club para realizar postulaciones"
+			forward controller: "club", action: "datosClub"
 			return
 		}
 		
