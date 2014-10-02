@@ -6,7 +6,7 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link action="create" >Nuevo encargado</g:link>
+		<g:link action="create" >Registrar nuevo encargado</g:link>
 		<div id="list-encargados" class="content scaffold-list" role="main">
 			<h1>Encargados de Club</h1>
 			<g:if test="${flash.message}">
@@ -43,7 +43,8 @@
 						</tr>
 					</g:each>
 					</tbody>
-				</table>			
+				</table>
+				<div class="message">* Click sobre algun encargado para más opciones</div>		
 			</g:else>
 		</div>
 	</body>

@@ -65,7 +65,7 @@ class ClubController {
 			flash.message = "Datos de club registrados"
 			redirect(action: "show")
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render (view: "create", model: [clubInstance: clubInstance])
 		} catch (e) {
 			flash.exception = e
@@ -83,7 +83,7 @@ class ClubController {
 			flash.message = "Datos de club registrados"
 			redirect(action: "show")
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render (view: "edit", model: [clubInstance: clubInstance])
 		} catch (e) {
 			flash.exception = e
@@ -125,7 +125,7 @@ class ClubController {
 			flash.message = "Domicilio registrado"
 			render(view: "/club/domicilio/show", model: [domicilioInstance: clubInstance.domicilio])
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 			render(view: "/club/domicilio/edit", model: [domicilioInstance: domicilioClub])
 		} catch (e) {
 			flash.exception = e
@@ -155,7 +155,7 @@ class ClubController {
 			servicioClubService.agregarServicioClub(club, servicio)
 			flash.message = "Servicio registrado"
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 		} catch (e) {
 			flash.exception = e
 		}
@@ -175,7 +175,7 @@ class ClubController {
 			servicioClubService.quitarServicioClub(club, servicio)
 			flash.message = "Servicio eliminado"
 		} catch (ValidationException e) {
-			flash.errors = e.errors
+			flash.errors = e.errors.allErrors
 		} catch (e) {
 			flash.exception = e
 		}

@@ -7,9 +7,8 @@
 	<body>		
 		<div id="show-club" class="content scaffold-show" role="main">
 			<h1>Datos de club</h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			<g:render template="/utils/messages"/>
+			
 			<ol class="property-list club">
 				
 				<g:if test="${clubInstance?.nombre}">
