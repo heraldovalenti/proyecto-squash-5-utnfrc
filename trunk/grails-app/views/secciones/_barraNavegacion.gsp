@@ -1,5 +1,3 @@
-<r:require modules="menuJugadores"/>
-
 <div class="container_16 nav mt20">
 
     <ul id="menu">
