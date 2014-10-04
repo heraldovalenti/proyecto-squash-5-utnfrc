@@ -1,15 +1,19 @@
 package sgt.jugador
 
+import grails.converters.JSON
 import java.rmi.server.UID;
 
+import sgt.CategoriaJugador
 import sgt.FilesService;
 import sgt.Jugador;
+import sgt.JugadoresService;
 import sgt.PerfilJugador;
 import sgt.Usuario;
 
 class JugadorController {
 
 	static defaultAction ='index'
+	def jugadoresService
 	
     def index() {
 		def Usuario u = session.getAttribute("userLogon")
@@ -202,5 +206,17 @@ class JugadorController {
 
 		flash.message = message(code: 'default.updated.message', args: [message(code: 'jugador.label', default: 'Jugador'), jugadorInstance.id])
 		redirect(action: "show", id: jugadorInstance.id)
+	}
+	
+	def obtenerJugadores(){
+				
+		def categoria= params.categoria
+		
+		def jugadoresCategoria= jugadoresService.listarJugadoresPorCategoria(categoria)
+		
+		def categorias=jugadoresService.obtenerCategorias()
+		
+		render(view: "jugadoresPorCategoria", model: [jugadores: jugadoresCategoria , categorias:categorias])
+		
 	}
 }

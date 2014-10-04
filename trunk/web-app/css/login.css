@@ -180,7 +180,7 @@ input[type="submit"]
 .nav ul {height: 40px;
     background: #183353;
     position: relative; 
-    width: 972px;
+ /*    width: 972px; */
     background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
     background-image: -o-linear-gradient(top , #00AFF0 0%, #183353 100%);
     background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);
