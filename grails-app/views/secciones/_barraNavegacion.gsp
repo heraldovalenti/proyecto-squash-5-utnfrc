@@ -1,12 +1,16 @@
+<r:require modules="menuJugadores"/>
+
 <div class="container_16 nav mt20">
-    <ul>
+
+    <ul id="menu">
         <li><a href="/SistemaGestionTorneo">Home</a></li>
         <li><a href="#">La ACS</a></li>
         <li><a href="#">Noticias</a></li>
-        <li><a href="/SistemaGestionTorneo/jugador/">Jugadores</a></li>
+        <li id="li-jugador"><g:link controller="jugador" action="obtenerJugadores" params="[categoria:'Tercera']">Jugadores</g:link></li>             	
         <li><a href="/SistemaGestionTorneo/listaTorneo">Torneos</a></li>        
         <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
-        <li><a href="/SistemaGestionTorneo/partido/list">Diagramación</a></li>
+        <li><a href="/SistemaGestionTorneo/partido/list">Ranking</a>          
+        </li>
         <li><a href="#">Contacto</a></li>
         <li>
             <form action="#" method="get" name="searchForm" id="headerSearch" onsubmit="return false;">
