@@ -1,73 +1,62 @@
 package sgt
 
+import sgt.exceptions.InscripcionTorneoException
+import sgt.exceptions.TorneoNotFoundException
+import sgt.exceptions.UnregisteredJugadorException
+
 class InscripcionTorneoController {
+	
+	def inscripcionTorneoService
 		
-	def inscripcionTorneo(Long id) {
-		def userLogon = session.getAttribute("userLogon")
+	def inscribirJugadorTorneo() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def idTorneo = params.idTorneo
+		
 		if (!userLogon) {
-			flash.message = "Debe iniciar sesión primero"
-			redirect(controller: "usuario", action: "loginForm")
+			def loginRedirect = [controller: "torneo", action: "verTorneo", params: [idTorneo: idTorneo] ]
+			session.setAttribute("loginRedirect", loginRedirect)
+			chain(controller: "usuario", action: "loginForm")
 			return
 		}
 		
-		def torneoInstance = Torneo.get(id)
-		session.setAttribute("idTorneo", torneoInstance.id)
-		def detalleTorneoInstanceList = torneoInstance?.getDetalles()
+		Torneo torneo = Torneo.get(idTorneo)
+		def idUsuario = userLogon.id
 		
-		render(view: "/inscripcionTorneo/inscripcion", model: [detalleTorneoInstanceList: detalleTorneoInstanceList])
+		try {
+			inscripcionTorneoService.inscribirJugadorTorneo(idTorneo, idUsuario)
+			flash.message = "Inscripcion realizada"
+			chain(action: "inscripcionesJugador")
+		} catch (TorneoNotFoundException e) {
+			flash.exception = e
+			render(view: "/torneo/verTorneo", model: [torneo: torneo])
+		} catch (UnregisteredJugadorException e) {
+			flash.exception = e
+			redirect(controller: "jugador", action: "datosJugador")
+		} catch(InscripcionTorneoException e) {
+			flash.exception = e
+			render(view: "/torneo/verTorneo", model: [torneo: torneo])
+		} catch (e) {
+			flash.exception = e
+			render(view: "/torneo/verTorneo", model: [torneo: torneo])
+		}
 	}
 	
-	def inscribir(Long id) {
-		def detalleTorneoInstance = DetalleTorneo.get(id)
-		def idTorneo = session.getAttribute("idTorneo")
-		def userLogon = session.getAttribute("userLogon")
-		userLogon = Usuario.get(userLogon.id)
-		def categoriaJugadorInstance = userLogon.getCategoriaActual()
-		
-		if(detalleTorneoInstance.jugadorInscripto(userLogon)) {
-			flash.message = "Ya se encuentra inscripto en esa categoría"
-			redirect(action: "inscripcionTorneo", id: idTorneo)
-			return
+	def cancelarInscripcion() {
+		def idInscripcion = params.idInscripcion
+		try {
+			inscripcionTorneoService.cancelarInscripcionTorneo(idInscripcion)
+			flash.message = "Inscripcion cancelada"
+		} catch(InscripcionTorneoException e) {
+			flash.exception = e
+		} catch (e) {
+			flash.exception = e
 		}
-		
-		/*if (!categoriaJugadorInstance || !categoriaJugadorInstance.categoria.equals(detalleTorneoInstance.categoria)) {
-			flash.message = "La categoría seleccionada no corresponde a la suya"
-			redirect(action: "inscripcionTorneo", id: idTorneo)
-			return
-		}*/
-		
-		def inscripcionTorneoInstance = new InscripcionTorneo()
-		inscripcionTorneoInstance.setFecha(new Date())
-		inscripcionTorneoInstance.setUsuario(userLogon)
-		inscripcionTorneoInstance.setDetalleTorneo(detalleTorneoInstance)
-		inscripcionTorneoInstance.vincular()
-		inscripcionTorneoInstance.save(failOnError: true)
-		
-		flash.message = "Inscripción realizada con éxito"
-		render(view: "/inscripcionTorneo/inscripcionRealizada")
+		chain(action: "inscripcionesJugador")
 	}
 	
-	def cancelarInscripcion(Long id) {
-		def inscripcionTorneoInstance = InscripcionTorneo.get(id)
-		
-		if (!inscripcionTorneoInstance) {
-			flash.message = "No se ha encontrado la inscripcion"
-			redirect(controller: "inscripciones", action: "index")
-			return
-		}
-		
-		if (!inscripcionTorneoInstance.puedeCancelar()) {
-			flash.message = "No se puede cancelar la inscripcion"
-			redirect(controller: "inscripciones", action: "index")
-			return
-		}
-		
-		inscripcionTorneoInstance.cancelar()
-		inscripcionTorneoInstance.save()
-		
-		flash.message = "Inscripcion cancelada"
-		redirect(controller: "inscripciones", action: "index")
+	def inscripcionesJugador() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def res = inscripcionTorneoService.getInscripcionActivasUsuario(userLogon.id)
+		render(view: "/jugador/inscripcion/listadoInscripcion", model: [inscripciones: res])
 	}
 }
-
-

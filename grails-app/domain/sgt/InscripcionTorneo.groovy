@@ -13,28 +13,30 @@ class InscripcionTorneo {
 	static belongsTo = [detalleTorneo: DetalleTorneo]
 		
 	static constraints = {
-		usuario nullable:false
-		fecha nullable:false
-		estado blank:false, inList:["Creada","Vinculada","Cerrada","Cancelada","Diagramada"]
+		estado inList: ["Vinculada","Cancelada","Diagramada"]
 	}
 	
-	def Boolean esVinculada() {
+	boolean esVinculada() {
 		return this.estado.equals("Vinculada")
 	}
 	
-	def void diagramar() {
-		if (this.estado.equals("Vinculada")) this.estado = "Diagramada"
+	boolean esCancelada() {
+		return this.estado.equals("Cancelada")
 	}
 	
-	def Boolean puedeCancelar() {
+	boolean cancelable() {
 		return this.estado.equals("Vinculada")
 	}
 	
-	def void cancelar() {
+	void cancelar() {
 		if (this.estado.equals("Vinculada")) this.estado = "Cancelada"
 	}
 	
-	def void vincular() {
+	void vincular() {
 		if (!this.estado) this.estado = "Vinculada"
 	}
+	
+	void diagramar() {
+		if (this.estado.equals("Vinculada")) this.estado = "Diagramada"
+	}	
 }

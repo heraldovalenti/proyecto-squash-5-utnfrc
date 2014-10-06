@@ -42,18 +42,22 @@ class UsuarioController {
 			return
 		}
 		
+		def loginRedirect = session.getAttribute("loginRedirect")
+		
 		//si se encontro el usuario y es un Club
 		def rolClub = Rol.findByNombre('Club')
 		def rolJugador = Rol.findByNombre('Jugador')
 		if (u && u.rol.equals(rolClub)) {
 			session.setAttribute("userLogon", u)
-			redirect(controller: "club")
+			if (loginRedirect) redirect(loginRedirect)
+			else redirect(controller: "club")
 			return
 		}
 		//si se encontro el usuario y es un jugador		
 		if (u && u.rol.equals(rolJugador)) {
 			session.setAttribute("userLogon", u)
-			render(view: '/jugador/inicioJugador')
+			if (loginRedirect) redirect(loginRedirect)
+			else render(view: '/jugador/inicioJugador')
 			return
 		}		
 				

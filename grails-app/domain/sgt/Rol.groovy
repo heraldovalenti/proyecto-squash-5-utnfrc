@@ -15,7 +15,8 @@ class Rol {
 	
 	boolean equals(Object obj) {
 		if ( !(obj instanceof Rol) ) return false
+		if (obj == null) return false
 		Rol other = obj
-		return other.id == this.id
+		return this.nombre.equals(other.nombre)
 	}
 }

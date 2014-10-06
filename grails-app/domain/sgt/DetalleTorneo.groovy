@@ -30,4 +30,11 @@ class DetalleTorneo {
 	def Integer cantidadInscriptos() {
 		return this.getInscripciones().size()
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof DetalleTorneo)) return false
+		DetalleTorneo other = obj
+		return (this.id == other.id)
+	}
 }

@@ -297,6 +297,14 @@ class TorneoController {
 		render(view: "/administracion/torneos/inscripcionesTorneo", model: [inscripcionInstanceList: inscripcionInstanceList, torneoInstance: torneoInstance])
 	}
 	
+	def verTorneo() {
+		Torneo torneo = Torneo.get(params.idTorneo)
+		render(view: "verTorneo", model: [torneo: torneo])
+	}
+	
+	/**
+	 * Metodo para probar el uso del tag <g:paginate />
+	 */
 	def listaPaginada() {
 		def result = Torneo.list(params)
 		def total = Torneo.count()
