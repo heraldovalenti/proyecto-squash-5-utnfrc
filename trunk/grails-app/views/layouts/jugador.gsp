@@ -1,26 +1,15 @@
-<%@ page import="sgt.Persona" %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title><g:layoutTitle default="Grails"/></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jugador</title>
 	
-    <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
+    <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet"/>
+ 	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet"/>
+ 	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet"/>
+ 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet"/>
+ 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet"/>
+ 	<link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css" rel="stylesheet"/>
  	
- 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
- 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
- 	
- 	<link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css" rel="stylesheet">
-        
-   	<style>
-   		ul.lof-main-wapper li {
-  			position:relative;    
-		}
-	</style>  
-   
 	<g:layoutHead/>
 	<r:layoutResources />
 </head>
@@ -33,7 +22,8 @@
 	<div class="header mt20">
 	    <div class="logo" style="width: 100px;">
 	        <a href="http://www.acsr.com.ar/">
-	            <img src="http://www.acsr.com.ar/images/acs.png" alt="Logo Asociación Cordobesa de Squash Raquets" 
+	            <img src="http://www.acsr.com.ar/images/acs.png" 
+	            	alt="Logo Asociación Cordobesa de Squash Raquets" 
 	            	title="Logo Asociación Cordobesa de Squash Raquets"/>
 	        </a>
 	    </div>
@@ -57,13 +47,6 @@
 				<div class="contenido_jugador">
 					<g:layoutBody/>
 				</div>
-				
-				<!-- PIE DE PAGINA -->
-				<div class="footer" role="contentinfo"></div>
-				<div id="spinner" class="spinner" style="display:none;">
-					<g:message code="spinner.alt" default="Loading&hellip;"/>
-				</div>
-				<g:javascript library="application"/>
 			</div>
 		</div>
 	</div>

@@ -13,7 +13,13 @@ import sgt.Rol;
 @TestFor(Rol)
 class RolTests {
 
-    void testSomething() {
-       assert true
+    @Test
+    void equalityTest() {
+       Rol r1 = new Rol(nombre: "rol1")
+	   Rol r2 = new Rol(nombre: "rol2")
+	   Rol r3 = new Rol(nombre: "rol1")
+	   
+	   Assert.assertFalse(r1.equals(r2))
+	   Assert.assertTrue(r1.equals(r3))
     }
 }

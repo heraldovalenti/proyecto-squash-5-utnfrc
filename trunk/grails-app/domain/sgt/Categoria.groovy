@@ -16,4 +16,12 @@ class Categoria {
 	String toString() {
 		return nombre
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Categoria)) return false
+		Categoria other = obj
+		if (this.nombre == null || this.modalidadCategoria == null) return false
+		return ( this.nombre.equals(other.nombre) && this.modalidadCategoria.equals(other.modalidadCategoria) )
+	}
 }

@@ -13,7 +13,13 @@ import sgt.Usuario;
 @TestFor(Usuario)
 class UsuarioTests {
 
-    void testSomething() {
-       assert true
+	@Test
+    void equalityTest() {
+       Usuario u1 = new Usuario(nombreUsuario: "heraldov")
+	   Usuario u2 = new Usuario(nombreUsuario: "brendam")
+	   Usuario u3 = new Usuario(nombreUsuario: "heraldov")
+	   
+	   Assert.assertFalse(u1.equals(u2))
+	   Assert.assertTrue(u1.equals(u3))
     }
 }

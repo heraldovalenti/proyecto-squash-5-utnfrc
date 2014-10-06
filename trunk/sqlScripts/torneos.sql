@@ -52,4 +52,7 @@ insert into detalle_torneo (id,version,torneo_id,categoria_id,cupo_maximo) value
 (12,1,10,2,64),
 (13,1,10,3,64),
 (14,1,10,4,64),
-(15,1,10,5,64);
+(15,1,10,5,64),
+(16,1,16,1,64), /* 16 - X Fecha Puntuable 2014 */
+(17,1,16,2,64),
+(18,1,16,3,64);

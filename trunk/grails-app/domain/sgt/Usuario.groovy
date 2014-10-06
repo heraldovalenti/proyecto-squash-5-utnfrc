@@ -71,4 +71,12 @@ class Usuario {
 		Rol r = Rol.findByNombre("Encargado club")
 		return rol.equals(r)
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Usuario)) return false
+		if (obj == null) return false
+		Usuario other = obj
+		return this.nombreUsuario.equals(other.nombreUsuario)
+	}
 }

@@ -21,7 +21,8 @@
 			<g:else>No asignado</g:else>
 		</div>
 		<div class="viewFull">
-			<a href="#" class="viewFull">VER MAS>></a>
+			<g:link controller="torneo" action="verTorneo" params="[idTorneo: torneoInstance.id]"
+				class="viewFull">VER MAS>></g:link>
 		</div>
 	</div>
 </div>
