@@ -7,9 +7,17 @@ class JugadoresService {
 
    static transactional = true
    
-	def listarJugadoresPorCategoria(String categoria){
+	def listarJugadoresPorCategoria(String categoria, def params){
 
-		def jugadoresCategoria=[]
+		def c = Usuario.createCriteria()
+		def jugadoresCategoria = c.list(params) {
+			isNotNull("jugador")
+			and {
+				eq("jugador.categoriasJugador.categoria.estado","Asignada")
+				eq("jugador.categoriasJugador.categoria.nombre", categoria)
+			}
+		}
+		/*def jugadoresCategoria=[]
 		
 		def usuarios= Usuario.findAll()
 
@@ -36,7 +44,7 @@ class JugadoresService {
 					}
 				}
 			}
-		}
+		}*/
 		return jugadoresCategoria
 	}
    
