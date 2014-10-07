@@ -47,6 +47,9 @@
 			<g:link controller="inscripcionTorneo" action="cancelarInscripcion" 
 				params="[idInscripcion: inscripcion.id]"
 				class="fr mb10 mr10 button_small red deletion-button">Cancelar inscripcion</g:link>
+			<g:link controller="torneo" action="verTorneo" 
+				params="[idTorneo: inscripcion.detalleTorneo.torneo.id]"
+				class="fr mb10 mr10 button_small blue">Ver torneo</g:link>
 		</div>
 	</div>
 	</g:each>

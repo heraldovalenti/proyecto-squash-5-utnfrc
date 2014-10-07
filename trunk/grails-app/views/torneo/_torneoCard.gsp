@@ -8,10 +8,10 @@
 		</a>
 	</div>
 	<div class="singlesInfo">
-		<div class="Singles"></div>
 		<div class="singlesRankName">
 			<span>
-				<a href="#">${ torneoInstance.nombre }</a>
+				<g:link controller="torneo" action="verTorneo" params="[idTorneo: torneoInstance.id]"
+				class="viewFull" style="overflow: hidden;">${ torneoInstance.nombre }</g:link>
 			</span>
 		</div>
 		<div class="singlesRank">INICIO: <g:formatDate date="${ torneoInstance?.fechaInicioTorneo }" format="dd-MM-yy"/></div>
