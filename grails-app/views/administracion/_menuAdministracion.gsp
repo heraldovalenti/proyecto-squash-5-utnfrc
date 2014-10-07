@@ -1,4 +1,4 @@
-<div class="box mb10 box-335">
+<div class="box mb10">
 	<div id="news-result" class="inner-box">
 		<ul class="ul-admin">
 			<li><g:link controller="administracion">Panel de inicio</g:link></li>
