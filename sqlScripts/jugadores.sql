@@ -14,4 +14,4 @@ insert into categoria_jugador (id,version,jugador_id,categoria_id,fecha_inicio,f
 (1,1,1,1,'2000-01-01',null,'Asignada','categoria de jugador heraldov'),
 (2,1,2,2,'2000-01-01',null,'Asignada','categoria de jugador guillef'),
 (3,1,3,3,'2000-01-01',null,'Asignada','categoria de jugador matidc'),
-(4,1,4,4,'2000-01-01',null,'Asignada','categoria de jugador davidc');
+(4,1,4,3,'2000-01-01',null,'Asignada','categoria de jugador davidc');

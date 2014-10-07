@@ -3,18 +3,23 @@ package sgt
 import java.util.Calendar;
 import java.util.Comparator;
 
+import org.hibernate.criterion.CriteriaSpecification;
+
 class JugadoresService {
 
    static transactional = true
    
 	def listarJugadoresPorCategoria(String categoria){
-
 		/*def c = Usuario.createCriteria()
 		def jugadoresCategoria = c.list() {
-			isNotNull("jugador")
+			createAlias("jugador", "jug", CriteriaSpecification.LEFT_JOIN)
+			createAlias("jug.categoriasJugador","catJ", CriteriaSpecification.LEFT_JOIN)
+			createAlias("catJ.categoria","cat", CriteriaSpecification.LEFT_JOIN)
 			and {
-				eq("jugador.categoriasJugador.estado","Asignada")
-				eq("jugador.categoriasJugador.categoria.nombre", categoria)
+				isNotNull("jugador")
+				isNotEmpty("jug.categoriasJugador")
+				eq("catJ.estado","Asignada")
+				eq("cat.nombre", categoria)
 			}
 		}*/
 		def jugadoresCategoria=[]
