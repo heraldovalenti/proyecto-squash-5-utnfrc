@@ -1188,7 +1188,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
   height: 200px;
   padding: 8px 10px 9px;
   position: relative;
-  width: 200px;
+  width: 140px;
 }
 
 #playerBioHeadShotCopy {
@@ -1505,10 +1505,25 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
   padding-top: 10px;
   width: 290px;
 }
-.rankingProfileImage  {background:url("images/marco.png") no-repeat scroll left top transparent;float:left;height:145px;margin:10px 0 0 5px;padding:5px 10px 0 5px;position:relative;width:108px;}
+.rankingProfileImage  {
+	background:url("images/marco.png") no-repeat scroll left top transparent;
+	float:left;
+	height:145px;
+	margin:10px 0 0 5px;
+	padding:5px 10px 0 5px;
+	position:relative;
+	width:108px;}
 .rankingProfileImage a {position:static;}
 .rankingProfileImage img {height:140px;width:108px;}
-.overlayRankings {background:url("images/spanwhite.png") no-repeat scroll left top transparent;display:block;height:140px;left:5px;position:absolute;top:5px;width:108px;text-align: left;}
+.overlayRankings {
+	background:url("images/spanwhite.png") no-repeat scroll left top transparent;
+	display:block;
+	height:140px;
+	left:5px;position:absolute;
+	top:5px;
+	width:108px;
+	text-align: left;
+	}
 .singlesInfo {float:left;text-align: left;margin-top: 5px;width:160px;}
 .Singles {border-bottom:1px solid #D7D7D7;color:#666666;font-size:1.2em;font-weight:bold;padding:7px 0 4px;}
 .singlesRankName {border-bottom:1px solid #D7D7D7;font-size:1.1em;padding:8px 0 5px;}
@@ -1539,11 +1554,11 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
     background-image: -ms-linear-gradient(top , #064183 0%, #02162F 100%);
     
     height:315px !important;
-    width:770px;    
-    margin-top: -12px;
+    width:44em; 
+    margin-top: 0.3em;
+    margin-left:3em;   
     text-align: left;
 }
-#playerBioHeadShot {float:left;height:200px;padding:8px 10px 9px;position:relative;width:200px;}
 #playerBioHeadShotCopy  {background:url("images/headshot_copy_bg.png") repeat scroll 0 0 transparent;bottom:0;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:15px;left:11px;line-height:15px;padding:0 4px;position:absolute;width:140px;}
 #playerBioHeadShot img {border:1px solid white;}
 #playerBioInfoList {float:left;padding:4px 0;width:342px;}

@@ -98,9 +98,15 @@ class JugadorController {
 		return
 	}
 	
-	def showPerfil() {
+	def usuarioActual(){
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
+		
+		return u
+		
+	}
+	
+	def showPerfil(Usuario u) {
 				
 		if (u && u.persona) {
 			def perfil = new PerfilJugador()
@@ -212,11 +218,46 @@ class JugadorController {
 				
 		def categoria= params.categoria
 		
+		def tipo="jugador"		
+		
 		def jugadoresCategoria= jugadoresService.listarJugadoresPorCategoria(categoria)
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
-		render(view: "jugadoresPorCategoria", model: [jugadores: jugadoresCategoria , categorias:categorias])
+		render(view: "jugadoresPorCategoria", model: [jugadores: jugadoresCategoria , categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
+		
+	}
+	
+	def obtenerRankingJugadores(){
+		
+		def categoria= params.categoria		
+		
+		def tipo="ranking"
+		
+		def rankingJugadores= jugadoresService.listarJugadoresPorRankingYCategoria(categoria)
+				
+		def categorias=jugadoresService.obtenerCategorias()
+		
+		render(view: "jugadoresPorRankingYCategoria", model: [jugadores: rankingJugadores , categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
+		
+	}
+	
+	def cargarPerfilCompleto(){
+		
+		def idUsuario= params.usuario
+		
+		def categoria= params.categoria	
+		
+		def tipo=params.tipo
+		
+		def usuario= Usuario.get(idUsuario)
+		
+		def categorias=jugadoresService.obtenerCategorias()
+		
+		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)		
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
+		
 		
 	}
 }
