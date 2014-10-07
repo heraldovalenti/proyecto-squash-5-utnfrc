@@ -1,4 +1,4 @@
-<div class="box mb10 box-335">
+<div class="box mb10">
 	<div id="news-result" class="inner-box">
 		<ul>
 			<li><g:link controller="jugador" action="showPerfil">Ver mi perfil</g:link></li>

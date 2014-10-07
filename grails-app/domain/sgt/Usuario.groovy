@@ -63,12 +63,12 @@ class Usuario {
 	}
 	
 	Boolean esEncargado() {
-		Rol r = Rol.findByNombre("Encargado")
+		Rol r = Rol.findByNombre("Encargado club")
 		return rol.equals(r)
 	}
 	
 	Boolean esAdministrador() {
-		Rol r = Rol.findByNombre("Encargado club")
+		Rol r = Rol.findByNombre("Administrador")
 		return rol.equals(r)
 	}
 	
