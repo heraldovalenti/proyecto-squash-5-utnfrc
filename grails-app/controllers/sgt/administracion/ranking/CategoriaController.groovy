@@ -1,8 +1,9 @@
 package sgt.administracion.ranking
-
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
 
 import sgt.Categoria;
+import sgt.CategoriaJugador;
 
 class CategoriaController {
 	
@@ -102,5 +103,6 @@ class CategoriaController {
             flash.message = message(code: 'sgt.registrodatos.fallo')
             redirect(action: "show", id: id)
         }
-    }
+    }	
+		
 }
