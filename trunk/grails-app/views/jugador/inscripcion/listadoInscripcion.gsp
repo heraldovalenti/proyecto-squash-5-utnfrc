@@ -29,21 +29,24 @@
 				<li class="fieldcontain">
 					<span class="property-label">Cierre de inscripcion</span>
 					<span class="property-value"> 
-						<g:formatDate date="${ inscripcion.detalleTorneo.torneo.fechaFinInscripcion }" format="dd/MM/yyyy"/>
+						<g:formatDate date="${ inscripcion.detalleTorneo.torneo.fechaFinInscripcion }"
+							format="dd/MM/yyyy"/>
 					</span>
 				</li>
 				
 				<li class="fieldcontain">
 					<span class="property-label">Inicio de torneo</span>
 					<span class="property-value">
-						<g:formatDate date="${ inscripcion.detalleTorneo.torneo.fechaInicioTorneo }" format="dd/MM/yyyy"/>
+						<g:formatDate date="${ inscripcion.detalleTorneo.torneo.fechaInicioTorneo }"
+							format="dd/MM/yyyy"/>
 					</span>
 				</li>
 			</ol>
 		</div>	
 		<div class="fl" style="width: 100%;">
-			<g:link controller="inscripcionTorneo" action="cancelarInscripcion" elementId="deletion-button"
-				params="[idInscripcion: inscripcion.id]" class="fr mb10 mr10 button_small red">Cancelar inscripcion</g:link>
+			<g:link controller="inscripcionTorneo" action="cancelarInscripcion" 
+				params="[idInscripcion: inscripcion.id]"
+				class="fr mb10 mr10 button_small red deletion-button">Cancelar inscripcion</g:link>
 		</div>
 	</div>
 	</g:each>
