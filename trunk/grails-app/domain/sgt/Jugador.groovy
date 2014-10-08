@@ -6,8 +6,8 @@ class Jugador {
 	Double altura
 	Double peso
 	Date juegaDesde
-	Disponibilidad disponibilidad
 	Imagen imagen
+	Disponibilidad disponibilidad
 	
 	static hasMany = [rankings: Ranking, categoriasJugador: CategoriaJugador]
 
@@ -19,4 +19,8 @@ class Jugador {
 		disponibilidad nullable: true
 		imagen nullable: true
     }
+	
+	boolean checkDatosCompletados() {
+		return ( brazo || altura || peso || juegaDesde || imagen )
+	}
 }

@@ -1,22 +1,21 @@
 package sgt.jugador
 
-import grails.converters.JSON
-import java.rmi.server.UID;
-
-import sgt.CategoriaJugador
-import sgt.FilesService;
-import sgt.Jugador;
-import sgt.JugadoresService;
-import sgt.PerfilJugador;
-import sgt.Usuario;
+import grails.validation.ValidationException
+import sgt.Domicilio
+import sgt.Jugador
+import sgt.PerfilJugador
+import sgt.Persona
+import sgt.Usuario
+import sgt.exceptions.PersonaException
 
 class JugadorController {
 
 	static defaultAction ='index'
 	def jugadoresService
+	def jugadorService
 	
     def index() {
-		def Usuario u = session.getAttribute("userLogon")
+		Usuario u = session.getAttribute("userLogon")
 		u = Usuario.get(u?.id)
 		if(!u) {
 			redirect(url: "/")
@@ -27,83 +26,118 @@ class JugadorController {
 	}
 	
 	def datosPersonales() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		if (!u.persona) {
-			redirect(controller: 'persona', action:'create')
-			return
+		Usuario userLogon = session.getAttribute("userLogon")
+		Persona p = jugadorService.getDatosPersonales(userLogon)
+		if (p) {
+			render(view: "/jugador/showDatosPersonales", model: [persona: p])
 		} else {
-			redirect(controller: 'persona', action: 'show', id: u.persona.id)
-			return
+			render(view: "/jugador/editDatosPersonales", model: [persona: p])
+		}
+	}
+	
+	def saveDatosPersonales() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Persona p = jugadorService.getDatosPersonales(userLogon)
+		if (p) {
+			bindData(p,params)
+		} else {
+			p = new Persona(params)
+		}
+		try {
+			jugadorService.saveDatosPersonales(userLogon, p)
+			flash.message = "Datos personales registrados"
+			redirect(action: "datosPersonales")
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			render(view: "/jugador/editDatosPersonales", model: [persona: p])
+		} catch (e) {
+			flash.exception = e
+			render(view: "/jugador/editDatosPersonales", model: [persona: p])
 		}
 	}
 	
 	def datosJugador() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		if (!u.jugador) {
-			redirect(action:'create')
+		Usuario userLogon = session.getAttribute("userLogon")
+		
+		if (!jugadorService.getDatosPersonales(userLogon)) {
+			flash.message = "Debe registrar sus datos personales para gestionar sus datos de jugador"
+			redirect(action: "datosPersonales")
 			return
+		}
+		
+		Jugador j = jugadorService.getDatosJugador(userLogon)
+		if (j && j.checkDatosCompletados()) {
+			render(view: "/jugador/showDatosJugador", model: [jugador: j])
 		} else {
-			redirect(action: 'show', id: u.jugador.id)
-			return
+			render(view: "/jugador/editDatosJugador", model: [jugador: j])
+		}
+	}
+	
+	def saveDatosJugador() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Jugador j = jugadorService.getDatosPersonales(userLogon)
+		def profileImage = request.getFile("profileImage")
+		if (j) {
+			bindData(j,params)
+		} else {
+			j = new Jugador(params)
+		}
+		try {
+			jugadorService.saveDatosJugador(userLogon, j, profileImage)
+			flash.message = "Datos de jugador registrados"
+			redirect(action: "datosJugador")
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			render(view: "/jugador/editDatosJugador", model: [jugador: j])
+		} catch (PersonaException e) {
+			flash.exception = e
+			redirect(action: "datosPersonales")
+		} catch (e) {
+			flash.exception = e
+			render(view: "/jugador/editDatosJugador", model: [jugador: j])
 		}
 	}
 	
 	def datosDomicilio() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		if (!u.domicilio) {
-			redirect(controller: 'domicilio', action:'create')
+		Usuario userLogon = session.getAttribute("userLogon")
+		
+		if (!jugadorService.getDatosPersonales(userLogon)) {
+			flash.message = "Deben registrarse los datos personales para gestionar el domicilio"
+			redirect(action: "datosPersonales")
 			return
+		}
+		
+		Domicilio d = jugadorService.getDomicilio(userLogon)
+		if (!d) d = new Domicilio()
+		if (!userLogon.persona.domicilio) {
+			render(view: "/jugador/showDomicilio", model: [domicilio: d])
 		} else {
-			redirect(controller: 'domicilio', action: 'show', id: u.persona.id)
-			return
+			render(view: "/jugador/editDomicilio", model: [domicilio: d])
 		}
 	}
 	
-	def showImagenPerfil() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		def imagenPerfil = "default.jpg"
-		if (u.jugador?.imagen) {
-			imagenPerfil = u.jugador.imagen
-		}
-		render(view: 'imagenPerfil', model: [imagenPerfil: imagenPerfil])
-	}
-	
-	def updateImagenPerfil() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		if (!u.jugador) {
-			u.jugador = new Jugador().save(failOnError: true)
-			u.save(failOnError: true)
-		}
-		
-		def imagenPerfil = request.getFile("imagenPerfil")
-		def filesService = new FilesService()
-		
-		if (filesService.isImage(imagenPerfil)) {
-			def res = filesService.uploadFile(imagenPerfil,"${u.id}","images/perfiles")
-			u.jugador.imagen = res
-			u.jugador.save()
+	def saveDatosDomicilio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Domicilio d = jugadorService.getDomicilio(userLogon)
+		if (!d) {
+			d = new Domicilio(params)
 		} else {
-			flash.error = "Archivo de imagen no valido"
-			redirect(action: 'showImagenPerfil')
-			return
+			bindData(d,params)
 		}
-		
-		flash.message = "Imagen de perfil actualizada"
-		redirect(action: 'showImagenPerfil')
-		return
-	}
-	
-	def usuarioActual(){
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		
-		return u
-		
+		try {
+			jugadorService.saveDomicilio(userLogon, d)
+			flash.message = "Datos de domicilio registrados"
+			redirect(action: "datosDomicilio")
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			render(view: "/jugador/editDomicilio", model: [domicilio: d])
+		} catch (PersonaException e) {
+			flash.exception = e
+			redirect(action: "datosPersonales")
+		} catch (e) {
+			flash.exception = e
+			render(view: "/jugador/editDomicilio", model: [jugador: d])
+		}
 	}
 	
 	def showPerfil(Usuario u) {
@@ -136,84 +170,7 @@ class JugadorController {
 		return
 	}
 	
-	
-	/* ACCIONES PARA DATOS DE JUGADOR */
-	
-	def create() {
-		[jugadorInstance: new Jugador(params)]
-	}
-	
-	def save() {
-		def u = (sgt.Usuario) session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		
-		def jugadorInstance = new Jugador(params)
-		if (!jugadorInstance.save(flush: true)) {
-			render(view: "create", model: [jugadorInstance: jugadorInstance])
-			return
-		}
-		
-		u.setJugador(jugadorInstance)
-		u.save()
-
-		flash.message = message(code: 'default.created.message', args: [message(code: 'jugador.label', default: 'Jugador'), jugadorInstance.id])
-		redirect(action: "show", id: jugadorInstance.id)
-	}
-
-	def show(Long id) {
-		def jugadorInstance = Jugador.get(id)
-		if (!jugadorInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'jugador.label', default: 'Jugador'), id])
-			redirect(action: "list")
-			return
-		}
-
-		[jugadorInstance: jugadorInstance]
-	}
-
-	def edit(Long id) {
-		def jugadorInstance = Jugador.get(id)
-		if (!jugadorInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'jugador.label', default: 'Jugador'), id])
-			redirect(action: "list")
-			return
-		}
-
-		[jugadorInstance: jugadorInstance]
-	}
-
-	def update(Long id, Long version) {
-		def u = (sgt.Usuario) session.getAttribute("userLogon")
-		u = Usuario.get(u.id)
-		
-		def jugadorInstance = Jugador.get(id)
-		if (!jugadorInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'jugador.label', default: 'Jugador'), id])
-			redirect(action: "list")
-			return
-		}
-
-		if (version != null) {
-			if (jugadorInstance.version > version) {
-				jugadorInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-						  [message(code: 'jugador.label', default: 'Jugador')] as Object[],
-						  "Another user has updated this Jugador while you were editing")
-				render(view: "edit", model: [jugadorInstance: jugadorInstance])
-				return
-			}
-		}
-
-		jugadorInstance.properties = params
-
-		if (!jugadorInstance.save(flush: true)) {
-			render(view: "edit", model: [jugadorInstance: jugadorInstance])
-			return
-		}
-
-		flash.message = message(code: 'default.updated.message', args: [message(code: 'jugador.label', default: 'Jugador'), jugadorInstance.id])
-		redirect(action: "show", id: jugadorInstance.id)
-	}
-	
+	/* Metodos de listados de jugadores */
 	def obtenerJugadores(){
 				
 		def categoria= params.categoria

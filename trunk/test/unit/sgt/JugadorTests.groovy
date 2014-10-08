@@ -3,6 +3,7 @@ package sgt
 
 
 import grails.test.mixin.*
+
 import org.junit.*
 
 /**
@@ -11,7 +12,15 @@ import org.junit.*
 @TestFor(Jugador)
 class JugadorTests {
 
-    void testSomething() {
-       assert true
+	@Test
+    void checkDatosCompletadosTest() {
+       Jugador j = new Jugador()
+	   Assert.assertFalse(j.checkDatosCompletados())
+	   
+	   j = new Jugador(disponibilidad: new Disponibilidad())
+	   Assert.assertFalse(j.checkDatosCompletados())
+	   
+	   j = new Jugador(brazo: "Derecho")
+	   Assert.assertTrue(j.checkDatosCompletados())
     }
 }
