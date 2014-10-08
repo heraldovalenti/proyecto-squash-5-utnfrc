@@ -16,8 +16,7 @@ import sgt.TorneoPuntuable
 class TorneoController {
 	
 	def postulacionTorneoService
-
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	def torneoService
 
     def index() {
         redirect(action: "list", params: params)
@@ -295,6 +294,13 @@ class TorneoController {
 		}
 		
 		render(view: "/administracion/torneos/inscripcionesTorneo", model: [inscripcionInstanceList: inscripcionInstanceList, torneoInstance: torneoInstance])
+	}
+	
+	def listaTorneos() {
+		Integer year = (params.year != null && !params.year.isEmpty()) ?
+			Integer.parseInt(params.year) : Calendar.getInstance().get(Calendar.YEAR);
+		def torneoInstanceList = torneoService.listaTorneos(year)
+		render(view: "/torneo/listaTorneos", model: [torneoInstanceList: torneoInstanceList, year: year])
 	}
 	
 	def verTorneo() {
