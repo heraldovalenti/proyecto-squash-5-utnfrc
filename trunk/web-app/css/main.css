@@ -478,6 +478,7 @@ ul.scaffold-nav {
 	width:100% !important;
 }
 
+/* perfil de club - (_clubCard.gsp) */
 #perfil-club {
 	margin: 10px;
 	padding: 10px;
@@ -486,13 +487,11 @@ ul.scaffold-nav {
 	position: relative;
 	float: left;
 }
-
 #perfil-club div.perfil-club-logo {
 	width: 170px;
 	position: relative;
 	float: left;
 }
-
 #perfil-club div.perfil-club-info {
 	width: 530px;
 	position: relative;

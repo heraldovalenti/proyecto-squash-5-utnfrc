@@ -11,17 +11,10 @@
  	<link href="${resource(dir: 'css', file: 'calendar.css')}" type="text/css" rel="stylesheet">  
  	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
-        
-   	<style>
-   		ul.lof-main-wapper li {
-  			position:relative;    
-		}
-	</style>  
    
 	<g:layoutHead/>
 	<r:layoutResources />
 </head>
-	
 	
 <body>
 	<!-- BARRA DE USUARIO -->
@@ -43,15 +36,10 @@
 	<!-- BARRA DE NAVEGACION DEL SITIO -->
 	<g:render template="/secciones/barraNavegacion" />
     
-	</div>
-		<div class="container_16">
-			<div class="slides-home raised">
-				<div class="second-part mt10">
-					<g:layoutBody/>
-					<div class="footer" role="contentinfo"></div>
-					<div id="spinner" class="spinner" style="display:none;">
-						<g:message code="spinner.alt" default="Loading&hellip;"/>
-					</div>
+	<div class="container_16">
+		<div class="slides-home raised">
+			<div class="second-part mt10">
+				<g:layoutBody/>
 			</div>
 		</div>
 	</div>

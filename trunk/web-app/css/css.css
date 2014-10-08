@@ -131,7 +131,7 @@ a:hover {text-decoration:none;}
 }
 .inside-box {display: block; float: none; margin: 15px;}
 
-.box-948 {width: 948px;}
+.box-968 {width: 968px;}
 .box-607 {width: 607px;}
 .box-335 {width: 335px;}  
 .box-shadow {position: absolute; display: block; height: 20px; bottom: 0; background: white; width: 100%; text-align: center; line-height: 20px; cursor: pointer;}
@@ -1011,7 +1011,7 @@ a.moreLink {
 }
 
 .second-part {
-  /* background: none repeat scroll 0 0 #DFDFDF; */
+  background: none repeat scroll 0 0 #DFDFDF;
   display: block;
   float: left;
   margin: 0 10px 10px;
