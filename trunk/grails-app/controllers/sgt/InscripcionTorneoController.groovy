@@ -30,8 +30,8 @@ class InscripcionTorneoController {
 			flash.exception = e
 			render(view: "/torneo/verTorneo", model: [torneo: torneo])
 		} catch (UnregisteredJugadorException e) {
-			flash.exception = e
-			redirect(controller: "jugador", action: "datosJugador")
+			flash.message = "Debe registrar sus datos personales para poder realizar inscripciones"
+			redirect(controller: "jugador", action: "datosPersonales")
 		} catch(InscripcionTorneoException e) {
 			flash.exception = e
 			render(view: "/torneo/verTorneo", model: [torneo: torneo])

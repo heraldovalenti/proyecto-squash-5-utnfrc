@@ -68,7 +68,7 @@ class JugadorService {
 		}
 		
 		Imagen imagen = (profileImage != null && !profileImage.isEmpty() && filesService.isImage(profileImage)) ? filesService.uploadImage(profileImage) : null
-		j.imagen = imagen
+		if (imagen) j.imagen = imagen
 		
 		j.save(failOnError: true)
 	}

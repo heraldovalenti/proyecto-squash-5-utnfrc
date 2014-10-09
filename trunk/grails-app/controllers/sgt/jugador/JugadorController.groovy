@@ -29,10 +29,16 @@ class JugadorController {
 		Usuario userLogon = session.getAttribute("userLogon")
 		Persona p = jugadorService.getDatosPersonales(userLogon)
 		if (p) {
-			render(view: "/jugador/showDatosPersonales", model: [persona: p])
+			render(view: "/jugador/datosPersonales/show", model: [persona: p])
 		} else {
-			render(view: "/jugador/editDatosPersonales", model: [persona: p])
+			render(view: "/jugador/datosPersonales/edit", model: [persona: new Persona()])
 		}
+	}
+	
+	def editDatosPersonales() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Persona p = jugadorService.getDatosPersonales(userLogon)
+		render(view: "/jugador/datosPersonales/edit", model: [persona: p])
 	}
 	
 	def saveDatosPersonales() {
@@ -49,10 +55,10 @@ class JugadorController {
 			redirect(action: "datosPersonales")
 		} catch (ValidationException e) {
 			flash.errors = e.errors.allErrors
-			render(view: "/jugador/editDatosPersonales", model: [persona: p])
+			render(view: "/jugador/datosPersonales/edit", model: [persona: p])
 		} catch (e) {
 			flash.exception = e
-			render(view: "/jugador/editDatosPersonales", model: [persona: p])
+			render(view: "/jugador/datosPersonales/edit", model: [persona: p])
 		}
 	}
 	
@@ -60,22 +66,28 @@ class JugadorController {
 		Usuario userLogon = session.getAttribute("userLogon")
 		
 		if (!jugadorService.getDatosPersonales(userLogon)) {
-			flash.message = "Debe registrar sus datos personales para gestionar sus datos de jugador"
+			flash.message = "Debe registrar sus datos personales para gestionar los datos de jugador"
 			redirect(action: "datosPersonales")
 			return
 		}
 		
 		Jugador j = jugadorService.getDatosJugador(userLogon)
 		if (j && j.checkDatosCompletados()) {
-			render(view: "/jugador/showDatosJugador", model: [jugador: j])
+			render(view: "/jugador/datosJugador/show", model: [jugador: j])
 		} else {
-			render(view: "/jugador/editDatosJugador", model: [jugador: j])
+			render(view: "/jugador/datosJugador/edit", model: [jugador: j])
 		}
+	}
+	
+	def editDatosJugador() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Jugador j = jugadorService.getDatosJugador(userLogon)
+		render(view: "/jugador/datosJugador/edit", model: [jugador: j])
 	}
 	
 	def saveDatosJugador() {
 		Usuario userLogon = session.getAttribute("userLogon")
-		Jugador j = jugadorService.getDatosPersonales(userLogon)
+		Jugador j = jugadorService.getDatosJugador(userLogon)
 		def profileImage = request.getFile("profileImage")
 		if (j) {
 			bindData(j,params)
@@ -88,13 +100,13 @@ class JugadorController {
 			redirect(action: "datosJugador")
 		} catch (ValidationException e) {
 			flash.errors = e.errors.allErrors
-			render(view: "/jugador/editDatosJugador", model: [jugador: j])
+			render(view: "/jugador/datosJugador/edit", model: [jugador: j])
 		} catch (PersonaException e) {
 			flash.exception = e
 			redirect(action: "datosPersonales")
 		} catch (e) {
 			flash.exception = e
-			render(view: "/jugador/editDatosJugador", model: [jugador: j])
+			render(view: "/jugador/datosJugador/edit", model: [jugador: j])
 		}
 	}
 	
@@ -102,7 +114,7 @@ class JugadorController {
 		Usuario userLogon = session.getAttribute("userLogon")
 		
 		if (!jugadorService.getDatosPersonales(userLogon)) {
-			flash.message = "Deben registrarse los datos personales para gestionar el domicilio"
+			flash.message = "Debe registrar sus datos personales para gestionar el domicilio"
 			redirect(action: "datosPersonales")
 			return
 		}

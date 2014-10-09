@@ -6,10 +6,14 @@ class ImageTagLib {
 
 	def imagenPerfilJugador={ attrs ->
 		def usuario = attrs.usuario
+		def jugador = attrs.jugador
 		def dir = filesService.retrieveImagesDir()
 		def img = "default.jpg"
-		if(usuario.jugador && usuario.jugador.imagen){
+		if(usuario && usuario.jugador && usuario.jugador.imagen){
 			img = usuario.jugador.imagen.nombre
+		}
+		if (jugador && jugador.imagen) {
+			img = jugador.imagen.nombre
 		}
 		out << g.resource(dir: dir, file: img)
 	}
