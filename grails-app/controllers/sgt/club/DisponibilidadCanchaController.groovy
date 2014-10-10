@@ -51,8 +51,9 @@ class DisponibilidadCanchaController {
 		def canchaInstance = Cancha.get(idCancha)
 
 		if(canchaInstance.disponibilidad.detalles!=null){
-			canchaInstance.disponibilidad.detalles=null
-			canchaInstance.save()
+			def detallesDisp= canchaInstance.disponibilidad.detalles.findAll()
+			canchaInstance.disponibilidad.detalles.removeAll(detallesDisp)
+			canchaInstance.save(flush: true,failOnError: true)			
 		}
 
 		def arrayDisponibilidad= request.JSON
@@ -64,12 +65,7 @@ class DisponibilidadCanchaController {
 			def horaCortada= arrayDisponibilidad[i].hora.split(':')			
 			detalle.hora=  horaCortada[0] as int
 			detalle.dia= arrayDisponibilidad[i].dia
-
-			/*if(!detalle.save(flush: true, failOnError: true)){
-				flash.message = "No se pudo grabar el detalle de disponibilidad"
-				return
-			}*/
-
+			
 			canchaInstance.disponibilidad.addToDetalles(detalle)
 		}
 

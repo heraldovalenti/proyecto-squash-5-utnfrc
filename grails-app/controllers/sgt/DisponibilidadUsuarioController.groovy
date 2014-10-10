@@ -33,10 +33,11 @@ class DisponibilidadUsuarioController {
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
 
-		if(u.jugador.disponibilidad.detalles!=null){
-			u.jugador.disponibilidad.detalles=null
-			u.save()
-		}
+		if(u.jugador.disponibilidad.detalles!=null){	
+			def detallesDisp= u.jugador.disponibilidad.detalles.findAll()
+			u.jugador.disponibilidad.detalles.removeAll(detallesDisp)		
+			u.save(flush: true,failOnError: true)
+		}		
 
 		def arrayDisponibilidad= request.JSON
 		def detalle
@@ -47,17 +48,12 @@ class DisponibilidadUsuarioController {
 			def horaCortada= arrayDisponibilidad[i].hora.split(':')			
 			detalle.hora=  horaCortada[0] as int
 			detalle.dia= arrayDisponibilidad[i].dia
-
-			/*if(!detalle.save(flush: true)){
-				flash.message = "No se pudo grabar el detalle de disponibilidad"
-				return
-			}*/
-
+			
 			u.jugador.disponibilidad.addToDetalles(detalle)
 		}
 
 		u.jugador.disponibilidad.setFechaActualizacion(new Date())
-		u.save()
+		u.save(flush: true,failOnError: true)
 		render u.jugador.disponibilidad as JSON
 	}
 
@@ -83,7 +79,7 @@ class DisponibilidadUsuarioController {
 			disp.detalles.removeAll(detalles)
 
 			u.jugador.disponibilidad=null
-			u.save()
+			u.save(flush: true,failOnError: true)
 			render u.jugador as JSON
 		}
 		catch (DataIntegrityViolationException e) {
