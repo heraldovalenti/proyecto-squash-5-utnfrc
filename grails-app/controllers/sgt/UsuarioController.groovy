@@ -56,7 +56,7 @@ class UsuarioController {
 		if (u && u.esJugador()) {
 			session.setAttribute("userLogon", u)
 			if (loginRedirect) redirect(loginRedirect)
-			else render(view: '/jugador/inicioJugador')
+			else redirect(controller: "jugador")
 			return
 		}
 		//si se encontro el usuario y es un Administrador

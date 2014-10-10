@@ -1,7 +1,7 @@
 <div class="box mb10">
 	<div id="news-result" class="inner-box">
 		<ul>
-			<li><g:link controller="jugador" action="showPerfil">Ver mi perfil</g:link></li>
+			<li><g:link controller="jugador" action="perfilJugador">Ver mi perfil</g:link></li>
 			<li><g:link controller="jugador" action="datosPersonales">Datos personales</g:link></li>
 			<li><g:link controller="jugador" action="datosJugador">Datos de Jugador</g:link></li>
 			<li><g:link controller="disponibilidadUsuario" action="index">Disponibilidad horaria</g:link></li>

@@ -3,10 +3,10 @@
 		<div id="playerBioInfoCardMain">
 			
 			<div id="playerBioHeadShot">
-				
 				<p class="IE6pngFix" id="playerBioHeadShotCopy">&copy; ACS</p>
-				<img width="180" height="170" alt="${ perfil.nombre } ${ perfil.apellido }" 
-				src="${ resource(dir: 'images/perfiles', file: perfil.imagenPerfil) }" />
+				<img style="width: 140px; height: 200px;" 
+				alt="${ perfil.nombre } ${ perfil.apellido }" 
+				src="${ perfil.imagenPerfil }" />
 			</div>
 			
 			<ul id="playerBioInfoList">

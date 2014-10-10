@@ -9,16 +9,9 @@
 	<link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
-	<title>Perfil de Jugador</title>
 </head>
 <body>
-	<g:if test="${ perfil }">
-		<g:render template="/jugador/perfilJugador" model="${ perfil }" var="perfil"/>
-	</g:if>
-	<g:else>
-		<ul class="errors" role="alert">
-			<li>Para generar un perfil se deben completar al menos los datos personales.</li>
-		</ul>
-	</g:else>
+	<h1>Perfil de jugador</h1>
+	<g:render template="/jugador/perfilJugador" model="${ perfil }" var="perfil"/>
 </body>
 </html>
