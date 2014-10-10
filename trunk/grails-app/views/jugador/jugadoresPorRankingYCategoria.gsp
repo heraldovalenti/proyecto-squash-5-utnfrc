@@ -16,6 +16,8 @@
 					<g:each in="${jugadores}" var="usuarioInstance">
 					<g:render template="rankingJugadorCard" model="['usuarioInstance':usuarioInstance, 'categoria':categoriaSeleccionada, 'tipo':tipo]"/>
 					</g:each>
+					<div class="pagination" style="height: 50px; float:left; width:100%;position:relative">
+						<g:paginate total="${total}" action="obtenerRankingJugadores" params="[categoria:categoriaSeleccionada]"/>
 				</div>
 			</div>
 		</div>

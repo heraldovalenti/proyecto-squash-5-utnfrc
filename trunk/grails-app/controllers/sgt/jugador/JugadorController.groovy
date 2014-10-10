@@ -196,27 +196,46 @@ class JugadorController {
 				
 		def categoria= params.categoria
 		
+		if(!params.offset){
+			params.offset=0
+		}
+		if(!params.max){
+			params.max=10
+		}
+		
+		
 		def tipo="jugador"		
 		
-		def jugadoresCategoria= jugadoresService.listarJugadoresPorCategoria(categoria)
+		def jugadoresCategoria= jugadoresService.listarJugadoresPorCategoria(categoria,params)
+			
+		def total= jugadoresCategoria.getTotalCount()
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
-		render(view: "jugadoresPorCategoria", model: [jugadores: jugadoresCategoria , categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
+		render(view: "jugadoresPorCategoria", model: [jugadores: jugadoresCategoria , categorias:categorias, categoriaSeleccionada:categoria,total:total,tipo:tipo])
 		
 	}
 	
 	def obtenerRankingJugadores(){
 		
-		def categoria= params.categoria		
+		def categoria= params.categoria	
+		
+		if(!params.offset){
+			params.offset=0
+		}
+		if(!params.max){
+			params.max=10
+		}
 		
 		def tipo="ranking"
 		
-		def rankingJugadores= jugadoresService.listarJugadoresPorRankingYCategoria(categoria)
+		def rankingJugadores= jugadoresService.listarJugadoresPorRankingYCategoria(categoria,params)
+		
+		def total= rankingJugadores.getTotalCount()
 				
 		def categorias=jugadoresService.obtenerCategorias()
 		
-		render(view: "jugadoresPorRankingYCategoria", model: [jugadores: rankingJugadores , categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
+		render(view: "jugadoresPorRankingYCategoria", model: [jugadores: rankingJugadores , categorias:categorias, categoriaSeleccionada:categoria,total:total, tipo:tipo])
 		
 	}
 	

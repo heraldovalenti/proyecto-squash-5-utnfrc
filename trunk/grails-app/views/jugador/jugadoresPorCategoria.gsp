@@ -12,14 +12,19 @@
 		<div class="grid_10">
 			<div class="box box-607" style="margin-left: 2em;width: 50em;">
 				<h3 class="title">Jugadores: ${categoriaSeleccionada}</h3>
-				<div class="inner-box">
+				<div class="inner-box">					
 					<g:each in="${jugadores}" var="usuarioInstance">
 					<g:render template="jugadorCard" model="['usuarioInstance':usuarioInstance, 'categoria':categoriaSeleccionada, 'tipo':tipo]"/>
 					</g:each>
+					<div class="pagination" style="height: 50px; float:left; width:100%;position:relative">
+						<g:paginate total="${total}" action="obtenerJugadores" params="[categoria:categoriaSeleccionada]"/>
+					</div>
 				</div>
 			</div>
 		</div>
+		
 	</div>
+	
 	<r:require module="torneos" />
 </body>
 </html>

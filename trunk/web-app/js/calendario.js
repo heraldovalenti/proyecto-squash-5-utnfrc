@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('td').click(function() {
 		if(($(this).hasClass('selected') && $(this).hasClass('selected'))==false){
-			$(this).removeClass('unselected');
+			//$(this).removeClass('unselected');
 			$(this).addClass('selected');
 			var col_index= $(this).index();
 			var row_index= $(this).parent().index();
@@ -9,42 +9,33 @@ $(document).ready(function() {
 			
 		}
 		else if($(this).hasClass('selected')== true){
-			$(this).removeClass('selected');
-			$(this).addClass('unselected');
+			$(this).removeClass('selected');			
 			}
-		else if($(this).hasClass('unselected')== true) {
-			$(this).removeClass('unselected');
-			$(this).addClass('selected');			
-		}
+		
 	});
 });
 
 
 $(function() {
-$('th').dblclick(function(){
+$('th').click(function(){
 	
-	var columna= $.trim($(this).text());	
+	var columna= $.trim($(this).text());
+	var cont=0;
 		
 		$('td').each(function(){
 			
 			var header= $(this).closest('table');
 			var col_index= $(this).index();			
 			
-			if(($.trim(header.find('th').eq(col_index).text()))== columna){
+			if(($.trim(header.find('th').eq(col_index).text()))== columna){				
 				
-				
-				if(($(this).hasClass('selected') && $(this).hasClass('selected'))==false){
-					$(this).removeClass('unselected');
-					$(this).addClass('selected');
+				if($(this).hasClass('selected') ){
+					cont++;		
+					
 				}
-				else if($(this).hasClass('selected')== true){
-					$(this).removeClass('selected');
-					$(this).addClass('unselected');
-					}
-				else if($(this).hasClass('unselected')== true) {
-					$(this).removeClass('unselected');
-					$(this).addClass('selected');			
-				}
+				else {					
+					$(this).addClass('selected');					
+				}		
 				
 				
 			}	
@@ -52,6 +43,28 @@ $('th').dblclick(function(){
 			
 			
 		});
+		
+		if(cont==16){
+			
+			$('td').each(function(){
+				
+				var header= $(this).closest('table');
+				var col_index= $(this).index();			
+				
+				if(($.trim(header.find('th').eq(col_index).text()))== columna){
+					
+					$(this).removeClass('selected');	
+					
+					
+				}	
+						
+				
+				
+			});
+			
+			
+			
+		}
 			
 	});	
 
@@ -59,9 +72,10 @@ $('th').dblclick(function(){
 });
 
 $(function() {
-	$('td.time-hour').dblclick(function(){	
+	$('td.time-hour').click(function(){	
 		
-		var fila= $.trim($(this).text());	
+		var fila= $.trim($(this).text());		
+		var cont=0;
 			
 			$('td').each(function(){
 				
@@ -70,22 +84,38 @@ $(function() {
 				
 				if(($.trim(header.find('td.time-hour').eq((row_index)).text()))== fila){
 					
-					if(($(this).hasClass('selected') && $(this).hasClass('selected'))==false){
-						$(this).removeClass('unselected');
-						$(this).addClass('selected');
+					if($(this).hasClass('selected') ){
+						cont++;		
+						
 					}
-					else if($(this).hasClass('selected')== true){
-						$(this).removeClass('selected');
-						$(this).addClass('unselected');
-						}
-					else if($(this).hasClass('unselected')== true) {
-						$(this).removeClass('unselected');
-						$(this).addClass('selected');			
-					}
+					else {					
+						$(this).addClass('selected');					
+					}					
 				}					
 				
 				
 			});
+			
+			if(cont==7){
+				
+				$('td').each(function(){
+					
+					var header= $(this).closest('table');
+					var row_index= $(this).parent().index();		
+					
+					if(($.trim(header.find('td.time-hour').eq((row_index)).text()))== fila){
+						
+						$(this).removeClass('selected');							
+						
+					}	
+							
+					
+					
+				});
+				
+				
+				
+			}
 				
 		});	
 

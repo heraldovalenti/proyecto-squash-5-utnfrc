@@ -9,9 +9,9 @@ class JugadoresService {
 
    static transactional = true
    
-	def listarJugadoresPorCategoria(String categoria){
-		/*def c = Usuario.createCriteria()
-		def jugadoresCategoria = c.list() {
+	def listarJugadoresPorCategoria(String categoria,def params){
+		def c = Usuario.createCriteria()
+		def jugadoresCategoria = c.list(params) {
 			createAlias("jugador", "jug", CriteriaSpecification.LEFT_JOIN)
 			createAlias("jug.categoriasJugador","catJ", CriteriaSpecification.LEFT_JOIN)
 			createAlias("catJ.categoria","cat", CriteriaSpecification.LEFT_JOIN)
@@ -21,36 +21,9 @@ class JugadoresService {
 				eq("catJ.estado","Asignada")
 				eq("cat.nombre", categoria)
 			}
-		}*/
-		def jugadoresCategoria=[]
-		
-		def usuarios= Usuario.findAll()
-
-		for(int i =0; i<usuarios.size();i++ ){
-
-			if(usuarios[i].jugador!=null){
-
-				if(usuarios[i].jugador.categoriasJugador!=null){
-
-					def categoriasJugador= usuarios[i].jugador.categoriasJugador
-
-					def Iterator<CategoriaJugador> iter = categoriasJugador.iterator()
-
-					while(iter.hasNext()) {
-						def CategoriaJugador cat = iter.next()
-						if(cat.estado=="Asignada"){
-						
-							def categoriaActual= cat.categoria.nombre
-
-							if(categoriaActual==categoria){
-							jugadoresCategoria.add(usuarios[i])
-							}
-						}
-					}
-				}
-			}
 		}
-		return jugadoresCategoria.toArray()
+		
+		return jugadoresCategoria
 	}
    
 	def obtenerCategorias(){
@@ -60,66 +33,28 @@ class JugadoresService {
 		return categorias
 	}
 	
-	def listarJugadoresPorRankingYCategoria(String categoria){	
-
-		def jugadoresRanking=listarJugadoresPorCategoria(categoria)
-
-		def rankingsJugadores= new ArrayList<Ranking>()
-
-		def jugadoresPorRankingYCategoria= []
-
-		def Iterator<Usuario> iter = jugadoresRanking.iterator()
-
-		while(iter.hasNext()) {
-
-			def Usuario user = iter.next()
-
-			def rankingsJugador=user.jugador.rankings
-
-			def Iterator<Ranking> iter1 = rankingsJugador.iterator()
-
-			while(iter1.hasNext()) {
-
-				def Ranking ranking= iter1.next()
-
-				if(ranking.categoria.nombre==categoria){
-					rankingsJugadores.add(ranking)
-				}
-			}
-		}
-		Collections.sort(rankingsJugadores, new Comparator<Ranking>() {
-					@Override
-					int compare(Ranking r1, Ranking r2) {					
-						
-						long diff = r1.puesto - r2.puesto					
-						
-						if (diff == 0) return 0
-						if (diff > 0) return 1
-						if (diff < 0) return -1
-					}
-				})
-
-		def Iterator<Ranking> iter2 = rankingsJugadores.iterator()
-
-		while(iter2.hasNext()) {
-
-			def Ranking rank1= iter2.next()			
-
-			def Iterator<Usuario> iter3 = jugadoresRanking.iterator()
-
-			while(iter3.hasNext()) {
-
-				def Usuario user1= iter3.next()
-
-				if(user1.jugador.rankings.contains(rank1)){
-
-					jugadoresPorRankingYCategoria.add(user1)
-				
-				}
-			}
-		}	
+	def listarJugadoresPorRankingYCategoria(String categoria,def params){		
 		
-		return jugadoresPorRankingYCategoria
+		def c = Usuario.createCriteria()
+		def jugadoresRanking= c.list(params) {
+			createAlias("jugador", "jug", CriteriaSpecification.LEFT_JOIN)
+			createAlias("jug.categoriasJugador","catJ", CriteriaSpecification.LEFT_JOIN)
+			createAlias("catJ.categoria","cat", CriteriaSpecification.LEFT_JOIN)
+			createAlias("jug.rankings","rank",CriteriaSpecification.LEFT_JOIN)
+			createAlias("rank.categoria","catRank",CriteriaSpecification.LEFT_JOIN)
+			and {
+				isNotNull("jugador")
+				isNotEmpty("jug.categoriasJugador")
+				isNotEmpty("jug.rankings")
+				isNotNull("rank.categoria")
+				eq("catJ.estado","Asignada")
+				eq("cat.nombre", categoria)
+				eq("catRank.nombre",categoria)
+			}
+			order("rank.puesto","asc")
+		}
+				
+		return jugadoresRanking
 	}
 	
 	def calcularEdad(Date fechaNacimiento){
