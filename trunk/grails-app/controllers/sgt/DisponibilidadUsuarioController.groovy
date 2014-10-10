@@ -1,8 +1,10 @@
 package sgt
 
 import grails.converters.JSON
-import grails.web.JSONBuilder
+
 import org.springframework.dao.DataIntegrityViolationException
+
+import sgt.exceptions.PersonaException
 
 
 class DisponibilidadUsuarioController {
@@ -13,7 +15,8 @@ class DisponibilidadUsuarioController {
 		def disp = (sgt.Disponibilidad)this.disponibilidaUusuarioLogueado()
 		if (!disp) {
 			if(!u.jugador){
-				redirect(controller:"jugador",action:"create")
+				flash.message = PersonaException.SIN_DATOS_PERSONALES
+				redirect(controller: "jugador", action: "datosPersonales")
 				return
 			}
 			u.jugador.disponibilidad= new Disponibilidad(fechaActualizacion: new Date()).save()

@@ -11,11 +11,11 @@ class Domicilio {
 	String provincia
 
     static constraints = {
-		calle blank: false
-		numero blank: false
-		piso nullable: true
-		departamento nullable: true
-		ciudad blank: false
+		calle blank: false, maxSize: 100
+		numero blank: false, maxSize: 25
+		piso nullable: true, maxSize: 25
+		departamento nullable: true, maxSize: 25
+		ciudad blank: false, maxSize: 50
 		codigoPostal min: 0
 		provincia blank: false, inList:["Cordoba","Santa Fe","San Luis",
 			"Mendoza","Buenos Aires","La Pampa","Santiago del Estero",

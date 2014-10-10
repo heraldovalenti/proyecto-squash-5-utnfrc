@@ -25,17 +25,6 @@ class Usuario {
 		encargadoEn nullable: true
     }
 	
-	def CategoriaJugador getCategoriaActual() {
-		def Iterator<CategoriaJugador> categoriaJugadorIterator = this.categoriasJugador.iterator()
-		while (categoriaJugadorIterator.hasNext()) {
-			def CategoriaJugador aux = categoriaJugadorIterator.next()
-			if (aux.esAsignada()) {
-				return aux
-			}
-		}
-		return null
-	}
-	
 	def Integer puestoRanking(Categoria categoria) {
 		def c = Ranking.createCriteria()
 		def Ranking ranking = c.get() {

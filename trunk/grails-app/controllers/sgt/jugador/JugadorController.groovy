@@ -10,19 +10,19 @@ import sgt.exceptions.PersonaException
 
 class JugadorController {
 
-	static defaultAction ='index'
+	static defaultAction = 'index'
+	
 	def jugadoresService
 	def jugadorService
 	
-    def index() {
-		Usuario u = session.getAttribute("userLogon")
-		u = Usuario.get(u?.id)
-		if(!u) {
-			redirect(url: "/")
-			return
+	def index() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Persona p = jugadorService.getDatosPersonales(userLogon)
+		if (p) {
+			chain(action: "perfilJugador")
+		} else {
+			chain(action: "datosPersonales")
 		}
-		render(view: '/jugador/inicioJugador')
-		return
 	}
 	
 	def datosPersonales() {
@@ -120,15 +120,20 @@ class JugadorController {
 		}
 		
 		Domicilio d = jugadorService.getDomicilio(userLogon)
-		if (!d) d = new Domicilio()
-		if (!userLogon.persona.domicilio) {
-			render(view: "/jugador/showDomicilio", model: [domicilio: d])
+		if (d) {
+			render(view: "/jugador/domicilio/show", model: [domicilio: d])
 		} else {
-			render(view: "/jugador/editDomicilio", model: [domicilio: d])
+			render(view: "/jugador/domicilio/edit", model: [domicilio: new Domicilio()])
 		}
 	}
 	
-	def saveDatosDomicilio() {
+	def editDomicilio() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		Domicilio d = jugadorService.getDomicilio(userLogon)
+		render(view: "/jugador/domicilio/edit", model: [domicilio: d])
+	}
+	
+	def saveDomicilio() {
 		Usuario userLogon = session.getAttribute("userLogon")
 		Domicilio d = jugadorService.getDomicilio(userLogon)
 		if (!d) {
@@ -142,19 +147,24 @@ class JugadorController {
 			redirect(action: "datosDomicilio")
 		} catch (ValidationException e) {
 			flash.errors = e.errors.allErrors
-			render(view: "/jugador/editDomicilio", model: [domicilio: d])
+			render(view: "/jugador/domicilio/edit", model: [domicilio: d])
 		} catch (PersonaException e) {
 			flash.exception = e
 			redirect(action: "datosPersonales")
 		} catch (e) {
 			flash.exception = e
-			render(view: "/jugador/editDomicilio", model: [jugador: d])
+			render(view: "/jugador/domicilio/edit", model: [jugador: d])
 		}
 	}
 	
-	def showPerfil(Usuario u) {
-				
-		if (u && u.persona) {
+	def perfilJugador() {
+		Usuario u = Usuario.get(params.idUsuario)
+		if (!u) {
+			u = session.getAttribute("userLogon")
+			u = Usuario.get(u.id)
+		}
+		def datosPersonales = jugadorService.getDatosPersonales(u)
+		if (u && datosPersonales) {
 			def perfil = new PerfilJugador()
 			if (u.persona?.nombre) perfil.setNombre(u.persona.nombre)
 			if (u.persona?.apellido) perfil.setApellido(u.persona.apellido)
@@ -164,22 +174,21 @@ class JugadorController {
 			if (u.jugador?.peso) perfil.setPeso(u.jugador.peso)
 			if (u.jugador?.brazo) perfil.setBrazo(u.jugador.brazo)
 			if (u.jugador?.juegaDesde) perfil.setJuegaDesde(u.jugador.juegaDesde)
-			if (u.domicilio) perfil.setResidencia(u.domicilio.toString())
-			if (u.jugador?.imagen) { 
-				perfil.setImagenPerfil(u.jugador.imagen) 
-			} else {
-				perfil.setImagenPerfil("default.jpg")
-			}
-			if (u.getCategoriaActual()) {
-				perfil.setCategoria(u.getCategoriaActual()?.categoria?.toString())
+			if (u.persona?.domicilio) perfil.setResidencia(u.persona?.domicilio.toString())
+	
+			String imagenPerfil = g.imagenPerfilJugador(jugador: u.jugador).toString()
+			perfil.setImagenPerfil(imagenPerfil)
+			
+			def categoriaJugador = jugadorService.getCategoriaJugador(u.id)
+			if (categoriaJugador) {
+				perfil.setCategoria(categoriaJugador.categoria?.toString())
 			}
 			
 			render(view: '/jugador/showPerfil', model: [perfil: perfil, layout: 'jugador'])
-			return
-		}
-		
-		render(view: '/jugador/showPerfil', model: [layout: 'jugador'])
-		return
+		} else {
+			flash.message = "Debe registrar sus datos personales para generar el perfil de jugador"
+			chain(action: "datosPersonales")
+		}		
 	}
 	
 	/* Metodos de listados de jugadores */
