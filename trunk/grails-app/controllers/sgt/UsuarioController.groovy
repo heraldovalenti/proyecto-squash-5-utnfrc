@@ -117,7 +117,65 @@ class UsuarioController {
 		render "Registro completado exitosamente"
 	}
 	
+	def edit(){
+		
+		def idUsuario=params.usuario
+		def usuarioInstance=Usuario.get(idUsuario)
+		
+		render(view: "edit", model: [usuarioInstance: usuarioInstance])		
+		
+	}
+	
+	def update(){
+		
+		def usuarioInstance
+		try{
+		usuarioInstance= (sgt.Usuario)usuarioService.modificarUsuario(params.usuario,params.password,params.password2,params.correo)
+		}
+		catch (ValidationException e) {
+			response.status = org.springframework.http.HttpStatus.PRECONDITION_FAILED.value
+			render e.errors as JSON
+		} catch (e) {
+			response.status = org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR.value
+			render e as JSON
+		}		
+		
+		render(view: "show", model: [usuarioInstance: usuarioInstance])
+		
+	}
+	
+	def obtenerDatosUsuario(){
+		
+		if(session.getAttribute("userLogon")!=null){
+
+			def u = (sgt.Usuario)session.getAttribute("userLogon")
+			u = Usuario.get(u.id)
+
+			return u
+		}
+		else{
+			redirect(action: 'loginForm')
+		}
+		
+		
+	}
+	
+	def show(){
+
+		def usuarioInstance= obtenerDatosUsuario()
+
+		if(usuarioInstance!=null){
+
+			render(view: "show", model: [usuarioInstance: usuarioInstance])
+		}
+		else{
+			redirect(action: 'loginForm')
+		}
+	}
+	
+	
 	def configuracionCuenta() {
+		
 		render(view: 'configuracionCuenta', model: [layout: 'jugador'])
 	}
 	
