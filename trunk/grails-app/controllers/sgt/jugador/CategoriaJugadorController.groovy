@@ -7,11 +7,7 @@ class CategoriaJugadorController {
 
     def index() { 
 		def Usuario usuario = session.getAttribute("userLogon")
-		usuario = Usuario.get(usuario?.id)
-		if (!usuario) {
-			redirect(url: "/")
-			return
-		}
+		
 		
 		def categoriaInstanceList = usuario.getCategoriasJugador()
 		def Iterator<CategoriaJugador> iter = categoriaInstanceList.iterator()
@@ -52,7 +48,7 @@ class CategoriaJugadorController {
 			if (aux.esSolicitada()) {
 				aux.anular()
 				aux.save()
-				flash.message = "Solicitud de categoría cancelada"
+				flash.message = "Solicitud de categorï¿½a cancelada"
 				break
 			}
 		}
@@ -77,7 +73,7 @@ class CategoriaJugadorController {
 		//usuario.addToCategoriasJugador(categoriaJugadorInstance)
 		//usuario.save()
 		
-		flash.message = "Solicitud de categoría registrada"
+		flash.message = "Solicitud de categorï¿½a registrada"
 		redirect(action: "index")
 		return
 	}
