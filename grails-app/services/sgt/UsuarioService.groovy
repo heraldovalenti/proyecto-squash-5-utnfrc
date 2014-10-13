@@ -28,4 +28,35 @@ class UsuarioService {
 		usuarioInstance.save()
 	}
 	
+	def modificarUsuario(String idUsuario,String password,String passwordConfirm, String correo){
+		
+		def u = Usuario.get(idUsuario)		
+		
+		u.password=password
+		u.correo=correo
+		
+		if (password != passwordConfirm) {
+			u.errors.rejectValue("password", "", "Las password no coinciden")
+			throw new ValidationException("No se pudo modificar al usuario", u.errors)
+		}
+		
+		u.save(flush: true,failOnError: true)	
+		
+		return u
+		
+	}
+	
+	def obtenerDatosUsuario(){
+		
+		if((sgt.Usuario)session.getAttribute("userLogon")!=null){
+			def u = (sgt.Usuario)session.getAttribute("userLogon")
+			u = Usuario.get(u.id)
+
+			return u
+		}
+		else{
+			return null;
+		}
+	}
+	
 }
