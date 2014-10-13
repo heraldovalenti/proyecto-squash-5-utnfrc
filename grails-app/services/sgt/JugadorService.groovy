@@ -13,22 +13,6 @@ class JugadorService {
 	
 	def filesService
 	
-	def getCategoriaJugador(Long id) throws UnregisteredJugadorException {
-		Jugador jugador = Jugador.get(id)
-		if (!jugador) {
-			throw new UnregisteredJugadorException()
-		}
-		def categoriasJugador = jugador.categoriasJugador
-		CategoriaJugador result = null
-		for (CategoriaJugador categoriaJugador : categoriasJugador) {
-			if (categoriaJugador.esAsignada()) {
-				result = categoriaJugador
-				break
-			}
-		}
-		return result
-	}
-	
 	def getDatosPersonales(Usuario user) {
 		Usuario result = Usuario.get(user.id)
 		return result.persona

@@ -1,12 +1,14 @@
 package sgt.jugador
 
 import grails.validation.ValidationException
+import sgt.CategoriaJugador
 import sgt.Domicilio
 import sgt.Jugador
 import sgt.PerfilJugador
 import sgt.Persona
 import sgt.Usuario
 import sgt.exceptions.PersonaException
+import sgt.exceptions.UnregisteredJugadorException
 
 class JugadorController {
 
@@ -14,6 +16,7 @@ class JugadorController {
 	
 	def jugadoresService
 	def jugadorService
+	def categoriaJugadorService
 	
 	def index() {
 		Usuario userLogon = session.getAttribute("userLogon")
@@ -157,6 +160,59 @@ class JugadorController {
 		}
 	}
 	
+	def categorias() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		
+		if (!jugadorService.getDatosPersonales(userLogon)) {
+			flash.message = "Debe registrar sus datos personales para gestionar la categoria"
+			chain(action: "datosPersonales")
+			return
+		}
+		
+		def jugador = jugadorService.getDatosJugador(userLogon)
+		def historial = categoriaJugadorService.getHistorialCategoriaJugador(jugador.id)
+		def categoria = categoriaJugadorService.getCategoriaJugador(jugador.id)
+		def solicitud = categoriaJugadorService.getSolicitudCategoriaJugador(jugador.id)
+		
+		render(view: "/jugador/categoria/categorias", 
+			model: [categoria: categoria, historial: historial, solicitud: solicitud])
+	}
+	
+	def solicitudCategoria() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def jugador = jugadorService.getDatosJugador(userLogon)
+		CategoriaJugador categoriaJugador = new CategoriaJugador()
+		def categorias = categoriaJugadorService.getCategoriasSolicitables(jugador.id)
+		render(view: "/jugador/categoria/solicitudCategoria", model: [categorias: categorias])
+	}
+	
+	def saveSolicitudCategoria() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def jugador = jugadorService.getDatosJugador(userLogon)
+		def idCategoria = params.idCategoria
+		try {
+			categoriaJugadorService.saveSolicitudCategoria(jugador.id, idCategoria)
+			flash.message = "Solicitud registrada"
+			chain(action: "categorias")
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			def categorias = categoriaJugadorService.getCategoriasSolicitables(jugador.id)
+			render(view: "/jugador/categoria/solicitudCategoria", model: [categorias: categoria])
+		} catch (UnregisteredJugadorException e) {			
+			flash.message = "Debe registrar sus datos personales para gestionar la categoria"
+			chain(action: "datosPersonales")
+		}
+	}
+	
+	def cancelarSolicitudCategoria() {
+		Usuario userLogon = session.getAttribute("userLogon")
+		def jugador = jugadorService.getDatosJugador(userLogon)
+		def idCategoria = params.idCategoria		
+		categoriaJugadorService.cancelarSolicitudCategoria(jugador.id)
+		flash.message = "Solicitud cancelada"
+		chain(action: "categorias")
+	}
+	
 	def perfilJugador() {
 		Usuario u = Usuario.get(params.idUsuario)
 		if (!u) {
@@ -179,7 +235,7 @@ class JugadorController {
 			String imagenPerfil = g.imagenPerfilJugador(jugador: u.jugador).toString()
 			perfil.setImagenPerfil(imagenPerfil)
 			
-			def categoriaJugador = jugadorService.getCategoriaJugador(u.id)
+			def categoriaJugador = categoriaJugadorService.getCategoriaJugador(u.jugador.id)
 			if (categoriaJugador) {
 				perfil.setCategoria(categoriaJugador.categoria?.toString())
 			}

@@ -11,10 +11,8 @@ class CategoriaJugador {
 	static belongsTo = [jugador: Jugador]
 
     static constraints = {
-		categoria nullable: false
-		descripcion nullable: false, blank: false, maxSize: 250
-		estado nullable: false, blank: false, inList: ["Solicitada","Anulada","Asignada","De baja"]
-		fechaInicio nullable: false
+		descripcion nullable: true, maxSize: 250
+		estado inList: ["Solicitada","Anulada","Asignada","De baja"]
 		fechaFin nullable: true
     }
 	
