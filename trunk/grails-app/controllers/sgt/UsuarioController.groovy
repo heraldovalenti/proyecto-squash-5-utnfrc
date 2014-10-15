@@ -117,30 +117,46 @@ class UsuarioController {
 	}
 	
 	def edit(){
-		
-		def idUsuario=params.usuario
-		def usuarioInstance=Usuario.get(idUsuario)
-		
-		render(view: "edit", model: [usuarioInstance: usuarioInstance])		
-		
+
+		if(session.getAttribute("userLogon")!=null){
+
+			def usuarioInstance = (sgt.Usuario)session.getAttribute("userLogon")
+			usuarioInstance = Usuario.get(usuarioInstance.id)
+
+			render(view: "edit", model: [usuarioInstance: usuarioInstance])
+		}
+		else{
+			redirect(action: 'loginForm')
+		}
+
+
 	}
 	
 	def update(){
-		
-		def usuarioInstance
-		try{
-		usuarioInstance= (sgt.Usuario)usuarioService.modificarUsuario(params.usuario,params.password,params.password2,params.correo)
+
+		if(session.getAttribute("userLogon")!=null){
+
+			def usuario = (sgt.Usuario)session.getAttribute("userLogon")
+			usuario = Usuario.get(usuario.id)
+			
+			
+			try{
+			 usuarioService.modificarUsuario(usuario.id,params.password,params.password2,params.correo)
+				flash.message="Los datos se han actualizado correctamente"
+			}
+			catch (ValidationException e) {				
+				flash.errors=e.errors.allErrors
+			} catch (e) {
+				flash.exception=e
+			}
+
+
+			render(view: "edit", model: [usuarioInstance: usuario])
 		}
-		catch (ValidationException e) {
-			response.status = org.springframework.http.HttpStatus.PRECONDITION_FAILED.value
-			render e.errors as JSON
-		} catch (e) {
-			response.status = org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR.value
-			render e as JSON
-		}		
-		
-		render(view: "show", model: [usuarioInstance: usuarioInstance])
-		
+		else{
+			redirect(action: 'loginForm')
+		}
+
 	}
 	
 	def obtenerDatosUsuario(){
