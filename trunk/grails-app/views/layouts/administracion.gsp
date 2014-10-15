@@ -1,21 +1,11 @@
 <%@ page import="sgt.Persona"%>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title><g:layoutTitle default="Grails"/></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+	<title>Administracion</title>
     
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"	rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'administracion.css') }" type="text/css"	rel="stylesheet">
-	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css"	rel="stylesheet">
-        
-   	<style>
-   		ul.lof-main-wapper li {
-  			position:relative;    
-		}
-	</style>  
+	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css"	rel="stylesheet">  
    
 	<g:layoutHead/>
 	<r:layoutResources />
@@ -25,7 +15,7 @@
 <body>	
 
 <!-- BARRA DE USUARIO -->
-	<g:render template="/usuario/barraUsuario" />
+	<g:render template="/administracion/barraAdministracion" />
 		
 	<div class="header mt20">
 	    <div class="logo" style="width: 100px;">

@@ -1,6 +1,5 @@
 <html>
 <head>
-	<title>Pagina de inicio del Jugador</title>
 	<meta name="layout" content="administracion">
 </head>
 <body>
