@@ -89,11 +89,12 @@ class CategoriaJugadorService {
 		}
 		Categoria categoriaActual = getCategoriaJugador(jugador.id)?.categoria
 		Categoria categoriaSolicitada = getSolicitudCategoriaJugador(jugador.id)?.categoria
-		def c = Categoria.createCriteria()
-		def results = c.list {
-			not {
-				"in"("id", [categoriaActual?.id, categoriaSolicitada?.id])
-			}
+		List results = Categoria.list()
+		if (categoriaActual && results.contains(categoriaActual)) {
+			results.remove(categoriaActual)
+		}
+		if (categoriaSolicitada&& results.contains(categoriaSolicitada)) {
+			results.remove(categoriaSolicitada)
 		}
 		return results
 	}
