@@ -28,9 +28,9 @@ class UsuarioService {
 		usuarioInstance.save()
 	}
 	
-	def modificarUsuario(String idUsuario,String password,String passwordConfirm, String correo){
-		
-		def u = Usuario.get(idUsuario)		
+	def modificarUsuario(def idUsuario,String password,String passwordConfirm, String correo) throws ValidationException{
+				
+		def u = Usuario.get(idUsuario)			
 		
 		u.password=password
 		u.correo=correo
@@ -40,9 +40,9 @@ class UsuarioService {
 			throw new ValidationException("No se pudo modificar al usuario", u.errors)
 		}
 		
-		u.save(flush: true,failOnError: true)	
-		
-		return u
+		u.save(failOnError: true)		
+				
+		//return u
 		
 	}
 	

@@ -9,6 +9,8 @@
 	<div id="edit-datosJugador" class="content scaffold-edit">
 		<h1>Cuenta de usuario</h1>
 		
+		<g:render template="/utils/messages"/>
+		
 		<!-- control de visualizacion de errores en instancia -->
 		
 			
@@ -59,5 +61,6 @@
 			
 		</div>	
 		</form>	
-</body>
+	<%--<r:require modules="dialogs, usuarios"/>
+--%></body>
 </html>
