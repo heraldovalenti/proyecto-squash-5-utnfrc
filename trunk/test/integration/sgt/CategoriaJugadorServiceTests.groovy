@@ -139,5 +139,6 @@ class CategoriaJugadorServiceTests {
 		Assert.assertFalse(results.contains(segunda))
 		Assert.assertTrue(results.contains(tercera))
 		Assert.assertTrue(results.contains(cuarta))
+		Assert.assertEquals(12, results.size())
 	}
 }

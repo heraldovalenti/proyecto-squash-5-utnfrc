@@ -11,6 +11,7 @@ class InscripcionTorneoService {
 	static transactional = true
 	
 	def jugadorService
+	def categoriaJugadorService
 	
     def Boolean aptoParaInscripcion(Long id) {
 		return false
@@ -48,7 +49,7 @@ class InscripcionTorneoService {
 			throw new UnregisteredJugadorException()
 		}
 		Jugador jugador = u.jugador
-		CategoriaJugador categoriaJugador = jugadorService.getCategoriaJugador(jugador.id)
+		CategoriaJugador categoriaJugador = categoriaJugadorService.getCategoriaJugador(jugador.id)
 		if (!categoriaJugador) {
 			throw new InscripcionTorneoException(InscripcionTorneoException.CATEGORIA_NO_PERMITIDA)
 		}

@@ -28,16 +28,16 @@ class InscripcionTorneoController {
 			chain(action: "inscripcionesJugador")
 		} catch (TorneoNotFoundException e) {
 			flash.exception = e
-			render(view: "/torneo/verTorneo", model: [torneo: torneo])
+			chain(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
 		} catch (UnregisteredJugadorException e) {
 			flash.message = "Debe registrar sus datos personales para poder realizar inscripciones"
-			redirect(controller: "jugador", action: "datosPersonales")
+			chain(controller: "jugador", action: "datosPersonales")
 		} catch(InscripcionTorneoException e) {
 			flash.exception = e
-			render(view: "/torneo/verTorneo", model: [torneo: torneo])
+			chain(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
 		} catch (e) {
 			flash.exception = e
-			render(view: "/torneo/verTorneo", model: [torneo: torneo])
+			chain(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
 		}
 	}
 	
