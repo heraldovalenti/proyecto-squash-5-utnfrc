@@ -60,13 +60,12 @@ class UsuarioController {
 			return
 		}
 		//si se encontro el usuario y es un Administrador
-		/*if (u && u.esAdministrador()) {
+		if (u && u.esAdministrador()) {
 			session.setAttribute("userLogon", u)
 			if (loginRedirect) redirect(loginRedirect)
-			else render(view: '/jugador/inicioJugador')
+			else redirect(controller: "administracion")
 			return
-		}*/
-		//
+		}
 				
 		//si no se encontro el usuario
 		flash.message = message(code: 'iniciosesion.error.usuariopassword.invalido')
@@ -177,42 +176,5 @@ class UsuarioController {
 	def configuracionCuenta() {
 		
 		render(view: 'configuracionCuenta', model: [layout: 'jugador'])
-	}
-	
-	
-	/* METODOS PARA CLUB */
-	def loginFormClub() {
-		session.removeAttribute("userLogon")
-		render(view: 'loginClub')
-	}
-	
-	def loginClub() {
-		String nombreUsuario = params.nombreUsuario
-		String password = params.password
-
-		def Usuario u = sgt.Usuario.findByNombreUsuarioAndPassword(nombreUsuario,password)
-
-		//si el usuario se ha encontrado, pero esta deshabilitado:
-		if (u && !u.activo) {
-			flash.message = message(code: 'iniciosesion.error.usuario.inactivo')
-			render(view: 'loginForm')
-			return
-		}
-		
-		//si se encontro el usuario y es un club
-		def rolClub = Rol.findByNombre('Club')
-		if (u && u.getRol().equals(rolClub)) {			
-			session.setAttribute("userLogon", u)
-			render(view: '/club/inicioClub')
-			return
-		}
-		
-		//si no se encontro el usuario
-		else {
-			flash.message = message(code: 'iniciosesion.error.usuariopassword.invalido')
-			render(view: 'loginClub')
-			return
-		}
-
 	}
 }
