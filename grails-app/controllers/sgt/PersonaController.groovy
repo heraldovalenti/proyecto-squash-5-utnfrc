@@ -9,7 +9,7 @@ class PersonaController {
 	
 	//Acciones del Scaffold
 
-    def index() {
+    def index(){
         redirect(action: "list", params: params)
     }
 
