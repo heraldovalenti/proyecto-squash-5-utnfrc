@@ -50,4 +50,18 @@ class JugadorTests {
 		
 		Assert.assertEquals(10, heraldov.getPosicionRankingCategoria(primera))
 	}
+	
+	@Test
+	void isDisponibleTest() {
+		Jugador heraldov = Jugador.get(1)
+		Disponibilidad disponibilidad = new Disponibilidad(jugador: heraldov, fechaActualizacion: new Date())
+		DetalleDisponibilidad detalle = new DetalleDisponibilidad(hora: 8, dia: "Lunes")
+		disponibilidad.addToDetalles(detalle)
+		disponibilidad.save(failOnError: true, flush: true)
+		heraldov.disponibilidad = disponibilidad
+		heraldov.save(failOnError: true, flush: true)
+		
+		Assert.assertTrue(heraldov.isDisponible("Lunes", 8))
+		Assert.assertFalse(heraldov.isDisponible("Lunes", 9))
+	}
 }

@@ -1,5 +1,7 @@
 package sgt
 
+import org.hibernate.criterion.CriteriaSpecification
+
 class Jugador {
 	
 	String brazo
@@ -42,5 +44,19 @@ class Jugador {
 			}
 		}
 		def puesto = (result) ? result.puesto : 0
+	}
+	
+	boolean isDisponible(String dia, int hora) {
+		def result = Jugador.createCriteria().get {
+			createAlias("disponibilidad", "disp", CriteriaSpecification.LEFT_JOIN)
+			createAlias("disp.detalles","det", CriteriaSpecification.LEFT_JOIN)
+			and {
+				isNotNull("disponibilidad")
+				isNotEmpty("disp.detalles")
+				eq("det.dia", dia)
+				eq("det.hora", hora)
+			}
+		}
+		def disponible = (result) ? true : false
 	}
 }
