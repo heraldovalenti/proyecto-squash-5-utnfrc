@@ -133,7 +133,8 @@ a:hover {text-decoration:none;}
 
 .box-968 {width: 968px;}
 .box-607 {width: 607px;}
-.box-335 {width: 335px;}  
+.box-335 {width: 335px;}
+.box-225 {width: 225px;}
 .box-shadow {position: absolute; display: block; height: 20px; bottom: 0; background: white; width: 100%; text-align: center; line-height: 20px; cursor: pointer;}
 .ac-arrow {position: absolute; right: 5px; top: 5px; background: url(images/ac-arrow.png) top left no-repeat;display: block; width: 24px; height: 24px; cursor: pointer;}
 .ul-box-half {  display: block;  float: left;  position: relative;  width: 250px;}

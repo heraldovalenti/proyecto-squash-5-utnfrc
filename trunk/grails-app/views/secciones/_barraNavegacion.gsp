@@ -6,7 +6,7 @@
         <li><a href="#">Noticias</a></li>
         <li id="li-jugador"><g:link controller="jugador" action="obtenerJugadores" params="[categoria:'Primera']">Jugadores</g:link></li>             	
         <li><a href="/SistemaGestionTorneo/torneo/listaTorneos">Torneos</a></li>        
-        <li><a href="/SistemaGestionTorneo/club/list">Clubes</a></li>
+        <li><a href="/SistemaGestionTorneo/club/listarClubes">Clubes</a></li>
         <li><g:link controller="jugador" action="obtenerRankingJugadores" params="[categoria:'Primera']">Ranking</g:link></li>       
         <li><a href="#">Contacto</a></li>
         <li>
