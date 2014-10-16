@@ -12,32 +12,32 @@ class CategoriaJugador {
 
     static constraints = {
 		descripcion nullable: true, maxSize: 250
-		estado inList: ["Solicitada","Anulada","Asignada","De baja"]
+		estado inList: ["Solicitada","Rechazada","Asignada","De baja"]
 		fechaFin nullable: true
     }
 	
-	def boolean esAsignada() {
+	boolean esAsignada() {
 		if (this.estado.equals("Asignada")) return true
 		return false
 	}
 	
-	def boolean esSolicitada() {
+	boolean esSolicitada() {
 		if (this.estado.equals("Solicitada")) return true
 		return false
 	}
 	
-	def void anular() {
-		if (this.estado.equals("Solicitada")) this.estado = "Anulada"
+	void denegar() {
+		if (this.estado.equals("Solicitada")) this.estado = "Rechazada"
 	}
 	
-	def void darBaja() {
+	void darBaja() {
 		if (this.estado.equals("Asignada")) {
 			this.estado = "De baja"
 			this.fechaFin = new Date()
 		}
 	}
 	
-	def void asignar() {
+	void asignar() {
 		if (this.estado.equals("Solicitada")) {
 			this.estado = "Asignada"
 			this.fechaInicio = new Date()
@@ -45,7 +45,7 @@ class CategoriaJugador {
 		}
 	}
 	
-	def void solicitar() {
+	void solicitar() {
 		if (!this.estado) this.estado = "Solicitada"
 	}
 }
