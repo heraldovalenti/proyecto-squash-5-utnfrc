@@ -68,6 +68,6 @@ class FilesServiceTests {
 	@Test
 	void testingDirectoryTest() {
 		String dir = grailsApplication.config.fileuploader.image.path
-		Assert.assertEquals("/home/heril/grails-workspace/SistemaGestionTorneo/web-app/images/perfiles/",dir)
+		Assert.assertTrue(dir.contains("/web-app/images/perfiles/"))
 	}
 }
