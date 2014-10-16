@@ -110,4 +110,16 @@ class ClubService {
 		club.domicilio = domicilio
 		club.save(failOnError: true)
 	}
+	
+	def listarClubes(){
+		def clubes=Club.list()
+		def clubesOrdenados=clubes.sort{it.nombre}		
+		return clubesOrdenados	
+	}
+	
+	def obtenerClubInicio(){
+		def clubes=listarClubes()		
+		def clubInicio= clubes.first() 		
+		return clubInicio
+	}
 }

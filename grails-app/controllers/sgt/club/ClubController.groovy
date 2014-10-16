@@ -181,4 +181,21 @@ class ClubController {
 		}
 		forward controller: "club", action: "serviciosClub"
 	}
+	
+	def listarClubes(){
+
+		def club
+
+		if(!params.club){
+			club=clubService.obtenerClubInicio()
+		}
+		else{
+			def id= params.club
+			club=Club.get(id)
+		}
+
+		def clubes=clubService.listarClubes()
+
+		render(view:"listadoClub",model:[listadoClub:clubes,club:club])
+	}
 }
