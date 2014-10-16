@@ -13,8 +13,10 @@ class DisponibilidadUsuarioController {
 		def u = (sgt.Usuario)session.getAttribute("userLogon")
 		u = Usuario.get(u.id)
 		def disp = (sgt.Disponibilidad)this.disponibilidaUusuarioLogueado()
-		if (!disp) {
-			if(!u.jugador){
+		if (!disp) 
+		{
+			if(!u.jugador)
+			{
 				flash.message = PersonaException.SIN_DATOS_PERSONALES
 				redirect(controller: "jugador", action: "datosPersonales")
 				return

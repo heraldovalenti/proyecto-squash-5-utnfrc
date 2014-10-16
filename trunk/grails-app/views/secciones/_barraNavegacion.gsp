@@ -2,7 +2,7 @@
 
     <ul id="menu">
         <li><a href="/SistemaGestionTorneo">Home</a></li>
-        <li><a href="#">La ACS</a></li>
+        <li><a href="/SistemaGestionTorneo/acsInfo/">La ACS</a></li>
         <li><a href="#">Noticias</a></li>
         <li id="li-jugador"><g:link controller="jugador" action="obtenerJugadores" params="[categoria:'Primera']">Jugadores</g:link></li>             	
         <li><a href="/SistemaGestionTorneo/torneo/listaTorneos">Torneos</a></li>        
