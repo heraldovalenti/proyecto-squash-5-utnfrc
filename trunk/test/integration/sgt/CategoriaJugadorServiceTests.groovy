@@ -22,6 +22,7 @@ class CategoriaJugadorServiceTests {
 
     @After
     void tearDown() {
+		CategoriaJugador.deleteAll(CategoriaJugador.list())
     }
 	
 	@Test
@@ -140,5 +141,88 @@ class CategoriaJugadorServiceTests {
 		Assert.assertTrue(results.contains(tercera))
 		Assert.assertTrue(results.contains(cuarta))
 		Assert.assertEquals(12, results.size())
+	}
+	
+	@Test
+	void listaSolicitudesCategoriasTest() {
+		def results = categoriaJugadorService.listaSolicitudesCategorias()
+		Assert.assertEquals(0, results.solicitudes.size())
+		Assert.assertEquals(0, results.total)
+		
+		Usuario heraldov = Usuario.get(1)
+		CategoriaJugador solicitada = new CategoriaJugador(categoria: Categoria.get(2), estado: "Solicitada",
+			fechaInicio: new Date(), jugador: heraldov.jugador).save(failOnError: true, flush: true)
+		
+		results = categoriaJugadorService.listaSolicitudesCategorias()
+		Assert.assertEquals(1, results.solicitudes.size())
+		Assert.assertEquals(1, results.total)
+	}
+	
+	@Test
+	void aceptarSolicitudCategoriaTest() {
+		Usuario heraldov = Usuario.get(1)
+		Jugador j = heraldov.jugador
+		CategoriaJugador solicitada = new CategoriaJugador(categoria: Categoria.get(2), estado: "Solicitada",
+			fechaInicio: new Date(), jugador: heraldov.jugador).save(failOnError: true, flush: true)
+		CategoriaJugador categoriaActual = CategoriaJugador.createCriteria().get() {
+			eq("jugador", j)
+			and {
+				eq("estado", "Asignada")
+				isNull("fechaFin")
+			}
+		}
+		Assert.assertNotNull(categoriaActual)
+		Assert.assertEquals("Primera", categoriaActual.categoria.nombre)
+		Assert.assertNotNull(solicitada)
+		Assert.assertEquals("Segunda", solicitada.categoria.nombre)
+		
+		categoriaJugadorService.aceptarSolicitudCategoria(solicitada.id)
+		categoriaActual = CategoriaJugador.createCriteria().get() {
+			eq("jugador", j)
+			and {
+				eq("estado", "Asignada")
+				isNull("fechaFin")
+			}
+		}
+		Assert.assertNotNull(categoriaActual)
+		Assert.assertEquals("Segunda", categoriaActual.categoria.nombre)
+	}
+	
+	@Test
+	void rechazarSolicitudCategoriaTest() {
+		Usuario heraldov = Usuario.get(1)
+		Jugador j = heraldov.jugador
+		CategoriaJugador solicitada = new CategoriaJugador(categoria: Categoria.get(2), estado: "Solicitada",
+			fechaInicio: new Date(), jugador: heraldov.jugador).save(failOnError: true, flush: true)
+		CategoriaJugador categoriaActual = CategoriaJugador.createCriteria().get() {
+			eq("jugador", j)
+			and {
+				eq("estado", "Asignada")
+				isNull("fechaFin")
+			}
+		}
+		Assert.assertNotNull(categoriaActual)
+		Assert.assertEquals("Primera", categoriaActual.categoria.nombre)
+		Assert.assertNotNull(solicitada)
+		Assert.assertEquals("Segunda", solicitada.categoria.nombre)
+		
+		categoriaJugadorService.rechazarSolicitudCategoria(solicitada.id)
+		categoriaActual = CategoriaJugador.createCriteria().get() {
+			eq("jugador", j)
+			and {
+				eq("estado", "Asignada")
+				isNull("fechaFin")
+			}
+		}
+		solicitada = CategoriaJugador.createCriteria().get() {
+			eq("jugador", j)
+			and {
+				eq("estado", "Rechazada")
+			}
+		}
+		Assert.assertNotNull(categoriaActual)
+		Assert.assertEquals("Primera", categoriaActual.categoria.nombre)
+		Assert.assertNotNull(solicitada)
+		Assert.assertEquals("Segunda", solicitada.categoria.nombre)
 	}
 }

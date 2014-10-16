@@ -1,11 +1,13 @@
 package sgt
 
-import grails.validation.ValidationException;
+import grails.validation.ValidationException
 import sgt.exceptions.UnregisteredJugadorException
 
 class CategoriaJugadorService {
 
 	static transactional = true
+	
+	def jugadorService
 	
     def getCategoriaJugador(Long id) throws UnregisteredJugadorException {
 		Jugador jugador = Jugador.get(id)
@@ -97,5 +99,47 @@ class CategoriaJugadorService {
 			results.remove(categoriaSolicitada)
 		}
 		return results
+	}
+	
+	def listaSolicitudesCategorias(def params) {
+		params = (params) ? params : [max: 10]
+		def c = CategoriaJugador.createCriteria()
+		def solicitudes = c.list(params) {
+			eq("estado","Solicitada")
+		}
+		def total = solicitudes.getTotalCount()
+		ArrayList results = new ArrayList()
+		for (categoriaJugador in solicitudes) {
+			Jugador j = categoriaJugador.jugador
+			Usuario u = Usuario.createCriteria().get {
+				eq("jugador", j)
+			}
+			Persona p = u.persona
+			CategoriaJugador a = getCategoriaJugador(j.id)
+			results.add([solicitudCategoria: categoriaJugador, categoriaActual: a, persona: p])
+		}
+		return [solicitudes: results, total: total]
+	}
+	
+	
+	def aceptarSolicitudCategoria(Long id) throws ValidationException {
+		CategoriaJugador categoriaSolicitada = CategoriaJugador.get(id)
+		Jugador j = categoriaSolicitada.jugador
+		CategoriaJugador categoriaPrevia = getCategoriaJugador(j.id)
+		
+		if (categoriaPrevia) {
+			categoriaPrevia.darBaja()
+			categoriaPrevia.save(failOnError: true)
+		}
+		
+		categoriaSolicitada.asignar()
+		categoriaSolicitada.save(failOnError: true)
+	}
+	
+	def rechazarSolicitudCategoria(Long id) throws ValidationException {
+		CategoriaJugador solicitud = CategoriaJugador.get(id)
+		
+		solicitud.denegar()
+		solicitud.save(failOnError: true)
 	}
 }
