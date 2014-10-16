@@ -23,4 +23,24 @@ class Jugador {
 	boolean checkDatosCompletados() {
 		return ( brazo || altura || peso || juegaDesde || imagen )
 	}
+	
+	Categoria getCategoriaActual() {
+		def result = CategoriaJugador.createCriteria().get {
+			eq("jugador", this)
+			and {
+				eq("estado","Asignada")
+			}
+		}
+		return result?.categoria
+	}
+	
+	int getPosicionRankingCategoria(Categoria c) {
+		def result = Ranking.createCriteria().get {
+			eq("jugador", this)
+			and {
+				eq("categoria", c)
+			}
+		}
+		def puesto = (result) ? result.puesto : 0
+	}
 }
