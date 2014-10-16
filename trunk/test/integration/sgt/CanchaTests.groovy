@@ -5,10 +5,14 @@ import org.junit.*
 
 class CanchaTests {
 
+	def sqlLoaderService
+	
 	@Before
 	void setUp() {
-		new Cancha(nombre: "c1", techada: true, numero: 1, tipoSuelo: "Parquet").save(failOnError: true, flush: true)
-		new Cancha(nombre: "c2", techada: true, numero: 2, tipoSuelo: "Parquet").save(failOnError: true, flush: true)		
+		sqlLoaderService.loadInsertFile("ejemplos-usuarios.sql")
+		Club c = new Club(nombre: "club_nombre", validado: false).save(failOnError: true, flush: true)
+		new Cancha(nombre: "c1", techada: true, numero: 1, tipoSuelo: "Parquet", club: c).save(failOnError: true, flush: true)
+		new Cancha(nombre: "c2", techada: true, numero: 2, tipoSuelo: "Parquet", club: c).save(failOnError: true, flush: true)		
 	}
 	
 	@Test
