@@ -13,3 +13,22 @@ insert into club (id,version,nombre,telefono,domicilio_id,sitio_web,correo,valid
 (4,1,'Tancat','0351155643712',4,'www.tancat.com.ar','tancat@gmail.com',true),
 (5,1,'Cordoba Squash','0351155432145',5,'www.cba-squash.com.ar','cba-squash@gmail.com',true);
 
+insert into cancha (id,version,club_id,numero,nombre,tipo_suelo,techada,disponibilidad_id) values
+(1,1,1,1,'M1','Cemento',true,null),
+(2,1,1,2,'M2','Cemento',true,null),
+(3,1,1,3,'M3','Cemento',true,null),
+(4,1,1,4,'M4','Cemento',true,null),
+(5,1,2,1,'F1','Parquet',true,null),
+(6,1,2,2,'F2','Parquet',true,null),
+(7,1,2,3,'F3','Parquet',true,null),
+(8,1,3,1,'MO1','Parquet',true,null),
+(9,1,3,2,'M02','Parquet',true,null),
+(10,1,3,3,'M03','Parquet',true,null),
+(11,1,3,4,'M04','Parquet',true,null),
+(12,1,4,1,'T1','Parquet',true,null),
+(13,1,4,2,'T2','Parquet',true,null),
+(14,1,4,3,'T3','Parquet',true,null),
+(15,1,5,1,'CS1','Parquet',true,null),
+(16,1,5,2,'CS2','Parquet',true,null),
+(17,1,5,3,'CS3','Parquet',true,null),
+(18,1,5,4,'CS4','Parquet',true,null);
