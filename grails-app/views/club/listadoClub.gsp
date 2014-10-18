@@ -10,13 +10,14 @@
 	</div>
 	<div class="grid_16 mt10 mb10">
 		<div class="grid_10">
-			<div class="box box-607" style="margin-left: 2em;width: 50em;">			
+			<div class="box box-607" style="margin-left: 2em;width: 50em; margin-left: -20px;">			
 								
 				<g:render template="clubCard" model="['club':club]"/>
 				
-			</div>
-		</div>
-		
+				<g:render template="domicilio/mapa" model="['club':club]"/>
+				
+			</div>			
+		</div>		
 	</div>	
 
 </body>

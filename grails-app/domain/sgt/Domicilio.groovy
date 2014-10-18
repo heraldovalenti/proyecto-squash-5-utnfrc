@@ -25,6 +25,6 @@ class Domicilio {
     }
 	
 	String toString(){
-		return calle + " " + numero +  "(" + ciudad + ")"
+		return calle + " " + numero +  " " + ciudad
 	}
 }
