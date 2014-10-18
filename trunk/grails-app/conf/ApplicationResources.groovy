@@ -48,4 +48,10 @@ modules = {
 		dependsOn 'dialogs'
 		resource url: 'js/deletion.js'
 	}
+	fixture {
+		dependsOn 'jquery'
+		resource url: 'js/fixture.js'
+		resource url: "js/jquery/jquery-bracket.js", disposition: "head"
+		resource url: "css/jquery-bracket.css", disposition: "head"
+	}
 }

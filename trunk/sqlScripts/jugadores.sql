@@ -43,26 +43,26 @@ update usuario set jugador_id = 19 where id = 26;
 update usuario set jugador_id = 20 where id = 27;
 
 insert into persona (id,version,nombre,apellido,sexo,fecha_nacimiento) values
-(1,1,'Valenti','Heraldo Raul','Masculino','1989-08-22'),
-(2,1,'Fank','Guillermo','Masculino','1990-03-03'),
-(3,1,'Del Carlo','Matias','Masculino','1989-07-19'),
-(4,1,'Gonzalez','Pedro','Masculino','1978-02-21'),
-(5,1,'Antunez','Marcos','Masculino','1985-10-12'),
-(6,1,'Ramirez','Ernesto','Masculino','1976-12-09'),
-(7,1,'Steffolani','Jorge','Masculino','1969-09-21'),
-(8,1,'Marquesin','Oscar','Masculino','1981-04-27'),
-(9,1,'Pierletti','Juan','Masculino','1973-07-30'),
-(10,1,'Irshick','Alberto','Masculino','1978-11-10'),
-(11,1,'Casermeiro','Jorge','Masculino','1987-01-14'),
-(12,1,'Fleitas','Osvaldo','Masculino','1978-02-20'),
-(13,1,'Lozano','Daniel','Masculino','1990-04-28'),
-(14,1,'Weremzuk','Alejandro','Masculino','1990-06-18'),
-(15,1,'Philips','Kevin','Masculino','1992-09-11'),
-(16,1,'Peralta','Flavio','Masculino','1990-01-10'),
-(17,1,'Ferreira','Victor','Masculino','1987-12-29'),
-(18,1,'Berstein','Iván','Masculino','1989-04-11'),
-(19,1,'Flores','Bladimir','Masculino','1979-12-01'),
-(20,1,'Mamani','Augusto','Masculino','1993-03-23');
+(1,1,'Heraldo Raul','Valenti','Masculino','1989-08-22'),
+(2,1,'Guillermo','Fank','Masculino','1990-03-03'),
+(3,1,'Matias','Del Carlo','Masculino','1989-07-19'),
+(4,1,'Pedro','Gonzalez','Masculino','1978-02-21'),
+(5,1,'Marcos','Antunez','Masculino','1985-10-12'),
+(6,1,'Ernesto','Ramirez','Masculino','1976-12-09'),
+(7,1,'Jorge','Steffolani','Masculino','1969-09-21'),
+(8,1,'Oscar','Marquesin','Masculino','1981-04-27'),
+(9,1,'Juan','Pierletti','Masculino','1973-07-30'),
+(10,1,'Alberto','Irshick','Masculino','1978-11-10'),
+(11,1,'Jorge','Casermeiro','Masculino','1987-01-14'),
+(12,1,'Osvaldo','Fleitas','Masculino','1978-02-20'),
+(13,1,'Daniel','Lozano','Masculino','1990-04-28'),
+(14,1,'Alejandro','Weremzuk','Masculino','1990-06-18'),
+(15,1,'Kevin','Philips','Masculino','1992-09-11'),
+(16,1,'Flavio','Peralta','Masculino','1990-01-10'),
+(17,1,'Victor','Ferreira','Masculino','1987-12-29'),
+(18,1,'Iván','Berstein','Masculino','1989-04-11'),
+(19,1,'Bladimir','Flores','Masculino','1979-12-01'),
+(20,1,'Augusto','Mamani','Masculino','1993-03-23');
 
 
 update usuario set persona_id = 1 where id = 1;

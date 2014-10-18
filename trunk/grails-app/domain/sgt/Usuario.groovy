@@ -11,6 +11,12 @@ class Usuario {
     Boolean activo
 	Persona persona
 	Jugador jugador
+	@Override
+	public String toString() {
+		if(persona!=null)
+		return persona.toString();
+	}
+
 	Club club
 	Rol rol
 	Club encargadoEn
