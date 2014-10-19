@@ -48,6 +48,11 @@ modules = {
 		dependsOn 'dialogs'
 		resource url: 'js/deletion.js'
 	}
+	diagramacion {
+		dependsOn 'jquery'
+		resource url: 'js/diagramacion/diagramacion.js'
+		resource url: 'css/diagramacion.css', disposition: 'head'
+	}
 	fixture {
 		dependsOn 'jquery'
 		resource url: 'js/fixture.js'

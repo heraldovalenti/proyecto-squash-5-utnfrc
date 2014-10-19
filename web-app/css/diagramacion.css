@@ -1,28 +1,80 @@
-/*div del menu de adm*/
-div.posicion {
-	margin-top:25px;
+.box {
+	border: 1px solid #aaaaaa;
+}
+#diagramacion-table {
+	margin-top: 25px;
+	position: relative;
 	float: left;
-	height: 30%;
-	
+	height: 600px;
+	min-width: 800px;
 }
-/*div del contenido del medio*/
-div.contenido_jugador {
-	margin-top:25px;
+#diagramacion-rondas {
+	position: relative;
 	float: left;
-	height: 30%;
+	width: 450px;
+	margin: 5px;
 }
-/*div de la derecha*/
-div.noticias{
-	margin-top:25px;
+div.ronda {
+	padding-bottom: 5px;
+	margin: 5px 0px;
+	position: relative;
 	float: left;
-	height: 30%;
-	
+	width: 445px;
+	min-height: 57px;
 }
-td
-{
-	border: 2px solid;	
+div.partido {
+	background-color: #FFFFFF;
+	position: relative;
+	float: left;
+	width: 140px;
+	height: 50px;
+	z-index: 1;
+	cursor: pointer;
 }
-tr
-{
-	border: 2px solid;	
+div.partido span {
+	float: left;
+	font-weight: normal;
+	margin-left: 5px;
+	width: 130px;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
+div.partido span.info {
+	font-size: 10px;
+	line-height: 10px;
+}
+div.partido span.jugador {
+	font-size: 14px;
+	line-height: 12px;
+	margin-top: 2px;
+}
+div.ronda div.partido {
+	margin: 5px 0px 0px 5px;
+}
+#diagramacion-canchas {
+	position: relative;
+	padding-bottom: 5px;
+	overflow: hidden;
+	margin: 5px;
+}
+div.horario-cancha {
+	width: 315px;
+	height: 56px;
+	margin: -1px 0px 0px -20px;
+	border: 1px solid #aaaaaa;
+}
+div.horario-cancha div.partido {
+	float: right;
+	margin: 2px;
+}
+div.horario-cancha ul.horario-cancha-fecha {
+	float: left;
+	margin: 5px 0px 0px -30px;
+	font-weight: normal;
+	list-style-type: none;
+}
+div.horario-cancha ul.horario-cancha-fecha li {
+	line-height: 15px;
+}
+.ui-draggable-dragging { cursor: move !important; }

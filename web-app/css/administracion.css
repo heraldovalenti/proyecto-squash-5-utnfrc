@@ -62,9 +62,9 @@ div.menu_jugador {
 div.contenido_jugador {
 	margin-top:25px;
 	float: left;
-	width: 60%;
+	width: 800px;
 	background: #F5ECCE;
-	height:100%;
+	padding-bottom: 25px;
 }
 /*div de la derecha*/
 div.noticias{

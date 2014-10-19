@@ -1,19 +1,19 @@
 package sgt.administracion.torneos
 
-import sgt.Torneo
-import sgt.DetalleTorneo
-import sgt.InscripcionTorneo
+import grails.converters.JSON
+import logica.CalculosTorneo
 import logica.Jugador
 import logica.Partido
-import logica.CalculosTorneo
-import java.util.TreeSet
+import sgt.DetalleTorneo
+import sgt.InscripcionTorneo
+import sgt.Torneo
 
 class DiagramacionController {
 
     def generarDiagramacion(Long id) {
 		def torneoInstance = Torneo.get(id)
 		if (!torneoInstance.inscripcionCerrada() || !torneoInstance.diagramado()) {
-			flash.message = "El estado del torneo no permite diagramación"
+			flash.message = "El estado del torneo no permite diagramaciï¿½n"
 			redirect(controller: "torneo", action: "show", id: id)
 		}
 		
@@ -45,5 +45,9 @@ class DiagramacionController {
 		
 		def TreeSet<Partido> resultado = CalculosTorneo.generarPrimeraRonda(jugadores)
 		render resultado
+	}
+	
+	def diagramacionTorneo() {
+		render(view: "/administracion/diagramacion/diagramacionTorneo")
 	}
 }
