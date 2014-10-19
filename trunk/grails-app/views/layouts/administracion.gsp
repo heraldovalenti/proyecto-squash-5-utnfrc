@@ -3,9 +3,9 @@
 <head>
 	<title>Administracion</title>
     
-	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css"	rel="stylesheet">
-	<link href="${resource(dir: 'css', file: 'administracion.css') }" type="text/css"	rel="stylesheet">
-	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css"	rel="stylesheet">  
+	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'administracion.css') }" type="text/css" rel="stylesheet">
+	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css" rel="stylesheet">  
    
 	<g:layoutHead/>
 	<r:layoutResources />
@@ -23,8 +23,7 @@
 	            <img src="http://www.acsr.com.ar/images/acs.png" alt="Logo Asociación Cordobesa de Squash Raquets" 
 	            	title="Logo Asociación Cordobesa de Squash Raquets"/>
 	        </a>
-	    </div>    
-    					
+	    </div>  			
 	</div>	
 	
 	<!-- CUERPO GENERAL DE LA PAGINA - A llenarse desde el Layout -->
@@ -32,26 +31,18 @@
 		<div class="slides-home raised">
 			<div class="second-part mt10">
 			<h3 class="title"> Panel de Administración</h3>
-				<!-- CUERPO GENERAL DE LA PAGINA - A llenarse desde el Layout -->
-					<div class="menu_jugador">
-					<g:render template="/administracion/menuAdministracion" />
-					</div>
-						<div class="contenido_jugador">
-						<g:layoutBody />
-					</div>
-					<div class="noticias">					
-					</div>
-					
 				
-				<!-- PIE DE PAGINA -->
-				<div class="footer" role="contentinfo"></div>
-				<div id="spinner" class="spinner" style="display:none;">
-					<g:message code="spinner.alt" default="Loading&hellip;"/>
+				<!-- CUERPO GENERAL DE LA PAGINA - A llenarse desde el Layout -->
+				<div class="menu_jugador">
+				<g:render template="/administracion/menuAdministracion" />
+				</div>
+				
+				<div class="contenido_jugador">
+				<g:layoutBody />
 				</div>
 			</div>
 		</div>
 	</div>
-	<g:javascript library="application"/>
 	<r:layoutResources />
 </body>
 </html>
