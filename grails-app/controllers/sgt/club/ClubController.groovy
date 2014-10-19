@@ -1,5 +1,6 @@
 package sgt.club
 
+import grails.converters.JSON
 import grails.validation.ValidationException
 import sgt.Club
 import sgt.Domicilio
@@ -197,5 +198,16 @@ class ClubController {
 		def clubes=clubService.listarClubes()
 
 		render(view:"listadoClub",model:[listadoClub:clubes,club:club])
+	}
+	
+	/**
+	 * Permite generar un lista de clubes en formato JSON para el autocomplete de clubes
+	 * @return JSON con lista de clubes
+	 */
+	def obtenerClubesJSON(){
+		
+		def clubes=clubService.listarClubes()
+		
+		render clubes as JSON
 	}
 }
