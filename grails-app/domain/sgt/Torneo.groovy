@@ -75,56 +75,53 @@ class Torneo {
 		return null
 	}
 	
-	def asignarClub(Club club) {
-		if (this.estado.equals("Creado")) {
-			this.club = club
-			this.estado = "Club Asignado"
-		}
+	void asignarClub(Club club) {
+		this.club = club
 	}
 	
-	def abrirInscripcion() {
+	void abrirInscripcion() {
 		if (this.estado.equals("Creado") || this.estado.equals("Inscripcion Cerrada")) {
 			this.estado = "Inscripcion Abierta"
 		}
 	}
 	
-	def cerrarInscripcion() {
+	void cerrarInscripcion() {
 		if (this.estado.equals("Inscripcion Abierta")) {
 			this.estado = "Inscripcion Cerrada"
 		}
 	}
 	
-	def finalizarInscripcion() {
+	void finalizarInscripcion() {
 		if (this.estado.equals("Inscripcion Cerrada") || this.estado.equals("Inscripcion Abierta")) {
 			this.estado = "Inscripcion Finalizada"
 		}
 	}
 	
-	def diagramar() {
+	void diagramar() {
 		if (this.estado.equals("Inscripcion Finalizada")) {
 			this.estado = "Diagramado"
 		}
 	}
 	
-	def comenzarTorneo() {
+	void comenzarTorneo() {
 		if (this.estado.equals("Diagramado")) {
 			this.estado = "En Curso"
 		}
 	}
 	
-	def finalizarTorneo() {
+	void finalizarTorneo() {
 		if (this.estado.equals("En Curso")) {
 			this.estado = "Finalizado"
 		}
 	}
 	
-	def actualizarRankings() {
+	void actualizarRankings() {
 		if (this.estado.equals("Finalizado")) {
 			this.estado = "Ranking Actualizado"
 		}
 	}
 	
-	def suspender() {
+	void suspender() {
 		if (this.estado.equals("En Curso")) {
 			this.estado = "Suspendido"
 		}
@@ -172,6 +169,10 @@ class Torneo {
 	
 	Boolean suspendido() {
 		return this.estado.equals("Suspendido")
+	}
+	
+	Boolean esDiagramable() {
+		return ( this.inscripcionFinalizada() || this.diagramado() )
 	}
 }
 	

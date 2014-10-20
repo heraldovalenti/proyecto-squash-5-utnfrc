@@ -1,5 +1,10 @@
 $(document).ready( function() {
 	
+	$("#dia-torneo").spinner({
+		min: 1,
+		step: 1
+	});
+	
 	$(".partido").draggable({
 		revert: true,
 		revertDuration: 200,
@@ -11,7 +16,6 @@ $(document).ready( function() {
 		drop: function( event, ui ) {
 			var partido = ui.draggable[0];
 			var contenedor = event.target;
-			if (partido.parentElement === contenedor) return;
 			partidoToRonda(partido);
 		}
 	});
@@ -65,6 +69,7 @@ function partidoToRonda(partido) {
 			break;
 		}
 	}
+	if (partido.parentElement == contenedor) return;
 	partido.remove();
 	$(contenedor).append(partido);
 }
