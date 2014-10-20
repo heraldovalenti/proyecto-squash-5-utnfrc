@@ -1,3 +1,5 @@
+<%@ page import="sgt.Cancha" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +30,15 @@
 			</div>
 		</div>
 		<div id="diagramacion-canchas" class="box">
-			<ul>
-				<li><a href="#cancha-1">C1</a></li>
-				<li><a href="#cancha-2">Cancha 2</a></li>
-				<li><a href="#cancha-3">Cancha 3</a></li>
-			</ul>
+			<div id="diagramacion-dia-torneo" class="box ui-widget-header ui-corner-all">
+				<label for="dia-torneo">Dia</label>
+				<input id="dia-torneo" name="dia-torneo" value="1">
+				<span class="dia-semanal">Lunes</span>
+				<span class="dia-fecha">01-01-2014</span>
+			</div>
+		
+			<g:render template="/administracion/diagramacion/canchasDiagramacion" model="[canchas: canchas]"/>
+			
 			<div id="cancha-1">
 				<div class="horario-cancha ui-corner-all contenedor-single">
 					<ul class="horario-cancha-fecha">

@@ -28,4 +28,8 @@ class Club {
 	String toString() {
 		return nombre
 	}
+	
+	Integer cantidadCanchas() {
+		return (canchas) ? canchas.size() : 0
+	}
 }

@@ -78,3 +78,14 @@ div.horario-cancha ul.horario-cancha-fecha li {
 	line-height: 15px;
 }
 .ui-draggable-dragging { cursor: move !important; }
+#diagramacion-dia-torneo {
+	height: 30px;
+	font-weight: normal;
+	line-height: 26px;
+	padding: 0px 20px;
+}
+#diagramacion-dia-torneo input {
+	width: 30px;
+}
+#diagramacion-dia-torneo span.dia-semanal {  }
+#diagramacion-dia-torneo span.dia-fecha { float: right; }

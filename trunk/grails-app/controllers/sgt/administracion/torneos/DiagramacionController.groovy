@@ -46,8 +46,4 @@ class DiagramacionController {
 		def TreeSet<Partido> resultado = CalculosTorneo.generarPrimeraRonda(jugadores)
 		render resultado
 	}
-	
-	def diagramacionTorneo() {
-		render(view: "/administracion/diagramacion/diagramacionTorneo")
-	}
 }
