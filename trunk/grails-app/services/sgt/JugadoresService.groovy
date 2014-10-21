@@ -76,4 +76,10 @@ class JugadoresService {
 		
 		return new Integer(ano);
 	}
+	
+	def listarJugadores(){
+		
+		def jugadores= Persona.findAll()		
+		return jugadores
+	}
 }
