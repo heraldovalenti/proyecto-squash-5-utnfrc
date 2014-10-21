@@ -1,5 +1,6 @@
 package sgt.jugador
 
+import grails.converters.JSON
 import grails.validation.ValidationException
 import sgt.CategoriaJugador
 import sgt.Domicilio
@@ -311,6 +312,35 @@ class JugadorController {
 		
 		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
 		
+		
+	}
+	
+	def listarJugadoresJSON(){
+		
+		def jugadores= jugadoresService.listarJugadores()
+			
+		render jugadores as JSON
+	}
+	
+	def cargarPerfilJugadorConPersona(){
+		
+		def idPersona=params.persona
+		
+		def persona=Persona.get(idPersona)
+		
+		def usuario=Usuario.findByPersona(persona)
+		
+		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.id)
+		
+		def categoriaSeleccionada= categoriaJugador.categoria.nombre
+		
+		def categorias=jugadoresService.obtenerCategorias()
+		
+		def tipo="jugador"
+		
+		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo])
 		
 	}
 }

@@ -59,4 +59,12 @@ modules = {
 		resource url: "js/jquery/jquery-bracket.js", disposition: "head"
 		resource url: "css/jquery-bracket.css", disposition: "head"
 	}
+	listaClubes{
+		dependsOn 'jquery'
+		resource url: 'js/listaClubes.js'
+	}
+	listaJugadores{
+		dependsOn 'jquery'
+		resource url: 'js/listaJugadores.js'
+	}
 }
