@@ -194,7 +194,7 @@ public class CalculosTorneo {
     /*
      * Calcula la cantidad de Rondas a jugar en  base a la cantidad de Jugadores Inscriptos
      */
-    private static void calcularRondas(){
+    public static void calcularRondas(){
         double cantJug=jugadores.length;
         while(cantJug>1)
         {
