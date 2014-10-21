@@ -67,7 +67,14 @@ environments {
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        fileuploader {
+			image {
+				path = "/opt/apache-tomcat-7.0.54/webapps/SistemaGestionTorneo/images/perfiles/"
+				serverPath = "images/perfiles"
+				prefix = "image/"
+				types = ["image/jpeg","image/gif","image/png"]
+			}
+		}
     }
 }
 
@@ -92,7 +99,7 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
-def localProjectPath = "/home/heril/grails-workspace"
+def localProjectPath = "/home/heril/workspace-ggts-3.2.0.RELEASE"
 fileuploader {
 	image {
 		path = localProjectPath + "/SistemaGestionTorneo/web-app/images/perfiles/"
