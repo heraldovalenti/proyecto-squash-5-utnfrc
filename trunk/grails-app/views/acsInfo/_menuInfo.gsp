@@ -1,4 +1,4 @@
-<div class="box mb10 box-335">
+<div class="box mb10 box-150">
 	<div id="news-result" class="inner-box">
 		<ul>
 			<li><g:link controller="acsInfo" action="informeanual">Informe anual</g:link></li>

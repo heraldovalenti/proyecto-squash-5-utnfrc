@@ -34,6 +34,7 @@ $(function() {
 $(function() {
 	$("#mostrarJugador").bind("click", function() {
 		var persona = $("#jugadorId").val();
+		if (persona!="")
 		window.location = "/SistemaGestionTorneo/jugador/cargarPerfilJugadorConPersona?persona="+persona;
 	});
 });
