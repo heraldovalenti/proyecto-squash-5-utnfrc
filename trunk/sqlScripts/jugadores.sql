@@ -1,25 +1,25 @@
 /* REQUERIDOS: CATEGORIAS, EJEMPLOS-USUARIOS */
 insert into jugador (id,version,peso,juega_desde,imagen_id,disponibilidad_id,brazo,altura) values
-(1,1,72.0,'1995-01-01',null,null,'Derecho',169.0),
-(2,1,78.0,'2002-01-01',null,null,'Izquierdo',185.0),
-(3,1,85.0,'1999-01-01',null,null,'Ambidiestro',180.0),
-(4,1,70.0,'2008-01-01',null,null,'Izquierdo',172.0),
-(5,1,90.5,'2008-04-01',null,null,'Izquierdo',190.0),
-(6,1,84.0,'2003-03-01',null,null,'Derecho',184.0),
-(7,1,92.1,'2006-01-04',null,null,'Derecho',189.0),
-(8,1,81.8,'2004-10-23',null,null,'Derecho',179.0),
-(9,1,76.8,'1999-05-09',null,null,'Izquierdo',172.0),
-(10,1,89.7,'2001-02-17',null,null,'Derecho',185.0),
-(11,1,69.9,'1998-12-15',null,null,'Ambidiestro',170.0),
-(12,1,78.6,'2005-05-12',null,null,'Derecho',175.0),
-(13,1,77.8,'2002-07-30',null,null,'Derecho',174.0),
-(14,1,83.5,'2007-06-17',null,null,'Izquierdo',180.0),
-(15,1,87.2,'2003-01-18',null,null,'Derecho',181.0),
-(16,1,80.3,'20010-12-18',null,null,'Izquierdo',177.0),
-(17,1,90.4,'2009-04-16',null,null,'Derecho',186.0),
-(18,1,78.6,'2001-11-10',null,null,'Izquierdo',175.0),
-(19,1,86.6,'1999-02-21',null,null,'Derecho',181.0),
-(20,1,82.3,'2001-08-17',null,null,'Derecho',179.0);
+(1,1,72.0,'1995-01-01',null,null,'Derecho',169.0),		/*heraldov*/
+(2,1,78.0,'2002-01-01',null,null,'Izquierdo',185.0),	/*matidc*/
+(3,1,85.0,'1999-01-01',null,null,'Ambidiestro',180.0),	/*guillef*/
+(4,1,70.0,'2008-01-01',null,null,'Izquierdo',172.0),	/*davidc*/
+(5,1,90.5,'2008-04-01',null,null,'Izquierdo',190.0),	/*pedrogon*/
+(6,1,84.0,'2003-03-01',null,null,'Derecho',184.0),		/*marcoantun*/
+(7,1,92.1,'2006-01-04',null,null,'Derecho',189.0),		/*ramiernesto*/
+(8,1,81.8,'2004-10-23',null,null,'Derecho',179.0),		/*jorguitostefo*/
+(9,1,76.8,'1999-05-09',null,null,'Izquierdo',172.0),	/*marquesito*/
+(10,1,89.7,'2001-02-17',null,null,'Derecho',185.0),		/*juanpier*/
+(11,1,69.9,'1998-12-15',null,null,'Ambidiestro',170.0),	/*albertirsh*/
+(12,1,78.6,'2005-05-12',null,null,'Derecho',175.0),		/*jorgecaser*/
+(13,1,77.8,'2002-07-30',null,null,'Derecho',174.0),		/*fleitosv*/
+(14,1,83.5,'2007-06-17',null,null,'Izquierdo',180.0),	/*lozanodan*/
+(15,1,87.2,'2003-01-18',null,null,'Derecho',181.0),		/*philike*/
+(16,1,80.3,'2010-12-18',null,null,'Izquierdo',177.0),	/*flaper*/
+(17,1,90.4,'2009-04-16',null,null,'Derecho',186.0),		/*ferrvic*/
+(18,1,78.6,'2001-11-10',null,null,'Izquierdo',175.0),	/*berstivan*/
+(19,1,86.6,'1999-02-21',null,null,'Derecho',181.0),		/*bladimir*/
+(20,1,82.3,'2001-08-17',null,null,'Derecho',179.0);		/*mamaugus*/
 
 update usuario set jugador_id = 1 where id = 1;
 update usuario set jugador_id = 2 where id = 2;
@@ -60,7 +60,7 @@ insert into persona (id,version,nombre,apellido,sexo,fecha_nacimiento) values
 (15,1,'Kevin','Philips','Masculino','1992-09-11'),
 (16,1,'Flavio','Peralta','Masculino','1990-01-10'),
 (17,1,'Victor','Ferreira','Masculino','1987-12-29'),
-(18,1,'Iván','Berstein','Masculino','1989-04-11'),
+(18,1,'Ivan','Berstein','Masculino','1989-04-11'),
 (19,1,'Bladimir','Flores','Masculino','1979-12-01'),
 (20,1,'Augusto','Mamani','Masculino','1993-03-23');
 
@@ -92,7 +92,7 @@ insert into categoria_jugador (id,version,jugador_id,categoria_id,fecha_inicio,f
 (2,1,2,1,'2000-01-01',null,'Asignada','categoria de jugador guillef'),
 (3,1,3,1,'2000-01-01',null,'Asignada','categoria de jugador matidc'),
 (4,1,4,1,'2000-01-01',null,'Asignada','categoria de jugador davidc'),
-(5,1,5,1,'2000-01-01',null,'Asignada','categoria de jugador'),
+(5,1,5,1,'2000-01-01',null,'Asignada','categoria de jugador '),
 (6,1,6,1,'2000-01-01',null,'Asignada','categoria de jugador'),
 (7,1,7,1,'2000-01-01',null,'Asignada','categoria de jugador'),
 (8,1,8,2,'2000-01-01',null,'Asignada','categoria de jugador'),

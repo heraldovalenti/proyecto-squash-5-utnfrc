@@ -1,7 +1,5 @@
 package sgt
 
-import java.util.Date;
-
 class Partido {
 
     Torneo torneo
@@ -16,13 +14,16 @@ class Partido {
 	String estado
 	ResultadoPartido resultado
 	Integer ordenPartido
-	
 
     static constraints = {
-		categoria nullable: true
-		estado blank:false, inList:["Creado", "Ejecucion", "Finalizado", "Cancelado", "Suspendido"]		
+    	fecha nullable: true
+		horaDesde nullable: true
+		horaHasta nullable: true
+		jugador1 nullable: true
+		jugador2 nullable: true
 		arbitro nullable: true
-		resultado nullable:true
-
-	}	
+		cancha nullable: true
+		estado blank: false, inList:["Creado", "Ejecucion", "Finalizado", "Cancelado", "Suspendido"]		
+		resultado nullable: true
+	}
 }
