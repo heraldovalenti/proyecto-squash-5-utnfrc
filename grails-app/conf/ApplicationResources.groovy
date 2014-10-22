@@ -67,4 +67,10 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/listaJugadores.js'
 	}
+	inicio{
+		dependsOn 'jquery'
+		resource url: 'js/slider.js'
+		resource url: 'http://www.acsr.com.ar/js/news/js/jquery.easing.js'
+		resource url: 'http://www.acsr.com.ar/js/news/js/script.js'
+	}
 }

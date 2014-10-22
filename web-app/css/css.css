@@ -2643,3 +2643,7 @@ table td .scoreSrvWTBg {
   margin-right: 11px;
   position: relative;
 }
+
+ul.lof-main-wapper li {
+	position: relative;
+}

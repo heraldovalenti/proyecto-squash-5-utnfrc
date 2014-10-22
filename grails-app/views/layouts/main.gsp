@@ -30,6 +30,8 @@
     
     	<!-- TORNEO ACTUAL -->
 	    <g:render template="/secciones/torneoActual" />
+	    
+	    <g:render template="/secciones/sponsors" />
 				
 	</div>
 	
