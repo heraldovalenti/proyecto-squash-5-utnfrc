@@ -1,19 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html>
  <head>
- <meta content="infoAcs" name="layout" />
+  <meta name="layout" content="main">
  </head>
 
 <body>
-	<div class="container_16">
-		<!-- Content -->
-		<div class="slides-home raised">
-			<div class="grid_16 mt10 ">
-				<div id="jslidernews2" class="lof-slidecontent"
-					style="width: 600px; height: 300px;">
-					<div class="preload">
-						<div>
+
+<h3 class="title">Reglamento Dobles</h3>
+
+<g:render template="/acsInfo/menuInfo" />
+	
+<div id="jslidernews2" class="lof-slidecontent"	style="width: 600px; height: 300px;">
+	<div class="preload">	
 Reglamento de Dobles
 REGLAMENTO DOBLES 
 ACSR 2014
@@ -143,15 +140,10 @@ b. Si un jugador se lesiona conjuntamente con un compañero de otro equipo, se l
 2. La ACSR analizará cada caso y decidirá si corresponde aplicar una sanción y/o advertencia al jugador. En caso de corresponder una sanción se le comunicará al jugador, el cual dispondrá de 3 días hábiles para hacer su descargo. 
 3. Las sanciones a aplicar por parte de la Comisión Directiva podrán variar de acuerdo a la gravedad de la infracción. Desde la suspensión de 1 fecha hasta la inhabilitación para jugar torneos de la ACSR.
 
-Comisión Directiva de la ACS
-						</div>
-					</div>
-					
-				</div>
-				
-				</div>
-			</div>
-			</div>
+Comisión Directiva de la ACS				
+
+	</div>
+</div>
 	
 </body>
 </html>

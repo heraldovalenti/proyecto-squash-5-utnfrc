@@ -1,19 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html>
  <head>
- <meta content="infoAcs" name="layout" />
+ <meta name="layout" content="main">
  </head>
 
 <body>
-	<div class="container_16">
-		<!-- Content -->
-		<div class="slides-home raised">
-			<div class="grid_16 mt10 ">
-				<div id="jslidernews2" class="lof-slidecontent"
-					style="width: 600px; height: 300px;">
-					<div class="preload">
-						<div>
+
+<h3 class="title">Reglamento Singles</h3>
+
+<g:render template="/acsInfo/menuInfo" />
+
+<div id="jslidernews2" class="lof-slidecontent"	style="width: 600px; height: 300px;">
+	<div class="preload">
+
 Reglamentacion de Torneos Singles de la ACSR
 1-LINEAMIENTOS GENERALES:
 
@@ -216,14 +214,9 @@ Planilla de Rendición
 Planilla de Jugadores
 Draws
 Planillas de Arbitraje
-						</div>
-					</div>
-					
-				</div>
-				
-				</div>
-			</div>
-			</div>
+
+	</div>					
+</div>		
 	
 </body>
 </html>
