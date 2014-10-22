@@ -27,10 +27,10 @@ insert into ranking (id,version,jugador_id,categoria_id,puesto,puntaje) values
 (17,1,20,3 ,6, 750);
 /* inicio - jugadores de primera rankeados en tercera */
 insert into ranking (id,version,jugador_id,categoria_id,puesto,puntaje) values
-(18,1,1 ,3 ,7, 650),
+/*(18,1,1 ,3 ,7, 650),
 (19,1,2 ,3 ,8, 600),
 (20,1,3 ,3 ,9, 550),
-(21,1,4 ,3 ,10, 500),
+(21,1,4 ,3 ,10, 500),*/
 (22,1,5 ,3 ,11, 450),
 (23,1,6 ,3 ,12, 400),
 (24,1,7 ,3 ,13, 350);
