@@ -1,88 +1,47 @@
 package sgt
 
-import java.util.Scanner;
+import java.util.Comparator;
+
+import logica.CalculosTorneo
 
 class DiagramacionService {
 	
-		
-	/*
-     * Calcula la cantidad de Rondas a jugar en  base a la cantidad de Jugadores Inscriptos
-     */
-    int calcularRondas(Jugador[] jugadores){
-        double cantJug=jugadores.length
-		int cantRondas=0
-        while(cantJug>1)
-        {
-            cantRondas++
-            cantJug=cantJug/2      
-        }
-		return cantRondas            
-    }
+	static transactional = true
 	
-	/*
-	 * Rellena con Jugadores vacios
-	 */
-	Jugador [] generarJugadoresVacios(Jugador[] jugadores1,Categoria categoria){
-		Jugador [] jugadoresDestino;
-		Jugador [] jugadores=this.ordenarJugadores(jugadores1, categoria)
-		int maxJugPriRonda= (int)Math.pow(2, calcularRondas(jugadores1));
-		jugadoresDestino=new Jugador[maxJugPriRonda];
-		int maxPos=0;
-		for (int i=0;i<jugadores.length;i++)
-		{
-			jugadoresDestino[i] = jugadores[i];
-			if(jugadores[i].getPosicionRankingCategoria(categoria)()>=maxPos){
-				maxPos=jugadores[i].getPosicionRankingCategoria(categoria)+2;
+	def generarPartidosPrimeraRonda(DetalleTorneo torneo) {
+		def inscripcionesDetalleTorneo = InscripcionTorneo.createCriteria().list() {
+			eq("detalleTorneo", torneo)
+			and {
+				eq("estado", "Vinculada")
 			}
 		}
-		
-		for (int i=jugadores.length;i<jugadoresDestino.length;i++)
-		{
-			
-			jugadoresDestino[i]=new Jugador(maxPos);
-			jugadoresDestino[i].setVacio(true);
-			maxPos++;
+		List<logica.Jugador> jugadores = new ArrayList<logica.Jugador>() 	
+		for (InscripcionTorneo inscripcion : inscripcionesDetalleTorneo) {
+			logica.Jugador jugador = new logica.Jugador()
+			jugador.id = inscripcion.usuario.jugador.id
+			jugador.pos = inscripcion.usuario.jugador.getPosicionRankingCategoria(torneo.categoria)
+			jugadores.add(jugador)
 		}
-		return jugadoresDestino;
-	}
-	
-	
-	
-	/*
-	 * Ordena Jugadores con su posicion
-	 */
-	Jugador[] ordenarJugadores(Jugador[] jugadores,Categoria categoria){
-		Jugador aux;
-		for (int i = 0; i < jugadores.length - 1; i++) {
-			for (int x = i + 1; x < jugadores.length; x++) {
-				if (jugadores[x].getPosicionRankingCategoria(categoria) == 0) {
-					aux = jugadores[i];
-					jugadores[i] = jugadores[x];
-					jugadores[x] = aux;
-				}
-			    else if (jugadores[x].getPosicionRankingCategoria(categoria) < jugadores[i].getPosicionRankingCategoria(categoria)) {
-					aux = jugadores[i];
-					jugadores[i] = jugadores[x];
-					jugadores[x] = aux;
-				}
+		/*Collections.sort(jugadores, new Comparator<logica.Jugador>() {
+			@Override
+			int compare(logica.Jugador j1, logica.Jugador j2) {
+				return ( j1.pos - j2.pos)
 			}
+		})
+		for (int i = 0; i < jugadores.size() && jugadores[i].pos > 0; i++) {
+			jugadores[i].pos = (i + 1)
+		}*/
+		logica.Jugador[] aux = jugadores.toArray()
+		Set<logica.Partido> primeraRonda = CalculosTorneo.generarPrimeraRonda(aux)
+		for(logica.Partido partido : primeraRonda) {
+			Usuario jugador1 = Usuario.findByJugador(Jugador.get(partido.jugador1.id))
+			Usuario jugador2 = (partido.directo) ? null : Usuario.findByJugador(Jugador.get(partido.jugador2.id))
+			Torneo t = torneo.torneo
+			Integer ordenPartido = partido.numero
+			Partido p = new Partido(jugador1: jugador1, jugador2: jugador2, 
+				torneo: t, ordenPartido: ordenPartido, estado: "Creado", categoria: torneo.categoria)
+			p.save(failOnError: true)
 		}
-		return jugadores
 	}
 	
-	/*
-	 * Cruza Jugadores con su posicion
-	 */
-	Partido [] cruzarJugadores(Jugador[] jugadores1,Categoria categoria){
-		int maxJugPriRonda= (int)Math.pow(2, calcularRondas(jugadores1));
-		int cantPart=maxJugPriRonda/2;
-		Partido [] partidosPrimeraRonda=new Partido[cantPart];
-		Jugador [] jugadores= this.generarJugadoresVacios(jugadores1, categoria)
-		for (int i=0;i<partidosPrimeraRonda.length;i++)
-		{
-			partidosPrimeraRonda[i]=new Partido(jugadores[i],jugadores[jugadores.length-i-1]);
-		}
-		return partidosPrimeraRonda
-	}
-
 }

@@ -23,8 +23,20 @@ public class CalculosTorneo {
     static Club clubes;
     static double diasRonda[]; 
     
+    public static void clear() {
+    	jugadores = null;
+    	cantRondas = 0;
+    	tree = new TreeSet();
+    	partidosPrimeraRonda = null;
+    	rondasFixture = null;
+    	duracionRonda = null;
+    	clubes = null;
+    	diasRonda = null;
+    }
+    
     public static TreeSet<Partido> generarPrimeraRonda(Jugador[] jugadores) {
-    	cargarJugadores(jugadores);        
+    	clear();
+    	cargarJugadores(jugadores);
         calcularRondas();
         ordenarJugadores();
         generarJugadoresVacios();
@@ -120,6 +132,7 @@ public class CalculosTorneo {
     }
     
     private static void cargarJugadores(Jugador[] n){
+    	jugadores = new Jugador[n.length];
         for (int i=0;i<n.length;i++){
             
             int pos = n[i].getPos();
