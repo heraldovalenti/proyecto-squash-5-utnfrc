@@ -27,7 +27,7 @@
 						props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) && it.type != null && !Collection.isAssignableFrom(it.type) }
 						Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
 						props.eachWithIndex { p, i ->
-							if (i < 6) {
+							if (i < 6 && domainClass.constrainedProperties[p.name].display) {
 								if (p.isAssociation()) { %>
 						<th><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></th>
 					<%      } else { %>
@@ -39,14 +39,16 @@
 				<g:each in="\${${propertyName}List}" status="i" var="${propertyName}">
 					<tr class="\${(i % 2) == 0 ? 'even' : 'odd'}">
 					<%  props.eachWithIndex { p, i ->
-							if (i == 0) { %>
+							if (i == 0 && domainClass.constrainedProperties[p.name].display) { %>
 						<td><g:link action="show" id="\${${propertyName}.id}">\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</g:link></td>
-					<%      } else if (i < 6) {
+					<%      } else if (i < 6 && domainClass.constrainedProperties[p.name].display) {
 								if (p.type == Boolean || p.type == boolean) { %>
 						<td><g:formatBoolean boolean="\${${propertyName}.${p.name}}" /></td>
 					<%          } else if (p.type == Date || p.type == java.sql.Date || p.type == java.sql.Time || p.type == Calendar) { %>
 						<td><g:formatDate date="\${${propertyName}.${p.name}}" /></td>
-					<%          } else { %>
+					<% } else if (domainClass.constrainedProperties[p.name].password) { %>
+						<td>******</td>
+					<% } else { %>
 						<td>\${fieldValue(bean: ${propertyName}, field: "${p.name}")}</td>
 					<%  }   }   } %>
 					</tr>
