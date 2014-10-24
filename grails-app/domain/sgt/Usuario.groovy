@@ -20,9 +20,9 @@ class Usuario {
 		password blank:false, minSize:6, maxSize:50, password:true
 		correo blank:false, email:true, unique:true
 		persona nullable: true, editable: false
-		jugador nullable: true, editable: false
-		club nullable: true, editable: false
-		encargadoEn nullable: true, editable: false
+		jugador nullable: true, editable: false, display: false
+		club nullable: true, editable: false, display: false
+		encargadoEn nullable: true, editable: false, display: false
     }
 	
 	def Integer puestoRanking(Categoria categoria) {
