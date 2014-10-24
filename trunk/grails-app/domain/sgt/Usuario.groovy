@@ -11,12 +11,6 @@ class Usuario {
     Boolean activo
 	Persona persona
 	Jugador jugador
-	@Override
-	public String toString() {
-		if(persona!=null)
-		return persona.toString();
-	}
-
 	Club club
 	Rol rol
 	Club encargadoEn
@@ -25,10 +19,10 @@ class Usuario {
 		nombreUsuario blank:false, unique:true, minSize:6, maxSize:25
 		password blank:false, minSize:6, maxSize:50, password:true
 		correo blank:false, email:true, unique:true
-		persona nullable: true
-		jugador nullable: true
-		club nullable: true
-		encargadoEn nullable: true
+		persona nullable: true, editable: false
+		jugador nullable: true, editable: false
+		club nullable: true, editable: false
+		encargadoEn nullable: true, editable: false
     }
 	
 	def Integer puestoRanking(Categoria categoria) {
@@ -73,5 +67,11 @@ class Usuario {
 		if (obj == null) return false
 		Usuario other = obj
 		return this.nombreUsuario.equals(other.nombreUsuario)
+	}
+	
+	@Override
+	public String toString() {
+		if(persona!=null)
+			return persona.toString();
 	}
 }
