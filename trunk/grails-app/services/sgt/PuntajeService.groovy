@@ -22,9 +22,9 @@ class PuntajeService {
 			}
 		}*/
 		
-		puntaje.save()
+		//puntaje.save()
 		torneoPuntuableInstance.addToPuntajes(puntaje)
-		torneoPuntuableInstance.save()
+		torneoPuntuableInstance.save(failOnError: true)
 		
 		return null
     }
@@ -38,13 +38,13 @@ class PuntajeService {
 		while(iter.hasNext()) {
 			def DetallePuntaje aux = iter.next()
 			if (detallePuntaje.puesto == aux.puesto) {
-				return "Ya exsite un puntaje para ese puesto"
+				return "Ya existe un puntaje para ese puesto"
 			}
 		}
 		
-		detallePuntaje.save()
+		//detallePuntaje.save()
 		puntajeInstance.addToDetalles(detallePuntaje)
-		puntajeInstance.save()
+		puntajeInstance.save(failOnError: true)
 		
 		return null
 	}

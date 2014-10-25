@@ -38,22 +38,14 @@
 						<g:field name="puesto" type="number" value="${detallePuntajeInstance?.puesto}" required=""/>
 					</div>
 					
-					<div class="fieldcontain ${hasErrors(bean: detallePuntajeInstance, field: 'puntaje', 'error')} required">
-						<label for="puntaje">
-							<g:message code="detallePuntaje.puntaje.label" default="Puntaje" />
+					<div class="fieldcontain ${hasErrors(bean: detallePuntajeInstance, field: 'puntos', 'error')} required">
+						<label for="puntos">
+							<g:message code="detallePuntaje.puntaje.label" default="Puntos" />
 							<span class="required-indicator">*</span>
 						</label>
-						<g:field name="puntaje" value="${fieldValue(bean: detallePuntajeInstance, field: 'puntaje')}" type="number" required=""/>
+						<g:field name="puntos" value="${fieldValue(bean: detallePuntajeInstance, field: 'puntos')}" type="number" required=""/>
 					</div>
 					
-					<div class="fieldcontain ${hasErrors(bean: detallePuntajeInstance, field: 'descripcion', 'error')} ">
-						<label for="descripcion">
-							<g:message code="detallePuntaje.descripcion.label" default="Descripcion" />
-							<span class="required-indicator">*</span>
-						</label>
-						<g:textField name="descripcion" value="${detallePuntajeInstance?.descripcion}"/>
-					</div>
-
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="Guardar" />

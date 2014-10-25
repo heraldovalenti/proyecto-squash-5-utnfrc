@@ -4,17 +4,17 @@ class DetallePuntaje {
 	
 	Integer puesto
 	Double puntos	
-	String descripcion
 	
 	static belongsTo = [puntaje: Puntaje]
 	
 	String toString()
 	{
-		return descripcion + " = " + puntos + "pts"
+		return puesto + " : " + puntos + "pts"
 	}
 	
 
     static constraints = {
-		descripcion blank: false, maxSize: 50
+		puesto min: 0
+		puntos: min: 0
     }
 }
