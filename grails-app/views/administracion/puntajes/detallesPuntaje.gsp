@@ -25,7 +25,6 @@
 					<tr>
 						<th>Puesto</th>
 						<th>Puntos</th>
-						<th>Descripcion</th>
 						<th>Opciones</th>
 					</tr>
 				</thead>
@@ -34,8 +33,7 @@
 				<g:each in="${detallePuntajeInstanceList}" status="i" var="detallePuntajeInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td>${ detallePuntajeInstance?.puesto }</td>
-						<td>${ detallePuntajeInstance?.puntaje }</td>
-						<td>${ detallePuntajeInstance?.descripcion }</td>
+						<td>${ detallePuntajeInstance?.puntos }</td>
 						<td>
 							<g:link controller="puntaje" action="deleteDetalle" id="${ detallePuntajeInstance?.id }">Eliminar</g:link>
 						</td>

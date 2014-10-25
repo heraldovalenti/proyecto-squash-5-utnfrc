@@ -12,7 +12,7 @@ class PuntajeController {
 	
 	static namespace = "admin"
 	
-	PuntajeService puntajeService
+	def puntajeService
 	
 	def verPuntajes(Long id) {
 		def TorneoPuntuable torneoPuntuableInstance = TorneoPuntuable.get(id)
@@ -35,7 +35,7 @@ class PuntajeController {
 		params.max = Math.min(max ?: 10, 100)
 		def Long idTorneo = session.getAttribute("idTorneo")
 		def TorneoPuntuable torneoPuntuableInstance = TorneoPuntuable.get(idTorneo)
-		def puntajeInstanceList = torneoPuntuableInstance.getPuntajes()
+		def puntajeInstanceList = torneoPuntuableInstance.puntajes
 		
 		render(view: "/administracion/puntajes/list", model: [puntajeInstanceList: puntajeInstanceList, puntajeInstanceTotal: puntajeInstanceList.size()])
 	}
@@ -47,10 +47,10 @@ class PuntajeController {
 	def save() {
 		def idTorneo = session.getAttribute("idTorneo")
 		def puntajeInstance = new Puntaje(params)
-		if (!puntajeInstance.validate()) {
+		/*if (!puntajeInstance.validate()) {
 			render(view: "/administracion/puntajes/create", model: [puntajeInstance: puntajeInstance])
 			return
-		}
+		}*/
 		
 		def String res = puntajeService.agregarPuntajeTorneo(idTorneo, puntajeInstance)
 		if (res != null) {
@@ -75,9 +75,15 @@ class PuntajeController {
 		}
 		
 		session.setAttribute("idPuntaje", id)
-		def detallePuntajeInstanceList = puntajeInstance.getDetalles()		
+		List<DetallePuntaje> detallePuntajeInstanceList = new ArrayList(puntajeInstance.detalles)
+		Collections.sort(detallePuntajeInstanceList, new Comparator<DetallePuntaje>() {
+			@Override
+			public int compare( DetallePuntaje d1,  DetallePuntaje d2) {
+				return d1.puesto - d2.puesto
+			};
+		})
 		
-		def categoriaInstance = puntajeInstance.getCategoria()
+		def categoriaInstance = puntajeInstance.categoria
 		render(view: "/administracion/puntajes/detallesPuntaje", 
 			model: [detallePuntajeInstanceList: detallePuntajeInstanceList, 
 				puntajeInstanceTotal: detallePuntajeInstanceList.size(), 
@@ -91,12 +97,11 @@ class PuntajeController {
 	
 	def agregarDetalle() {
 		def DetallePuntaje detallePuntajeInstance = new DetallePuntaje(params)
-		if (!detallePuntajeInstance.validate()) {
+		/*if (!detallePuntajeInstance.validate()) {
 			render(view: "/administracion/puntajes/createDetalle", model: [detallePuntajeInstance: detallePuntajeInstance])
 			return
-		}
+		}*/
 		
-		puntajeService = new PuntajeService()
 		def idPuntaje = session.getAttribute("idPuntaje")
 		def String res = puntajeService.agregarDetallePuntaje(idPuntaje, detallePuntajeInstance)
 		if (res != null) {
