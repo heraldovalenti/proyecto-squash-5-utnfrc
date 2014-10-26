@@ -8,17 +8,27 @@ package logica;
  *
  * @author Matias
  */
-public class Jugador {
-    
-	private long id;
+public class Jugador implements IDisponible{
+    private long id;
     private int pos;
     private  int [] rondas;
     private boolean enFixture,vacio=false,unranked=false;
-    private DisponibilidadHoraria disponibilidad;
+    private DisponibilidadHoraria disponibilidadHoraria=new DisponibilidadHoraria();
+
+    
+    
+    public DisponibilidadHoraria getDisponibilidadHoraria() {
+        return disponibilidadHoraria;
+    }
+
+    public void setDisponibilidadHoraria(DisponibilidadHoraria disponibilidadHoraria) {
+        this.disponibilidadHoraria = disponibilidadHoraria;
+    }
 
     public void setId(Long id) {
     	this.id = id;
     }
+
     
     public Long getId() {
     	return this.id;
@@ -26,7 +36,7 @@ public class Jugador {
     
     public Jugador(int pos) {
         this.pos = pos;
-        disponibilidad=new DisponibilidadHoraria();
+        disponibilidadHoraria=new DisponibilidadHoraria();
         
     }
 

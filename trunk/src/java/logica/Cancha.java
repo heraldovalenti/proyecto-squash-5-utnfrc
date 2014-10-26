@@ -11,28 +11,19 @@ import java.util.TreeSet;
  *
  * @author Matias
  */
-public class Cancha {
+public class Cancha implements IDisponible{
     
-    int tiempoJuegoDia;
-    TreeSet<Horario>[] horarios= new TreeSet[7];
+    private DisponibilidadHoraria disponibilidadHoraria=new DisponibilidadHoraria();
+
+    public DisponibilidadHoraria getDisponibilidadHoraria() {
+        return disponibilidadHoraria;
+    }
+
+    public void setDisponibilidadHoraria(DisponibilidadHoraria disponibilidadHoraria) {
+        this.disponibilidadHoraria = disponibilidadHoraria;
+    }
     
     public Cancha(){
-        for(int i =0;i<horarios.length;i++)
-        {
-            horarios[i]=new TreeSet<Horario>();
-            Horario h=new Horario(9,0,23,0,i);
-            horarios[i].add(h);
-        }
     }
-
-    public TreeSet<Horario>[] getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(TreeSet<Horario>[] horarios) {
-        this.horarios = horarios;
-    }
-    
-    
     
 }

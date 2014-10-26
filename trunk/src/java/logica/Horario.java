@@ -9,18 +9,16 @@ package logica;
  * @author Matias
  */
 public class Horario implements Comparable {
-    int horaInicio,minInicio,horaFin,minFin,ordenDia;
-    
+    int horaInicio,ordenDia;
+    IDisponible elementoDisponibilidad;
 
     public Horario() {
     }
 
-    public Horario(int horaInicio, int minInicio, int horaFin, int minFin, int ordenDia) {
+    public Horario(int horaInicio, int ordenDia, IDisponible elementoDisponibilidad) {
         this.horaInicio = horaInicio;
-        this.minInicio = minInicio;
-        this.horaFin = horaFin;
-        this.minFin = minFin;
         this.ordenDia = ordenDia;
+        this.elementoDisponibilidad = elementoDisponibilidad;
     }
 
     public int getHoraInicio() {
@@ -31,30 +29,6 @@ public class Horario implements Comparable {
         this.horaInicio = horaInicio;
     }
 
-    public int getMinInicio() {
-        return minInicio;
-    }
-
-    public void setMinInicio(int minInicio) {
-        this.minInicio = minInicio;
-    }
-
-    public int getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(int horaFin) {
-        this.horaFin = horaFin;
-    }
-
-    public int getMinFin() {
-        return minFin;
-    }
-
-    public void setMinFin(int minFin) {
-        this.minFin = minFin;
-    }
-
     public int getOrdenDia() {
         return ordenDia;
     }
@@ -62,6 +36,16 @@ public class Horario implements Comparable {
     public void setOrdenDia(int ordenDia) {
         this.ordenDia = ordenDia;
     }
+
+    public IDisponible getElementoDisponibilidad() {
+        return elementoDisponibilidad;
+    }
+
+    public void setElementoDisponibilidad(IDisponible elementoDisponibilidad) {
+        this.elementoDisponibilidad = elementoDisponibilidad;
+    }
+
+    
 
     @Override
     public int compareTo(Object o) {
@@ -78,18 +62,7 @@ public class Horario implements Comparable {
             }
             else if(this.horaInicio==h.horaInicio)
             {
-                if(this.minInicio>h.minInicio)
-                {
-                    return 1;
-                }
-                else if(this.minInicio<h.minInicio)
-                {
-                    return -1;
-                }
-                else if(this.minInicio==h.minInicio)
-                {
-                    return 0;
-                }
+                return 0;
             }
             
         }

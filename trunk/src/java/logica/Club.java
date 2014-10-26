@@ -8,8 +8,17 @@ package logica;
  *
  * @author Matias
  */
-public class Club {
+public class Club implements IDisponible{
     Cancha [] canchas;
+    DisponibilidadHoraria disponibilidadHoraria=new DisponibilidadHoraria();
+
+    public DisponibilidadHoraria getDisponibilidadHoraria() {
+        return disponibilidadHoraria;
+    }
+
+    public void setDisponibilidadHoraria(DisponibilidadHoraria disponibilidadHoraria) {
+        this.disponibilidadHoraria = disponibilidadHoraria;
+    }
     
     public Club()
     {
@@ -19,6 +28,11 @@ public class Club {
         }
     }
     
+    public void generarDisponibilidadPartido(){
+        for (Cancha cancha : canchas) {
+            disponibilidadHoraria.add(cancha.getDisponibilidadHoraria());
+        }
+    }
 
     public Cancha[] getCanchas() {
         return canchas;

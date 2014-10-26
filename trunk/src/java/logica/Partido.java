@@ -8,22 +8,58 @@ package logica;
  *
  * @author Matias
  */
-public class Partido implements Comparable{
+public class Partido implements IDisponible, Comparable{
     
-    int duracion,numero,ronda,ordenLLave;
+    int numero,ronda,ordenLLave;
     Jugador jugador1,jugador2;
     Horario horario;
+    Cancha cancha;
+    boolean asignado=false;
+
+    public boolean isAsignado() {
+        return asignado;
+    }
+
+    public void setAsignado(boolean asignado) {
+        this.asignado = asignado;
+    }
+
+    public Cancha getCancha() {
+        return cancha;
+    }
+
+    public void setCancha(Cancha cancha) {
+        this.cancha = cancha;
+    }
+    DisponibilidadHoraria disponibilidadHoraria=new DisponibilidadHoraria();
+
+    public DisponibilidadHoraria getDisponibilidadHoraria() {
+        return disponibilidadHoraria;
+    }
+
+    public void setDisponibilidadHoraria(DisponibilidadHoraria disponibilidadHoraria) {
+        this.disponibilidadHoraria = disponibilidadHoraria;
+    }
+
     
+    
+    public void generarDisponibilidadPartido(){
+        boolean[][] matrizVerdad=jugador1.getDisponibilidadHoraria().CruzarDisponibilidadSemanalNegativa(jugador2.getDisponibilidadHoraria().generarMatrizVerdad());
+        disponibilidadHoraria.generarDisponibilidadConMatrizVerdad(matrizVerdad, this);
+    }
     
 
     public Partido() {
-        this.duracion = 40;
         jugador1=new Jugador();
         jugador2=new Jugador();
     }
+    
+    public Partido(Jugador jugador1, Jugador jugador2) {
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
+    }
 
     public Partido(int numero, int ronda, Jugador jugador1, Jugador jugador2) {
-        this.duracion = 40;
         this.numero = numero;
         this.ronda = ronda;
         this.jugador1 = jugador1;
@@ -53,16 +89,7 @@ public class Partido implements Comparable{
     public void setOrdenLLave(int ordenLLave) {
         this.ordenLLave = ordenLLave;
     }
-    
-    
-    
-    public int getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
-    }
+   
 
     public Jugador getJugador1() {
         return jugador1;
