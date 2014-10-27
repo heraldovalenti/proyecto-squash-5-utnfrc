@@ -6,8 +6,8 @@
 		<p class="headScorebrdTitle"><a href="#">10º fecha ACS 2013 - Les Courts</a></p>
 		<p class="headerScorebrdPlace">24-08 al 01-09</p>
 		<p class="headScorebrdTitle" style="margin-top: 5px;">
-			<a href="/SistemaGestionTorneo/inscripcionTorneo/list" class="button_small green">Inscribite >></a>
-			<a href="/SistemaGestionTorneo/torneo/list" class="ml10 button_small blue">Info >></a>
+			<a href="/SistemaGestionTorneo/torneo/listaTorneos" class="button_small green">Inscribite >></a>
+			<a href="/SistemaGestionTorneo/torneo/listaTorneos" class="ml10 button_small blue">Info >></a>
 		</p>
 	</div>
 </div>
