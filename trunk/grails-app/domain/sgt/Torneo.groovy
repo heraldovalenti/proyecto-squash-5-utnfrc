@@ -174,6 +174,19 @@ class Torneo {
 	Boolean esDiagramable() {
 		return ( this.inscripcionFinalizada() || this.diagramado() )
 	}
+	
+	int getDuracionDias() {
+		long diff = this.fechaFinTorneo.getTime() - this.fechaInicioTorneo.getTime()
+		return (int)(diff / (1000 * 60 * 60 * 24) ) + 1
+	}
+	
+	Date getFechaDiaTorneo(Integer numeroDia) {
+		numeroDia--
+		Calendar c = Calendar.getInstance()
+		c.setTime(fechaInicioTorneo)
+		c.add(Calendar.DAY_OF_MONTH, numeroDia)
+		return c.getTime()
+	}
 }
 	
 	

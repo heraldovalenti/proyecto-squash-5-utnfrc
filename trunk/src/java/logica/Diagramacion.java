@@ -68,10 +68,10 @@ public class Diagramacion {
         return j;
     }
     
-    public Club cargarClub (DisponibilidadHoraria disponibilidad,Cancha[] c){
+    public Club cargarClub (Cancha[] c){
         Club j= new Club();
-        j.setDisponibilidadHoraria(disponibilidad);
         j.setCanchas(c);
+        j.generarDisponibilidadPartido();
         return j;
     }
    
@@ -80,6 +80,13 @@ public class Diagramacion {
         return new Torneo(horas,dias,organizador,enfrentamientos);
     }
     
+    /**
+     * 
+     * @param horas cantidad de horas a generar de diagramacion, ej: de 9:00 a 10:00 -> 1, de 9:00 a 12:00 -> 3.
+     * @param dias cantidad de dias de duracion del torneo.
+     * @param organizador el club del torneo con sus canchas adentro y respectivos horarios
+     * @param enfrentamientos partidos del torneo a diagramarse con los jugadores y respectivos horarios.
+     */
     public void generarDiagramacion(int horas,int dias,Club organizador,Partido[]enfrentamientos){
         Torneo torneo= cargarTorneo(horas,dias,organizador,enfrentamientos);
         torneo.generarDiagramacion();

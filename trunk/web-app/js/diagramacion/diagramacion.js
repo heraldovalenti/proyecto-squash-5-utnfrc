@@ -1,3 +1,35 @@
+var canchas = {};
+var partidos = {};
+var torneo = null;
+
+function loadTorneo() {
+	$.ajax({
+		url: "diagramacionHorarios/getDatosTorneo",
+		success: function(data) {
+			torneo = data;
+		}
+	});
+}
+
+function loadCanchas() {
+	$.ajax({
+		url: "diagramacionHorarios/getCanchas",
+		success: function(data) {
+			canchas = data;
+		}
+	});
+}
+
+function loadPartidos() {
+	$.ajax({
+		url: "diagramacionHorarios/getPartidos",
+		success: function(data) {
+			partidos = data;
+		}
+	});
+}
+
+
 $(document).ready( function() {
 	
 	$("#dia-torneo").spinner({

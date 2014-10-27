@@ -22,15 +22,6 @@ class DiagramacionService {
 			jugador.pos = inscripcion.usuario.jugador.getPosicionRankingCategoria(torneo.categoria)
 			jugadores.add(jugador)
 		}
-		/*Collections.sort(jugadores, new Comparator<logica.Jugador>() {
-			@Override
-			int compare(logica.Jugador j1, logica.Jugador j2) {
-				return ( j1.pos - j2.pos)
-			}
-		})
-		for (int i = 0; i < jugadores.size() && jugadores[i].pos > 0; i++) {
-			jugadores[i].pos = (i + 1)
-		}*/
 		logica.Jugador[] aux = jugadores.toArray()
 		Set<logica.Partido> primeraRonda = CalculosTorneo.generarPrimeraRonda(aux)
 		for(logica.Partido partido : primeraRonda) {
@@ -42,6 +33,39 @@ class DiagramacionService {
 				torneo: t, ordenPartido: ordenPartido, estado: "Creado", categoria: torneo.categoria)
 			p.save(failOnError: true)
 		}
+	}
+	
+	def generarRondasSiguientes(DetalleTorneo detalle) {
+		def partidos = Partido.createCriteria().list() {
+			eq("torneo", detalle.torneo)
+			and {
+				eq("categoria", detalle.categoria)
+			}
+			order("ordenPartido", "asc")
+		}
+		generarPartidosSiguientes(partidos)
+	}
+	
+	private void generarPartidosSiguientes(List<Partido> partidos) {
+		if (partidos.size() <= 1) return
+		Torneo t = partidos[0].torneo
+		Categoria c = partidos[0].categoria
+		String e = "Creado"
+		int siguienteOrden = partidos.size() + 1
+		List<Partido> partidosSiguientes = new ArrayList()
+		for(int i = 0; i < partidos.size(); i += 2) {
+			Partido p1 = partidos[i]
+			Partido p2 = partidos[i + 1]
+			Partido partidoSiguiente = new Partido(torneo: t, estado: e, categoria: c, ordenPartido: siguienteOrden)
+			partidoSiguiente.save(failOnError: true)
+			partidosSiguientes.add(partidoSiguiente)
+			siguienteOrden++
+			p1.siguientePartido = partidoSiguiente
+			p2.siguientePartido = partidoSiguiente
+			p1.save(failOnError: true)
+			p2.save(failOnError: true)
+		}
+		generarPartidosSiguientes(partidosSiguientes)
 	}
 	
 }

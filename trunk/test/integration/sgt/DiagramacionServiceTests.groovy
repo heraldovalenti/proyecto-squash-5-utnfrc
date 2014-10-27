@@ -289,5 +289,20 @@ class DiagramacionServiceTests {
 		Assert.assertEquals(detallePrimera.categoria, partidosTorneo[6].categoria)
 		Assert.assertEquals(detallePrimera.categoria, partidosTorneo[7].categoria)
 	}
-
+	
+	@Test
+	void generarRondasSiguientesTest() {
+		DetalleTorneo d = DetalleTorneo.get(1)
+		Torneo t = d.torneo
+		Categoria c = d.categoria
+		String e = "Creado"
+		Assert.assertEquals(0, Partido.findAllByTorneo(t).size())
+		Partido p1 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 1).save(failOnError: true)
+		Partido p2 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 2).save(failOnError: true)
+		Partido p3 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 3).save(failOnError: true)
+		Partido p4 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 4).save(failOnError: true)
+		Assert.assertEquals(4, Partido.findAllByTorneo(t).size())
+		diagramacionService.generarRondasSiguientes(d)
+		Assert.assertEquals(7, Partido.findAllByTorneo(t).size())
+	}
 }

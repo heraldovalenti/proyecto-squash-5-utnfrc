@@ -1,7 +1,10 @@
 package sgt.administracion.torneos
 
+import grails.converters.JSON
 import sgt.Cancha
 import sgt.Club
+import sgt.Partido
+import sgt.Torneo
 
 class DiagramacionHorariosController {
 	
@@ -15,6 +18,45 @@ class DiagramacionHorariosController {
 		Cancha c3 = new Cancha(nombre: "Alpha", techada: true, numero: 3, tipoSuelo: "Parquet")
 		
 		render(view: "/administracion/diagramacion/diagramacionTorneo", model: [canchas: [c1,c2,c3]])
+	}
+	
+	private Torneo getTorneo() {
+		return Torneo.get(1)
+	}
+	
+	def getCanchas() {
+		Torneo t = getTorneo()
+		Club club = t.club
+		List<Cancha> canchas = new ArrayList<Cancha>(club.canchas)
+		render canchas as grails.converters.deep.JSON
+	}
+	
+	def getDuracionDiasTorneo() {
+		Torneo t = getTorneo()
+		render t.getDuracionDias()
+	}
+	
+	def getFechaDiaTorneo() {
+		Integer numeroDia = Integer.parseInt(params.numeroDia)
+		Torneo t = getTorneo()
+		/*JSON.registerObjectMarshaller(Date) {
+			return it?.format("mm/dd/yyyy")
+		}*/
+		Date fecha = t.getFechaDiaTorneo(numeroDia) 
+		def res = [fechaDia: fecha]
+		render res as JSON
+	}
+	
+	def getDatosTorneo() {
+		render getTorneo() as JSON
+	}
+	
+	def getPartidos() {
+		Torneo t = getTorneo()
+		def partidos = Partido.createCriteria().list() {
+			eq("torneo", t)
+		}
+		render partidos as JSON
 	}
 
 }
