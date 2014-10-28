@@ -11,8 +11,8 @@
 		<div class="Singles"></div>
 		<div class="singlesRankName">
 			<span>
-				<a href="#">${ usuarioInstance.persona.nombre }</a>
 				<a href="#">${ usuarioInstance.persona.apellido }</a>
+				<a href="#">${ usuarioInstance.persona.nombre }</a>				
 			</span>
 		</div>
 		<div class="singlesRank">Brazo:

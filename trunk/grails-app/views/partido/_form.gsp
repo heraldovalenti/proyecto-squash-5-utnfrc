@@ -3,25 +3,18 @@
 
 
 <head>
-		<r:require module="jquery-ui"/>
-        <g:javascript library="listaPersonas"/>
-
+		
+<r:require modules="fechas,jugadoresPartido"/>
 </head>
 
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'torneo', 'error')} required">
-	<label for="torneo">
-		<g:message code="partido.torneo.label" default="Torneo" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="torneo" name="torneo.id" from="${sgt.Torneo.list()}" optionKey="id" required="" value="${partidoInstance?.torneo?.id}" class="many-to-one"/>
-</div>
+<g:hiddenField name="torneo" id="torneo" value="${torneoInstance?.id}"/>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'categoria', 'error')} required">
 	<label for="categoria">
 		<g:message code="partido.categoria.label" default="Categoria" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="categoria" name="categoria.id" from="${sgt.Categoria.list()}" optionKey="id" required="" value="${partidoInstance?.categoria?.id}" class="many-to-one"/>
+	<g:select id="categoria" name="categoria.id" from="${torneoInstance?.detalles?.categoria}" optionKey="id" required="" value="${partidoInstance?.categoria?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'fecha', 'error')} required">
@@ -29,7 +22,8 @@
 		<g:message code="partido.fecha.label" default="Fecha" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="fecha" precision="day"  value="${partidoInstance?.fecha}"  />
+	<%--<input type="text" id="datepicker" value="${partidoInstance?.fecha}"  />
+	--%><g:textField name="fecha" id="datepicker" value="${partidoInstance?.fecha}" placeholder="Seleccione una fecha.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'horaDesde', 'error')} ">
@@ -54,8 +48,8 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<!----- Campos de Jugador1----->
-	<g:hiddenField name="jugador1.id" id="jugador1.id" value="${partidoInstance?.jugador1?.id}"/>	
-	<g:textField name="jugador1" id="jugador1" value="" placeholder="Ingrese el Jugador.."/>
+	<g:hiddenField name="jugador1" id="jugador1"/>	
+	<g:textField name="jugador1Text" id="jugador1Text" value="" placeholder="Ingrese el Jugador.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'jugador2', 'error')} required">
@@ -64,16 +58,8 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<!----- Campos de Jugador2----->
-	<g:hiddenField name="jugador2.id" id="jugador2.id" value="${partidoInstance?.jugador2?.id}"/>
-	<g:textField name="jugador2" id="jugador2" value="" placeholder="Ingrese el Jugador.."/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'estado', 'error')} required">
-	<label for="estado">
-		<g:message code="partido.estado.label" default="Estado" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="estado" from="${partidoInstance.constraints.estado.inList}" required="" value="${partidoInstance?.estado}" valueMessagePrefix="partido.estado"/>
+	<g:hiddenField name="jugador2" id="jugador2"/>
+	<g:textField name="jugador2Text" id="jugador2Text" value="" placeholder="Ingrese el Jugador.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'cancha', 'error')} required">
@@ -81,7 +67,7 @@
 		<g:message code="partido.cancha.label" default="Cancha" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="cancha" name="cancha.id" from="${sgt.Cancha.list()}" optionKey="id" required="" value="${partidoInstance?.cancha?.id}" class="many-to-one"/>
+	<g:select id="cancha" name="cancha.id" from="${torneoInstance?.club?.canchas}" optionKey="id" required="" value="${partidoInstance?.cancha?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'arbitro', 'error')} ">
@@ -90,7 +76,7 @@
 		
 	</label>
 	<!----- Campos de Arbitro----->
-	<g:hiddenField name="arbitro.id" id="arbitro.id" value="${partidoInstance?.arbitro?.id}"/>
-	<g:textField name="arbitro" id="arbitro" value="" placeholder="Ingrese el Arbitro.."/>
+	<g:hiddenField name="arbitro" id="arbitro"/>
+	<g:textField name="arbitroText" id="arbitroText" value="" placeholder="Ingrese el Arbitro.."/>
 </div>
 

@@ -26,6 +26,7 @@ class Partido {
 		cancha nullable: true
 		estado blank: false, inList: ["Creado", "Ejecucion", "Finalizado", "Cancelado", "Suspendido"]
 		resultado nullable: true
+		ordenPartido nullable: true
 		siguientePartido nullable: true
 	}
 	
