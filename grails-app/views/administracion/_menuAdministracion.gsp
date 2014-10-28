@@ -3,8 +3,7 @@
 		<ul class="ul-admin">
 			<li><g:link controller="administracion">Panel de inicio</g:link></li>
 			<li><g:link controller="torneo">Torneos</g:link></li>
-     		<li><g:link controller="torneoPuntuable">Torneos Puntuables</g:link></li>
-     		<li><g:link controller="partido">Partidos</g:link></li>						
+     		<li><g:link controller="torneoPuntuable">Torneos Puntuables</g:link></li>     								
 			<li><g:link controller="puntaje">Puntajes</g:link></li>			
 			<li><g:link controller="ranking">Rankings</g:link></li>
 			<li><g:link controller="categoria">Categorias</g:link></li>

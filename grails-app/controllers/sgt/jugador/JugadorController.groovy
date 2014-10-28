@@ -4,6 +4,7 @@ import grails.converters.JSON
 import grails.validation.ValidationException
 import sgt.CategoriaJugador
 import sgt.Domicilio
+import sgt.InscripcionTorneo;
 import sgt.Jugador
 import sgt.PerfilJugador
 import sgt.Persona
@@ -319,6 +320,14 @@ class JugadorController {
 		
 		def jugadores= jugadoresService.listarJugadores()
 			
+		render jugadores as JSON
+	}
+	
+	def listarNombresJugadoresTorneo() {			
+		Long torneo=Long.parseLong(params.torneo)
+		Long categoria=Long.parseLong(params.categoria)				
+		def inscripciones=jugadoresService.listarJugadoresPorTorneoYCategoria(torneo,categoria)		
+		def jugadores = inscripciones.usuario.persona		
 		render jugadores as JSON
 	}
 	

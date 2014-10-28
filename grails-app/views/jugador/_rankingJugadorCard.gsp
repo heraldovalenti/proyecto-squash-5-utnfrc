@@ -10,9 +10,9 @@
 	<div class="singlesInfo">
 		<div class="Singles"></div>
 		<div class="singlesRankName">
-			<span>				
-				<a href="#">${ usuarioInstance.persona.nombre }</a>
-				<a href="#">${ usuarioInstance.persona.apellido }</a>
+			<span>	
+				<a href="#">${ usuarioInstance.persona.apellido }</a>			
+				<a href="#">${ usuarioInstance.persona.nombre }</a>				
 			</span>
 		</div>		
 		<g:each in="${usuarioInstance.jugador.rankings}" var="ranking">

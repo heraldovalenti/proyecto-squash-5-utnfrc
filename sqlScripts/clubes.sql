@@ -32,3 +32,10 @@ insert into cancha (id,version,club_id,numero,nombre,tipo_suelo,techada,disponib
 (16,1,5,2,'CS2','Parquet',true,null),
 (17,1,5,3,'CS3','Parquet',true,null),
 (18,1,5,4,'CS4','Parquet',true,null);
+
+update torneo set club_id = 1 where id = 1;
+update torneo set club_id = 2 where id = 2;
+update torneo set club_id = 3 where id = 3;
+update torneo set club_id =4 where id = 4;
+update torneo set club_id = 5 where id = 5;
+update torneo set club_id = 1 where id = 6;

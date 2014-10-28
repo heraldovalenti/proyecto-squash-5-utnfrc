@@ -36,3 +36,24 @@ insert into inscripcion_torneo (id,usuario_id,detalle_torneo_id,estado,fecha,ver
 (24, 25, 3, 'Vinculada','2014-01-01',1),
 (25, 26, 3, 'Vinculada','2014-01-01',1),
 (26, 27, 3, 'Vinculada','2014-01-01',1);
+
+insert into inscripcion_torneo (id,usuario_id,detalle_torneo_id,estado,fecha,version) values
+(27, 1, 19, 'Vinculada','2014-01-01',1),
+(28, 2, 19, 'Vinculada','2014-01-01',1),
+(29, 3, 19, 'Vinculada','2014-01-01',1),
+(30, 4, 19, 'Vinculada','2014-01-01',1),
+(31, 12, 19, 'Vinculada','2014-01-01',1),
+(32, 13, 19, 'Vinculada','2014-01-01',1),
+(33, 1, 20, 'Vinculada','2014-01-01',1),
+(34, 2, 20, 'Vinculada','2014-01-01',1),
+(35, 3, 20, 'Vinculada','2014-01-01',1),
+(36, 4, 20, 'Vinculada','2014-01-01',1),
+(37, 12, 20, 'Vinculada','2014-01-01',1),
+(38, 1, 21, 'Vinculada','2014-01-01',1),
+(39, 2, 21, 'Vinculada','2014-01-01',1),
+(40, 3, 21, 'Vinculada','2014-01-01',1),
+(41, 4, 21, 'Vinculada','2014-01-01',1),
+(42, 12, 21, 'Vinculada','2014-01-01',1),
+(43, 13, 21, 'Vinculada','2014-01-01',1),
+(44,14, 21, 'Vinculada','2014-01-01',1);
+

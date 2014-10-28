@@ -15,12 +15,14 @@ class JugadoresService {
 			createAlias("jugador", "jug", CriteriaSpecification.LEFT_JOIN)
 			createAlias("jug.categoriasJugador","catJ", CriteriaSpecification.LEFT_JOIN)
 			createAlias("catJ.categoria","cat", CriteriaSpecification.LEFT_JOIN)
+			createAlias("persona","pers",CriteriaSpecification.LEFT_JOIN)
 			and {
 				isNotNull("jugador")
 				isNotEmpty("jug.categoriasJugador")
 				eq("catJ.estado","Asignada")
 				eq("cat.nombre", categoria)
 			}
+			order("pers.apellido", "asc")
 		}
 		
 		return jugadoresCategoria
@@ -31,7 +33,7 @@ class JugadoresService {
 		def categorias= Categoria.findAll();
 
 		return categorias
-	}
+	}	
 	
 	def listarJugadoresPorRankingYCategoria(String categoria,def params){		
 		
@@ -55,6 +57,22 @@ class JugadoresService {
 		}
 				
 		return jugadoresRanking
+	}	
+	
+	def listarJugadoresPorTorneoYCategoria(Long torneo,Long categoria){
+		def c = InscripcionTorneo.createCriteria()
+		def inscripciones= c.list() {
+			//createAlias("usuario", "u", CriteriaSpecification.LEFT_JOIN)
+			createAlias("detalleTorneo","det", CriteriaSpecification.LEFT_JOIN)
+			createAlias("det.torneo","tor", CriteriaSpecification.LEFT_JOIN)
+			createAlias("det.categoria","cat",CriteriaSpecification.LEFT_JOIN)
+			and {
+				eq("tor.id",torneo)
+				eq("cat.id", categoria)
+			}
+		}
+		return inscripciones
+	
 	}
 	
 	def calcularEdad(Date fechaNacimiento){
