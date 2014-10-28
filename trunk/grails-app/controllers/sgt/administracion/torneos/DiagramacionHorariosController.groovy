@@ -3,6 +3,7 @@ package sgt.administracion.torneos
 import grails.converters.JSON
 import sgt.Cancha
 import sgt.Club
+import sgt.DetalleTorneo
 import sgt.Partido
 import sgt.Torneo
 
@@ -10,6 +11,7 @@ class DiagramacionHorariosController {
 	
 	static defaultAction = "index"
 	
+	def diagramacionService
 	def diagramacionHorariosService
 	
 	def index() {
@@ -21,7 +23,7 @@ class DiagramacionHorariosController {
 	}
 	
 	private Torneo getTorneo() {
-		return Torneo.get(1)
+		return Torneo.get(7)
 	}
 	
 	def getCanchas() {
@@ -61,7 +63,7 @@ class DiagramacionHorariosController {
 				fin: it.horaHasta,
 				jugador1: it.jugador1.toString(),
 				jugador2: it.jugador2.toString(),
-				cancha: it.cancha.id,
+				cancha: it.cancha?.id,
 				categoria: it.categoria.toString(),
 				orden: it.ordenPartido,
 				ronda: it.rondaPartido(),

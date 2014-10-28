@@ -6,13 +6,89 @@ var fechaSeleccionada = null;
 var diasSemana = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
 
 function initDiagramacionCanchas() {
+	renderDiagramacionRondas();
 	renderDiagramacionCanchas();
 	loadCanchas();
 	loadTorneo();
+	loadPartidos();
 }
 
 function renderDiagramacionRondas() {
+	//panel principal
+	$("<div/>")
+		.attr("id","diagramacion-rondas")
+		.addClass("box ui-tabs ui-widget ui-widget-content ui-corner-all contenedor-multi")
+		.appendTo("#diagramacion-table");
 	
+	$(".contenedor-multi").droppable({
+		tolerance: "pointer",
+		drop: function( event, ui ) {
+			var partido = ui.draggable[0];
+			var contenedor = event.target;
+			partidoToRonda(partido);
+		},
+	});
+}
+
+function renderPanelesRonda() {
+	var rondasPartido = [];
+	for (var i = 0; i < Object.keys(partidos).length; i++) {
+		var key = Object.keys(partidos)[i];
+		var partido = partidos[key];
+		if (rondasPartido.indexOf(partido.ronda) === -1) {
+			rondasPartido.push(partido.ronda);
+		}
+	}
+	rondasPartido.sort( function(a, b){ return b - a } );
+	for (var i = 0; i < rondasPartido.length; i++) {
+		$("<div/>")
+			.attr("id","ronda-" + rondasPartido[i])
+			.attr("ronda",rondasPartido[i])
+			.addClass("ronda box ui-corner-all")
+			.appendTo("#diagramacion-rondas");
+	}
+	renderPartidos();
+}
+
+function renderPartidos() {
+	for (var i = 0; i < Object.keys(partidos).length; i++) {
+		var key = Object.keys(partidos)[i];
+		var partido = partidos[key];
+		if (partido.cancha == null) {
+			var divRonda = $("#ronda-" + partido.ronda);
+			var divPartido = $("#ronda-" + partido.ronda + " #partido-" + partido.id);
+			if (divPartido.length !== 0) continue;
+			var div = $("<div/>")
+				.addClass("partido ui-widget-header ui-corner-all")
+				.attr("id","partido-" + partido.id)
+				.attr("ronda", partido.ronda)
+				.appendTo(divRonda);
+			var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
+			var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
+			$("<span/>").addClass("info").html(partido.rondaString).appendTo(div);
+			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
+			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
+			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);
+		} else if(partido.fecha === fechaSeleccionada) {
+			var divHorario = $("#cancha-" + partido.cancha + " div[hora='" + partido.inicio + "']");
+			var div = $("<div/>")
+			.addClass("partido ui-widget-header ui-corner-all")
+			.attr("id","partido-" + partido.id)
+			.attr("ronda", partido.ronda)
+			.appendTo(divHorario);
+			var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
+			var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
+			$("<span/>").addClass("info").html(partido.rondaString).appendTo(div);
+			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
+			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
+			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);
+		}
+	}
+	$(".partido").draggable({
+		revert: true,
+		revertDuration: 200,
+		opacity: 0.5,
+	});
 }
 
 function renderDiagramacionCanchas() {
@@ -106,10 +182,11 @@ function setFechaSeleccionada(dia) {
 	var diaFecha = fechaSeleccionada.toLocaleString().split(" ")[0];
 	$("#dia-semanal").html(diaSemanal);
 	$("#dia-fecha").html(diaFecha);
-	cargarHorariosCanchas();
+	renderHorariosCanchas();
+	renderPartidos();
 }
 
-function cargarHorariosCanchas() {
+function renderHorariosCanchas() {
 	var diaSemanal = diasSemana[fechaSeleccionada.getDay()];
 	var diaFecha = fechaSeleccionada.toLocaleString().split(" ")[0];
 	for (var i = 0; i < canchas.length; i++) {
@@ -130,11 +207,12 @@ function cargarHorariosCanchas() {
 				horariosDia.push(detalle.hora);
 			}
 		}
-		horariosDia.sort();
+		horariosDia.sort( function(a, b){ return a - b } );
 		//render los horarios
 		for (var j = 0; j < horariosDia.length; j++) {
 			var horario = horariosDia[j];
 			var div = $("<div/>")
+				.attr("hora",horario)
 				.addClass("horario-cancha ui-corner-all contenedor-single")
 				.appendTo(divCancha);
 			var ul = $("<ul/>")
@@ -145,45 +223,6 @@ function cargarHorariosCanchas() {
 			$("<li/>").html(horario + ":00-" + (horario + 1) + ":00").appendTo(ul);
 		}
 	}
-}
-
-function loadCanchas() {
-	$.ajax({
-		url: "diagramacionHorarios/getCanchas",
-		success: function(data) {
-			canchas = data;
-			renderCanchas();
-		}
-	});
-}
-
-function loadPartidos() {
-	$.ajax({
-		url: "diagramacionHorarios/getPartidos",
-		success: function(data) {
-			partidos = data;
-		}
-	});
-}
-
-
-$(document).ready( function() {
-	
-	$(".partido").draggable({
-		revert: true,
-		revertDuration: 200,
-		opacity: 0.5		
-	});
-	
-	$(".contenedor-multi").droppable({
-		tolerance: "pointer",
-		drop: function( event, ui ) {
-			var partido = ui.draggable[0];
-			var contenedor = event.target;
-			partidoToRonda(partido);
-		}
-	});
-	
 	$(".contenedor-single").droppable({
 		tolerance: "pointer",
 		drop: function( event, ui ) {
@@ -206,33 +245,78 @@ $(document).ready( function() {
 				partidoToRonda( otherPartido);
 			}
 			partido.remove();
-			$(contenedor).append(partido);				
+			appendPartido(partido,contenedor);
 		}
 	});
+}
 
+function loadCanchas() {
+	$.ajax({
+		url: "diagramacionHorarios/getCanchas",
+		success: function(data) {
+			canchas = data;
+			renderCanchas();
+			setFechaSeleccionada(0);
+		}
+	});
+}
+
+function loadPartidos() {
+	$.ajax({
+		url: "diagramacionHorarios/getPartidos",
+		success: function(data) {
+			for (var i = 0; i < data.length; i++) {
+				partido = data[i];
+				var partidoId = partido.id;
+				partidos[partidoId] = partido;
+			}
+			renderPanelesRonda();
+		}
+	});
+}
+
+
+$(document).ready( function() {
 	initDiagramacionCanchas();
 });
 
 function swapPartidos(partido1, partido2) {
 	var contenedor = partido2.parentElement;
 	partido2.remove();
-	$(partido1.parentElement).append(partido2);
+	appendPartido(partido2,$(partido1.parentElement));
 	partido1.remove();
-	$(contenedor).append(partido1);	
+	appendPartido(partido1,contenedor);
 }
 
 function partidoToRonda(partido) {
 	var contenedor = $(".contenedor-multi")[0];
-	var rondas = contenedor.children
 	var rondaPartido = $(partido).attr("ronda");
-	for (var i = 0; i < rondas.length; i++) {
-		var ronda = $(rondas[i]).attr("ronda");
-		if (ronda === rondaPartido) {
-			contenedor = rondas[i];
-			break;
-		}
-	}
+	
+	contenedor = $("#ronda-" + rondaPartido)[0]; 
 	if (partido.parentElement == contenedor) return;
 	partido.remove();
+	appendPartido(partido,contenedor);
+}
+
+function appendPartido(partido, contenedor) {
 	$(contenedor).append(partido);
+	if ( $(contenedor).hasClass("ronda") ) {
+		var partidoId = partido.id.split("-")[1];
+		var partido = partidos[partidoId];
+		partido.cancha = null;
+		partido.fecha = null;
+		partido.inicio = null;
+		partido.fin = null;
+	} else if ( $(contenedor).hasClass("horario-cancha") ) {
+		var partidoId = partido.id.split("-")[1];
+		var partido = partidos[partidoId];
+		var canchaId = contenedor.parentElement.id.split("-")[1];
+		var fecha = fechaSeleccionada;
+		var inicio = $(contenedor).attr("hora");
+		var fin = inicio + 1;
+		partido.cancha = canchaId;
+		partido.fecha = fecha;
+		partido.inicio = inicio;
+		partido.fin = fin;
+	}
 }
