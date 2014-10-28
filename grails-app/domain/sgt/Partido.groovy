@@ -41,23 +41,24 @@ class Partido {
 	}
 	
 	int rondaPartido() {
-		int ronda = cantidadRondasCategoriaTorneo()
+		int ronda = 1
 		Partido aux = siguientePartido
 		while(aux != null) {
 			aux = aux.siguientePartido
-			ronda--
+			ronda++
 		}
 		return ronda
 	}
 	
 	String rondaPartidoString() {
-		int cantidad = cantidadRondasCategoriaTorneo()
 		int ronda = rondaPartido()
+		if (ronda == 1) return "Final"
+		if (ronda == 2) return "Semi-Final"
+		if (ronda == 3) return "4tos de final"
+		if (ronda == 4) return "8vos de final"
+		
+		int cantidad = cantidadRondasCategoriaTorneo()
 		int diff = Math.abs(ronda - cantidad)
-		if (diff == 0) return "Final"
-		if (diff == 1) return "Semi-Final"
-		if (diff == 2) return "4tos de final"
-		if (diff == 3) return "8vos de final"
-		return ( (diff - 3) + "º Ronda")
+		return ( (diff + 1) + "º Ronda")
 	}
 }

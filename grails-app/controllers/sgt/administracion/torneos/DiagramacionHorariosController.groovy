@@ -28,6 +28,7 @@ class DiagramacionHorariosController {
 		Torneo t = getTorneo()
 		Club club = t.club
 		List<Cancha> canchas = new ArrayList<Cancha>(club.canchas)
+		Collections.sort(canchas)
 		render canchas as grails.converters.deep.JSON
 	}
 	
@@ -52,6 +53,21 @@ class DiagramacionHorariosController {
 	}
 	
 	def getPartidos() {
+		JSON.registerObjectMarshaller(Partido) {
+			return [
+				id: it.id,
+				fecha: it.fecha, 
+				inicio: it.horaDesde, 
+				fin: it.horaHasta,
+				jugador1: it.jugador1.toString(),
+				jugador2: it.jugador2.toString(),
+				cancha: it.cancha.id,
+				categoria: it.categoria.toString(),
+				orden: it.ordenPartido,
+				ronda: it.rondaPartido(),
+				rondaString: it.rondaPartidoString()
+				]
+		}
 		Torneo t = getTorneo()
 		def partidos = Partido.createCriteria().list() {
 			eq("torneo", t)
