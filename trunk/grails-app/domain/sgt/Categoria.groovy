@@ -14,7 +14,7 @@ class Categoria {
     }
 	
 	String toString() {
-		return nombre
+		return nombre + " - " + modalidadCategoria
 	}
 	
 	@Override

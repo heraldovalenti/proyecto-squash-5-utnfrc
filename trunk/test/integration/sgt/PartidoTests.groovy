@@ -54,7 +54,7 @@ class PartidoTests {
 				eq("ordenPartido", 1)
 			}
 		}
-		Assert.assertEquals(1, p.rondaPartido())
+		Assert.assertEquals(3, p.rondaPartido())
 		Assert.assertEquals("4tos de final", p.rondaPartidoString())
 	}
 	
@@ -84,7 +84,7 @@ class PartidoTests {
 				eq("ordenPartido", 7)
 			}
 		}
-		Assert.assertEquals(3, p.rondaPartido())
+		Assert.assertEquals(1, p.rondaPartido())
 		Assert.assertEquals("Final", p.rondaPartidoString())
 	}
     

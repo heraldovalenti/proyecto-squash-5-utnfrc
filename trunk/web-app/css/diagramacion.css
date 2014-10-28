@@ -1,6 +1,7 @@
 .box {
 	border: 1px solid #aaaaaa;
 }
+.
 #diagramacion-table {
 	margin-top: 25px;
 	position: relative;
@@ -57,6 +58,11 @@ div.ronda div.partido {
 	padding-bottom: 5px;
 	overflow: hidden;
 	margin: 5px;
+}
+#diagramacion-canchas div.canchas-header {
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 20px;
 }
 div.horario-cancha {
 	width: 315px;

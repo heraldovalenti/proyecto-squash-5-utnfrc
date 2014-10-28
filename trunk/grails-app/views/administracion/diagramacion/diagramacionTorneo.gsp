@@ -29,86 +29,23 @@
 				<div class="partido ui-widget-header ui-corner-all" ronda="3">1</div>
 			</div>
 		</div>
-		<div id="diagramacion-canchas" class="box">
-			<div id="diagramacion-dia-torneo" class="box ui-widget-header ui-corner-all">
-				<label for="dia-torneo">Dia</label>
-				<input id="dia-torneo" name="dia-torneo" value="1">
-				<span class="dia-semanal">Lunes</span>
-				<span class="dia-fecha">01-01-2014</span>
-			</div>
 		
-			<g:render template="/administracion/diagramacion/canchasDiagramacion" model="[canchas: canchas]"/>
-			
-			<div id="cancha-1">
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-			</div>
-			<div id="cancha-2">
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div></div>
-			<div id="cancha-3">
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
-				<div class="horario-cancha ui-corner-all contenedor-single">
-					<ul class="horario-cancha-fecha">
-						<li>Miercoles</li>
-						<li>03-01-2014</li>
-						<li>09:00-10:00</li>
-					</ul>
-				</div>
+		<r:require module="diagramacion" />
+		
+		<%--
+		<li>
+			<a href="#cancha-{cancha.numero}>Cancha {cancha.numero} // N-{cancha.nombre}
+		</li>
+		<div id="cancha-3">
+			<div class="horario-cancha ui-corner-all contenedor-single">
+				<ul class="horario-cancha-fecha">
+					<li>Miercoles</li>
+					<li>03-01-2014</li>
+					<li>09:00-10:00</li>
+				</ul>
 			</div>
 		</div>
-		<r:require module="diagramacion" />
+		--%>
 	</div>
 </body>
 </html>
