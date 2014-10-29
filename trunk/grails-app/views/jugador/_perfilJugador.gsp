@@ -1,4 +1,4 @@
-<div class="grid_16 mt10">
+<div class="grid_16 mt10 mb10 ml30">
 	<div id="playerBioInfoCard">
 		<div id="playerBioInfoCardMain">
 			

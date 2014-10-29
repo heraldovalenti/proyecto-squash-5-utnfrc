@@ -1555,9 +1555,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
     background-image: -ms-linear-gradient(top , #064183 0%, #02162F 100%);
     
     height:315px !important;
-    width:44em; 
-    margin-top: 0.3em;
-    margin-left:3em;   
+    width:100%;   
     text-align: left;
 }
 #playerBioHeadShotCopy  {background:url("images/headshot_copy_bg.png") repeat scroll 0 0 transparent;bottom:0;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:15px;left:11px;line-height:15px;padding:0 4px;position:absolute;width:140px;}
