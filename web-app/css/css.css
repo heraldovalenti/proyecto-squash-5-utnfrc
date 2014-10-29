@@ -1421,7 +1421,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 *Content
 */
 
-.content {width: 972px; min-height: 300px; margin: 0 auto; background: #FFF; border-left: 1px solid #445B7D;}
+.content {width: 972px; min-height: 300px; margin: 0 auto; background: #FFF; }
 .content .cols {position: relative; display: block; float: left;}
 .content .col-1 {width: 530px; height: auto;  border-right: 1px solid #FFF;}
 .content .col-2 {width: 194px; height: auto; margin-left: 5px; margin-right: 10px; background: white; padding: 0 3px 3px 3px; text-align: left;}
