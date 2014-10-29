@@ -1,5 +1,10 @@
 package sgt.administracion.torneos
 
+import grails.validation.ValidationException;
+
+import java.util.List;
+
+import sgt.Partido;
 import sgt.Torneo
 import sgt.exceptions.DiagramacionException;
 import sgt.exceptions.TorneoNotFoundException;
@@ -22,5 +27,11 @@ class DiagramacionHorariosService {
 			throw new DiagramacionException(DiagramacionException.CLUB_SIN_CANCHAS)
 		}
 	}
-
+			
+	def guardarDiagramacion(List<Partido> diagramacion) throws ValidationException {
+		for (Partido p : diagramacion) {
+			p = p.merge()
+			p.save(failOnError: true)
+		}
+	}
 }

@@ -5,12 +5,61 @@ var diasTorneo = [];
 var fechaSeleccionada = null;
 var diasSemana = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
 
+$(document).ready( function() {
+	initDiagramacionCanchas();
+	setEventosAcciones();
+});
+
 function initDiagramacionCanchas() {
 	renderDiagramacionRondas();
 	renderDiagramacionCanchas();
 	loadCanchas();
 	loadTorneo();
 	loadPartidos();
+}
+
+function setEventosAcciones() {
+	$("#action-cancelar").click( function(event) {
+			event.preventDefault();
+			cancelarCambios();
+	});
+	$("#action-guardar").click( function(event) {
+			event.preventDefault();
+			guardarCambios();
+	});
+}
+
+function guardarCambios() {
+	dialogs.showLoadingDialog("Guardando diagramacion...");
+	var keys = Object.keys(partidos);
+	var values = keys.map(function(v) { return partidos[v]; });
+	$.ajax({
+		url: "diagramacionHorarios/savePartidos",
+		contentType: "application/json",
+		type: "POST",
+		dataType: "json",
+		data: JSON.stringify(values),
+		success: function(data, status, jqXHR) {
+			dialogs.hideLoadingDialog();
+			var text = "Diagramacion guardada";
+			var yes = function() { refreshDiagramacion(); };
+			dialogs.showMessageDialog(text, yes);
+		},
+		error: function(jqXHR, status, errorThrown) {
+			dialogs.hideLoadingDialog();
+			console.log(jqXHR);
+		}
+	});
+}
+
+function cancelarCambios() {
+	var text = "¿Esta seguro que desea cancelar los cambios realizados?";
+	var yes = function() { refreshDiagramacion(); };
+	dialogs.showConfirmDialog(text, yes);
+}
+
+function refreshDiagramacion() {
+	window.location = "diagramacionHorarios";
 }
 
 function renderDiagramacionRondas() {
@@ -275,11 +324,6 @@ function loadPartidos() {
 	});
 }
 
-
-$(document).ready( function() {
-	initDiagramacionCanchas();
-});
-
 function swapPartidos(partido1, partido2) {
 	var contenedor = partido2.parentElement;
 	partido2.remove();
@@ -313,7 +357,8 @@ function appendPartido(partido, contenedor) {
 		var canchaId = contenedor.parentElement.id.split("-")[1];
 		var fecha = fechaSeleccionada;
 		var inicio = $(contenedor).attr("hora");
-		var fin = inicio + 1;
+		var fin = inicio;
+		fin++;
 		partido.cancha = canchaId;
 		partido.fecha = fecha;
 		partido.inicio = inicio;

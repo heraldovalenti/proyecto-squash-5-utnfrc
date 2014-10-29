@@ -1,28 +1,28 @@
 package sgt.administracion.torneos
 
 import grails.converters.JSON
+
+import java.text.SimpleDateFormat
+
+import org.codehaus.groovy.grails.web.json.JSONObject
+
 import sgt.Cancha
 import sgt.Club
-import sgt.DetalleTorneo
 import sgt.Partido
 import sgt.Torneo
+
 
 class DiagramacionHorariosController {
 	
 	static defaultAction = "index"
 	
-	def diagramacionService
 	def diagramacionHorariosService
-	
-	def index() {
-		Cancha c1 = new Cancha(techada: true, numero: 1, tipoSuelo: "Parquet")
-		Cancha c2 = new Cancha(techada: true, numero: 2, tipoSuelo: "Parquet")
-		Cancha c3 = new Cancha(nombre: "Alpha", techada: true, numero: 3, tipoSuelo: "Parquet")
 		
-		render(view: "/administracion/diagramacion/diagramacionTorneo", model: [canchas: [c1,c2,c3]])
+	def index() {
+		render(view: "/administracion/diagramacion/diagramacionTorneo")
 	}
 	
-	private Torneo getTorneo() {
+	Torneo getTorneo() {
 		return Torneo.get(7)
 	}
 	
@@ -31,7 +31,7 @@ class DiagramacionHorariosController {
 		Club club = t.club
 		List<Cancha> canchas = new ArrayList<Cancha>(club.canchas)
 		Collections.sort(canchas)
-		render canchas as grails.converters.deep.JSON
+		render canchas as JSON
 	}
 	
 	def getDuracionDiasTorneo() {
@@ -42,9 +42,6 @@ class DiagramacionHorariosController {
 	def getFechaDiaTorneo() {
 		Integer numeroDia = Integer.parseInt(params.numeroDia)
 		Torneo t = getTorneo()
-		/*JSON.registerObjectMarshaller(Date) {
-			return it?.format("mm/dd/yyyy")
-		}*/
 		Date fecha = t.getFechaDiaTorneo(numeroDia) 
 		def res = [fechaDia: fecha]
 		render res as JSON
@@ -76,5 +73,26 @@ class DiagramacionHorariosController {
 		}
 		render partidos as JSON
 	}
-
+	
+	def savePartidos() {
+		List<Partido> diagramacion = new ArrayList<Partido>()
+		def partidosJson = request.JSON
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd")
+		for (int i = 0; i < partidosJson.size(); i++) {
+			Long idPartido = partidosJson[i].id
+			Partido p = Partido.get(idPartido)
+			
+			Long idCancha = (JSONObject.NULL != partidosJson[i].cancha) ? Long.parseLong(partidosJson[i].cancha) : null
+			p.cancha = Cancha.get(idCancha)
+			 
+			String fechaString = (JSONObject.NULL != partidosJson[i].fecha) ? fechaString.substring(0, 9) : null
+			Date fecha = (fechaString) ? sdf.parse(fechaString) : null
+			p.fecha = fecha
+			
+			p.horaDesde = partidosJson[i].inicio
+			
+			p.horaHasta = partidosJson[i].fin
+			diagramacion.add(p)
+		}
+	}
 }

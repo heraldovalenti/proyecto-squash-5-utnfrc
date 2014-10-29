@@ -1,7 +1,6 @@
 package sgt
 
-import java.util.Comparator;
-
+import grails.validation.ValidationException
 import logica.CalculosTorneo
 
 class DiagramacionService {
