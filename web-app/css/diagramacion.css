@@ -13,7 +13,7 @@
 	position: relative;
 	float: left;
 	width: 450px;
-	margin: 5px;
+	margin: 0px 5px 0px 5px;
 }
 div.ronda {
 	padding-bottom: 5px;
@@ -56,6 +56,7 @@ div.ronda div.partido {
 #diagramacion-canchas {
 	position: relative;
 	padding-bottom: 5px;
+	padding-top: 10px;
 	overflow: hidden;
 	margin: 5px;
 }
