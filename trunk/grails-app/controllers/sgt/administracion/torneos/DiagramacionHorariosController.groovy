@@ -1,6 +1,7 @@
 package sgt.administracion.torneos
 
 import grails.converters.JSON
+import grails.validation.ValidationException;
 
 import java.text.SimpleDateFormat
 
@@ -11,7 +12,6 @@ import sgt.Club
 import sgt.Partido
 import sgt.Torneo
 
-
 class DiagramacionHorariosController {
 	
 	static defaultAction = "index"
@@ -19,7 +19,7 @@ class DiagramacionHorariosController {
 	def diagramacionHorariosService
 		
 	def index() {
-		render(view: "/administracion/diagramacion/diagramacionTorneo")
+		render(view: "/administracion/diagramacion/diagramacionTorneo", model: ["":""])
 	}
 	
 	Torneo getTorneo() {
@@ -27,6 +27,16 @@ class DiagramacionHorariosController {
 	}
 	
 	def getCanchas() {
+		JSON.registerObjectMarshaller(Cancha) {
+			return [
+				id: it.id,
+				club: it.club.id,
+				nombre: it.nombre,
+				numero: it.numero,
+				techada: it.techada,
+				tipoSuelo: it.tipoSuelo,
+				disponibilidad: [detalles: it.disponibilidad?.detalles] ]
+		}
 		Torneo t = getTorneo()
 		Club club = t.club
 		List<Cancha> canchas = new ArrayList<Cancha>(club.canchas)
@@ -79,20 +89,20 @@ class DiagramacionHorariosController {
 		def partidosJson = request.JSON
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd")
 		for (int i = 0; i < partidosJson.size(); i++) {
-			Long idPartido = partidosJson[i].id
-			Partido p = Partido.get(idPartido)
-			
-			Long idCancha = (JSONObject.NULL != partidosJson[i].cancha) ? Long.parseLong(partidosJson[i].cancha) : null
-			p.cancha = Cancha.get(idCancha)
-			 
-			String fechaString = (JSONObject.NULL != partidosJson[i].fecha) ? fechaString.substring(0, 9) : null
-			Date fecha = (fechaString) ? sdf.parse(fechaString) : null
-			p.fecha = fecha
-			
-			p.horaDesde = partidosJson[i].inicio
-			
-			p.horaHasta = partidosJson[i].fin
+			Partido p = Partido.get(partidosJson[i].id)
+			p.cancha = (JSONObject.NULL.equals(partidosJson[i].cancha)) ? null : 
+				Cancha.get( partidosJson[i].cancha )
+			p.fecha = (JSONObject.NULL.equals(partidosJson[i].fecha)) ? null :
+				sdf.parse( ( (String)partidosJson[i].fecha).substring(0, 10) )			
+			p.horaDesde = (JSONObject.NULL.equals(partidosJson[i].inicio)) ? null : ((String)partidosJson[i].inicio)
+			p.horaHasta = (JSONObject.NULL.equals(partidosJson[i].fin)) ? null : ((String)partidosJson[i].fin)
 			diagramacion.add(p)
+		}
+		try {
+			diagramacionHorariosService.saveDiagramacion(diagramacion)
+			render "OK"
+		} catch (ValidationException ex) {
+			render ex.errors.allErrors as JSON
 		}
 	}
 }

@@ -1,6 +1,5 @@
 package sgt
 
-import grails.validation.ValidationException
 import logica.CalculosTorneo
 
 class DiagramacionService {
@@ -66,5 +65,4 @@ class DiagramacionService {
 		}
 		generarPartidosSiguientes(partidosSiguientes)
 	}
-	
 }

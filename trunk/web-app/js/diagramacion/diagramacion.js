@@ -37,7 +37,6 @@ function guardarCambios() {
 		url: "diagramacionHorarios/savePartidos",
 		contentType: "application/json",
 		type: "POST",
-		dataType: "json",
 		data: JSON.stringify(values),
 		success: function(data, status, jqXHR) {
 			dialogs.hideLoadingDialog();
@@ -118,7 +117,7 @@ function renderPartidos() {
 			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
 			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
 			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);
-		} else if(partido.fecha === fechaSeleccionada) {
+		} else if( new Date(partido.fecha).getTime() === fechaSeleccionada.getTime() ) {
 			var divHorario = $("#cancha-" + partido.cancha + " div[hora='" + partido.inicio + "']");
 			var div = $("<div/>")
 			.addClass("partido ui-widget-header ui-corner-all")
@@ -356,9 +355,8 @@ function appendPartido(partido, contenedor) {
 		var partido = partidos[partidoId];
 		var canchaId = contenedor.parentElement.id.split("-")[1];
 		var fecha = fechaSeleccionada;
-		var inicio = $(contenedor).attr("hora");
-		var fin = inicio;
-		fin++;
+		var inicio = Number($(contenedor).attr("hora"));
+		var fin = inicio + 1;
 		partido.cancha = canchaId;
 		partido.fecha = fecha;
 		partido.inicio = inicio;
