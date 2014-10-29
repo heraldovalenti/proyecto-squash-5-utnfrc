@@ -1,5 +1,3 @@
-<%@ page import="sgt.Persona"%>
-
 <head>
 	<title>Administracion</title>
     
