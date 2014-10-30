@@ -18,7 +18,7 @@ $(function() {
                 $.map(response, function(item){             
                     return{
                         id: item.id,
-                        value: item.nombre + " "+ item.apellido 
+                        value: item.apellido  + ", "+ item.nombre
                     }
                 });
  
@@ -36,7 +36,27 @@ $(function() {
                 select: function (event, ui){                  
                     $('#jugador2').val(ui.item.id);
                 }
-            });
+            });           
+ 
+        }
+    });
+ 
+});
+
+$(function() {
+    $.ajax({
+        type: "GET",
+        url: "/SistemaGestionTorneo/jugador/listarJugadoresJSON",
+        dataType: "json",
+        success : function(response) {      
+            var data =
+                $.map(response, function(item){             
+                    return{
+                        id: item.id,
+                        value: item.apellido  + ", "+ item.nombre
+                    }
+                }); 
+           
             
             $("#arbitroText").autocomplete({
                 source: data,

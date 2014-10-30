@@ -87,6 +87,7 @@ class TorneoController {
 
     def show(Long id) {
         def torneoInstance = Torneo.get(id)
+		session.setAttribute("torneoSeleccionado", torneoInstance)
         if (!torneoInstance) {
             flash.message = message(code: 'sgt.registrodatos.noencontrado')
             redirect(action: "list")

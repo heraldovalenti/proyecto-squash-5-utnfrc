@@ -22,8 +22,7 @@
 		<g:message code="partido.fecha.label" default="Fecha" />
 		<span class="required-indicator">*</span>
 	</label>
-	<%--<input type="text" id="datepicker" value="${partidoInstance?.fecha}"  />
-	--%><g:textField name="fecha" id="datepicker" value="${partidoInstance?.fecha}" placeholder="Seleccione una fecha.."/>
+	<g:textField name="fecha" id="datepicker" value="${formatDate(format:"dd/MM/yyyy", date:partidoInstance?.fecha)}" placeholder="Seleccione una fecha.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'horaDesde', 'error')} ">
@@ -48,8 +47,8 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<!----- Campos de Jugador1----->
-	<g:hiddenField name="jugador1" id="jugador1"/>	
-	<g:textField name="jugador1Text" id="jugador1Text" value="" placeholder="Ingrese el Jugador.."/>
+	<g:hiddenField name="jugador1" id="jugador1" value="${partidoInstance?.jugador1?.id}" />	
+	<g:textField name="jugador1Text" id="jugador1Text" value="${partidoInstance?.jugador1?.persona}" placeholder="Ingrese el Jugador.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'jugador2', 'error')} required">
@@ -58,8 +57,8 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<!----- Campos de Jugador2----->
-	<g:hiddenField name="jugador2" id="jugador2"/>
-	<g:textField name="jugador2Text" id="jugador2Text" value="" placeholder="Ingrese el Jugador.."/>
+	<g:hiddenField name="jugador2" id="jugador2" value="${partidoInstance?.jugador2?.id}" />
+	<g:textField name="jugador2Text" id="jugador2Text" value="${partidoInstance?.jugador2?.persona}" placeholder="Ingrese el Jugador.."/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'cancha', 'error')} required">
@@ -76,7 +75,7 @@
 		
 	</label>
 	<!----- Campos de Arbitro----->
-	<g:hiddenField name="arbitro" id="arbitro"/>
-	<g:textField name="arbitroText" id="arbitroText" value="" placeholder="Ingrese el Arbitro.."/>
+	<g:hiddenField name="arbitro" id="arbitro" value="${partidoInstance?.arbitro?.id}"/>
+	<g:textField name="arbitroText" id="arbitroText" value="${partidoInstance?.arbitro?.persona}" placeholder="Ingrese el Arbitro.."/>
 </div>
 
