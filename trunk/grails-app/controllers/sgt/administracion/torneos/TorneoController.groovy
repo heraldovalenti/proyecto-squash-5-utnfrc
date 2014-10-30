@@ -1,6 +1,7 @@
 package sgt.administracion.torneos
 
 import grails.converters.*
+import java.text.SimpleDateFormat
 
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -56,7 +57,7 @@ class TorneoController {
     def save() {
 		def idTorneoPuntuable = session.getAttribute("idTorneoPuntuable")
 		def torneoPuntuableInstance = TorneoPuntuable.get(idTorneoPuntuable)
-		def torneoInstance = new Torneo(params)
+		def torneoInstance = setearParametrosTorneo(null,params)
 		torneoInstance.setFechaAlta(new Date())
 		torneoInstance.setEstado("Creado")
 		torneoInstance.setPuntuable(torneoPuntuableInstance != null)
@@ -139,9 +140,9 @@ class TorneoController {
                 render(view: "/administracion/torneos/edit", model: [torneoInstance: torneoInstance])
                 return
             }
-        }
+        }	
 
-        torneoInstance.properties = params
+		torneoInstance=setearParametrosTorneo(torneoInstance,params)			
 
         if (!torneoInstance.save(flush: true)) {
             render(view: "/administracion/torneos/edit", model: [torneoInstance: torneoInstance])
@@ -316,5 +317,41 @@ class TorneoController {
 		def result = Torneo.list(params)
 		def total = Torneo.count()
 		render(view: "lista", model: [torneos: result, torneosTotal: total])
+	}	
+	
+	def setearParametrosTorneo(Torneo torneoInstance,def parametros){
+		
+		def nombre=parametros.nombre
+		def fechaInicioInscripcionParam=parametros.fechaInicioInscripcion
+		Date fechaInicioInscripcion
+		if (fechaInicioInscripcionParam!=""){
+			fechaInicioInscripcion= new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicioInscripcionParam)
+		}
+		def fechaFinInscripcionParam=parametros.fechaFinInscripcion
+		Date fechaFinInscripcion
+		if(fechaFinInscripcionParam!=""){
+			fechaFinInscripcion= new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinInscripcionParam)
+		}
+		def fechaInicioTorneoParam=parametros.fechaInicioTorneo
+		Date fechaInicioTorneo
+		if(fechaInicioTorneoParam!=""){
+			fechaInicioTorneo= new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicioTorneoParam)
+		}
+		def fechaFinTorneoParam=parametros.fechaFinTorneo
+		Date fechaFinTorneo
+		if(fechaFinTorneo!=""){
+			fechaFinTorneo= new SimpleDateFormat("dd/MM/yyyy").parse(fechaFinTorneoParam)
+		}
+		if(torneoInstance==null){
+			torneoInstance= new Torneo()
+		}
+				
+		torneoInstance.setNombre(nombre)
+		torneoInstance.setFechaInicioInscripcion(fechaInicioInscripcion)
+		torneoInstance.setFechaFinInscripcion(fechaFinInscripcion)
+		torneoInstance.setFechaInicioTorneo(fechaInicioTorneo)
+		torneoInstance.setFechaFinTorneo(fechaFinTorneo)
+		
+		return torneoInstance
 	}
 }

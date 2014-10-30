@@ -127,7 +127,10 @@ class PartidoController {
 		def horaDesde=parametros.horaDesde
 		def horaHasta=parametros.horaHasta
 		def fechaParam=parametros.fecha
-		Date fecha= new SimpleDateFormat("dd/MM/yyyy").parse(fechaParam)
+		Date fecha
+		if(fechaParam!=""){
+			fecha= new SimpleDateFormat("dd/MM/yyyy").parse(fechaParam)
+		}				
 		def categoriaId=parametros.categoria.id
 		def categoria=Categoria.get(categoriaId)
 		def persona1Id=parametros.jugador1

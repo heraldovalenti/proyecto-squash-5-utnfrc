@@ -77,4 +77,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/datePicker.js'
 	}
+	fechasTorneo{
+		dependsOn 'jquery'
+		resource url: 'js/torneoDatePicker.js'
+	}
 }
