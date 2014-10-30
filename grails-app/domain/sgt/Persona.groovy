@@ -21,6 +21,7 @@ class Persona {
 		telefono nullable: true, maxSize: 100
 		lugarNacimiento nullable: true, maxSize: 100
 		domicilio nullable: true
+		fechaNacimiento range: new Date(-2207520000000) .. new Date() 
     }
 	
 	String toString() {
