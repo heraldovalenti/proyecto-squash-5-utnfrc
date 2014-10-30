@@ -35,7 +35,7 @@
 				<li class="fieldcontain">
 					<span id="categoria-label" class="property-label"><g:message code="partido.categoria.label" default="Categoria" /></span>
 					
-						<span class="property-value" aria-labelledby="categoria-label"><g:link controller="categoria" action="show" id="${partidoInstance?.categoria?.id}">${partidoInstance?.categoria?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="categoria-label"><g:fieldValue bean="${partidoInstance}" field="categoria"/></span>
 					
 				</li>
 				</g:if>	
@@ -73,7 +73,7 @@
 				<li class="fieldcontain">
 					<span id="jugador1-label" class="property-label"><g:message code="partido.jugador1.label" default="Jugador1" /></span>
 					
-						<span class="property-value" aria-labelledby="jugador1-label"><g:link controller="usuario" action="show" id="${partidoInstance?.jugador1?.id}">${partidoInstance?.jugador1?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="jugador1-label"><g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario:partidoInstance?.jugador1?.id,categoria:partidoInstance?.categoria,tipo:'Jugador']">${partidoInstance?.jugador1?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -82,7 +82,7 @@
 				<li class="fieldcontain">
 					<span id="jugador2-label" class="property-label"><g:message code="partido.jugador2.label" default="Jugador2" /></span>
 					
-						<span class="property-value" aria-labelledby="jugador2-label"><g:link controller="usuario" action="show" id="${partidoInstance?.jugador2?.id}">${partidoInstance?.jugador2?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="jugador2-label"><g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario:partidoInstance?.jugador2?.id,categoria:partidoInstance?.categoria,tipo:'Jugador']">${partidoInstance?.jugador2?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -100,7 +100,7 @@
 				<li class="fieldcontain">
 					<span id="cancha-label" class="property-label"><g:message code="partido.cancha.label" default="Cancha" /></span>
 					
-						<span class="property-value" aria-labelledby="cancha-label"><g:link controller="cancha" action="show" id="${partidoInstance?.cancha?.id}">${partidoInstance?.cancha?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="cancha-label"><g:fieldValue bean="${partidoInstance}" field="cancha"/></span>
 					
 				</li>
 				</g:if>	
@@ -109,7 +109,7 @@
 				<li class="fieldcontain">
 					<span id="arbitro-label" class="property-label"><g:message code="partido.arbitro.label" default="Arbitro" /></span>
 					
-						<span class="property-value" aria-labelledby="arbitro-label"><g:link controller="usuario" action="show" id="${partidoInstance?.arbitro?.id}">${partidoInstance?.arbitro?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="arbitro-label"><g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario:partidoInstance?.arbitro?.id,categoria:partidoInstance?.categoria,tipo:'Jugador']">${partidoInstance?.arbitro?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>	

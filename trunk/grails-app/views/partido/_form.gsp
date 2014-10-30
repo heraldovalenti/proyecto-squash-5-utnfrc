@@ -26,19 +26,8 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'horaDesde', 'error')} ">
-	<label for="horaDesde">
-		<g:message code="partido.horaDesde.label" default="Hora Desde" />
-		
-	</label>
-	<g:textField name="horaDesde" value="${partidoInstance?.horaDesde}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'horaHasta', 'error')} ">
-	<label for="horaHasta">
-		<g:message code="partido.horaHasta.label" default="Hora Hasta" />
-		
-	</label>
-	<g:textField name="horaHasta" value="${partidoInstance?.horaHasta}"/>
+	<label>Hora</label>
+	<g:select name="horaDesde" from="${8..23}" value="${partidoInstance?.horaDesde}" style="width: 7%;"/>	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: partidoInstance, field: 'jugador1', 'error')} required">
