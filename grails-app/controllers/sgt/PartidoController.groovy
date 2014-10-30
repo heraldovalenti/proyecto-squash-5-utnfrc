@@ -2,6 +2,8 @@ package sgt
 import sgt.Persona;
 import sgt.Partido;
 import grails.converters.JSON
+
+import java.awt.TexturePaintContext.Int;
 import java.text.SimpleDateFormat
 import org.springframework.dao.DataIntegrityViolationException
 
@@ -43,7 +45,7 @@ class PartidoController {
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'partido.label', default: 'Partido'), partidoInstance.id])
+        flash.message = "El partido se ha creado correctamente"
         redirect(action: "show1", id: partidoInstance.id)
     }
 
@@ -98,7 +100,7 @@ class PartidoController {
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'partido.label', default: 'Partido'), partidoInstance.id])
+        flash.message = "El partido se ha actualizado correctamente"
         redirect(action: "show1", id: partidoInstance.id)
     }
 
@@ -125,7 +127,7 @@ class PartidoController {
 		def torneoId=parametros.torneo
 		def torneo=Torneo.get(torneoId)
 		def horaDesde=parametros.horaDesde
-		def horaHasta=parametros.horaHasta
+		def horaHasta=(Integer.parseInt(horaDesde) + 1).toString()
 		def fechaParam=parametros.fecha
 		Date fecha
 		if(fechaParam!=""){
