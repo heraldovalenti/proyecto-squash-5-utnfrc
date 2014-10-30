@@ -1,7 +1,8 @@
-<div class="grid_16 mt10 mb10 ml30">
+<div class="grid_16 mt10 mb10 ml25">
 	<div id="playerBioInfoCard">
 		<div id="playerBioInfoCardMain">
 			
+			<h3 class="title-grey">${ perfil.nombre + " " + perfil.apellido}</h3>
 			<div id="playerBioHeadShot">
 				<p class="IE6pngFix" id="playerBioHeadShotCopy">&copy; ACS</p>
 				<img style="width: 140px; height: 200px;" 
@@ -10,12 +11,7 @@
 			</div>
 			
 			<ul id="playerBioInfoList">
-				<li style="
-				color:#FFFFFF; 
-				font-family: inherit;
-				font-size: 100%;
-				font-style: inherit;
-				font-size: 20px">${ perfil.nombre + " " + perfil.apellido}</li>	
+				
 				<g:if test="${ perfil.fechaNacimiento }">
 					<li>
 						<span>Edad: </span> ${ perfil.edad } (<g:formatDate date="${ perfil.fechaNacimiento }" format="dd-MM-yyyy"/>)
