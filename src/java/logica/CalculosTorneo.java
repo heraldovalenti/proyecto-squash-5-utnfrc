@@ -209,6 +209,7 @@ public class CalculosTorneo {
      */
     public static void calcularRondas(){
         double cantJug=jugadores.length;
+        if (cantJug == 1) cantRondas = 1;
         while(cantJug>1)
         {
             cantRondas++;
@@ -267,7 +268,4 @@ public class CalculosTorneo {
             }
         }
     }
-    
-     
-    
 }

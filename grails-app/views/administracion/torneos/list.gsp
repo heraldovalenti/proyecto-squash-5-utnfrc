@@ -8,16 +8,16 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
+		<div class="nav" >
 			<ul>
 				<li><g:link class="create" controller="torneo" action="nuevoTorneo">Nuevo Torneo</g:link></li>
 			</ul>
 		</div>
-		<div id="list-torneo" class="content scaffold-list" role="main">
+		<div id="list-torneo" class="content scaffold-list" >
 			<h1>Listado de Torneos</h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			
+			<g:render template="/utils/messages" />
+			
 			<table>
 				<thead>
 					<tr>

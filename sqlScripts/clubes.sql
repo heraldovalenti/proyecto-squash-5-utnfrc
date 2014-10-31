@@ -39,3 +39,5 @@ update torneo set club_id = 3 where id = 3;
 update torneo set club_id =4 where id = 4;
 update torneo set club_id = 5 where id = 5;
 update torneo set club_id = 1 where id = 6;
+update torneo set club_id = 1 where id = 7;
+update torneo set club_id = 1 where id = 8;

@@ -20,10 +20,12 @@ class DiagramacionServiceTests {
 		sqlLoaderService.loadInsertFile("jugadores.sql")
 		sqlLoaderService.loadInsertFile("rankings-jugadores.sql")
 		sqlLoaderService.loadInsertFile("inscripciones-jugadores.sql")
+		sqlLoaderService.loadInsertFile("clubes.sql")
 	}
 
 	@After	
 	void tearDown() {
+		Partido.executeUpdate("delete from Partido")
 	}
 	
 	/** Se tienen 7 jugadores en la categoria primera del torneo, por lo tanto,
