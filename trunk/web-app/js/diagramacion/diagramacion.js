@@ -34,7 +34,7 @@ function guardarCambios() {
 	var keys = Object.keys(partidos);
 	var values = keys.map(function(v) { return partidos[v]; });
 	$.ajax({
-		url: "diagramacionHorarios/savePartidos",
+		url: "/SistemaGestionTorneo/diagramacion/savePartidos",
 		contentType: "application/json",
 		type: "POST",
 		data: JSON.stringify(values),
@@ -58,7 +58,7 @@ function cancelarCambios() {
 }
 
 function refreshDiagramacion() {
-	window.location = "diagramacionHorarios";
+	window.location = "";
 }
 
 function renderDiagramacionRondas() {
@@ -198,7 +198,7 @@ function renderCanchas() {
 
 function loadTorneo() {
 	$.ajax({
-		url: "diagramacionHorarios/getDatosTorneo",
+		url: "/SistemaGestionTorneo/diagramacion/getDatosTorneo",
 		success: function(data) {
 			torneo = data;
 			loadDiasTorneo();
@@ -300,7 +300,7 @@ function renderHorariosCanchas() {
 
 function loadCanchas() {
 	$.ajax({
-		url: "diagramacionHorarios/getCanchas",
+		url: "/SistemaGestionTorneo/diagramacion/getCanchas",
 		success: function(data) {
 			canchas = data;
 			renderCanchas();
@@ -311,7 +311,7 @@ function loadCanchas() {
 
 function loadPartidos() {
 	$.ajax({
-		url: "diagramacionHorarios/getPartidos",
+		url: "/SistemaGestionTorneo/diagramacion/getPartidos",
 		success: function(data) {
 			for (var i = 0; i < data.length; i++) {
 				partido = data[i];

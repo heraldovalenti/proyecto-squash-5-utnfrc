@@ -98,7 +98,7 @@ class Torneo {
 	}
 	
 	void diagramar() {
-		if (this.estado.equals("Inscripcion Finalizada")) {
+		if (this.inscripcionCerrada() || this.inscripcionFinalizada()) {
 			this.estado = "Diagramado"
 		}
 	}
@@ -172,7 +172,7 @@ class Torneo {
 	}
 	
 	Boolean esDiagramable() {
-		return ( this.inscripcionFinalizada() || this.diagramado() )
+		return ( this.inscripcionCerrada() || this.inscripcionFinalizada() || this.diagramado() || this.enCurso())
 	}
 	
 	int getDuracionDias() {
@@ -187,6 +187,15 @@ class Torneo {
 		c.add(Calendar.DAY_OF_MONTH, numeroDia)
 		return c.getTime()
 	}
+	
+	int getTotalInscriptos() {
+		int res = 0;
+		for (detalle in this.detalles) {
+			res += detalle.cantidadInscriptos()
+		}
+		return res
+	}
+	
 }
 	
 	

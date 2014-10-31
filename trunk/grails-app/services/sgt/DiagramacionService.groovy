@@ -1,6 +1,9 @@
 package sgt
 
+import grails.validation.ValidationException
 import logica.CalculosTorneo
+import sgt.exceptions.DiagramacionException
+import sgt.exceptions.TorneoNotFoundException
 
 class DiagramacionService {
 	
@@ -64,5 +67,44 @@ class DiagramacionService {
 			p2.save(failOnError: true)
 		}
 		generarPartidosSiguientes(partidosSiguientes)
+	}
+	
+	Torneo generarDiagramacion(Long id)
+		throws TorneoNotFoundException, DiagramacionException, ValidationException {
+		Torneo torneo = Torneo.get(id)
+		if (!torneo) {
+			throw new TorneoNotFoundException()
+		}
+		if (!torneo.esDiagramable()) {
+			throw new DiagramacionException(DiagramacionException.DIAGRAMACION_NO_PERMITIDA)
+		}
+		if (!torneo.clubAsignado()) {
+			throw new DiagramacionException(DiagramacionException.TORNEO_SIN_CLUB)
+		}
+		if (torneo.club.cantidadCanchas() == 0) {
+			throw new DiagramacionException(DiagramacionException.CLUB_SIN_CANCHAS)
+		}
+		if (torneo.getTotalInscriptos() == 0) {
+			throw new DiagramacionException(DiagramacionException.TORNEO_SIN_INSCRIPTOS)
+		}
+		if (!torneo.diagramado()) {
+			for (detalle in torneo.detalles) {
+				if (detalle.cantidadInscriptos() > 0) {
+					generarPartidosPrimeraRonda(detalle)
+					generarRondasSiguientes(detalle)
+					//finalizar partidos y adelantar jugadores
+					//generar horarios
+				}
+			}
+			torneo.diagramar()
+			torneo.save(failOnError: true)
+		}
+		return torneo
+	}
+	
+	def saveDiagramacion(List<Partido> diagramacion) throws ValidationException {
+		for (p in diagramacion) {
+			p.save(failOnError: true)
+		}
 	}
 }

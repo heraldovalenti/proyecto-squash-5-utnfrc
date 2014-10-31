@@ -29,7 +29,9 @@
 							<g:formatDate date="${ solicitud.solicitudCategoria.fechaInicio }" format="dd/MM/yyyy"/>
 						</td>
 						<td>${ solicitud.persona }</td>
-						<td>${ solicitud.categoriaActual.categoria }</td>
+						<td>
+							${ (solicitud.categoriaActual) ? solicitud.categoriaActual.categoria : "N/A" }
+						</td>
 						<td>${ solicitud.solicitudCategoria.categoria }</td>
 						<td>
 							<a href="#">Ver perfil</a>
