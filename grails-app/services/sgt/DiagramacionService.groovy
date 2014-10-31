@@ -31,7 +31,8 @@ class DiagramacionService {
 			Torneo t = torneo.torneo
 			Integer ordenPartido = partido.numero
 			Partido p = new Partido(jugador1: jugador1, jugador2: jugador2, 
-				torneo: t, ordenPartido: ordenPartido, estado: "Creado", categoria: torneo.categoria)
+				torneo: t, ordenPartido: ordenPartido, categoria: torneo.categoria)
+			p.crear()
 			p.save(failOnError: true)
 		}
 	}
@@ -51,13 +52,13 @@ class DiagramacionService {
 		if (partidos.size() <= 1) return
 		Torneo t = partidos[0].torneo
 		Categoria c = partidos[0].categoria
-		String e = "Creado"
 		int siguienteOrden = partidos.size() + 1
 		List<Partido> partidosSiguientes = new ArrayList()
 		for(int i = 0; i < partidos.size(); i += 2) {
 			Partido p1 = partidos[i]
 			Partido p2 = partidos[i + 1]
-			Partido partidoSiguiente = new Partido(torneo: t, estado: e, categoria: c, ordenPartido: siguienteOrden)
+			Partido partidoSiguiente = new Partido(torneo: t, categoria: c, ordenPartido: siguienteOrden)
+			partidoSiguiente.crear()
 			partidoSiguiente.save(failOnError: true)
 			partidosSiguientes.add(partidoSiguiente)
 			siguienteOrden++
@@ -92,10 +93,11 @@ class DiagramacionService {
 				if (detalle.cantidadInscriptos() > 0) {
 					generarPartidosPrimeraRonda(detalle)
 					generarRondasSiguientes(detalle)
-					//finalizar partidos y adelantar jugadores
-					//generar horarios
 				}
 			}
+			//finalizar partidos y adelantar jugadores
+			finalizarPartidosSingles(torneo)
+			//generar horarios
 			torneo.diagramar()
 			torneo.save(failOnError: true)
 		}
@@ -104,6 +106,29 @@ class DiagramacionService {
 	
 	def saveDiagramacion(List<Partido> diagramacion) throws ValidationException {
 		for (p in diagramacion) {
+			p.save(failOnError: true)
+		}
+	}
+	
+	def finalizarPartidosSingles(Torneo t) {
+		def partidosSingle = Partido.createCriteria().list {
+			eq("torneo", t)
+			and {
+				isNotNull("jugador1")
+				isNull("jugador2")
+			}
+		}
+		for (p in partidosSingle) {
+			ResultadoPartido resultado = new ResultadoPartido(ganador: p.jugador1, partido: p)
+			p.resultado = resultado
+			p.finalizar()
+			Partido siguiente = p.siguientePartido
+			if (siguiente) {
+				if (!siguiente.jugador1) siguiente.jugador1 = p.jugador1
+				else siguiente.jugador2 = p.jugador1
+				siguiente.save(failOnError: true)
+			}
+			resultado.save(failOnError: true)
 			p.save(failOnError: true)
 		}
 	}

@@ -113,7 +113,9 @@ function renderPartidos() {
 				.appendTo(divRonda);
 			var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
 			var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
-			$("<span/>").addClass("info").html(partido.rondaString).appendTo(div);
+			var ronda_estado = partido.rondaString;
+			if (partido.estado === "Finalizado") ronda_estado = ronda_estado + " (Finalizado)";
+			$("<span/>").addClass("info").html(ronda_estado).appendTo(div);
 			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
 			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
 			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);
@@ -126,7 +128,9 @@ function renderPartidos() {
 			.appendTo(divHorario);
 			var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
 			var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
-			$("<span/>").addClass("info").html(partido.rondaString).appendTo(div);
+			var ronda_estado = partido.rondaString;
+			if (partido.estado === "Finalizado") ronda_estado = ronda_estado + " (Finalizado)";
+			$("<span/>").addClass("info").html(ronda_estado).appendTo(div);
 			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
 			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
 			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);

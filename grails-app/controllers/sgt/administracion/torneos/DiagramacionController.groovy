@@ -27,11 +27,9 @@ class DiagramacionController {
 			flash.exception = ex
 			redirect(controller: "torneo", action: "list")
 		} catch (ValidationException ex) {
-			ex.printStackTrace(System.out)
 			flash.errors = ex.errors.allErrors
 			redirect(controller: "torneo", action: "show", id: id)
 		} catch (DiagramacionException ex) {
-			ex.printStackTrace(System.out)
 			flash.exception = ex
 			redirect(controller: "torneo", action: "show", id: id)
 		}
@@ -81,9 +79,10 @@ class DiagramacionController {
 		JSON.registerObjectMarshaller(Partido) {
 			return [
 				id: it.id,
-				fecha: it.fecha, 
-				inicio: it.horaDesde, 
+				fecha: it.fecha,
+				inicio: it.horaDesde,
 				fin: it.horaHasta,
+				estado: it.estado,
 				jugador1: it.jugador1.toString(),
 				jugador2: it.jugador2.toString(),
 				cancha: it.cancha?.id,
