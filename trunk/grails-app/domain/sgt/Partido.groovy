@@ -24,7 +24,7 @@ class Partido {
 		jugador2 nullable: true
 		arbitro nullable: true
 		cancha nullable: true
-		estado blank: false, inList: ["Creado", "Ejecucion", "Finalizado", "Cancelado", "Suspendido"]
+		estado blank: false, inList: ["Creado", "En ejecucion", "Finalizado", "Cancelado", "Suspendido"]
 		resultado nullable: true
 		ordenPartido nullable: true
 		siguientePartido nullable: true
@@ -61,5 +61,35 @@ class Partido {
 		int cantidad = cantidadRondasCategoriaTorneo()
 		int diff = Math.abs(ronda - cantidad)
 		return ( (diff + 1) + "º Ronda")
+	}
+	
+	boolean creado() {
+		return ("Creado").equals(this.estado)
+	}
+	
+	boolean enCurso() {
+		return ("En curso").equals(this.estado)
+	}
+	
+	boolean finalizado() {
+		return ("Finalizado").equals(this.estado)
+	}
+	
+	void crear() {
+		if (!this.estado) {
+			this.estado = "Creado"
+		}
+	}
+	
+	void comenzar() {
+		if (this.creado()) {
+			this.estado = "En curso"
+		}
+	}
+	
+	void finalizar() {
+		if (this.creado() || enCurso()) {
+			this.estado = "Finalizado"
+		}
 	}
 }

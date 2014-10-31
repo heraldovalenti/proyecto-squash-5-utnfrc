@@ -87,5 +87,35 @@ class PartidoTests {
 		Assert.assertEquals(1, p.rondaPartido())
 		Assert.assertEquals("Final", p.rondaPartidoString())
 	}
+	
+	@Test
+	void crearTest() {
+		Partido p = new Partido()
+		Assert.assertFalse(p.creado())
+		p.crear()
+		Assert.assertTrue(p.creado())
+	}
+	
+	@Test
+	void finalizarTest() {
+		Partido p = new Partido()
+		Assert.assertFalse(p.finalizado())
+		p.finalizar()
+		Assert.assertFalse(p.finalizado())
+		p.crear()
+		p.finalizar()
+		Assert.assertTrue(p.finalizado())
+	}
+	
+	@Test
+	void comenzarTest() {
+		Partido p = new Partido()
+		Assert.assertFalse(p.enCurso())
+		p.comenzar()
+		Assert.assertFalse(p.enCurso())
+		p.crear()
+		p.comenzar()
+		Assert.assertTrue(p.enCurso())
+	}
     
 }
