@@ -6,6 +6,8 @@
 
 package logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Matias
@@ -46,12 +48,10 @@ public class Diagramacion {
         return disponibilidad;
     }
     
-    public Jugador cargarJugador(DisponibilidadHoraria disponibilidad,int pos)
+    public void cargarJugador(Jugador j, DisponibilidadHoraria disponibilidad,int pos)
     {
-        Jugador j= new Jugador();
         j.setDisponibilidadHoraria(disponibilidad);
         j.setPos(pos);
-        return j;
     }
     
     public Partido cargarPartido(Jugador jugador1, Jugador jugador2)
@@ -61,11 +61,9 @@ public class Diagramacion {
         return j;
     }
     
-    public Cancha cargarCancha(DisponibilidadHoraria disponibilidad)
+    public void cargarCancha(Cancha c, DisponibilidadHoraria disponibilidad)
     {
-        Cancha j= new Cancha();
-        j.setDisponibilidadHoraria(disponibilidad);
-        return j;
+        c.setDisponibilidadHoraria(disponibilidad);
     }
     
     public Club cargarClub (Cancha[] c){
@@ -87,10 +85,10 @@ public class Diagramacion {
      * @param organizador el club del torneo con sus canchas adentro y respectivos horarios
      * @param enfrentamientos partidos del torneo a diagramarse con los jugadores y respectivos horarios.
      */
-    public void generarDiagramacion(int horas,int dias,Club organizador,Partido[]enfrentamientos){
+    public ArrayList<HorarioCanchaPartido>[][] generarDiagramacion(int horas,int dias,Club organizador,Partido[]enfrentamientos){
         Torneo torneo= cargarTorneo(horas,dias,organizador,enfrentamientos);
         torneo.generarDiagramacion();
-        torneo.getHorarioDefinitivoTorneo();//guardarlo para mostrar
+        return torneo.getHorarioDefinitivoTorneo();//guardarlo para mostrar
     }
     
 }

@@ -13,6 +13,7 @@ import java.util.TreeSet;
  */
 public class Cancha implements IDisponible{
     
+	private long id;
     private DisponibilidadHoraria disponibilidadHoraria=new DisponibilidadHoraria();
 
     public DisponibilidadHoraria getDisponibilidadHoraria() {
@@ -24,6 +25,14 @@ public class Cancha implements IDisponible{
     }
     
     public Cancha(){
+    }
+    
+    public void setId(long id) {
+    	this.id = id;
+    }
+    
+    public long getId() {
+    	return this.id;
     }
     
 }

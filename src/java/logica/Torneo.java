@@ -5,6 +5,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -38,9 +39,7 @@ public class Torneo {
         horarioDefinitivoTorneo= new ArrayList [horas][dias];
         matrizConteoClub= new int[horas][dias];
         for (ArrayList<HorarioCanchaPartido>[] horario : horarioDefinitivoTorneo) {
-            for (ArrayList<HorarioCanchaPartido> horario1 : horario) {
-                horario1 = new <HorarioCanchaPartido>ArrayList();
-            }
+        	Arrays.fill(horario, new ArrayList<HorarioCanchaPartido>());
         }
     }
     
@@ -52,9 +51,7 @@ public class Torneo {
         horarioDefinitivoTorneo= new ArrayList [horas][dias];
         matrizConteoClub= new int[horas][dias];
         for (ArrayList<HorarioCanchaPartido>[] horario : horarioDefinitivoTorneo) {
-            for (ArrayList<HorarioCanchaPartido> horario1 : horario) {
-                horario1 = new <HorarioCanchaPartido>ArrayList();
-            }
+        	Arrays.fill(horario, new ArrayList<HorarioCanchaPartido>());
         }
     }
     
@@ -63,9 +60,7 @@ public class Torneo {
     public Torneo(Club organizador) {
         this.organizador = organizador;
         for (ArrayList<HorarioCanchaPartido>[] horario : horarioDefinitivoTorneo) {
-            for (ArrayList<HorarioCanchaPartido> horario1 : horario) {
-                horario1 = new <HorarioCanchaPartido>ArrayList();
-            }
+        	Arrays.fill(horario, new ArrayList<HorarioCanchaPartido>());
         }
     }
 
