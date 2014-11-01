@@ -37,6 +37,7 @@ public class Diagramacion {
             for (int j=0;j<dias;j++){
                 if(diaComienzo==7)diaComienzo=0;
                 if(horario[i][diaComienzo])disponibilidad.cargarHorario(elemento, i, j);
+                diaComienzo++;
             }
         }
         return disponibilidad;

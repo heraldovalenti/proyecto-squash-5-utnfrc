@@ -38,8 +38,10 @@ public class Torneo {
     public Torneo(){
         horarioDefinitivoTorneo= new ArrayList [horas][dias];
         matrizConteoClub= new int[horas][dias];
-        for (ArrayList<HorarioCanchaPartido>[] horario : horarioDefinitivoTorneo) {
-        	Arrays.fill(horario, new ArrayList<HorarioCanchaPartido>());
+        for(int i = 0; i < horarioDefinitivoTorneo.length; i++) {
+        	for (int j = 0; j < horarioDefinitivoTorneo[i].length; j++) {
+        		horarioDefinitivoTorneo[i][j] = new ArrayList<HorarioCanchaPartido>();
+        	}
         }
     }
     
@@ -50,8 +52,10 @@ public class Torneo {
         this.enfrentamientos=enfrentamientos;
         horarioDefinitivoTorneo= new ArrayList [horas][dias];
         matrizConteoClub= new int[horas][dias];
-        for (ArrayList<HorarioCanchaPartido>[] horario : horarioDefinitivoTorneo) {
-        	Arrays.fill(horario, new ArrayList<HorarioCanchaPartido>());
+        for(int i = 0; i < horarioDefinitivoTorneo.length; i++) {
+        	for (int j = 0; j < horarioDefinitivoTorneo[i].length; j++) {
+        		horarioDefinitivoTorneo[i][j] = new ArrayList<HorarioCanchaPartido>();
+        	}
         }
     }
     
@@ -59,8 +63,10 @@ public class Torneo {
 
     public Torneo(Club organizador) {
         this.organizador = organizador;
-        for (ArrayList<HorarioCanchaPartido>[] horario : horarioDefinitivoTorneo) {
-        	Arrays.fill(horario, new ArrayList<HorarioCanchaPartido>());
+        for(int i = 0; i < horarioDefinitivoTorneo.length; i++) {
+        	for (int j = 0; j < horarioDefinitivoTorneo[i].length; j++) {
+        		horarioDefinitivoTorneo[i][j] = new ArrayList<HorarioCanchaPartido>();
+        	}
         }
     }
 
@@ -89,14 +95,14 @@ public class Torneo {
     
     //2 saca los enfrentamientos en los que no hay canchas disponibles (toda la semana)
     public void generarDisponibilidadEnfrentamientosEnCanchas(){
+    	for (Partido enfrentamiento : enfrentamientos)  enfrentamiento.generarDisponibilidadPartido();
         boolean[][] matrizVerdadClub=organizador.disponibilidadHoraria.generarMatrizVerdad();
         for(int i = 0; i < matrizVerdadClub.length; i++){ 
             for (int j = 0; j < matrizVerdadClub[i].length; j++) {
                  if(!matrizVerdadClub[i][j]){ 
-                     if(!disponibilidadEnfrentamientos.getHorarios()[i][j].isEmpty())disponibilidadEnfrentamientos.getHorarios()[i][j].removeAll(disponibilidadEnfrentamientos.getHorarios()[i][j]);
+                     if(!disponibilidadEnfrentamientos.getHorarios()[i][j].isEmpty())disponibilidadEnfrentamientos.getHorarios()[i][j].clear();
                      for (Partido enfrentamiento : enfrentamientos) {
-                        enfrentamiento.generarDisponibilidadPartido();
-                        if(!enfrentamiento.disponibilidadHoraria.getHorarios()[i][j].isEmpty())enfrentamiento.disponibilidadHoraria.getHorarios()[i][j].removeAll(enfrentamiento.disponibilidadHoraria.getHorarios()[i][j]);
+                        enfrentamiento.disponibilidadHoraria.getHorarios()[i][j].clear();
                      }
                  }
             }
@@ -143,7 +149,7 @@ public class Torneo {
         int pos=0;
         Partido menor=enfrentamientos[pos];
         for(int i=1;i<enfrentamientos.length;i++) {
-            if ((!enfrentamientos[i].isAsignado())&&enfrentamientos[i].getDisponibilidadHoraria().compareTo(menor.getDisponibilidadHoraria())<0) {
+            if (!enfrentamientos[i].isAsignado()&&enfrentamientos[i].getDisponibilidadHoraria().compareTo(menor.getDisponibilidadHoraria())<=0) {
                 menor=enfrentamientos[i];
                 pos=i;
             }
@@ -164,12 +170,15 @@ public class Torneo {
     
     public void generarHorarioTorneo(){
         int pos=obtenerPosEnfrentamientoMenorDisponibilidad();
-        while(pos>=0){
+        int count=enfrentamientos.length;
+        while(pos>=0 && count>=0){
             enfrentamientos[pos].setAsignado(true);
+            count--;
             DisponibilidadHoraria horario=enfrentamientos[pos].getDisponibilidadHoraria();
             boolean[][]matrizVerdadPartido=horario.generarMatrizVerdad();
             
             ArrayList <Horario> h=disponibilidadEnfrentamientos.obtenerHorarioMenorDisponiblidad(matrizVerdadPartido );
+            if(h==null)continue;
             int hora=h.get(0).getHoraInicio();
             int diaSemana=h.get(0).getOrdenDia();
             

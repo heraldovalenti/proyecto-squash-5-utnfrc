@@ -184,6 +184,7 @@ class DiagramacionService {
 		logica.Club _club = d.cargarClub(_canchas)
 		ArrayList<logica.HorarioCanchaPartido>[][] _diagramacion = d.generarDiagramacion(16, 7, _club, _partidos)
 		int k = 0, j = 0
+		println "matrix=["+_diagramacion.length + ","+_diagramacion[0].length+"]" 
 		for (ArrayList<logica.HorarioCanchaPartido>[] a : _diagramacion) {
 			for (ArrayList<logica.HorarioCanchaPartido> b : a) {
 				println "_diagramacion.length["+k+"]["+j+"].size()="+_diagramacion[k][j].size()
@@ -204,16 +205,16 @@ class DiagramacionService {
 					println "dia="+c.diaSemana
 					println "-------------"
 				}
-				j = (j == 6) ? 0 : j++
+				if (j == 6) j = -1
+				j++
 			}
 			k++
 		}
-		
 	}
 	
 	private boolean[][] cargarHorarios(def jugador_o_cancha) {
 		boolean[][] res = new boolean[16][7]
-		if (!jugador_o_cancha.disponibilidad) {
+		if (!jugador_o_cancha.disponibilidad || jugador_o_cancha.disponibilidad.detalles.size() == 0) {
 			boolean condicion = jugador_o_cancha instanceof Jugador
 			for (boolean[] b : res) {
 				Arrays.fill(b, condicion);
