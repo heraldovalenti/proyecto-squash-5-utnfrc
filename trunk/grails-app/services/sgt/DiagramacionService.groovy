@@ -1,7 +1,11 @@
 package sgt
 
+import java.util.ArrayList;
+
 import grails.validation.ValidationException
 import logica.CalculosTorneo
+import logica.Diagramacion
+import logica.HorarioCanchaPartido;
 import sgt.exceptions.DiagramacionException
 import sgt.exceptions.TorneoNotFoundException
 
@@ -98,6 +102,7 @@ class DiagramacionService {
 			//finalizar partidos y adelantar jugadores
 			finalizarPartidosSingles(torneo)
 			//generar horarios
+			generarHorarios(torneo)
 			torneo.diagramar()
 			torneo.save(failOnError: true)
 		}
@@ -131,5 +136,101 @@ class DiagramacionService {
 			resultado.save(failOnError: true)
 			p.save(failOnError: true)
 		}
+	}
+	
+	def generarHorarios(Torneo t) {
+		Date fechaInicioDiagramacion = t.fechaInicioTorneo
+		Diagramacion d = new Diagramacion()
+		def partidos = Partido.createCriteria().list {
+			eq("torneo", t)
+			and {
+				isNotNull("jugador1")
+				isNotNull("jugador2")
+			}
+		}
+		logica.Partido[] _partidos = new logica.Partido[partidos.size()]
+		for (int i = 0; i < partidos.size(); i++) {
+			Partido p = partidos[i]
+			Categoria c = p.categoria
+			logica.Jugador _jugador1 = new logica.Jugador()
+			logica.Jugador _jugador2 = new logica.Jugador()
+			boolean[][] disponibilidadJugador1 = cargarHorarios(p.jugador1.jugador)
+			boolean[][] disponibilidadJugador2 = cargarHorarios(p.jugador2.jugador)
+			//el "7" deberia calcularse de acuerdo a la cantidad de partidos a diagramarse y canchas disponibles
+			//ejemplo: 2 canchas, 10 partidos : 1 dia
+			logica.DisponibilidadHoraria _disponibilidadJugador1 = d.cargarHorarioDisponibilidad(_jugador1, disponibilidadJugador1, 16, 7, 0)
+			logica.DisponibilidadHoraria _disponibilidadJugador2 = d.cargarHorarioDisponibilidad(_jugador2, disponibilidadJugador1, 16, 7, 0)
+			d.cargarJugador(_jugador1, _disponibilidadJugador1, p.jugador1.jugador.getPosicionRankingCategoria(c))
+			d.cargarJugador(_jugador2, _disponibilidadJugador2, p.jugador2.jugador.getPosicionRankingCategoria(c))
+			logica.Partido _partido = d.cargarPartido(_jugador1, _jugador2)
+			_partido.id = p.id
+			_jugador1.id = p.jugador1.id
+			_jugador2.id = p.jugador2.id
+			_partidos[i] = _partido
+		}
+		Club club = t.club
+		def canchas = club.canchas
+		logica.Cancha[] _canchas = new logica.Cancha[canchas.size()]
+		int i = 0
+		for (cancha in canchas) {
+			boolean[][] disponibilidadCancha = cargarHorarios(cancha)
+			logica.Cancha _cancha = new logica.Cancha()
+			logica.DisponibilidadHoraria _disponibilidadCancha = d.cargarHorarioDisponibilidad(_cancha, disponibilidadCancha, 16, 7, 0)
+			d.cargarCancha(_cancha, _disponibilidadCancha)
+			_cancha.id = cancha.id
+			_canchas[i] = _cancha
+			i++
+		}
+		logica.Club _club = d.cargarClub(_canchas)
+		ArrayList<logica.HorarioCanchaPartido>[][] _diagramacion = d.generarDiagramacion(16, 7, _club, _partidos)
+		int k = 0, j = 0
+		for (ArrayList<logica.HorarioCanchaPartido>[] a : _diagramacion) {
+			for (ArrayList<logica.HorarioCanchaPartido> b : a) {
+				println "_diagramacion.length["+k+"]["+j+"].size()="+_diagramacion[k][j].size()
+				for (logica.HorarioCanchaPartido c : b) {
+					Partido partido = Partido.get(c.partido.id)
+					Cancha cancha = Cancha.get(c.cancha.id)
+					partido.horaDesde = c.horaInicio + 8
+					partido.horaHasta = c.horaInicio + 9
+					partido.cancha = cancha
+					Calendar fecha = Calendar.getInstance()
+					fecha.setTime(fechaInicioDiagramacion)
+					fecha.add(Calendar.DATE, c.diaSemana)
+					partido.fecha = fecha.getTime()
+					partido.save(failOnError: true)
+					println "partido="+c.partido.id
+					println "cancha="+c.cancha.id
+					println "hora="+c.horaInicio
+					println "dia="+c.diaSemana
+					println "-------------"
+				}
+				j = (j == 6) ? 0 : j++
+			}
+			k++
+		}
+		
+	}
+	
+	private boolean[][] cargarHorarios(def jugador_o_cancha) {
+		boolean[][] res = new boolean[16][7]
+		if (!jugador_o_cancha.disponibilidad) {
+			boolean condicion = jugador_o_cancha instanceof Jugador
+			for (boolean[] b : res) {
+				Arrays.fill(b, condicion);
+			}
+		} else {
+			for(DetalleDisponibilidad d : jugador_o_cancha.disponibilidad.detalles) {
+				int hora = d.hora - 8
+				int dia = 0;
+				if (d.dia.equals("martes")) dia = 1
+				else if (d.dia.equals("miercoles")) dia = 2
+				else if (d.dia.equals("jueves")) dia = 3
+				else if (d.dia.equals("viernes")) dia = 4
+				else if (d.dia.equals("sabado")) dia = 5
+				else if (d.dia.equals("domingo")) dia = 6
+				res[hora][dia] = true
+			}
+		}
+		return res
 	}
 }

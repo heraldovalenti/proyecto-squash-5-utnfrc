@@ -5,6 +5,7 @@
 package logica;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -12,16 +13,14 @@ import java.util.ArrayList;
  */
 public class DisponibilidadHoraria implements Comparable{
     
-    private ArrayList <Horario>[][] horarios;
+    private ArrayList<Horario>[][] horarios;
     private boolean[][] matrizVerdad;
 
     public DisponibilidadHoraria(int horas, int dias) {
-        horarios= new ArrayList [horas][dias];
+        horarios= new ArrayList[horas][dias];
         matrizVerdad=new boolean[horas][dias];
         for (ArrayList<Horario>[] horario : horarios) {
-            for (ArrayList<Horario> horario1 : horario) {
-                horario1 = new <Horario>ArrayList();
-            }
+        	Arrays.fill(horario, new ArrayList<Horario>());
         }
     }
 
@@ -38,9 +37,7 @@ public class DisponibilidadHoraria implements Comparable{
         horarios= new ArrayList [16][7];
         matrizVerdad=new boolean[16][7];
         for (ArrayList<Horario>[] horario : horarios) {
-            for (ArrayList<Horario> horario1 : horario) {
-                horario1 = new <Horario>ArrayList();
-            }
+        	Arrays.fill(horario, new ArrayList<Horario>());
         }
     }
 
@@ -100,7 +97,7 @@ public class DisponibilidadHoraria implements Comparable{
             for (int j = 0; j < dispHorarios[i].length; j++) {
                 if(!dispHorarios[i][j].isEmpty()) {
                     for(int x=0;x<dispHorarios[i][j].size();x++){
-                         horarios[i][j].add(new Horario(i, j, dispHorarios[i][j].get(x).getElementoDisponibilidad()));
+                        horarios[i][j].add(new Horario(i, j, dispHorarios[i][j].get(x).getElementoDisponibilidad()));
                     }
                 }
             }

@@ -10,6 +10,7 @@ package logica;
  */
 public class Partido implements IDisponible, Comparable{
     
+	private long id;
     int numero,ronda,ordenLLave;
     Jugador jugador1,jugador2;
     Horario horario;
@@ -139,6 +140,14 @@ public class Partido implements IDisponible, Comparable{
         String s= " Partido "+(ordenLLave+1)+" : "+jugador1.toString();
         if(!jugador2.isVacio()){s+=jugador2.toString();}
         return s;
+    }
+    
+    public void setId(long id) {
+    	this.id = id;
+    }
+    
+    public long getId() {
+    	return this.id;
     }
         
 }
