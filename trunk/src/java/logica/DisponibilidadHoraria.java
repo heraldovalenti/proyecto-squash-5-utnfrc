@@ -19,8 +19,10 @@ public class DisponibilidadHoraria implements Comparable{
     public DisponibilidadHoraria(int horas, int dias) {
         horarios= new ArrayList[horas][dias];
         matrizVerdad=new boolean[horas][dias];
-        for (ArrayList<Horario>[] horario : horarios) {
-        	Arrays.fill(horario, new ArrayList<Horario>());
+        for(int i = 0; i < horarios.length; i++) {
+        	for (int j = 0; j < horarios[i].length; j++) {
+        		horarios[i][j] = new ArrayList<Horario>();
+        	}
         }
     }
 
@@ -36,8 +38,10 @@ public class DisponibilidadHoraria implements Comparable{
     public DisponibilidadHoraria() {
         horarios= new ArrayList [16][7];
         matrizVerdad=new boolean[16][7];
-        for (ArrayList<Horario>[] horario : horarios) {
-        	Arrays.fill(horario, new ArrayList<Horario>());
+        for(int i = 0; i < horarios.length; i++) {
+        	for (int j = 0; j < horarios[i].length; j++) {
+        		horarios[i][j] = new ArrayList<Horario>();
+        	}
         }
     }
 
@@ -87,8 +91,12 @@ public class DisponibilidadHoraria implements Comparable{
         for(int i = 0; i < horarios.length; i++){ 
             for (int j = 0; j < horarios[i].length; j++) {
                  if(matrizVerdad[i][j]){
-                 horarios[i][j].add(new Horario(i, j, elementoDisp));}
-                     } }
+                	 Horario h = new Horario(i,j,elementoDisp); 
+                	 //horarios[i][j].add(new Horario(i, j, elementoDisp));
+                	 horarios[i][j].add(h);
+                 }
+            }
+        }
     }
 
     public void add(DisponibilidadHoraria disponibilidad) {
@@ -124,14 +132,14 @@ public class DisponibilidadHoraria implements Comparable{
     
     public ArrayList <Horario> obtenerHorarioMenorDisponiblidad(boolean[][]matrizValor){
         ArrayList <Horario> h=null;
-        for(int i=0;i<matrizValor.length;i++){
-                for(int j=0;j<matrizValor[i].length;j++){
-                    if(matrizValor[i][j]){
+        for(int i=0;i<matrizValor[0].length;i++){
+                for(int j=0;j<matrizValor.length;j++){
+                    if(matrizValor[j][i]&& !horarios[j][i].isEmpty()){
                         if(h==null){
-                            h=horarios[i][j];
+                            h=horarios[j][i];
                         }
-                        if(h.size()>horarios[i][j].size()){
-                            h=horarios[i][j];
+                        if(h.size()>horarios[j][i].size()){
+                            h=horarios[j][i];
                         }
                     }
                 }

@@ -23,6 +23,7 @@ public class Jugador implements IDisponible{
 
     public void setDisponibilidadHoraria(DisponibilidadHoraria disponibilidadHoraria) {
         this.disponibilidadHoraria = disponibilidadHoraria;
+        this.disponibilidadHoraria.generarMatrizVerdad();
     }
 
     public void setId(Long id) {
