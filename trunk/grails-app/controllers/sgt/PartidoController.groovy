@@ -25,8 +25,12 @@ class PartidoController {
     }
 
     def list1(Integer max) {
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
         params.max = Math.min(max ?: 10, 100)
-        [partidoInstanceList: Partido.list(params), partidoInstanceTotal: Partido.count()]
+        [partidoInstanceList: Partido.createCriteria().list(params) {
+			eq("torneo", torneoInstance)
+		}, partidoInstanceTotal: Partido.count(), torneoInstance:torneoInstance]
     }
 
     def create() {	
@@ -114,7 +118,7 @@ class PartidoController {
 
         try {
             partidoInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'partido.label', default: 'Partido'), id])
+            flash.message = "El partido fue eliminado correctamente"
             redirect(action: "list1")
         }
         catch (DataIntegrityViolationException e) {
