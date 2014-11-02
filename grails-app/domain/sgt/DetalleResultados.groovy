@@ -1,20 +1,42 @@
 package sgt
 
-class DetalleResultados {
+class DetalleResultados implements Comparable {
    
-    String nroSet
+    Integer nroSet
 	Integer jugador1
 	Integer jugador2
 	
 	static belongsTo = [resultado: ResultadoPartido]
-	
-	String toString(){return set + "  " + jugador1 + " - " + jugador2}
-	
 
     static constraints = {
-					
-		jugador1 range: 0..20, validator: { val, obj -> Math.abs(obj.jugador1 - obj.jugador2) > 1 && Math.abs(obj.jugador1 - obj.jugador2) < 3 }
-		jugador2 range: 0..20, validator: { val, obj -> Math.abs(obj.jugador1 - obj.jugador2) > 1 && Math.abs(obj.jugador1 - obj.jugador2) < 3 }
-		nroSet inList:["1er SET","2do SET","3er SET","4to SET","5to SET"]		
+		jugador1 range: 0..20
+		jugador2 range: 0..20
+		nroSet range: 1..5
     }
+	
+	@Override
+	public int compareTo(Object obj) {
+		DetalleResultados other = obj
+		return this.nroSet - other.nroSet
+	}
+    
+	@Override
+    String toString() { 
+    	return nroSet + "  " + jugador1 + " - " + jugador2 
+    }
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof DetalleResultados)) return false
+		DetalleResultados other = obj
+		return (this.nroSet == other.nroSet && this.resultado == other.resultado)
+	}
+	
+	String setString() {
+		if (this.nroSet == 1) return "1er Set"
+		else if (this.nroSet == 2) return "2do Set"
+		else if (this.nroSet == 3) return "3er Set"
+		else if (this.nroSet == 4) return "4to Set"
+		else return "5to Set"
+	}
 }
