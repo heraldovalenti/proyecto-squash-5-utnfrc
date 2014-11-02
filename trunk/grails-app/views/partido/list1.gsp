@@ -22,19 +22,19 @@
 			</g:if>
 			<table>
 				<thead>
-					<tr>			
-											
-						<th><g:message code="partido.categoria.label" default="Categoria" /></th>
+					<tr>
 						
-						<g:sortableColumn property="fecha" title="${message(code: 'partido.fecha.label', default: 'Fecha')}" />
+						<g:sortableColumn property="categoria" title="Categoria" />
 						
-						<g:sortableColumn property="hora" title="Hora" />
+						<g:sortableColumn property="fecha" title="Fecha" />
 						
-						<th><g:message code="partido.jugador1.label" default="Jugador 1" /></th>
+						<g:sortableColumn property="horaDesde" title="Hora" />
 						
-						<th><g:message code="partido.jugador2.label" default="Jugador 2" /></th>						
+						<g:sortableColumn property="jugador1.persona" title="Jugador 1" />
 						
-						<g:sortableColumn property="cancha" title="Cancha" />
+						<g:sortableColumn property="jugador2.persona" title="Jugador 2" />
+						
+						<th></th>
 					
 					</tr>
 				</thead>
@@ -51,13 +51,16 @@
 						<td><g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario:partidoInstance?.jugador1?.id,categoria:partidoInstance?.categoria]">${fieldValue(bean: partidoInstance, field: "jugador1")}</g:link></td>
 						
 						<td><g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario:partidoInstance?.jugador2?.id,categoria:partidoInstance?.categoria]">${fieldValue(bean: partidoInstance, field: "jugador2")}</g:link></td>							
-											
-						<td>${fieldValue(bean: partidoInstance, field: "cancha")}</td>											
-												
-						<td><g:link controller="partido" action="cargarResultado" id="${partidoInstance.id}" >Cargar Resultado</g:link></td>
-					
+																	
+						<td>
+							<g:if test="${ !partidoInstance.esSingle() }">
+								<g:link controller="resultadoPartido" action="cargarResultado" id="${partidoInstance.id}" >
+								<g:if test="${ !partidoInstance.finalizado() }">Cargar Resultado</g:if>
+								<g:else>Ver resultado</g:else>
+								</g:link>
+							</g:if>
+						</td>
 						
-					
 					</tr>
 				</g:each>
 				</tbody>

@@ -1,132 +1,65 @@
 package sgt
 
-import org.springframework.dao.DataIntegrityViolationException
+import grails.validation.ValidationException
+import sgt.exceptions.PartidoException
 
 class ResultadoPartidoController {
-	
-	static idPartido
-	
-	def cargarResultado(Long id) {
-		def partidoInstance = Partido.get(id)
 		
-		if (!partidoInstance.getResultado()) {
-			def resultadoInstance = new ResultadoPartido().save()
-			partidoInstance.setResultado(resultadoInstance)
-			partidoInstance.save()
-			idPartido= partidoInstance.id
+	def resultadoPartidoService
+	
+    def cargarResultado(Long id) {
+		Partido p = Partido.get(id)
+		ResultadoPartido r = p.resultado
+		List<DetalleResultados> d = new ArrayList<DetalleResultados>()
+		if (r) {
+			d.addAll(r.detalles)
+			Collections.sort(d)
 		}
-		
-		if(!partidoInstance.getResultado().getDetalles()) {
-			redirect(controller: 'detalleResultados', action:'create', id: partidoInstance.getResultado().id)
-		}
-		else {
-			redirect(controller: 'detalleResultados', action:'listarDetalles', id: id)
+        render(view: "show", model: [partido: p, resultado: r, detalles: d, nuevoSet: flash.nuevoSet])
+    }
+	
+	def save() {
+		def partidoId = params.partido
+		try {
+			resultadoPartidoService.guardarResultadoPartido(params)
+			flash.message = "Resultado guardado"
+			redirect(action: "cargarResultado", id: partidoId)
+		} catch (PartidoException ex) {
+			flash.exception = ex
+			chain(action: "cargarResultado", id: partidoId)
+		} catch (ValidationException ex) {
+			flash.errors = ex.errors.allErrors
+			chain(action: "cargarResultado", id: partidoId)
+		} catch(ex) {
+			flash.exception = ex
+			chain(action: "cargarResultado", id: partidoId)
 		}
 	}
 	
-	def cargarSet(Long id)
-	{
-		redirect(controller: 'detalleResultados', action:'create', id: id)
+	def agregarSet() {
+		try {
+			flash.nuevoSet = resultadoPartidoService.agregarSet(params)
+			redirect(action: "cargarResultado", id: params.partido)
+		} catch (ValidationException ex) {
+			flash.errors = ex.errors.allErrors
+			redirect(action: "cargarResultado", id: params.partido)
+		} catch(ex) {
+			flash.exception = ex
+			redirect(action: "cargarResultado", id: params.partido)
+		}
 	}
 	
-	//Acciones del Scaffold
-
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
-    def index() {
-        redirect(action: "list", params: params)
-    }
-
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [resultadoPartidoInstanceList: ResultadoPartido.list(params), resultadoPartidoInstanceTotal: ResultadoPartido.count()]
-    }
-
-    def create() {
-        [resultadoPartidoInstance: new ResultadoPartido(params)]
-    }
-
-    def save(Long id) {
-		def partidoInstance= Partido.get(idPartido)		
-        def resultadoPartidoInstance = new ResultadoPartido(params)
-        if (!resultadoPartidoInstance.save(flush: true)) {
-            render(view: "create", model: [resultadoPartidoInstance: resultadoPartidoInstance])			
-            return
-        }
-		partidoInstance.setResultado(resultadoPartidoInstance)
-        flash.message = message(code: 'default.created.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), resultadoPartidoInstance.id])
-        redirect(action: "show", id: resultadoPartidoInstance.id)
-		
-		
-    }
-
-    def show(Long id) {
-        def resultadoPartidoInstance = ResultadoPartido.get(id)
-        if (!resultadoPartidoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [resultadoPartidoInstance: resultadoPartidoInstance]
-    }
-
-    def edit(Long id) {
-        def resultadoPartidoInstance = ResultadoPartido.get(id)
-        if (!resultadoPartidoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [resultadoPartidoInstance: resultadoPartidoInstance]
-    }
-
-    def update(Long id, Long version) {
-        def resultadoPartidoInstance = ResultadoPartido.get(id)
-        if (!resultadoPartidoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), id])
-            redirect(action: "list")
-            return
-        }
-
-        if (version != null) {
-            if (resultadoPartidoInstance.version > version) {
-                resultadoPartidoInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'resultadoPartido.label', default: 'ResultadoPartido')] as Object[],
-                          "Another user has updated this ResultadoPartido while you were editing")
-                render(view: "edit", model: [resultadoPartidoInstance: resultadoPartidoInstance])
-                return
-            }
-        }
-
-        resultadoPartidoInstance.properties = params
-
-        if (!resultadoPartidoInstance.save(flush: true)) {
-            render(view: "edit", model: [resultadoPartidoInstance: resultadoPartidoInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), resultadoPartidoInstance.id])
-        redirect(action: "show", id: resultadoPartidoInstance.id)
-    }
-
-    def delete(Long id) {
-        def resultadoPartidoInstance = ResultadoPartido.get(id)
-        if (!resultadoPartidoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            resultadoPartidoInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'resultadoPartido.label', default: 'ResultadoPartido'), id])
-            redirect(action: "show", id: id)
-        }
-    }
+	def eliminarSet() {
+		try {
+			resultadoPartidoService.eliminarSet(params)
+			flash.message = "Set eliminado"
+			redirect(action: "cargarResultado", id: params.partido)
+		} catch (ValidationException ex) {
+			flash.errors = ex.errors.allErrors
+			redirect(action: "cargarResultado", id: params.partido)
+		} catch(ex) {
+			flash.exception = ex
+			redirect(action: "cargarResultado", id: params.partido)
+		}
+	}
 }

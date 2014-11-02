@@ -92,4 +92,8 @@ class Partido {
 			this.estado = "Finalizado"
 		}
 	}
+	
+	boolean esSingle() {
+		return (this.jugador1 != null && this.jugador2 == null)
+	}
 }

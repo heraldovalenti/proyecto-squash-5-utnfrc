@@ -120,8 +120,12 @@
 					<g:hiddenField name="id" value="${partidoInstance?.id}" />
 					<g:link class="edit" action="edit" id="${partidoInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<g:link controller="partido" action="cargarResultado" id="${ partidoInstance?.id }">Cargar Resultado</g:link>
-					<g:link controller="detalleResultados" action="listarDetalles" id="${ partidoInstance?.id }">Ver Resultado</g:link>
+					<g:if test="${ !partidoInstance.esSingle() }">
+					<g:link controller="resultadoPartido" action="cargarResultado" id="${ partidoInstance?.id }">
+						<g:if test="${ !partidoInstance.finalizado() }">Cargar Resultado</g:if>
+						<g:else>Ver Resultado</g:else>
+					</g:link>
+					</g:if>
 				</fieldset>
 			</g:form>
 		</div>
