@@ -7,8 +7,9 @@
 	<link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">	
+ 	<link href="${resource(dir: 'css', file: 'bootstrap.min.css') }" type="text/css" rel="stylesheet">
  	
- 	<r:require module="inicio"/> 	
+ 	<r:require modules="inicio,bootstrap"/> 	
 
 <r:layoutResources />
 
@@ -161,7 +162,7 @@
 					<div class="grid_10">
 
 												
-									<%--ACÁ VA LA TABLA DE RANKING--%>			
+								<g:render template="/secciones/headToHead" params="['jugador1': usuario1,'jugador2': usuario2,  'resultado':resultado, 'enfrentamientos':enfrentamientos, 'categoriaJugador1':categoriaJugador1, 'categoriaJugador2':categoriaJugador2]" />	
 												
 
 
@@ -170,7 +171,8 @@
 		</div>						
 <!----------------- CIERRA PANEL DE ABAJO DEL SLIDER-------------------->
 	
-	</div>	
+	</div>		
+	
 </div>
 
 <r:layoutResources />

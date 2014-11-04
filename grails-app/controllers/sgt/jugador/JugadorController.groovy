@@ -6,6 +6,7 @@ import sgt.CategoriaJugador
 import sgt.Domicilio
 import sgt.InscripcionTorneo;
 import sgt.Jugador
+import sgt.Partido
 import sgt.PerfilJugador
 import sgt.Persona
 import sgt.Usuario
@@ -19,6 +20,7 @@ class JugadorController {
 	def jugadoresService
 	def jugadorService
 	def categoriaJugadorService
+	def partidoService
 	
 	def index() {
 		Usuario userLogon = session.getAttribute("userLogon")
@@ -350,6 +352,51 @@ class JugadorController {
 		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)
 		
 		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo])
+		
+	}
+	
+	def verEnfrentamientoJugadores(){
+		
+		def idPersonaJugador1=params.jugador1
+		
+		def persona1=Persona.get(idPersonaJugador1)
+		
+		def usuario1=Usuario.findByPersona(persona1)
+		
+		def categoriaJugador1=categoriaJugadorService.getCategoriaJugador(usuario1.id)
+		
+		def categoriaSeleccionada1= categoriaJugador1.categoria.nombre
+		
+		def idPersonaJugador2=params.jugador2
+		
+		def persona2=Persona.get(idPersonaJugador2)
+		
+		def usuario2=Usuario.findByPersona(persona2)
+		
+		def categoriaJugador2=categoriaJugadorService.getCategoriaJugador(usuario2.id)
+		
+		def categoriaSeleccionada2= categoriaJugador2.categoria.nombre
+		
+		def enfrentamientos= partidoService.listarEnfrentamientosJugadores(usuario1.id,usuario2.id)
+		
+		def edadJugador1= jugadoresService.calcularEdad(usuario1?.persona?.fechaNacimiento)
+		def edadJugador2= jugadoresService.calcularEdad(usuario2?.persona?.fechaNacimiento)
+		
+		int jugador1Ganados=0
+		int jugador2Ganados=0
+					
+		for(Partido p:enfrentamientos){		
+			
+			if(p.resultado.ganador==usuario1){
+				jugador1Ganados ++
+			}
+			else if(p.resultado.ganador==usuario2){
+				jugador2Ganados ++
+			}			
+		}			
+		
+		render(view: "enfrentamientoJugadores", model: [jugador1: usuario1,jugador2: usuario2, edadJugador1:edadJugador1, edadJugador2:edadJugador2, jugador1Ganados:jugador1Ganados,jugador2Ganados:jugador2Ganados, enfrentamientos:enfrentamientos, categoriaJugador1:categoriaSeleccionada1, categoriaJugador2:categoriaSeleccionada2])
+		
 		
 	}
 }

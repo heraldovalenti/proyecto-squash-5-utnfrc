@@ -130,6 +130,9 @@ body {
 .container_16 .grid_10 {
 	width:610px;
 }
+.container_16 .grid_total {
+	width:100%;
+}
 
 .container_16 .grid_11 {
 	width:672px;
@@ -153,6 +156,9 @@ body {
 
 .container_16 .grid_16 {
 	width:606px;
+}
+.container_16 .grid_100 {
+	width:65%;
 }
 
 

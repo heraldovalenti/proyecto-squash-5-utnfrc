@@ -107,4 +107,6 @@ insert into categoria_jugador (id,version,jugador_id,categoria_id,fecha_inicio,f
 (17,1,17,3,'2000-01-01',null,'Asignada','categoria de jugador'),
 (18,1,18,3,'2000-01-01',null,'Asignada','categoria de jugador'),
 (19,1,19,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(20,1,20,3,'2000-01-01',null,'Asignada','categoria de jugador');
+(20,1,20,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(21,1,8,1,'2000-01-01',null,'Asignada','categoria de jugador'),
+(22,1,9,1,'2000-01-01',null,'Asignada','categoria de jugador');
