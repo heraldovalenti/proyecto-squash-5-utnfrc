@@ -137,6 +137,7 @@ a:hover {text-decoration:none;}
 .box-335 {width: 335px;}
 .box-225 {width: 225px;}
 .box-150 {width: 150px;}
+.box-150-Porcent {width: 150%}
 .box-shadow {position: absolute; display: block; height: 20px; bottom: 0; background: white; width: 100%; text-align: center; line-height: 20px; cursor: pointer;}
 .ac-arrow {position: absolute; right: 5px; top: 5px; background: url(images/ac-arrow.png) top left no-repeat;display: block; width: 24px; height: 24px; cursor: pointer;}
 .ul-box-half {  display: block;  float: left;  position: relative;  width: 250px;}
@@ -1114,9 +1115,16 @@ a.moreLink {
 .head2headEntryFields{padding-left:6px;}
 .moduleContentInner p{padding:7px 6px 0;}
 .head2headEntryFields p{color:#002864;font-size:22px;width:74px;float:left;height:31px;text-align:center;margin:0;padding:0;line-height:28px;background:url(images/head2head_module_vs.gif) no-repeat top center;text-indent:-9999px;}
-.head2headEntryField2,.head2headEntryField1{background:url(images/autoComp_1.gif) no-repeat 0 0;height:21px;width:183px;padding:5px 10px 5px 39px;float:left;}
+.head2headEntryField2,.head2headEntryField1{background:url(images/autoComp_1.gif) no-repeat 0 0;height:21px;width:183px;padding:5px 10px 5px 10px;float:left;}
 .head2headEntryField2{background-image:url(images/autoComp_2.gif);}
-.head2headEntryField2 input,.head2headEntryField1 input{border:0;height:14px;font-size:11px;color:#666;padding:5px 0 0;width:180px;}
+.head2headEntryField2 input,.head2headEntryField1 input{
+	border:0;
+	height:20px;
+	font-size:14px;
+	color:#666;
+	padding:5px 5px 5px 5px;
+	width:180px;
+	}
 .miniHead2headModule .head2headEntryField2{background-image:url(images/autoComp_3.gif);width:151px;}
 .miniHead2headModule .head2headEntryField2 input{width:145px;}
 .miniHead2headModule p{margin:5px 5px 10px;}
@@ -1129,7 +1137,7 @@ a.moreLink {
 .head2headPreStats a:hover{color:#FFF;text-decoration:none;}
 .head2headPreStats h4{background:url(images/head2head_data_title.gif) repeat-x 0 0;height:25px;font-size:12px;color:#002864;font-family:Arial, Helvetica, sans-serif;line-height:25px;text-align:center;}
 .head2headPreName1{margin-right:22px;}
-.head2headPreName1,.head2headPreName2{color:#00aff0;font-size:13px;font-weight:700;float:left;width:147px;height:33px;text-align:center;padding-top:10px;}
+.head2headPreName1,.head2headPreName2{color:#00aff0;font-size:16px;font-weight:700;float:left;width:147px;height:33px;text-align:center;padding-top:10px;}
 p.head2headPreScore{clear:both;float:left;width:100%;text-align:center;color:#FFF;font-size:15px;padding:5px 0 16px;_padding-bottom:0;font-weight:700;_position:relative;margin:0;}
 p.head2headPreLinks{text-align:center;clear:both;padding-top:12px;}
 .head2headPreLinks a.genericButton{float:none;clear:none;/*background:url(images/generic_button.png) no-repeat top left;*/background-image:url(images/generic_button.png);padding-top:4px;padding-bottom:2px;_padding-top:0;_padding-bottom:0;padding-top:0;padding-bottom:0;text-align:left;margin-right:10px;font-family:arial;}
@@ -1144,10 +1152,10 @@ p.head2headPreLinks{text-align:center;clear:both;padding-top:12px;}
 h4 a{float:right;background:url(images/link_chevrons_white.gif) no-repeat scroll left center transparent;padding-left:14px;font-size:12px;color:#00bdd9;}
 .reliabilityLink{width:380px;margin-left:-1px;}
 h4 a:hover{color:#00bdd9;text-decoration:underline;}
-.head2headPreName1,.head2headPreName2{text-align:left;width:148px;}
-p.head2headPreScore{float:none;font-size:30px!important;font-weight:700;margin:0;padding:0!important;position:relative;text-align:center;top:-6px;width:auto;}
-.head2headPreName1{margin-right:36px;text-align:right;}
-.head2headPreStats h4{text-align:left;color:#666;font-size:13px;font-weight:700;padding:0 9px;height:28px;line-height:28px;}
+.head2headPreName1,.head2headPreName2{text-align:center;width:148px;}
+p.head2headPreScore{float:none;font-size:26px!important;font-weight:700;margin:0;padding:0!important;position:relative;text-align:center;top:-6px;width:auto;}
+.head2headPreName1{margin-right:36px;text-align:center;}
+.head2headPreStats h4{text-align:center;color:#666;font-size:13px;font-weight:700;padding:0 9px;height:28px;line-height:28px;}
 .genericButton,.genericButton button,a.genericButton span{background-image:url(images/generic_button_h2h_new.gif);}
 .head2headEntryField1{background-image:url(images/h2h_new_input_1.png);height:22px; position: relative;}
 .head2headEntryField2{background-image:url(images/h2h_new_input_2.png);height:22px; position: relative;}
@@ -1156,7 +1164,7 @@ p.head2headPreScore{float:none;font-size:30px!important;font-weight:700;margin:0
 p.head2headPreLinks{padding-left:0;text-align:center;}
 .head2headEntryFields{/*height:50px;*/padding-bottom:10px;float:left;clear:both;}
 .head2headPreStats h4{background-color:#c8c8c8;}
-.head2headEntryFields p{color:#FFF;float:left;font-size:15px;height:31px;line-height:28px;margin:0;padding:0;text-align:center;width:35px;}
+.head2headEntryFields p{color:#FFF;float:left;font-size:15px;height:31px;line-height:28px;margin:0;padding-left: 3%;;text-align:center;width:35px;}
 
 
 
@@ -1241,7 +1249,8 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
   float: left;
   font-family: Verdana,Arial,Helvetica,sans-serif;
   font-size: 10px;
-  width: 267px;
+  width: 52%;
+  margin: 0% 6% 0% 6%;
 }
 
 #head2HeadMain #head2HeadMainTable th {
@@ -1249,7 +1258,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 #head2HeadMain #head2HeadMainTable table {
-  width: 265px;
+  width: 100%;
 }
 
 #head2HeadMain #head2HeadMainTable table tr th {
@@ -1290,7 +1299,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 #head2HeadMain #head2HeadMainTable table tr th.player1Rank {
-  text-align: right;
+  text-align: center;
 }
 
 
@@ -1611,9 +1620,9 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 .actividad-list li.puesto {width: 155px;  padding-right: 2px;}
 
 .h2h {font: normal 11px verdana, arial, helvetiva !important;}
-.actividad-list li.h2h_year {width: 30px; border-right: 1px solid white;}
+.actividad-list li.h2h_year {width: 80px; border-right: 1px solid white;}
 .actividad-list li.h2h_torneo {width: 170px; border-right: 1px solid white;}
-.actividad-list li.h2h_categoria {width: 70px; border-right: 1px solid white;}
+.actividad-list li.h2h_categoria {width: 140px; border-right: 1px solid white;}
 .actividad-list li.h2h_ronda {width: 70px; border-right: 1px solid white;}
 .actividad-list li.h2h_ganador {width: 180px; border-right: 1px solid white;}
 .actividad-list li.h2h_resultado {width: 30px; }

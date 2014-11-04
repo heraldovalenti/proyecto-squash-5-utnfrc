@@ -21,21 +21,8 @@ function obtenerPartidosPorCategoria(){
 		async: false,
 		url : "generarFixturePorCategoria?categoria="+categoria,
 		success : function(data) {					
-			
-			//Hay que mandar el data por parametro, pero convertirlo en JSON antes				
-			
-			json= [
-					{
-					"jugador1":"jose palazo",
-					"jugador2":"mario gomez"
-					},
-					{
-					"jugador1":"pablo gonzalez",
-					"jugador2":"freddy mercury"
-					}
 					
-			];				
-			result= generarPartidos(json);				
+			result= generarPartidos(data);				
 				
 		}
 	});
@@ -44,32 +31,37 @@ function obtenerPartidosPorCategoria(){
 
 
 function generarPartidos(part){	
-
-	var jugadores;
 	
 	var partidos = {};
 	
 	var teams=[];
+	var results=[];
+	var primerRonda=[];
+	var segundaRonda=[];
+	var finales=[];
 	
+	$.each(part, function(key,value) {	
+		
+		teams.push([ value.jugador1, value.jugador2 ]);
+		
+		if (value.resultado != null) {
+			primerRonda.push(value.resultado);
+		} else {
+			primerRonda.push([ null, null ]);
+		}
 	
-		teams.push([part[0]["jugador1"], part[0]["jugador2"]]);			
-		teams.push([part[1]["jugador1"], part[1]["jugador2"]]);	
+	});	
+/*	primerRonda.push([1,2]);
+	primerRonda.push([0,3]);
+	primerRonda.push([3,1]);
+	primerRonda.push([5,4]);*/
+	segundaRonda.push([null,null],[null,null]);
+	finales.push([null,null],[null,null]);	
 	
-	
-		/*	$.each(part, function(key,value) {
-	      teams.push([part["jugador1"], part["jugador2"]]);
-			});*/
-	   
+	results.push(primerRonda);
+	results.push(segundaRonda);
+	results.push(finales);
 
-	var results =[ [ //WINNER BRACKET 
-		   [ [ 1, 2 ], [ 3, 4 ] ], //first and second matches of the first round 
-		   [ [ 5, 6 ] ] //second round 
-		   ], [ //LOSER BRACKET 
-		   // [[7,8]],         //first round 
-		   [ [ 9, 10 ] ] // second round 
-		   ], [ //FINALS 
-		   [ [ 1, 12 ], [ 13, 14 ] ], [ [ 15, 16 ] ] //LB winner won first round so need a rematch 
-		   ] ];
 		
 	partidos.teams=teams;
 	partidos.results=results;

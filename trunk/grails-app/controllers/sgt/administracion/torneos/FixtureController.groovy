@@ -30,7 +30,8 @@ class FixtureController {
 				categoria: it.categoria.toString(),
 				orden: it.ordenPartido,
 				ronda: it.rondaPartido(),
-				rondaString: it.rondaPartidoString()
+				rondaString: it.rondaPartidoString(),
+				resultado: it.resultado?.calcularSets()
 				]
 		}
 		def partidos = Partido.createCriteria().list() {

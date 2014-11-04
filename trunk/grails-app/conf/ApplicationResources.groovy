@@ -81,4 +81,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/torneoDatePicker.js'
 	}
+	headToHead{
+		dependsOn 'jquery'
+		resource url: 'js/headToHead.js'
+	}
 }
