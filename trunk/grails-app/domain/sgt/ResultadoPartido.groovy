@@ -4,9 +4,7 @@ import java.util.concurrent.ForkJoinPool;
 
 class ResultadoPartido {
 
-    Usuario ganador
-	int setJugador1
-	int setJugador2
+    Usuario ganador	
    
 	static belongsTo = [partido: Partido]
 	static hasMany = [detalles: DetalleResultados]	
@@ -24,8 +22,8 @@ class ResultadoPartido {
 		
 		def resultados=[]
 		
-		setJugador1=0
-		setJugador2=0
+		int setJugador1=0
+		int setJugador2=0		
 		
 		if(this.detalles==null){
 			

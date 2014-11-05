@@ -382,20 +382,26 @@ class JugadorController {
 		def edadJugador1= jugadoresService.calcularEdad(usuario1?.persona?.fechaNacimiento)
 		def edadJugador2= jugadoresService.calcularEdad(usuario2?.persona?.fechaNacimiento)
 		
+		def titulosJugador1=partidoService.listarTitulosJugador(usuario1.id)
+		def titulosJugador2=partidoService.listarTitulosJugador(usuario2.id)
+		
+		def finalesJugador1=partidoService.listarFinalesJugador(usuario1.id)
+		def finalesJugador2=partidoService.listarFinalesJugador(usuario2.id)
+		
 		int jugador1Ganados=0
 		int jugador2Ganados=0
 					
 		for(Partido p:enfrentamientos){		
 			
-			if(p.resultado.ganador==usuario1){
+			if(p?.resultado?.ganador==usuario1){
 				jugador1Ganados ++
 			}
-			else if(p.resultado.ganador==usuario2){
+			else if(p?.resultado?.ganador==usuario2){
 				jugador2Ganados ++
 			}			
 		}			
 		
-		render(view: "enfrentamientoJugadores", model: [jugador1: usuario1,jugador2: usuario2, edadJugador1:edadJugador1, edadJugador2:edadJugador2, jugador1Ganados:jugador1Ganados,jugador2Ganados:jugador2Ganados, enfrentamientos:enfrentamientos, categoriaJugador1:categoriaSeleccionada1, categoriaJugador2:categoriaSeleccionada2])
+		render(view: "enfrentamientoJugadores", model: [jugador1: usuario1,jugador2: usuario2, edadJugador1:edadJugador1, edadJugador2:edadJugador2, titulosJugador1:titulosJugador1, titulosJugador2:titulosJugador2, finalesJugador1:finalesJugador1, finalesJugador2:finalesJugador2, jugador1Ganados:jugador1Ganados,jugador2Ganados:jugador2Ganados, enfrentamientos:enfrentamientos, categoriaJugador1:categoriaSeleccionada1, categoriaJugador2:categoriaSeleccionada2])
 		
 		
 	}
