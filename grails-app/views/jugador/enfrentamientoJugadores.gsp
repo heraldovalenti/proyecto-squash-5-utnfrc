@@ -18,13 +18,20 @@
 							<img height="198" width="148"src="<g:imagenPerfilJugador usuario="${ jugador1 }"/>" />							
 						</div>
 						<div class="playerInfoRank">
-							<span>#</span> ${categoriaJugador1}
+							<g:each in="${jugador1?.jugador?.rankings}"
+									var="ranking">
+									<g:if
+										test="${ranking?.categoria?.nombre == categoriaJugador1}">
+										<span># ${ranking?.puesto}</span>
+									</g:if>
+							</g:each> 
+							${categoriaJugador1}
 						</div>
 						<div class="playerInfoRank">
-							<span>7</span> Titulos
+							<span>${titulosJugador1 }</span> Titulos
 						</div>
 						<div class="playerInfoRank">
-							<span>16</span> Finales
+							<span>${finalesJugador1 }</span> Finales
 						</div>
 
 					</div>
@@ -102,13 +109,18 @@
 							<img height="198" width="148"src="<g:imagenPerfilJugador usuario="${ jugador2 }"/>" />	
 						</div>
 						<div class="playerInfoRank">
-							<span>#</span> ${categoriaJugador2}
+							<g:each in="${jugador2?.jugador?.rankings}" var="ranking">
+								<g:if test="${ranking?.categoria?.nombre == categoriaJugador2}">
+									<span># ${ranking?.puesto}</span>
+								</g:if>
+							</g:each>
+							${categoriaJugador2}
 						</div>
 						<div class="playerInfoRank">
-							<span>7</span> Titulos
+							<span>${titulosJugador2 }</span> Titulos
 						</div>
 						<div class="playerInfoRank">
-							<span>7</span> Finales
+							<span>${finalesJugador2 }</span> Finales
 						</div>
 
 					</div>

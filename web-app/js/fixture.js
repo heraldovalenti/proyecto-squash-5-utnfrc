@@ -30,45 +30,96 @@ function obtenerPartidosPorCategoria(){
 }
 
 
-function generarPartidos(part){	
-	
-	var partidos = {};
-	
-	var teams=[];
-	var results=[];
-	var primerRonda=[];
-	var segundaRonda=[];
-	var finales=[];
-	
-	$.each(part, function(key,value) {	
-		
-		teams.push([ value.jugador1, value.jugador2 ]);
-		
-		if (value.resultado != null) {
-			primerRonda.push(value.resultado);
-		} else {
-			primerRonda.push([ null, null ]);
-		}
-	
-	});	
-/*	primerRonda.push([1,2]);
-	primerRonda.push([0,3]);
-	primerRonda.push([3,1]);
-	primerRonda.push([5,4]);*/
-	segundaRonda.push([null,null],[null,null]);
-	finales.push([null,null],[null,null]);	
-	
-	results.push(primerRonda);
-	results.push(segundaRonda);
-	results.push(finales);
+function generarPartidos(part) {
 
+	var partidos = {};
+
+	var teams = [];
+	var results = [];
+	var dieciseisavos = [];
+	var octavos = [];
+	var cuartos = [];
+	var semis = []
+	var finales = [];
+
+	$.each(part, function(key, value) {
+
+		if (value.ronda == value.cantidadRondas) {
+			teams.push([ value.jugador1, value.jugador2 ]);
+		}
+
+		if (value.ronda == 5) {
+			if (value.resultado != null) {
+				dieciseisavos.push(value.resultado);
+			} else {
+				dieciseisavos.push([ null, null ]);
+			}
+		} else if (value.ronda == 4) {
+			if (value.resultado != null) {
+				octavos.push(value.resultado);
+			} else {
+				octavos.push([ null, null ]);
+			}
+		} else if (value.ronda == 3) {
+			if (value.resultado != null) {
+				cuartos.push(value.resultado);
+			} else {
+				cuartos.push([ null, null ]);
+			}
+		} else if (value.ronda == 2) {
+			if (value.resultado != null) {
+				semis.push(value.resultado);
+			} else {
+				semis.push([ null, null ]);
+			}
+		} else if (value.ronda == 1) {
+			if (value.resultado != null) {
+				finales.push(value.resultado);
+			} else {
+				finales.push([ null, null ]);
+			}
+		}
+
+	});
+
+	if (dieciseisavos.length > 0) {
 		
-	partidos.teams=teams;
-	partidos.results=results;
-	
+		results.push(dieciseisavos);
+		results.push(octavos);
+		results.push(cuartos);
+		results.push(semis);
+		results.push(finales);
+		
+	} else if (dieciseisavos.length == 0 && octavos.length > 0) {
+		
+		results.push(octavos);
+		results.push(cuartos);
+		results.push(semis);
+		results.push(finales);
+		
+	} else if (octavos.length == 0 && cuartos.length > 0) {
+		
+		results.push(cuartos);
+		results.push(semis);
+		results.push(finales);
+		
+	} else if (cuartos.length == 0 && semis.length > 0) {
+		
+		results.push(semis);
+		results.push(finales);
+		
+	} else if (semis.length == 0 && finales.length > 0) {
+		
+		results.push(finales);
+	}
+
+	partidos.teams = teams;
+	partidos.results = results;
+
 	return partidos;
-	
+
 }
+
 
 $(function() {		
     $('#fixture').bracket({

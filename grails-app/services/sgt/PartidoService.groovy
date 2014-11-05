@@ -36,5 +36,49 @@ class PartidoService {
 		
 		return enfrentamientos
 	}
+	
+	def listarPartidosJugador(Long idJugador){
+		def p = Partido.createCriteria()	
+		def partidos = p.list() {
+			createAlias("jugador1", "jug1", CriteriaSpecification.LEFT_JOIN)			
+			and {
+				eq("jug1.id",idJugador)				
+			}
+		}
+		
+		return partidos		
+	}
+	
+	def listarFinalesJugador(Long idJugador){
+		
+		def partidos= listarPartidosJugador(idJugador)
+		
+		int finales=0
+		
+		for(Partido p:partidos){
+			
+			if(p.rondaPartido()==1){
+				finales ++
+			}			
+		}
+		return finales
+	}
+	
+	def listarTitulosJugador(Long idJugador){
+		
+		def partidos= listarPartidosJugador(idJugador)
+		
+		def jugador= Usuario.get(idJugador)
+		
+		int titulos=0
+		
+		for(Partido p:partidos){
+			
+			if(p?.rondaPartido()==1 && p?.resultado?.ganador==jugador){
+				titulos ++
+			}
+		}
+		return titulos
+	}
 
 }
