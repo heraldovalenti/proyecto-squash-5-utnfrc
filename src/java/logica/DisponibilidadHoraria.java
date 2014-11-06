@@ -27,6 +27,7 @@ public class DisponibilidadHoraria implements Comparable{
     }
 
     public boolean[][] getMatrizVerdad() {
+    	generarMatrizVerdad();
         return matrizVerdad;
     }
 
@@ -130,11 +131,12 @@ public class DisponibilidadHoraria implements Comparable{
         return this.contarDisponibilidades()-externo.contarDisponibilidades();
     }
     
-    public ArrayList <Horario> obtenerHorarioMenorDisponiblidad(boolean[][]matrizValor){
+    public ArrayList <Horario> obtenerHorarioMenorDisponiblidad(boolean[][]matrizValor,boolean[][] matrizVerdadClub){
         ArrayList <Horario> h=null;
+        
         for(int i=0;i<matrizValor[0].length;i++){
                 for(int j=0;j<matrizValor.length;j++){
-                    if(matrizValor[j][i]&& !horarios[j][i].isEmpty()){
+                    if(matrizValor[j][i]&&matrizVerdadClub[j][i]){
                         if(h==null){
                             h=horarios[j][i];
                         }

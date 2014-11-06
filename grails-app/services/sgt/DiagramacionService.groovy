@@ -158,8 +158,8 @@ class DiagramacionService {
 			boolean[][] disponibilidadJugador2 = cargarHorarios(p.jugador2.jugador)
 			//el "7" deberia calcularse de acuerdo a la cantidad de partidos a diagramarse y canchas disponibles
 			//ejemplo: 2 canchas, 10 partidos : 1 dia
-			logica.DisponibilidadHoraria _disponibilidadJugador1 = d.cargarHorarioDisponibilidad(_jugador1, disponibilidadJugador1, 16, 7, 0)
-			logica.DisponibilidadHoraria _disponibilidadJugador2 = d.cargarHorarioDisponibilidad(_jugador2, disponibilidadJugador1, 16, 7, 0)
+			logica.DisponibilidadHoraria _disponibilidadJugador1 = d.cargarHorarioDisponibilidad(_jugador1, disponibilidadJugador1, 16, 7, 6)
+			logica.DisponibilidadHoraria _disponibilidadJugador2 = d.cargarHorarioDisponibilidad(_jugador2, disponibilidadJugador2, 16, 7, 6)
 			d.cargarJugador(_jugador1, _disponibilidadJugador1, p.jugador1.jugador.getPosicionRankingCategoria(c))
 			d.cargarJugador(_jugador2, _disponibilidadJugador2, p.jugador2.jugador.getPosicionRankingCategoria(c))
 			logica.Partido _partido = d.cargarPartido(_jugador1, _jugador2)
@@ -175,7 +175,7 @@ class DiagramacionService {
 		for (cancha in canchas) {
 			boolean[][] disponibilidadCancha = cargarHorarios(cancha)
 			logica.Cancha _cancha = new logica.Cancha()
-			logica.DisponibilidadHoraria _disponibilidadCancha = d.cargarHorarioDisponibilidad(_cancha, disponibilidadCancha, 16, 7, 0)
+			logica.DisponibilidadHoraria _disponibilidadCancha = d.cargarHorarioDisponibilidad(_cancha, disponibilidadCancha, 16, 7, 6)
 			d.cargarCancha(_cancha, _disponibilidadCancha)
 			_cancha.id = cancha.id
 			_canchas[i] = _cancha

@@ -58,6 +58,9 @@ public class HorarioCanchaPartido {
         this.partido = partido;
     }
     
+    public String toString(){
+    	return "Partido:"+this.partido.getId()+" Hora="+this.horaInicio+"- dia="+this.diaSemana;
+    }
     
 
     
