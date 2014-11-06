@@ -36,7 +36,9 @@ public class Diagramacion {
         for (int i=0;i<horas;i++){
             for (int j=0;j<dias;j++){
                 if(diaComienzo==7)diaComienzo=0;
-                if(horario[i][diaComienzo])disponibilidad.cargarHorario(elemento, i, j);
+                if(horario[i][diaComienzo]){
+                	disponibilidad.cargarHorario(elemento, i, j);
+                }
                 diaComienzo++;
             }
         }
@@ -89,6 +91,8 @@ public class Diagramacion {
     public ArrayList<HorarioCanchaPartido>[][] generarDiagramacion(int horas,int dias,Club organizador,Partido[]enfrentamientos){
         Torneo torneo= cargarTorneo(horas,dias,organizador,enfrentamientos);
         torneo.generarDiagramacion();
+        //torneo.imprimirMatrizConteoClub();
+        torneo.imprimirMatrizConteoEnfrentamientos();
         return torneo.getHorarioDefinitivoTorneo();//guardarlo para mostrar
     }
     

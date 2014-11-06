@@ -29,8 +29,8 @@ public class Club implements IDisponible{
     }
     
     public void generarDisponibilidadPartido(){
-        for (Cancha cancha : canchas) {
-            disponibilidadHoraria.add(cancha.getDisponibilidadHoraria());
+    	for (int i =canchas.length-1;i>=0;i--) {
+            disponibilidadHoraria.add(canchas[i].getDisponibilidadHoraria());
         }
     }
 
