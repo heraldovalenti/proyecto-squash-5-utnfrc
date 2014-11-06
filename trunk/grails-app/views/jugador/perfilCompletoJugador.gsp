@@ -5,9 +5,7 @@
 <meta name="layout" content="main">
 </head>
 <body>
-	<div class="menu_jugador" style="margin-top: 0.8em;">
-		<g:render template="menuCategoriaJugadores" model="['categorias':categorias,'tipo':tipo]" />
-	</div>
+	
 <div class="grid_16 mt10">
 	
 		<div id="playerBioInfoCardMain">
