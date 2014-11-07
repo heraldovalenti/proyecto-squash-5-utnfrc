@@ -3,7 +3,8 @@ insert into rol (id,version,nombre) values
 (1,1,'Jugador'),
 (2,1,'Administrador'),
 (3,1,'Club'),
-(4,1,'Encargado club');
+(4,1,'Encargado club'),
+(5,1,'Anonimo');
 
 /* Jugadores */
 insert into usuario (id,version,activo,nombre_usuario,password,correo,rol_id,club_id,jugador_id,persona_id) values
