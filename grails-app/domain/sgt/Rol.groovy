@@ -4,9 +4,9 @@ class Rol {
 
     String nombre
     static hasMany = [permisos: Permiso]
-
+	
     static constraints = {	
-		nombre blank: false		
+		nombre blank: false, editable: false	
 	}
 	
 	String toString() {

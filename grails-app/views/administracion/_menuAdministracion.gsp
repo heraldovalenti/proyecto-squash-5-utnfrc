@@ -9,6 +9,7 @@
 			<li><g:link controller="categoria">Categorias</g:link></li>
 			<li><g:link controller="solicitudCategoria" action="list">Solicitudes de categoria</g:link></li>
 			<li><g:link controller="usuarioScaffold">Usuarios</g:link></li>
+			<li><g:link controller="rol">Permisos</g:link></li>
 			<li><g:link controller="usuario" action="logout">Cerrar sesión</g:link></li>					
 		</ul>
 	</div>
