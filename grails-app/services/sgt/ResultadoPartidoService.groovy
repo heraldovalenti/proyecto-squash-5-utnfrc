@@ -18,6 +18,7 @@ class ResultadoPartidoService {
 		if (!r) {
 			r = new ResultadoPartido()
 			p.resultado = r
+			p.comenzar()
 			p.save(failOnError: true, flush: true)
 		}
 		if (params.nuevo_set) {
