@@ -13,6 +13,7 @@
 			<ul>
 				<li><g:link class="list" controller="torneo" action="show" id="${torneoInstance.id}">Volver</g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" controller="partido" action="listarResultadosPartidosTorneo">Informe Resultados Partidos</g:link></li>
 			</ul>
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">

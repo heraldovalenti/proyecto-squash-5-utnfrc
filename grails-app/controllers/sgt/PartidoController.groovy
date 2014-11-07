@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat
 import org.springframework.dao.DataIntegrityViolationException
 
 class PartidoController {
+	
+	def partidoService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
@@ -154,6 +156,30 @@ class PartidoController {
 		
 		def partidoInstance = new Partido(torneo:torneo,horaDesde:horaDesde,horaHasta:horaHasta,fecha:fecha,categoria:categoria,cancha:cancha,jugador1:jugador1,jugador2:jugador2,arbitro:arbitro,estado:estado)
 		return partidoInstance
+		
+	}
+	
+	def listarResultadosPartidosTorneo(String categoria,Integer max){
+		
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
+		
+		def categoriaSeleccionada
+		
+		if(categoria!=null){
+		def categoriaNombre=categoria.split(' -')
+		categoriaSeleccionada=Categoria.findByNombre(categoriaNombre[0])
+		}	
+		
+		def categorias= torneoInstance?.detalles?.categoria		
+		
+		params.max = Math.min(max ?: 10, 100)
+		
+		def partidos=partidoService.listarPartidosTorneo(torneoInstance.id,categoriaSeleccionada?.id,params)
+		
+		def totalPartidos= partidos.getTotalCount()
+		
+		render(view: "listadoResultadosPartidoTorneo", model: [partidos:partidos,totalPartidos:totalPartidos,categorias:categorias,categoriaSeleccionada:categoria])
 		
 	}
 }

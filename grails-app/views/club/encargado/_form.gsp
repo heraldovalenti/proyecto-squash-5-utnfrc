@@ -1,5 +1,8 @@
 <%@ page import="sgt.Persona" %>
 <%@ page import="sgt.Usuario" %>
+<head>		
+<r:require module="fechas"/>
+</head>
 
 <div class="fieldcontain ${hasErrors(bean: usuarioEncargado, field: 'nombreUsuario', 'error')} required">
 	<label for="nombreUsuario">
@@ -55,7 +58,7 @@
 		Fecha Nacimiento
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="fechaNacimiento" precision="day"  value="${datosEncargado?.fechaNacimiento}"  />
+	<g:textField name="fechaNacimiento" id="datepicker" value="${formatDate(format:"dd/MM/yyyy", date:datosEncargado?.fechaNacimiento)}" placeholder="Seleccione una fecha.."/>		
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: datosEncargado, field: 'tipoDocumento', 'error')} required">
