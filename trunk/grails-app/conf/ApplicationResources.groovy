@@ -85,4 +85,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/headToHead.js'
 	}
+	listaResultadosPartidos{
+		dependsOn 'jquery'
+		resource url: 'js/listaResultadosPartidos.js'
+	}
 }

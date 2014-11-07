@@ -1,5 +1,6 @@
 package sgt.club
 import grails.validation.ValidationException
+import java.text.SimpleDateFormat
 import sgt.*
 import sgt.exceptions.UnregisteredClubException
 
@@ -31,6 +32,7 @@ class EncargadoController {
 	def save() {
 		Usuario userLogon = session.getAttribute("userLogon")
 		Club c = clubService.clubLogon(userLogon)
+		params.fechaNacimiento=new SimpleDateFormat("dd/MM/yyyy").parse(params.fechaNacimiento)
 		Usuario u = new Usuario(params)
 		Persona p = new Persona(params)
 		try {
@@ -78,6 +80,7 @@ class EncargadoController {
 		Club c = clubService.clubLogon(userLogon)
 		u = clubService.verEncargado(c, u)
 		Persona p = u.persona
+		params.fechaNacimiento=new SimpleDateFormat("dd/MM/yyyy").parse(params.fechaNacimiento)
 		if (u == null) {
 			flash.message = "Encargado no encontrado"
 			redirect(action: "index")

@@ -2,6 +2,7 @@ package sgt.jugador
 
 import grails.converters.JSON
 import grails.validation.ValidationException
+import java.text.SimpleDateFormat
 import sgt.CategoriaJugador
 import sgt.Domicilio
 import sgt.InscripcionTorneo;
@@ -9,6 +10,7 @@ import sgt.Jugador
 import sgt.Partido
 import sgt.PerfilJugador
 import sgt.Persona
+import sgt.Torneo;
 import sgt.Usuario
 import sgt.exceptions.PersonaException
 import sgt.exceptions.UnregisteredJugadorException
@@ -51,9 +53,11 @@ class JugadorController {
 	def saveDatosPersonales() {
 		Usuario userLogon = session.getAttribute("userLogon")
 		Persona p = jugadorService.getDatosPersonales(userLogon)
+		params.fechaNacimiento=new SimpleDateFormat("dd/MM/yyyy").parse(params.fechaNacimiento)
 		if (p) {
 			bindData(p,params)
 		} else {
+		System.out.println(params.toString())
 			p = new Persona(params)
 		}
 		try {
@@ -96,6 +100,7 @@ class JugadorController {
 		Usuario userLogon = session.getAttribute("userLogon")
 		Jugador j = jugadorService.getDatosJugador(userLogon)
 		def profileImage = request.getFile("profileImage")
+		params.juegaDesde=new SimpleDateFormat("dd/MM/yyyy").parse(params.juegaDesde)
 		if (j) {
 			bindData(j,params)
 		} else {

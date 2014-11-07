@@ -80,5 +80,41 @@ class PartidoService {
 		}
 		return titulos
 	}
+	
+	def listarPartidosTorneo(Long idTorneo, Long idCategoria,def params){
+
+		def torneo= Torneo.get(idTorneo)
+		def categoriaSeleccionada=Categoria.get(idCategoria)
+
+		def p = Partido.createCriteria()
+		def partidos
+
+		if(torneo!=null && categoriaSeleccionada!=null){
+			partidos = p.list(params) {
+				createAlias("torneo", "torneo", CriteriaSpecification.LEFT_JOIN)
+				createAlias("categoria", "categoria", CriteriaSpecification.LEFT_JOIN)
+				createAlias("resultado", "resultado", CriteriaSpecification.LEFT_JOIN)
+
+				and {
+					eq("torneo",torneo)
+					eq("categoria",categoriaSeleccionada)
+					isNotNull("resultado")
+				}
+			}
+		}
+		else if(torneo!=null){
+			partidos = p.list(params) {
+				createAlias("torneo", "torneo", CriteriaSpecification.LEFT_JOIN)
+				createAlias("resultado", "resultado", CriteriaSpecification.LEFT_JOIN)
+
+				and {
+					eq("torneo",torneo)
+					isNotNull("resultado")
+				}
+			}
+		}
+
+		return partidos
+	}
 
 }

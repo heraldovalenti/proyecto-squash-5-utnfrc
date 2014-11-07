@@ -1,4 +1,7 @@
 <%@ page import="sgt.Jugador" %>
+<head>		
+<r:require module="fechas"/>
+</head>
 
 <div class="fieldcontain ${hasErrors(bean: jugador, field: 'brazo', 'error')} ">
 	<label for="brazo">Brazo</label>
@@ -18,8 +21,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: jugador, field: 'juegaDesde', 'error')} ">
 	<label for="juegaDesde">Juega Desde</label>
-	<g:datePicker name="juegaDesde" precision="day"  value="${jugador?.juegaDesde}" 
-	default="none" noSelection="['': '---']" />
+	<g:textField name="juegaDesde" id="datepicker" value="${formatDate(format:"dd/MM/yyyy", date:jugador?.juegaDesde)}" placeholder="Seleccione una fecha.."/>	
 </div>
 
 <div class="fieldcontain">
