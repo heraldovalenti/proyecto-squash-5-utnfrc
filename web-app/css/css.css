@@ -450,6 +450,8 @@ table textarea {
 .results li a{display:block; padding:4px; text-decoration:none; color:#F0F0F0; font: normal 10px verdana, arial, helvetica !important; letter-spacing: 0px;}
 .results li a:hover{background:#00AFF0;}
 .resultActive {display: block!important;}
+.results ul li li{display:none; padding:4px; text-decoration:none; color:#F0F0F0; font: normal 10px verdana, arial, helvetica !important; letter-spacing: 0px;}
+.results ul li li:hover{background:#00AFF0;}
 
 #news-result ul, #news-result li,
 #profile-search-result ul, #profile-search-result li{padding:0; margin:0; border:0; list-style:none; }
