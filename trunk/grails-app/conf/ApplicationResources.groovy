@@ -89,4 +89,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/listaResultadosPartidos.js'
 	}
+	menu{
+		dependsOn 'jquery'
+		resource url: 'js/menu.js'
+	}
 }
