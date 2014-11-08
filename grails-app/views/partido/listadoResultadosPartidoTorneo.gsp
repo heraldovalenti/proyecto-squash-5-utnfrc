@@ -15,8 +15,9 @@
 			--%></ul>
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">
-			<h1>Informe de Resultados de partidos <g:select name="categoria" from='${categorias}' value="${categoria?.id }"
-					class="profile-year" id="categoria" style="margin-left: 40%;"/></h1>
+			<h1>Informe de Resultados de partidos <g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
+					optionKey="id" noSelection="['':'Todas']" class="profile-year" id="categoria" style="margin-left: 25%;
+margin-right: 5%;"/></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

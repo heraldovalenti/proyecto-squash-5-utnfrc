@@ -159,27 +159,26 @@ class PartidoController {
 		
 	}
 	
-	def listarResultadosPartidosTorneo(String categoria,Integer max){
+	def listarResultadosPartidosTorneo(){
 		
 		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
-		torneoInstance = Torneo.get(torneoInstance.id)
-		
+		torneoInstance = Torneo.get(torneoInstance.id)		
 		def categoriaSeleccionada
 		
-		if(categoria!=null){
-		def categoriaNombre=categoria.split(' -')
-		categoriaSeleccionada=Categoria.findByNombre(categoriaNombre[0])
+		if(params.categoria!=null && params.categoria!=""){		
+		Long idCategoria=Long.parseLong(params.categoria)
+		categoriaSeleccionada=Categoria.get(idCategoria)
 		}	
-		
+		System.out.println(categoriaSeleccionada?.id.toString())
 		def categorias= torneoInstance?.detalles?.categoria		
 		
-		params.max = Math.min(max ?: 10, 100)
+		params.max = Math.min(params.max ?: 10, 100)	
 		
 		def partidos=partidoService.listarPartidosTorneo(torneoInstance.id,categoriaSeleccionada?.id,params)
 		
 		def totalPartidos= partidos.getTotalCount()
 		
-		render(view: "listadoResultadosPartidoTorneo", model: [partidos:partidos,totalPartidos:totalPartidos,categorias:categorias,categoriaSeleccionada:categoria])
+		render(view: "listadoResultadosPartidoTorneo", model: [partidos:partidos,totalPartidos:totalPartidos,categorias:categorias,categoriaSeleccionada:categoriaSeleccionada])
 		
 	}
 }
