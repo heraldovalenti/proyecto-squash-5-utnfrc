@@ -40,9 +40,13 @@ class PartidoService {
 	def listarPartidosJugador(Long idJugador){
 		def p = Partido.createCriteria()	
 		def partidos = p.list() {
-			createAlias("jugador1", "jug1", CriteriaSpecification.LEFT_JOIN)			
+			createAlias("jugador1", "jug1", CriteriaSpecification.LEFT_JOIN)
+			createAlias("jugador2","jug2", CriteriaSpecification.LEFT_JOIN)			
 			and {
-				eq("jug1.id",idJugador)				
+				or{				
+				eq("jug1.id",idJugador)
+				eq("jug2.id",idJugador)
+				}				
 			}
 		}
 		
@@ -51,7 +55,7 @@ class PartidoService {
 	
 	def listarFinalesJugador(Long idJugador){
 		
-		def partidos= listarPartidosJugador(idJugador)
+		def partidos= listarPartidosJugador(idJugador)	
 		
 		int finales=0
 		
