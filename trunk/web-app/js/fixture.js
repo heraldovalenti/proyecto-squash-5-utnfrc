@@ -49,32 +49,65 @@ function generarPartidos(part) {
 		}
 
 		if (value.ronda == 5) {
-			if (value.resultado != null) {
+			if (value.jugador1!="null" && value.jugador2=="null"){
+				dieciseisavos.push([1,0]);
+			}
+			else if(value.jugador1=="null" && value.jugador2!="null"){
+				dieciseisavos.push([0,1]);				
+			}
+			else if (value.resultado != null) {				
 				dieciseisavos.push(value.resultado);
-			} else {
+							
+			}else{				
 				dieciseisavos.push([ null, null ]);
 			}
 		} else if (value.ronda == 4) {
-			if (value.resultado != null) {
+			if (value.jugador1!="null" && value.jugador2=="null"){
+				octavos.push([1,0]);
+			}
+			else if(value.jugador1=="null"&& value.jugador2!="null"){
+				octavos.push([0,1]);				
+			}
+		
+			else if (value.resultado != null) {				
 				octavos.push(value.resultado);
-			} else {
+								
+			}else {
 				octavos.push([ null, null ]);
 			}
 		} else if (value.ronda == 3) {
-			if (value.resultado != null) {
-				cuartos.push(value.resultado);
+			if (value.jugador1!="null" && value.jugador2=="null"){
+				cuartos.push([1,0]);
+			}
+			else if(value.jugador1=="null" && value.jugador2!="null"){
+				cuartos.push([0,1]);				
+			}
+			else if (value.resultado != null) {							
+					cuartos.push(value.resultado);			
 			} else {
 				cuartos.push([ null, null ]);
 			}
 		} else if (value.ronda == 2) {
-			if (value.resultado != null) {
-				semis.push(value.resultado);
+			if (value.jugador1!="null" && value.jugador2=="null"){
+				semis.push([1,0]);
+			}
+			else if(value.jugador1=="null" && value.jugador2!="null"){
+				semis.push([0,1]);				
+			}
+			else if (value.resultado != null) {			
+				semis.push(value.resultado);								
 			} else {
 				semis.push([ null, null ]);
 			}
 		} else if (value.ronda == 1) {
-			if (value.resultado != null) {
-				finales.push(value.resultado);
+			if (value.jugador1!="null" && value.jugador2=="null"){
+				finales.push([1,0]);
+			}
+			else if(value.jugador1=="null" && value.jugador2!="null"){
+				finales.push([0,1]);				
+			}
+			else if (value.resultado != null) {				
+				finales.push(value.resultado);						
 			} else {
 				finales.push([ null, null ]);
 			}

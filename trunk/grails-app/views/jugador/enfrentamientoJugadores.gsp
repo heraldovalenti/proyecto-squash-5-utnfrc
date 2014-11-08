@@ -129,12 +129,12 @@
 				<g:each in="${enfrentamientos}" var="partido">
 					<ul class="actividad-list">					
 					
-					<li class="h2h_year par h2hli"><a href="#">${partido?.fecha}</a></li>
+					<li class="h2h_year par h2hli"><g:formatDate date="${partido?.fecha}" format="dd-MM-yyyy"/></li>
 					<li class="h2h_torneo par h2hli">${partido?.torneo}</li>
 					<li class="h2h_categoria par h2hli">${partido?.categoria}</li>
-					<li class="h2h_ronda par h2hli">8VOS. DE FINAL</li>
+					<li class="h2h_ronda par h2hli">${partido?.rondaPartidoString()}</li>
 					<li class="h2h_ganador par h2hli">${partido?.resultado?.ganador?.toString()}</li>
-					<li class="h2h_resultado par h2hli">3/2</li>	
+					<li class="h2h_resultado par h2hli">${partido?.resultado?.calcularSets()?.toString()}</li>	
 							
 					</ul>
 					

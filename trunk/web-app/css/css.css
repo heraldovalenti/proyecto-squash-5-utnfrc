@@ -1600,6 +1600,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 
 .act { margin-top: 10px;  text-align: left;border: 1px solid #e0e0e0; }
 .actividad-list {
+  width: 100%;
   background: none repeat scroll 0 0 white;
   float: left;
 }
@@ -1620,12 +1621,12 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 .actividad-list li.puesto {width: 155px;  padding-right: 2px;}
 
 .h2h {font: normal 11px verdana, arial, helvetiva !important;}
-.actividad-list li.h2h_year {width: 80px; border-right: 1px solid white;}
-.actividad-list li.h2h_torneo {width: 170px; border-right: 1px solid white;}
-.actividad-list li.h2h_categoria {width: 140px; border-right: 1px solid white;}
-.actividad-list li.h2h_ronda {width: 70px; border-right: 1px solid white;}
-.actividad-list li.h2h_ganador {width: 180px; border-right: 1px solid white;}
-.actividad-list li.h2h_resultado {width: 30px; }
+.actividad-list li.h2h_year {width: 15%; border-right: 1px solid white;}
+.actividad-list li.h2h_torneo {width: 20%; border-right: 1px solid white;}
+.actividad-list li.h2h_categoria {width: 15%; border-right: 1px solid white;}
+.actividad-list li.h2h_ronda {width: 15%; border-right: 1px solid white;}
+.actividad-list li.h2h_ganador {width: 20%; border-right: 1px solid white;}
+.actividad-list li.h2h_resultado {width: 9%; }
 .actividad-list li.h2hli {position: relative;display: block;float: left;padding: 4px;font: normal 10px verdana, arial, helvetica;color: #333;height: 18px;line-height: 18px; border-bottom: 1px solid white;overflow:hidden;}
 
 
