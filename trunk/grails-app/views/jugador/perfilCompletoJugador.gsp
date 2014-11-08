@@ -85,6 +85,12 @@
 					</g:if>
 				</g:each>			
 			</div>
+			<div id="playerBioInfoTitulos">									
+				<span><a style="color: white;" href="#"> ${ titulosJugador }</a></span> titulos					
+			</div>
+			<div id="playerBioInfoFinales">									
+				<span><a style="color: white;" href="#"> ${ finalesJugador }</a></span> finales				
+			</div>
 			</div>
 		</div>
 	

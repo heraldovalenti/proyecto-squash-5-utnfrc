@@ -1,6 +1,7 @@
 <%@ page import="sgt.Club"%>
 
-<div id="perfil-club" >
+<div id="perfil-club" style="margin: 0px!important;
+padding: 0px!important;">
 	<h3 class="title">${ club.nombre }</h3>
 	<div class="perfil-club-logo">
 		<div class="fieldcontain">
@@ -79,8 +80,9 @@
 				</g:each>
 				</span>
 			</li>
-			</g:if>
+			</g:if>		
 			
-		</ol>
+		</ol>	
+		
 	</div>
 </div>
