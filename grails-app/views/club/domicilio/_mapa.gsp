@@ -36,6 +36,6 @@
     </script>
   </head>
   <body onload="obtenerPunto()"> 
-    <div id="map_canvas" style="width:80%; height:80%"></div>
+    <div id="map_canvas" style="width:100%; height:80%"></div>
   </body>
 </html>

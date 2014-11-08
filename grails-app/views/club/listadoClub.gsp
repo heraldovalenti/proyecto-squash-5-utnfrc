@@ -8,15 +8,15 @@
 	<div class="menu_jugador" style="margin-top: 0.8em;">
 		<g:render template="listaClubes" model="['listadoClub':listadoClub]" />
 	</div>
-	<div class="grid_16 mt10 mb10">
-		<div class="grid_10">
-			<div class="box box-607" style="margin-left: 2em;width: 50em; margin-left: -20px;">			
+	<div class="grid_16 mb10" >
+		<div class="grid_10" style="border: 1px solid #BBB;">
+					
 								
-				<g:render template="clubCard" model="['club':club]"/>
+				<g:render template="clubCard" model="['club':club]"/>	
 				
-				<g:render template="domicilio/mapa" model="['club':club]"/>
+				<g:render template="domicilio/mapa" model="['club':club]"/>		
 				
-			</div>			
+					
 		</div>		
 	</div>	
 

@@ -316,9 +316,13 @@ class JugadorController {
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
-		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)		
+		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)	
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoria, tipo:tipo])
+		def titulosJugador=partidoService.listarTitulosJugador(usuario.id)
+		
+		def finalesJugador=partidoService.listarFinalesJugador(usuario.id)
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo])
 		
 		
 	}
