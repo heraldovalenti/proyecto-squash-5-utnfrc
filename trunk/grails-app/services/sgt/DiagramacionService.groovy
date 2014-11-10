@@ -55,14 +55,13 @@ class DiagramacionService {
 			}
 			order("ordenPartido", "asc")
 		}
-		generarPartidosSiguientes(partidos)
+		generarPartidosSiguientes(partidos, partidos.size())
 	}
 	
-	private void generarPartidosSiguientes(List<Partido> partidos) {
+	private void generarPartidosSiguientes(List<Partido> partidos, int siguienteOrden) {
 		if (partidos.size() <= 1) return
 		Torneo t = partidos[0].torneo
 		Categoria c = partidos[0].categoria
-		int siguienteOrden = partidos.size() + 1
 		List<Partido> partidosSiguientes = new ArrayList()
 		for(int i = 0; i < partidos.size(); i += 2) {
 			Partido p1 = partidos[i]
@@ -77,7 +76,7 @@ class DiagramacionService {
 			p1.save(failOnError: true)
 			p2.save(failOnError: true)
 		}
-		generarPartidosSiguientes(partidosSiguientes)
+		generarPartidosSiguientes(partidosSiguientes, siguienteOrden)
 	}
 	
 	def finalizarPartidosSingles(Torneo t) {

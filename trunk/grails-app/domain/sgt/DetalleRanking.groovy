@@ -12,5 +12,6 @@ class DetalleRanking {
 	static belongsTo = [ranking: Ranking]
 
     static constraints = {
+		hasta nullable: true
     }
 }

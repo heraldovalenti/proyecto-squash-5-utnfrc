@@ -11,5 +11,7 @@ class Ranking {
 	static hasMany = [detalles: DetalleRanking]
 
     static constraints = {
+		puntaje nullable: true
+		puesto nullable: true
     }
 }
