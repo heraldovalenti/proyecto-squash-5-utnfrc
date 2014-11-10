@@ -1,5 +1,6 @@
 package sgt.administracion.torneos
 
+import grails.validation.ValidationException
 import sgt.exceptions.RankingException
 import sgt.exceptions.TorneoNotFoundException
 
@@ -15,10 +16,9 @@ class GeneracionRankingController {
 			flash.exception = ex
 		} catch (RankingException ex) {
 			flash.exception = ex
-		} 
-//		catch (ex) {
-//			flash.exception = ex
-//		}
+		} catch (ex) {
+			flash.exception = ex
+		}
 		redirect(controller: "torneo", action: "show", id: id)
 	}
 
