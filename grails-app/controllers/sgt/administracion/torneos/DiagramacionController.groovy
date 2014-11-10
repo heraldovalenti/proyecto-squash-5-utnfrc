@@ -11,18 +11,19 @@ import sgt.Cancha
 import sgt.Club
 import sgt.Partido
 import sgt.Torneo
-import sgt.exceptions.DiagramacionException;
-import sgt.exceptions.TorneoNotFoundException;
+import sgt.exceptions.DiagramacionException
+import sgt.exceptions.TorneoNotFoundException
 
 class DiagramacionController {
 		
 	def diagramacionService
 	
-	def generarDiagramacion(Long id) {
+	def diagramacionTorneo(Long id) {
 		try {
-			Torneo t = diagramacionService.generarDiagramacion(id)
-			session.setAttribute("torneoDiagramacion", t)
-			render(view: "/administracion/diagramacion/diagramacionTorneo", model: ["":""])
+			Torneo t = diagramacionService.getTorneo(id)
+			session.setAttribute("torneoSeleccionado", t)
+			if (diagramacionService.generarDiagramacion(id)) flash.message = "Partidos de torneo generados"
+			redirect(action: "seleccionarPartidos", id: id)
 		} catch(TorneoNotFoundException ex) {
 			flash.exception = ex
 			redirect(controller: "torneo", action: "list")
@@ -34,9 +35,63 @@ class DiagramacionController {
 			redirect(controller: "torneo", action: "show", id: id)
 		}
 	}
+		
+	def seleccionarPartidos(Long id) {
+		try {
+			Torneo t = diagramacionService.getTorneo(id)
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
+			Date fechaInicio = (params.fechaInicio) ? sdf.parse(params.fechaInicio) : null
+			Date fechaFin = (params.fechaFin) ? sdf.parse(params.fechaFin) : null
+			def categorias = diagramacionService.getCategoriasTorneo(id)
+			def rondas = diagramacionService.getRondasTorneo(id)
+			def partidos = diagramacionService.listarPartidosTorneo(id, params)
+			render(view: "/administracion/diagramacion/seleccionPartidos", model: [torneo: t, partidos: partidos, 
+				incluirDiagramados: params.incluirDiagramados, 
+				categorias: categorias, categoria: params.categoria,
+				keysRonda: rondas.keys, valuesRonda: rondas.values, ronda: params.ronda, 
+				fechaInicio: fechaInicio, fechaFin: fechaFin])
+		} catch(TorneoNotFoundException ex) {
+			flash.exception = ex
+			redirect(controller: "torneo", action: "list")
+		}
+	}
+	
+	def generarDiagramacion(Long id) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy")
+		Date fechaInicio = (params.fechaInicio) ? sdf.parse(params.fechaInicio) : null
+		Date fechaFin = (params.fechaFin) ? sdf.parse(params.fechaFin) : null
+		try {
+			List<Partido> partidos = new ArrayList<Partido>()
+			for (String p : params) {
+				if ( p.length() > 8 && p.startsWith("partido-") && p.endsWith("=on") ) {
+					String idPartidoString = p.split("-")[1]
+					idPartidoString = idPartidoString.split("=")[0]
+					Long idPartido = Long.parseLong(idPartidoString)
+					Partido partido = Partido.get(idPartido)
+					if (partido) partidos.add(partido)
+				}
+			}
+			diagramacionService.generarHorarios(id, partidos, fechaInicio, fechaFin)
+			redirect(action: "diagramacionHorarios", id: id)
+		} catch(TorneoNotFoundException ex) {
+			flash.exception = ex
+			redirect(controller: "torneo", action: "list")
+		} catch (DiagramacionException ex) {
+			flash.exception = ex
+			redirect(action: "seleccionarPartidos", id: id)
+		} 
+		catch (ex) {
+			flash.exception = ex
+			redirect(action: "seleccionarPartidos", id: id)
+		}
+	}
+	
+	def diagramacionHorarios(Long id) {
+		render(view: "/administracion/diagramacion/diagramacionTorneo", model: ["": ""])
+	}
 	
 	private Torneo getTorneo() {
-		Torneo t = session.getAttribute("torneoDiagramacion")
+		Torneo t = session.getAttribute("torneoSeleccionado")
 		t = t.merge()
 	}
 	

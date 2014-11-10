@@ -1,6 +1,7 @@
 $(function() { 
-     $("#fechaInicioInscripcion").datepicker({dateFormat: 'dd/mm/yy'});    
-     $("#fechaFinInscripcion").datepicker({dateFormat: 'dd/mm/yy'}); 
-     $("#fechaInicioTorneo").datepicker({dateFormat: 'dd/mm/yy'}); 
-     $("#fechaFinTorneo").datepicker({dateFormat: 'dd/mm/yy'}); 
+     $("#fechaInicioInscripcion").datepicker({dateFormat: 'dd/mm/yy'});
+     $("#fechaFinInscripcion").datepicker({dateFormat: 'dd/mm/yy'});
+     $("#fechaInicioTorneo").datepicker({dateFormat: 'dd/mm/yy'});
+     $("#fechaFinTorneo").datepicker({dateFormat: 'dd/mm/yy'});
+     $(".date-picker").datepicker({dateFormat: 'dd/mm/yy'});
  })  

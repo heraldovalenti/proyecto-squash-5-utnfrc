@@ -24,4 +24,9 @@ class Categoria {
 		if (this.nombre == null || this.modalidadCategoria == null) return false
 		return ( this.nombre.equals(other.nombre) && this.modalidadCategoria.equals(other.modalidadCategoria) )
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.nombre.hashCode()
+	}
 }

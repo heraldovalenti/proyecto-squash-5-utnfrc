@@ -14,6 +14,10 @@ class ResultadoPartidoService {
 		if (p.finalizado()) {
 			throw new PartidoException(PartidoException.PARTIDO_FINALIZADO)
 		}
+		if (p.torneo.diagramado()) {
+			p.torneo.comenzarTorneo()
+			p.torneo.save(failOnError: true)
+		}
 		ResultadoPartido r = p.resultado
 		if (!r) {
 			r = new ResultadoPartido()
