@@ -37,4 +37,9 @@ class DetalleTorneo {
 		DetalleTorneo other = obj
 		return (this.id == other.id)
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.categoria.hashCode()
+	}
 }

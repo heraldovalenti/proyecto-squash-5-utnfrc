@@ -175,6 +175,10 @@ class Torneo {
 		return ( this.inscripcionCerrada() || this.inscripcionFinalizada() || this.diagramado() || this.enCurso())
 	}
 	
+	Boolean partidosGenerados() {
+		return !( this.inscripcionCerrada() || this.inscripcionFinalizada() )
+	}
+	
 	int getDuracionDias() {
 		long diff = this.fechaFinTorneo.getTime() - this.fechaInicioTorneo.getTime()
 		return (int)(diff / (1000 * 60 * 60 * 24) ) + 1
