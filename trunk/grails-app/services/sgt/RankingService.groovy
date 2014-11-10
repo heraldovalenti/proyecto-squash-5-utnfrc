@@ -70,7 +70,6 @@ class RankingService {
 		})
 		
 		for (int i = 0; i < puntajes.size(); i++) {
-			println puntajes[i]
 			Ranking r = puntajes[i].ranking
 			double puntosRanking = puntajes[i].puntos
 			r.puntaje = puntosRanking
@@ -80,7 +79,7 @@ class RankingService {
 	}
 	
 	def actualizarRankingJugador(Usuario j, DetalleTorneo dt) {
-		int posicionObtenida = posicionObtenida(j, dt.torneo)
+		int posicionObtenida = posicionObtenida(j, dt)
 		double puntosGanados = puntosPosicion(dt.torneo, dt.categoria, posicionObtenida)
 		Ranking ranking = rankingJugador(j, dt.categoria)
 		DetalleRanking nuevoRanking = new DetalleRanking(torneoPuntuable: dt.torneo.torneoPuntuable, torneo: dt.torneo,
@@ -135,10 +134,11 @@ class RankingService {
 		else return 0.0
 	}
 	
-	int posicionObtenida(Usuario j, Torneo t) {
+	int posicionObtenida(Usuario j, DetalleTorneo t) {
 		def partidosJugador = Partido.createCriteria().list {
 			and {
-				eq("torneo", t)
+				eq("torneo", t.torneo)
+				eq("categoria", t.categoria)
 			}
 			or {
 				eq("jugador1", j)
@@ -148,11 +148,11 @@ class RankingService {
 		}
 		Partido ultimoPartido = partidosJugador.get(0)
 		int rondaPartido = ultimoPartido.rondaPartido()
-		println ultimoPartido.id + " - " + rondaPartido
+		int res = rondaPartido + 1
 		if (rondaPartido == 1) {
-			if ( j.equals( ultimoPartido.resultado.ganador) ) return 1
-			else return 2
+			if ( j.equals( ultimoPartido.resultado.ganador) ) res = 1
+			else res = 2
 		}
-		return rondaPartido
+		return res
 	}
 }
