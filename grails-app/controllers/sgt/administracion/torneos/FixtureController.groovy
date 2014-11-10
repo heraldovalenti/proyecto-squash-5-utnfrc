@@ -17,6 +17,8 @@ class FixtureController {
 		
 		def categoriaId=categoria.split(' -')		
 		def categoriaSeleccionada=Categoria.findByNombre(categoriaId[0])	
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
 		JSON.registerObjectMarshaller(Partido) {
 			return [
 				id: it.id,
@@ -36,7 +38,11 @@ class FixtureController {
 				]
 		}
 		def partidos = Partido.createCriteria().list() {
+			and{
 			eq("categoria", categoriaSeleccionada)
+			eq("torneo",torneoInstance)
+			}
+			order("ordenPartido", "asc")
 		}
 		
 		render partidos  as JSON		
