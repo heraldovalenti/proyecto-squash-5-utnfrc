@@ -14,10 +14,7 @@ class ResultadoPartidoService {
 		if (p.finalizado()) {
 			throw new PartidoException(PartidoException.PARTIDO_FINALIZADO)
 		}
-		if (p.torneo.diagramado()) {
-			p.torneo.comenzarTorneo()
-			p.torneo.save(failOnError: true)
-		}
+		comenzarTorneo(p.torneo)
 		ResultadoPartido r = p.resultado
 		if (!r) {
 			r = new ResultadoPartido()
@@ -43,6 +40,7 @@ class ResultadoPartidoService {
 			Long idGanador = Long.parseLong(params.ganador)
 			partidoService.registrarGanadorPartido(p.id, idGanador)
 		}
+		finalizarTorneo(p.torneo)
 	}
 	
 	def agregarSet(def params) throws ValidationException {
@@ -61,6 +59,28 @@ class ResultadoPartidoService {
 		def last = d.get(d.size() - 1)
 		r.detalles.remove(last)
 		last.delete()
+	}
+	
+	def comenzarTorneo(Torneo t) {
+		if (t.diagramado()) {
+			t.comenzarTorneo()
+			t.save(failOnError: true)
+		}
+	}
+	
+	def finalizarTorneo(Torneo t) {
+		if (t.enCurso()) {
+			def partidosPendientes = Partido.createCriteria().list {
+				eq("torneo", t)
+				and {
+					ne("estado", "Finalizado")
+				}
+			}
+			if (partidosPendientes.isEmpty()) {
+				t.finalizarTorneo()
+				t.save(failOnError: true)
+			}
+		}
 	}
 
 }

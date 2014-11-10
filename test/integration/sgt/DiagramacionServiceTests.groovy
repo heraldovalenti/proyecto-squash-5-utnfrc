@@ -299,12 +299,25 @@ class DiagramacionServiceTests {
 		Categoria c = d.categoria
 		String e = "Creado"
 		Assert.assertEquals(0, Partido.findAllByTorneo(t).size())
-		Partido p1 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 1).save(failOnError: true)
-		Partido p2 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 2).save(failOnError: true)
-		Partido p3 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 3).save(failOnError: true)
-		Partido p4 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 4).save(failOnError: true)
+		Partido p1 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 0).save(failOnError: true)
+		Partido p2 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 1).save(failOnError: true)
+		Partido p3 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 2).save(failOnError: true)
+		Partido p4 = new Partido(categoria: c, torneo: t, estado: e, ordenPartido: 3).save(failOnError: true)
 		Assert.assertEquals(4, Partido.findAllByTorneo(t).size())
 		diagramacionService.generarRondasSiguientes(d)
-		Assert.assertEquals(7, Partido.findAllByTorneo(t).size())
+		List<Partido> partidos = Partido.findAllByTorneo(t)
+		Assert.assertEquals(7, partidos.size())
+		Collections.sort(partidos, new Comparator<Partido>() {
+			@Override
+			int compare(Partido obj1, Partido obj2) {
+				return obj1.ordenPartido - obj2.ordenPartido	
+			}
+		})
+		List<Integer> ordenes = new ArrayList<Integer>()
+		for (p in partidos) {
+			ordenes.add(p.ordenPartido)
+		}
+		def expected = [0,1,2,3,4,5,6]
+		Assert.assertEquals(expected, ordenes)
 	}
 }
