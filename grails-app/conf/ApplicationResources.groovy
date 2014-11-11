@@ -93,4 +93,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/menu.js'
 	}
+	selection {
+		dependsOn 'jquery'
+		resource url: 'js/selection.js'
+	}
 }
