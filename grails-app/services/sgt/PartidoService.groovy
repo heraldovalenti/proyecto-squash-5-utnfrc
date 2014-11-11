@@ -1,7 +1,10 @@
 package sgt
 
 import grails.validation.ValidationException
-import org.hibernate.criterion.CriteriaSpecification;
+
+import org.hibernate.criterion.CriteriaSpecification
+
+import sgt.exceptions.DiagramacionException
 class PartidoService {
 	
 	static transactional = true
@@ -119,6 +122,27 @@ class PartidoService {
 		}
 
 		return partidos
+	}
+	
+	def savePartido(Partido p) throws ValidationException, DiagramacionException {
+		esPosibleDiagramar(p)
+		p.save(failOnError: true)
+	}
+	
+	def esPosibleDiagramar(Partido p) throws DiagramacionException {
+		Torneo torneo = p.torneo
+		if (!torneo.esDiagramable()) {
+			throw new DiagramacionException(DiagramacionException.DIAGRAMACION_NO_PERMITIDA)
+		}
+		if (!torneo.clubAsignado()) {
+			throw new DiagramacionException(DiagramacionException.TORNEO_SIN_CLUB)
+		}
+		if (torneo.club.cantidadCanchas() == 0) {
+			throw new DiagramacionException(DiagramacionException.CLUB_SIN_CANCHAS)
+		}
+		if (torneo.getTotalInscriptos() == 0) {
+			throw new DiagramacionException(DiagramacionException.TORNEO_SIN_INSCRIPTOS)
+		}
 	}
 
 }

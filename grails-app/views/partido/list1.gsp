@@ -18,9 +18,9 @@
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">
 			<h1>Listado de partidos de ${torneoInstance.nombre}</h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			
+			<g:render template="/utils/messages" />
+
 			<table>
 				<thead>
 					<tr>

@@ -8,16 +8,17 @@
 		<r:require module="listaResultadosPartidos"/>
 	</head>	
 	<body>
-		<a href="#list-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<%--<li><g:link class="list" controller="torneo" action="show" id="${torneoInstance.id}">Volver</g:link></li>				
-			--%></ul>
+				<li><g:link controller="partido" action="list1">Volver</g:link></li>
+			</ul>
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">
-			<h1>Informe de Resultados de partidos <g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
-					optionKey="id" noSelection="['':'Todas']" class="profile-year" id="categoria" style="margin-left: 25%;
-margin-right: 5%;"/></h1>
+			<h1>Informe de Resultados de partidos 
+				<g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
+				optionKey="id" noSelection="['':'Todas']" class="profile-year" id="categoria" 
+				style="float: right; margin-right: 10px;"/>
+			</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -53,7 +54,13 @@ margin-right: 5%;"/></h1>
 						
 						<td><g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario:partidoInstance?.jugador2?.id,categoria:partidoInstance?.categoria]">${fieldValue(bean: partidoInstance, field: "jugador2")}</g:link></td>	
 						
-						<td><g:link controller="resultadoPartido" action="cargarResultado" id="${partidoInstance?.resultado?.id}">${partidoInstance?.resultado?.calcularSets()[0]?.toString()} - ${partidoInstance?.resultado?.calcularSets()[1]?.toString()} </g:link></td>						
+						<td>
+							<g:if test="${ !partidoInstance.esSingle() }">
+							<g:link controller="resultadoPartido" action="cargarResultado" id="${partidoInstance?.id}">
+								${partidoInstance?.resultado?.calcularSets()[0]?.toString()} - ${partidoInstance?.resultado?.calcularSets()[1]?.toString()} 
+							</g:link>
+							</g:if>
+						</td>
 																	
 					</tr>
 				</g:each>
