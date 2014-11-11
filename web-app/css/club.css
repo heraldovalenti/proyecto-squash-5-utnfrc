@@ -1,10 +1,10 @@
 /*Imagen de fondo y cuerpo de pagina*/
 body {
-  background: url("fondoClub.jpg") no-repeat scroll center 30px / 100% auto #CCABBE;
-  background-image: url("fondoClub.jpg");
+  background: url("fondoClub1.jpg") no-repeat scroll center 30px / 100% auto #1B7DC3;
+  background-image: url("fondoClub1.jpg");
   background-repeat: no-repeat;
   background-position: center 30px;
-  background-color: #CCABBE;
+  background-color: #1B7DC3;
   background-size: 100%;
   margin: 0px;
   

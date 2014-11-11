@@ -7,32 +7,63 @@
 
 <h3 class="title">Reglamento Dobles</h3>
 
-<g:render template="/acsInfo/menuInfo" />
+<div class="menu_jugador" style="margin-top: 0.8em;">
+		<g:render template="/acsInfo/menuInfo" />
+</div>
 	
-<div id="jslidernews2" class="lof-slidecontent"	style="width: 600px; height: 300px;">
-	<div class="preload">	
-Reglamento de Dobles
-REGLAMENTO DOBLES 
+<div class="grid_16 mt10 mb10">
+		<div class="grid_10">
+			<div class="box box-607" style="margin-left: 2em;width: 50em;">
+			
+			<h1 class="title-news">Reglamento de Dobles</h1>
+			<br></br>
+			
+<p>
+<strong>REGLAMENTO DOBLES </strong>
 ACSR 2014
 (Vigencia enero 2014)
 
-Contenido
+<br></br>
 
+<strong>Contenido</strong>
+<br></br>
+
+<p>
 1.Objetivo    2
+</p>
+<p>
 2.Lineamientos Generales    2
+</p>
+<p>
 3.Armado de los Draws    2
+</p>
+<p>
 4.Ranking    3
+</p>
+<p>
 5.Handicap    5
+</p>
+<p>
 6.Reglas de Juego    5
+</p>
+<p>
 7.Seguimiento del torneo    6
+</p>
+<p>
 8.Obligaciones del Jugador    6
+</p>
+<p>
 9.Sanciones al Jugador    7
+</p>
 
-1. Objetivo
+<br></br>
+
+<strong>1. Objetivo</strong>
+<br></br>
 
 Definir y reglamentar las condiciones generales que los jugadores deberán cumplimentar para disputar los torneos de Dobles de la ACSR.
 . El presente reglamento se complementa con el reglamento vigente de la AASR para las categorías singles.
-2. Lineamientos Generales
+<strong>2. Lineamientos Generales</strong>
 
 Los torneos de dobles se jugaran en la modalidad “única Categoría con hándicap“.
 Se define que durante el 2014 se disputarán 14 torneos con el siguiente detalle: 
@@ -43,7 +74,9 @@ Se define que durante el 2014 se disputarán 14 torneos con el siguiente detalle
 4. Los torneos se realizarán comenzando el día lunes y finalizando el domingo. Excepcionalmente debido a la cantidad de inscriptos y razones por razones organizativas se permitirá comenzar el fin de semana anterior, previa comunicación y autorización de la ACS. 
 5. Los partidos se diputarán en zonas al mejor de 3 games todos contra todos, siendo las semifinales y final al mejor de 5 games.
 
-3. Armado de los Draws
+<br></br>
+<strong>3. Armado de los Draws</strong>
+<br></br>
 
 Los DRAWS se confeccionaran de la siguiente manera: 
 
@@ -55,7 +88,11 @@ Los DRAWS se confeccionaran de la siguiente manera:
 6. En el caso que haya una o ninguna inscripción, la categoría se declara desierta. 
 7. Se fija en 15 minutos el plazo máximo de tolerancia para el otorgamiento del partido ganado por WO (Walkover) a favor del equipo que se encuentra en la cancha a la espera del rival.
 
-4. Ranking
+<br></br>
+
+<strong>4. Ranking</strong>
+
+<br></br>
 
 En la siguiente tabla se determinan los puntos a sumar al ranking individual de la categoría dobles según al puesto obtenido en cada torneo.
 
@@ -81,7 +118,11 @@ En la siguiente tabla se determinan los puntos a sumar al ranking individual de 
 5. Sucesivamente y hasta llegar al último participante. Los puntos del anteriormente divido 2 (6.75 puntos)
 6. Al inicio del calendario 2014 se inicia el ranking con todos los jugadores con cero puntos.
 
-5. Handicap
+<br></br>
+
+<strong>5. Handicap</strong>
+
+<br></br>
 
 1. Para poder participar en los torneos de dobles de la ACSR la suma de las categorías de ambos jugadores de la pareja deberá ser igual o superior a 5.
 2. Categoría de cada Jugador: Se define que la categoría a considerar para cada jugador corresponde a la menor de las dos categorías single que este juega. Para ello se tomara la última inscripción en torneos de la ACSR. En el caso de Damas que no jueguen en categorías 1° a 7° se considerará como categoría 7°.
@@ -91,7 +132,11 @@ En la siguiente tabla se determinan los puntos a sumar al ranking individual de 
 6. Se restan los hándicap de cada pareja y esa diferencia más uno ( 1) es el número de puntos con el que comienzan todos los game la pareja que tiene mayor hándicap.
 7. Se limita a 6 puntos como máximo la diferencia de puntos para comenzar un game. En el caso que la diferencia  de hándicap más uno ( 1) sea superior a 6 se tomaran 6 puntos.
 
-6. Reglas de Juego
+<br></br>
+
+<strong>6. Reglas de Juego</strong>
+
+<br></br>
 
 Las reglas de juego a aplicarse para los torneos de dobles son en general las previstas para el juego de singles con las siguientes excepciones:
 1. Muerte súbita: Los games son a 11 puntos. En el caso que estén 10 -10, termina en 11.
@@ -115,12 +160,20 @@ b. Al comenzar el partido sirve el primero del equipo A y cuando pierde saca el 
 a. Si un jugador sangra, se detiene el juego y el árbitro otorgará el tiempo necesario para que pare de sangrar totalmente. Cuando se retoma el juego si continúa el sangrado en el mismo lugar, automáticamente ese equipo perderá el partido.
 b. Si un jugador se lesiona conjuntamente con un compañero de otro equipo, se le otorgará 1hora de tiempo y el árbitro decidirá si da mayor tiempo.
 
-7. Seguimiento del torneo
+<br></br>
+
+<strong>7. Seguimiento del torneo</strong>
+
+<br></br>
 
 1. Cada equipo tiene la obligación de verificar en la página de la ACSR los draw y el orden de juego donde podrá ver quién es su equipo contrincante y el horario de los partidos.
 2. Ambos Jugadores son responsables de sus horarios de juego y tiene la obligación de confirmar el horario por medio del sitio web-> Mi Cuenta, o vía telefónica.
 
-8. Obligaciones del Jugador
+<br></br>
+
+<strong>8. Obligaciones del Jugador</strong>
+
+<br></br>
 
 1. El jugador deberá concurrir a las instalaciones del torneo en tiempo y forma
 2. Deberá jugar con calzado apto para el juego de Squash. Es obligatorio el uso de suela NON-MARKING.
@@ -134,14 +187,20 @@ b. Si un jugador se lesiona conjuntamente con un compañero de otro equipo, se l
 10. Lo jugadores se encargarán de sortear quien saca y le informaran al árbitro del resultado.
 11. Los jugadores que salgan vencedores de su encuentro deberán ser árbitros del siguiente partido.
 
-9. Sanciones al Jugador
+<br></br>
+
+<strong>9. Sanciones al Jugador</strong>
+
+<br></br>
 
 1. El organizador al finalizar el torneo confeccionará una lista de los jugadores que presentaron faltas al presente Reglamento. 
 2. La ACSR analizará cada caso y decidirá si corresponde aplicar una sanción y/o advertencia al jugador. En caso de corresponder una sanción se le comunicará al jugador, el cual dispondrá de 3 días hábiles para hacer su descargo. 
 3. Las sanciones a aplicar por parte de la Comisión Directiva podrán variar de acuerdo a la gravedad de la infracción. Desde la suspensión de 1 fecha hasta la inhabilitación para jugar torneos de la ACSR.
+</p>
+<br></br>
+<p><strong>Comisión Directiva de la ACS	</strong></p>		
 
-Comisión Directiva de la ACS				
-
+		</div>
 	</div>
 </div>
 	
