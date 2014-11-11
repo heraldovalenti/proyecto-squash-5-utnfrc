@@ -7,40 +7,60 @@
 <body>	
 <h3 class="title">¿Quienes somos?</h3>
 
-<g:render template="/acsInfo/menuInfo" />
+<div class="menu_jugador" style="margin-top: 0.8em;">
+		<g:render template="/acsInfo/menuInfo" />
+</div>
 
-<div id="jslidernews2" class="lof-slidecontent"	style="width: 600px; height: 300px;">
-	<div class="preload">
+<div class="grid_16 mt10 mb10">
+		<div class="grid_10">
+			<div class="box box-607" style="margin-left: 2em;width: 50em;">
+<h1 class="title-news">¿Quiénes Somos?</h1>
 
-¿Quiénes Somos?
-La Asociación Cordobesa de Squash es la entidad rectora de este deporte en la provincia de Córdoba, un entidad sin fines de lucro, abierta y democrática que propugna el desarrollo del squash.
+<br></br>
 
-Presidente
+<p>La Asociación Cordobesa de Squash es la entidad rectora de este deporte en la provincia de Córdoba, un entidad sin fines de lucro, abierta y democrática que propugna el desarrollo del squash.</p>
+
+<br></br>
+
+<p>
+<strong>Presidente: </strong>
 Martin Videla
 
-Vice Presidente
+<br></br>
+
+<strong>Vice Presidente: </strong>
 Carlos Vila
 
-Secretario
+<br></br>
+
+<strong>Secretario: </strong>
 Gabriel Salde
 
-Tesorero
+<br></br>
+
+<strong>Tesorero: </strong>
 Ignacio Etchepare
 
-Vocales 
-Fabio Fernandez
-Gustavo Demaussion
-Richar Suarez
-Gaston Gomez
-Cesar Ceballos
+<br></br>
+
+<strong>Vocales: </strong>
+Fabio Fernandez,
+Gustavo Demaussion,
+Richar Suarez,
+Gaston Gomez,
+Cesar Ceballos,
 Pablo Kerestazachi
 
-Vocales Suplentes
-Sebastian Sereno
-Osbaldo Diaz Villasuso
-Marcelo Meritano
+<br></br>
 
-		</div>					
+<strong>Vocales Suplentes:</strong>
+Sebastian Sereno,
+Osbaldo Diaz Villasuso,
+Marcelo Meritano
+</p>
+
+		</div>
+	</div>						
 </div>	
 </body>
 </html>

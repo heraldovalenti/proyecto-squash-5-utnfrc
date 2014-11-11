@@ -1,4 +1,9 @@
-<div class="box mb10 box-150">
+<head>
+<link href="${resource(dir: 'css', file: 'jugador.css') }"
+	type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div class="mb10">
 	<div id="news-result" class="inner-box">
 		<ul>
 			<li><g:link controller="acsInfo" action="informeanual">Informe anual</g:link></li>
@@ -8,3 +13,4 @@
 		</ul>
 	</div>
 </div>
+</body>

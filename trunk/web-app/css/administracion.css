@@ -1,7 +1,7 @@
 /*Imagen de fondo y cuerpo de pagina*/
 body {
-  background: url("canchaSquash.jpg") no-repeat scroll center 30px / 100% auto #CCABBE;
-  background-image: url("canchaSquash.jpg");
+  background: url("canchaSquash1.jpg") no-repeat scroll center 30px / 100% auto #CCABBE;
+  background-image: url("canchaSquash1.jpg");
   background-repeat: no-repeat;
   background-position: center 30px;
   background-color: #CCABBE;

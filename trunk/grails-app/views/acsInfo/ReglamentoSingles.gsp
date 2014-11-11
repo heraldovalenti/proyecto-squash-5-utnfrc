@@ -7,13 +7,21 @@
 
 <h3 class="title">Reglamento Singles</h3>
 
-<g:render template="/acsInfo/menuInfo" />
+<div class="menu_jugador" style="margin-top: 0.8em;">
+		<g:render template="/acsInfo/menuInfo" />
+</div>
 
-<div id="jslidernews2" class="lof-slidecontent"	style="width: 600px; height: 300px;">
-	<div class="preload">
+<div class="grid_16 mt10 mb10">
+		<div class="grid_10 ">
+			<div class="box box-607" style="margin-left: 2em;width: 50em;">
 
-Reglamentacion de Torneos Singles de la ACSR
-1-LINEAMIENTOS GENERALES:
+<h1 class="title-news">Reglamentación de Torneos Singles de la ACSR</h1>
+
+<br></br>
+
+<strong>1-LINEAMIENTOS GENERALES:</strong>
+
+<br></br>
 
 -Se jugarán 16 torneos: 15 fechas puntables  y un Torneo Master en diciembre.
 
@@ -21,15 +29,21 @@ Las fechas ordinarias deberán jugarse -sin excepción- en el rango de días est
 
 Las categorías a diputarse serán:
 
-Hombres: 1°, 2°, 3°, 4°, 5°, 6°, 7° y Principiantes (esta última categoría a evaluar por los organizadores).
-
-Damas: 1°, 2° y 3° (ex Damas A, B y C)
-
-Menores: (a evaluar por los organizadores)
-
+<br></br>
+<p>
+<strong>Hombres:</strong> 1°, 2°, 3°, 4°, 5°, 6°, 7° y Principiantes (esta última categoría a evaluar por los organizadores).
+</p>
+<p>
+<strong>Damas:</strong> 1°, 2° y 3° (ex Damas A, B y C)
+</p>
+<p>
+<strong>Menores:</strong> (a evaluar por los organizadores)
+</p>
 En el caso de que el número de jugadores de una categoría sea de tres (3) o dos (2), se lo declarará como “torneo desafío” y no sumará puntos para el ranking provincial.
 
 En el caso que haya una o ninguna inscripción, la categoría se declara desierta.
+
+<br></br>
 
 -El puntaje a designarse sería el siguiente:  
 
@@ -59,7 +73,9 @@ Un jugador podrá inscribirse hasta en dos categorías consecutivas.
 
 Cuando un jugador acceda a semifinales de las dos categorías en un mismo torneo, deberá optar por alguna de las dos.
 
-2-INSCRIPCIONES:
+<br></br>
+
+<strong>2-INSCRIPCIONES:</strong>
 
 La fijación del precio de las inscripciones es un atributo exclusivo de la ACS; para ello tomará como referencia un valor equivalente a 2 horas canchas para quienes jueguen 1 categoría y 3 horas cancha para 2 categorías.
 
@@ -93,7 +109,9 @@ Los organizadores deberán exigir a los jugadores un certificado médico que los
 
 Los organizadores deberán contar con cobertura de emergencias médicas en el club donde se realiza el torneo.
 
-3-LICITACIÓN,
+<br></br>
+
+<strong>3-LICITACIÓN:</strong>
 
 SORTEO Y OTORGAMIENTO DE LAS FECHAS PUNTABLES
 
@@ -119,9 +137,9 @@ La demora en el cumplimiento de este trámite en los tiempos descriptos implicar
 
 La ACS fija para estos trámites domicilio en Av. Roque Funes 1115 – Loc. 03 (PB).
 
-4- REQUISITOS MÍNIMOS E INDISPENSABLES EXIGIDOS POR LA
+<br></br>
 
-ACS
+<strong>4- REQUISITOS MÍNIMOS E INDISPENSABLES EXIGIDOS POR LA ACS</strong>
 
 Haber señado la fecha puntable
 
@@ -149,7 +167,9 @@ El veedor visitará las instalaciones del club con un mínimo de tres semanas an
 
 El dictamen del veedor facultará a la Comisión Directiva de la ACS a tomar las decisiones que estime necesarias, las que podrán incluir quitar el aval de la ACS al torneo en cuestión, los organizadores y el club involucrado.
 
-5- ALGUNAS MEDIDAS Y CONSEJOS PARA UN MEJOR DESARROLLO DEL TORNEO
+<br></br>
+
+<strong>5- ALGUNAS MEDIDAS Y CONSEJOS PARA UN MEJOR DESARROLLO DEL TORNEO</strong>
 
 - Sugerencia: El torneo se debería desarrollar en el transcurso de una semana; se aconseja colocar los horarios de partidos desde las 19 hs, aunque esto no signifique no poder adelantar algunos partidos.
 
@@ -181,7 +201,9 @@ El dictamen del veedor facultará a la Comisión Directiva de la ACS a tomar las
 
 - Sugerencia: Prever la programación de al menos un partido de primera y segunda categoría en todos los días que dure el torneo.
 
-6- RESPONSABILIDADES DE LA A.C.S.R. EN LA REALIZACIÓN DE CADA TORNEO
+<br></br>
+
+<strong>6- RESPONSABILIDADES DE LA A.C.S.R. EN LA REALIZACIÓN DE CADA TORNEO</strong>
 
 - Declarar Torneo Oficial, avalado por la ACS
 
@@ -209,12 +231,26 @@ promoción consiste el envío de dos e-mail, uno enviado 10 días antes del comi
 
 - La ACS hará entregará al final del periodo anual en la cena de camaradería, un diploma a cada uno de los 1° rankeados de cada categoría y también un reconocimiento a los jugadores que hayan participado en todos los torneos.
 
-Documentos Adicionales:
-Planilla de Rendición
-Planilla de Jugadores
-Draws
-Planillas de Arbitraje
+<br></br>
 
+<strong>Documentos Adicionales:</strong>
+
+<br></br>
+
+<p>
+Planilla de Rendición
+</p>
+<p>
+Planilla de Jugadores
+</p>
+<p>
+Draws
+</p>
+<p>
+Planillas de Arbitraje
+</p>
+
+		</div>	
 	</div>					
 </div>		
 	
