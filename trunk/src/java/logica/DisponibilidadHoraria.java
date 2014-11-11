@@ -89,9 +89,9 @@ public class DisponibilidadHoraria implements Comparable{
     }
     
     public void generarDisponibilidadConMatrizVerdad(boolean[][] matrizVerdad, IDisponible elementoDisp){
-        for(int i = 0; i < horarios.length; i++){ 
-            for (int j = 0; j < horarios[i].length; j++) {
-                 if(matrizVerdad[i][j]){
+        for(int i = 0; i < matrizVerdad.length; i++){ 
+            for (int j = 0; j < matrizVerdad[i].length; j++) {
+            	if(matrizVerdad[i][j]){
                 	 Horario h = new Horario(i,j,elementoDisp); 
                 	 //horarios[i][j].add(new Horario(i, j, elementoDisp));
                 	 horarios[i][j].add(h);

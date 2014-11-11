@@ -154,7 +154,7 @@ class DiagramacionService {
 		int duracionDiagramacion = duracionDiagramacion(inicioDiagramacion, finDiagramacion)
 		int horasDiagramacion = 16
 		
-		Date fechaInicioDiagramacion = t.fechaInicioTorneo
+		Date fechaInicioDiagramacion = inicioDiagramacion
 		Diagramacion d = new Diagramacion()
 		logica.Partido[] _partidos = new logica.Partido[partidos.size()]
 		for (int i = 0; i < partidos.size(); i++) {
@@ -166,10 +166,10 @@ class DiagramacionService {
 			boolean[][] disponibilidadJugador2 = cargarHorarios(p.jugador2.jugador)
 			logica.DisponibilidadHoraria _disponibilidadJugador1 = 
 				d.cargarHorarioDisponibilidad(_jugador1, disponibilidadJugador1, 
-				horasDiagramacion, 7, diaSemanalInicioDiagramacion)
+				horasDiagramacion, duracionDiagramacion, diaSemanalInicioDiagramacion)
 			logica.DisponibilidadHoraria _disponibilidadJugador2 = 
 				d.cargarHorarioDisponibilidad(_jugador2, disponibilidadJugador2, 
-				horasDiagramacion, 7, diaSemanalInicioDiagramacion)
+				horasDiagramacion, duracionDiagramacion, diaSemanalInicioDiagramacion)
 			d.cargarJugador(_jugador1, _disponibilidadJugador1, p.jugador1.jugador.getPosicionRankingCategoria(c))
 			d.cargarJugador(_jugador2, _disponibilidadJugador2, p.jugador2.jugador.getPosicionRankingCategoria(c))
 			logica.Partido _partido = d.cargarPartido(_jugador1, _jugador2)
@@ -187,7 +187,7 @@ class DiagramacionService {
 			logica.Cancha _cancha = new logica.Cancha()
 			logica.DisponibilidadHoraria _disponibilidadCancha = 
 				d.cargarHorarioDisponibilidad(_cancha, disponibilidadCancha, 
-				horasDiagramacion, 7, diaSemanalInicioDiagramacion)
+				horasDiagramacion, duracionDiagramacion, diaSemanalInicioDiagramacion)
 			d.cargarCancha(_cancha, _disponibilidadCancha)
 			_cancha.id = cancha.id
 			_canchas[i] = _cancha
@@ -195,7 +195,7 @@ class DiagramacionService {
 		}
 		logica.Club _club = d.cargarClub(_canchas)
 		ArrayList<logica.HorarioCanchaPartido>[][] _diagramacion = 
-			d.generarDiagramacion(horasDiagramacion, 7, _club, _partidos)
+			d.generarDiagramacion(horasDiagramacion, duracionDiagramacion, _club, _partidos)
 		int k = 0, j = 0
 		for (ArrayList<logica.HorarioCanchaPartido>[] a : _diagramacion) {
 			for (ArrayList<logica.HorarioCanchaPartido> b : a) {
@@ -296,6 +296,8 @@ class DiagramacionService {
 		Criteria c = sess.createCriteria(Partido.class)
 		c.add(Restrictions.eq("torneo", torneo))
 		c.add(Restrictions.ne("estado", "Finalizado"))
+		c.add(Restrictions.isNotNull("jugador1"))
+		c.add(Restrictions.isNotNull("jugador2"))
 		if (!_params.incluirDiagramados) {
 			c.add(Restrictions.isNull("fecha"))
 			c.add(Restrictions.isNull("horaDesde"))

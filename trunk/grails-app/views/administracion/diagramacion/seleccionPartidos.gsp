@@ -82,7 +82,7 @@
 				<table>
 					<thead>
 						<tr>
-							<th></th>
+							<th class="select-all"></th>
 							<th>Categoria</th>
 							<th>Ronda</th>
 							<th>Jugador 1</th>
@@ -94,7 +94,7 @@
 					<tbody>
 						<g:each in="${ partidos }" var="p" status="i">
 							<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-								<td><g:checkBox name="partido-${ p.id }" value="${ ( params['partido-' + p.id] ) != null }"/></td>
+								<td><g:checkBox name="partido-${ p.id }" value="${ ( params['partido-' + p.id] ) != null }" class="selectable" /></td>
 								<td>${ p.categoria }</td>
 								<td>${ p.rondaPartidoString() }</td>
 								<td>${ p.jugador1 }</td>
@@ -116,6 +116,6 @@
 			</div>
 		</g:form>
 	</div>
-	<r:require modules="fechasTorneo"/>
+	<r:require modules="fechasTorneo, selection"/>
 </body>
 </html>

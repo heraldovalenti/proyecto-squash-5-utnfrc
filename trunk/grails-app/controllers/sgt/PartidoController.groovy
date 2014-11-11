@@ -172,7 +172,8 @@ class PartidoController {
 		System.out.println(categoriaSeleccionada?.id.toString())
 		def categorias= torneoInstance?.detalles?.categoria		
 		
-		params.max = Math.min(params.max ?: 10, 100)	
+		Integer max = (params.max) ? Integer.parseInt(params.max) : 10
+		params.max = Math.min(max ?: 10, 100)
 		
 		def partidos=partidoService.listarPartidosTorneo(torneoInstance.id,categoriaSeleccionada?.id,params)
 		

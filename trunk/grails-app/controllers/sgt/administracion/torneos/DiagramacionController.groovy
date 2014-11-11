@@ -30,7 +30,8 @@ class DiagramacionController {
 		} catch (ValidationException ex) {
 			flash.errors = ex.errors.allErrors
 			redirect(controller: "torneo", action: "show", id: id)
-		} catch (DiagramacionException ex) {
+		} 
+		catch (DiagramacionException ex) {
 			flash.exception = ex
 			redirect(controller: "torneo", action: "show", id: id)
 		}
@@ -92,7 +93,7 @@ class DiagramacionController {
 	
 	private Torneo getTorneo() {
 		Torneo t = session.getAttribute("torneoSeleccionado")
-		t = t.merge()
+		return Torneo.get(t.id)
 	}
 	
 	def getCanchas() {
