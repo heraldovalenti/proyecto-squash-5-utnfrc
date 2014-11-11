@@ -1,11 +1,11 @@
 package sgt
-import sgt.Persona;
-import sgt.Partido;
-import grails.converters.JSON
+import grails.validation.ValidationException
 
-import java.awt.TexturePaintContext.Int;
 import java.text.SimpleDateFormat
+
 import org.springframework.dao.DataIntegrityViolationException
+
+import sgt.exceptions.DiagramacionException
 
 class PartidoController {
 	
@@ -35,24 +35,38 @@ class PartidoController {
 		}, partidoInstanceTotal: Partido.count(), torneoInstance:torneoInstance]
     }
 
-    def create() {	
-		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
-		torneoInstance = Torneo.get(torneoInstance.id)		   
+    def create() {
+    	def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
+		Partido p = new Partido(params)
+		p.torneo = torneoInstance		   
+		try {
+			partidoService.esPosibleDiagramar(p)
+		} catch (DiagramacionException e) {
+			flash.exception = e
+			redirect(action: "list1")
+			return
+		}
 		render(view: "create", model: [torneoInstance: torneoInstance])
     }
 
     def save() {	
-		
-		def partidoInstance=setearParametrosPartido(params)
-					
-        if (!partidoInstance.save(flush: true, onFailError:true)) {			
-			def torneoInstance=Torneo.get(torneoId)  
-            render(view: "create", model: [partidoInstance: partidoInstance,torneoInstance: torneoInstance])
-            return
-        }
-
-        flash.message = "El partido se ha creado correctamente"
-        redirect(action: "show1", id: partidoInstance.id)
+		def torneoInstance = Torneo.get(params.torneo)
+		def partidoInstance = setearParametrosPartido(params)
+		try {
+			partidoService.savePartido(partidoInstance)
+			flash.message = "El partido se ha creado correctamente"
+			redirect(action: "show1", id: partidoInstance.id)
+		} catch (DiagramacionException e) {
+			flash.exception = e
+			render(view: "create", model: [partidoInstance: partidoInstance,torneoInstance: torneoInstance])
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+			render(view: "create", model: [partidoInstance: partidoInstance,torneoInstance: torneoInstance])
+		} catch (e) {
+			flash.exception = e
+			render(view: "create", model: [partidoInstance: partidoInstance,torneoInstance: torneoInstance])
+		}
     }
 
     def show1(Long id) {
@@ -67,15 +81,16 @@ class PartidoController {
     }
 
     def edit(Long id) {
-        def partidoInstance = Partido.get(id)
-		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		def partidoInstance = Partido.get(id)
+		try {
+			partidoService.esPosibleDiagramar(partidoInstance)
+		} catch (DiagramacionException e) {
+			flash.exception = e
+			redirect(action: "list1")
+			return
+		}
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")		
 		torneoInstance = Torneo.get(torneoInstance.id)
-        if (!partidoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list1")
-            return
-        }
-
         [partidoInstance: partidoInstance,torneoInstance:torneoInstance]
     }
 
@@ -83,31 +98,21 @@ class PartidoController {
         def partidoInstance = Partido.get(id)
 		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
 		torneoInstance = Torneo.get(torneoInstance.id)
-        if (!partidoInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'partido.label', default: 'Partido'), id])
-            redirect(action: "list1")
-            return
-        }
-
-        if (version != null) {
-            if (partidoInstance.version > version) {
-                partidoInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'partido.label', default: 'Partido')] as Object[],
-                          "Another user has updated this Partido while you were editing")
-                render(view: "edit", model: [partidoInstance: partidoInstance])
-                return
-            }
-        }
-
-		partidoInstance=setearParametrosPartido(params)
-		
-        if (!partidoInstance.save(flush: true)) {
-            render(view: "edit", model: [partidoInstance: partidoInstance,torneoInstance:torneoInstance])
-            return
-        }
-
-        flash.message = "El partido se ha actualizado correctamente"
-        redirect(action: "show1", id: partidoInstance.id)
+        
+		setearParametrosPartido2(partidoInstance,params)
+		try {
+			partidoService.savePartido(partidoInstance)
+			flash.message = "El partido se ha actualizado correctamente"
+			redirect(action: "show1", id: partidoInstance.id)
+			return
+		} catch (DiagramacionException e) {
+			flash.exception = e
+		} catch (ValidationException e) {
+			flash.errors = e.errors.allErrors
+		} catch (e) {
+			flash.exception = e
+		}
+        render(view: "edit", model: [partidoInstance: partidoInstance,torneoInstance:torneoInstance])
     }
 
     def delete(Long id) {
@@ -119,6 +124,7 @@ class PartidoController {
         }
 
         try {
+			partidoService.esPosibleDiagramar(partidoInstance)
             partidoInstance.delete(flush: true)
             flash.message = "El partido fue eliminado correctamente"
             redirect(action: "list1")
@@ -127,6 +133,10 @@ class PartidoController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'partido.label', default: 'Partido'), id])
             redirect(action: "show1", id: id)
         }
+		catch (DiagramacionException e) {
+			flash.exception = e
+			redirect(action: "show1", id: id)
+		}
     }
 	
 	def setearParametrosPartido(def parametros){
@@ -157,6 +167,43 @@ class PartidoController {
 		def partidoInstance = new Partido(torneo:torneo,horaDesde:horaDesde,horaHasta:horaHasta,fecha:fecha,categoria:categoria,cancha:cancha,jugador1:jugador1,jugador2:jugador2,arbitro:arbitro,estado:estado)
 		return partidoInstance
 		
+	}
+	
+	def setearParametrosPartido2(Partido p, def parametros){
+		def torneoId=parametros.torneo
+		def torneo=Torneo.get(torneoId)
+		def horaDesde=parametros.horaDesde
+		def horaHasta=(Integer.parseInt(horaDesde) + 1).toString()
+		def fechaParam=parametros.fecha
+		Date fecha
+		if(fechaParam!=""){
+			fecha= new SimpleDateFormat("dd/MM/yyyy").parse(fechaParam)
+		}
+		def categoriaId=parametros.categoria.id
+		def categoria=Categoria.get(categoriaId)
+		def persona1Id=parametros.jugador1
+		def persona1=Persona.get(persona1Id)
+		def jugador1=Usuario.findByPersona(persona1)
+		def persona2Id=parametros.jugador2
+		def persona2=Persona.get(persona2Id)
+		def jugador2=Usuario.findByPersona(persona2)
+		def personaArbitroId=parametros.arbitro
+		def personaArbitro=Persona.get(personaArbitroId)
+		def arbitro=Usuario.findByPersona(personaArbitro)
+		def canchaId=parametros.cancha.id
+		def cancha=Cancha.get(canchaId)
+		def estado="Creado"
+		
+		p.torneo = torneo
+		p.horaDesde = horaDesde
+		p.horaHasta = horaHasta
+		p.fecha = fecha
+		p.categoria = categoria
+		p.cancha = cancha
+		p.jugador1 = jugador1
+		p.jugador2 = jugador2
+		p.arbitro = arbitro
+		p.estado = estado
 	}
 	
 	def listarResultadosPartidosTorneo(){

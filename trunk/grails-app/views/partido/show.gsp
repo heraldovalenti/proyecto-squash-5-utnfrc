@@ -11,15 +11,15 @@
 		<a href="#show-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" /></a>
 		<div class="nav" role="navigation">
 			<ul>				
-				<li><g:link class="list" action="list1"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" action="list1">Volver</g:link></li>
 				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-partido" class="content scaffold-show" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
+			
+			<g:render template="/utils/messages" />
+			
 			<ol class="property-list partido">
 			
 				<g:if test="${partidoInstance?.torneo}">
