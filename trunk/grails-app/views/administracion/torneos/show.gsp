@@ -130,6 +130,7 @@
 					<g:link controller="fixture">Fixture</g:link>
 					<g:link controller="partido" action="list1">Partidos</g:link>
 					<g:link controller="generacionRanking" action="generarRanking" id="${ torneoInstance?.id }">Generar rankings</g:link>
+					<g:link controller="torneo" action="listarPosiciones">Posiciones</g:link>
 				</fieldset>
 			</g:form>
 		</div>

@@ -374,7 +374,7 @@ class JugadorController {
 		
 		def categoriaJugador1=categoriaJugadorService.getCategoriaJugador(usuario1.id)
 		
-		def categoriaSeleccionada1= categoriaJugador1.categoria.nombre
+		def categoriaSeleccionada1= categoriaJugador1?.categoria?.nombre
 		
 		def idPersonaJugador2=params.jugador2
 		
@@ -384,7 +384,7 @@ class JugadorController {
 		
 		def categoriaJugador2=categoriaJugadorService.getCategoriaJugador(usuario2.id)
 		
-		def categoriaSeleccionada2= categoriaJugador2.categoria.nombre
+		def categoriaSeleccionada2= categoriaJugador2?.categoria?.nombre
 		
 		def enfrentamientos= partidoService.listarEnfrentamientosJugadores(usuario1.id,usuario2.id)
 		
