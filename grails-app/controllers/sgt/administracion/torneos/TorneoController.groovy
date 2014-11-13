@@ -11,6 +11,7 @@ import sgt.InscripcionTorneo
 import sgt.PostulacionTorneo
 import sgt.Torneo
 import sgt.TorneoPuntuable
+import sgt.exceptions.TorneoNotFoundException
 
 
 
@@ -353,5 +354,51 @@ class TorneoController {
 		torneoInstance.setFechaFinTorneo(fechaFinTorneo)
 		
 		return torneoInstance
+	}
+	
+	def verListadoPosiciones() {
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
+		def categorias= torneoInstance?.detalles?.categoria
+		render(view:"/administracion/fixture/show", model: [categorias: categorias])
+	}
+	
+	def listarPosiciones(){
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
+		def categorias= torneoInstance?.detalles?.categoria
+		try {
+			def categoriaSeleccionada			
+			if(params.categoria!=null && params.categoria!=""){
+				Long idCategoria=Long.parseLong(params.categoria)
+				categoriaSeleccionada=Categoria.get(idCategoria)
+			}
+			else{			
+				categoriaSeleccionada=categorias.first()
+			}
+			
+			/*Integer max = (params.max) ? Integer.parseInt(params.max) : 10
+			params.max = Math.min(max ?: 10, 100)*/
+		
+			def jugadores= torneoService.listarPosicionesTorneo(torneoInstance,categoriaSeleccionada)	
+				
+			
+			def totalJugadores= (jugadores.size() - 1)
+			
+			if(totalJugadores==0){
+				flash.message="No se encontraron resultados para la categoria del torneo"
+			}
+			
+			render(view: "/administracion/torneos/listaPosicionesTorneo", model: [jugadores:jugadores,totalJugadores:totalJugadores,categorias:categorias, categoriaSeleccionada:categoriaSeleccionada,torneoInstance:torneoInstance])
+					
+		} catch (TorneoNotFoundException ex) {
+			flash.exception = ex
+			redirect(controller: "torneo", action: "show", id: torneoInstance.id)
+		}
+		catch (ex) {
+			flash.exception = ex
+			redirect(controller: "torneo", action: "show", id: torneoInstance.id)
+		}
+		
 	}
 }

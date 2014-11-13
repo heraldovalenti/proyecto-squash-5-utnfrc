@@ -215,8 +215,7 @@ class PartidoController {
 		if(params.categoria!=null && params.categoria!=""){		
 		Long idCategoria=Long.parseLong(params.categoria)
 		categoriaSeleccionada=Categoria.get(idCategoria)
-		}	
-		System.out.println(categoriaSeleccionada?.id.toString())
+		}
 		def categorias= torneoInstance?.detalles?.categoria		
 		
 		Integer max = (params.max) ? Integer.parseInt(params.max) : 10

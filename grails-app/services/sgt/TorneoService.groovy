@@ -1,5 +1,10 @@
 package sgt
 
+import grails.validation.ValidationException;
+import sgt.exceptions.EstadoTorneoException
+import sgt.exceptions.RankingException;
+import sgt.exceptions.TorneoNotFoundException;
+
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 
@@ -56,5 +61,53 @@ class TorneoService {
 			}
 		})
 		return results
+	}
+	
+	def listarPosicionesTorneo(Torneo t,Categoria categoria) throws TorneoNotFoundException,EstadoTorneoException {
+		if (!t) {
+			throw new TorneoNotFoundException()
+		}
+		if (!t.finalizado()) {
+			throw new EstadoTorneoException()
+		}
+		return listaPosiciones(t,categoria)
+	}
+	
+	def listaPosiciones(Torneo t,Categoria cat) {
+		def partidos = Partido.createCriteria().list() {
+			and {
+				eq("torneo", t)
+				eq("categoria", cat)
+			}
+			order("ordenPartido", "desc")
+		}
+		List jugadores = new ArrayList()
+		for (Partido p : partidos){
+
+			if(!(jugadores.contains(p.jugador1)) && !(jugadores.contains(p.jugador2))){
+
+
+				if(p.resultado?.ganador==p.jugador1 && p.jugador1!=null){
+					jugadores.add(p.jugador1)
+					if(p.jugador2!=null){
+						jugadores.add(p.jugador2)
+					}
+				}
+				else{
+					if(p.jugador1!=null)
+						jugadores.add(p.jugador2)
+					if(p.jugador2!=null){
+						jugadores.add(p.jugador1)
+					}
+				}
+			}
+			else if(!(jugadores.contains(p.jugador1)) && (jugadores.contains(p.jugador2)) && (p.jugador1!=null) ){
+				jugadores.add(p.jugador1)
+			}
+			else if(!(jugadores.contains(p.jugador2)) && (jugadores.contains(p.jugador1)) && (p.jugador2!=null)){
+				jugadores.add(p.jugador2)
+			}
+		}
+		return jugadores
 	}
 }
