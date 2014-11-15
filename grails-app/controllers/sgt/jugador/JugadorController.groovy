@@ -322,7 +322,14 @@ class JugadorController {
 		
 		def finalesJugador=partidoService.listarFinalesJugador(usuario.id)
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo])
+		Integer year = (params.year != null && !params.year.isEmpty()) ?
+		Integer.parseInt(params.year) : Calendar.getInstance().get(Calendar.YEAR);
+		
+		def torneoInstanceList = jugadoresService.listaTorneosJugador(year,usuario)
+		
+		System.out.println(torneoInstanceList.toString())
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo, torneos:torneoInstanceList, year:year])
 		
 		
 	}
@@ -352,7 +359,7 @@ class JugadorController {
 		
 		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.id)
 		
-		def categoriaSeleccionada= categoriaJugador.categoria.nombre
+		def categoriaSeleccionada= categoriaJugador?.categoria?.nombre
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
@@ -360,7 +367,14 @@ class JugadorController {
 		
 		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo])
+		Integer year = (params.year != null && !params.year.isEmpty()) ?
+		Integer.parseInt(params.year) : Calendar.getInstance().get(Calendar.YEAR);
+		
+		def torneoInstanceList = jugadoresService.listaTorneosJugador(year,usuario)
+		
+		System.out.println(torneoInstanceList.toString())
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo, torneos:torneoInstanceList,year:year])
 		
 	}
 	

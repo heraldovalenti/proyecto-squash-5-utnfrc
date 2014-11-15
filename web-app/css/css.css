@@ -1618,9 +1618,9 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
   position: relative;
 }
 .actividad-list li.par {background: #f0f0f0}
-.actividad-list li.categoria {width: 125px; border-right: 1px solid white;}
-.actividad-list li.torneo {width: 300px; border-right: 1px solid white;}
-.actividad-list li.puesto {width: 155px;  padding-right: 2px;}
+.actividad-list li.categoria {width: 165px; border-right: 1px solid white;}
+.actividad-list li.torneo {width: 280px; border-right: 1px solid white;}
+.actividad-list li.puesto {width: 135px;  padding-right: 2px;}
 
 .h2h {font: normal 11px verdana, arial, helvetiva !important;}
 .actividad-list li.h2h_year {width: 15%; border-right: 1px solid white;}
