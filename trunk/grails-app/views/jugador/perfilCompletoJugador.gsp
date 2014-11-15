@@ -3,6 +3,7 @@
 <head>
 <link href="${resource(dir: 'css', file: 'jugador.css') }"	type="text/css" rel="stylesheet">
 <meta name="layout" content="main">
+<r:require module="perfilJugador"/>
 </head>
 <body>
 	
@@ -93,6 +94,28 @@
 			</div>
 			</div>
 		</div>
+	<input type="hidden" id="personaId" value="${usuarioInstance.persona.id}">	
+	<div class="box box-607  mt10">
+	
+	<h3 class=title-grey>Actividad de ${usuarioInstance.persona.nombre} ${usuarioInstance.persona.apellido} en el ${year } <g:select name="year" from="${2014..2000 }" value="${ year }"
+					class="profile-year" id="calendar_year" /></h3>
+	<ul class="actividad-list">
+	<g:if test="${ !torneos }">
+			<h1 class="mt20">${usuarioInstance.persona.nombre} no ha participado en torneos el ${year }</h1>
+	</g:if>
+	<g:each in="${torneos}" var="torneoInstance">
+	<g:if test="${torneoInstance!=null }">
+	<li class="torneo par">${torneoInstance?.torneo}</li>
+	<li class="categoria par">${torneoInstance?.categoria}</li>
+	<li class="puesto par">${torneoInstance?.rondaPartidoString()}</li>	
+	</g:if>
+	
+	</g:each>
+	
+	</ul>
+	
+	
+	</div>
 	
 </div>
 </body>

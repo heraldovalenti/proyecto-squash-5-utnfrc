@@ -8,6 +8,7 @@ import org.hibernate.criterion.CriteriaSpecification;
 class JugadoresService {
 
    static transactional = true
+   def torneoService
    
 	def listarJugadoresPorCategoria(String categoria,def params){
 		def c = Usuario.createCriteria()
@@ -99,5 +100,53 @@ class JugadoresService {
 		
 		def jugadores= Persona.findAll()		
 		return jugadores
+	}
+	
+	def listaTorneosJugador(Integer year,Usuario usuario) {
+		
+		def t = Torneo.createCriteria()
+		def torneos= t.list() {
+			createAlias("detalles","det", CriteriaSpecification.LEFT_JOIN)
+			createAlias("det.inscripciones","insc", CriteriaSpecification.LEFT_JOIN)
+			and {
+				eq("insc.usuario",usuario)				
+			}
+		}
+		def torneosFiltrados = new LinkedList()
+		for (Torneo tor : torneos) {
+			def torneoYear = tor.fechaInicioInscripcion.toCalendar().get(Calendar.YEAR)
+			if (torneoYear.equals(year)) {
+				def partido=listarPartidosTorneoJugador(tor,usuario)
+				torneosFiltrados.add(partido)
+			}
+		}
+		
+		return torneosFiltrados		
+		
+	}
+	
+	def listarPartidosTorneoJugador(Torneo t, Usuario usuario){
+		
+		def partidos = Partido.createCriteria().list() {			
+			and {
+				eq("torneo", t)
+				or{
+					eq("jugador1",usuario)
+					eq("jugador2",usuario)
+					}
+			}
+			order("ordenPartido", "desc")
+		}
+		
+		System.out.println(partidos.toString())
+		
+		if(partidos.size()>0){
+			return partidos.first()
+		}
+		else{
+			return null;
+		}
+		
+		
 	}
 }

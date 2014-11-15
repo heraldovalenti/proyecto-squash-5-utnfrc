@@ -184,11 +184,32 @@ a.button_small:hover,a.button_small:active{
 	-moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
 	box-shadow:0 1px 2px rgba(0, 0, 0, 0.1);
 	}
-	a.green,a.green:visited, div.green{
+a.green,a.green:visited, div.green{
     color:#ffffff;
     background:#67921c!important;
     background:-webkit-gradient(linear, left top, left bottom, from(#8fcc26), to(#67921c))!important;
     background:-moz-linear-gradient(top, #8fcc26, #67921c)!important;}
+    
+.ranking-list li span {
+  display: block;
+  float: left;
+  line-height: 50px;
+  height: 52px;
+  padding: 4px; 
+  position: relative;
+  color: #333333;   
+}
+.ranking-list li span img {padding: 2px; background: white;}
+/*.ranking-list li.par {background: #f0f0f0}*/
+.ranking-list li span.photo {width: 50px; }
+.ranking-list li span.rank {
+  border-right: 1px solid white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  width: 29px;
+}
+.ranking-list li span.name {width: 411px; font-size: 20px; border-right: 1px solid white;}
     
     
     
