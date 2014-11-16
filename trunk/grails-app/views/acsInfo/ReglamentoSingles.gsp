@@ -13,7 +13,7 @@
 
 <div class="grid_16 mt10 mb10">
 		<div class="grid_10 ">
-			<div class="box box-607" style="margin-left: 2em;width: 50em;">
+			<div class="box box-607" style="margin-left: 2em;width: 50em; overflow:scroll">
 
 <h1 class="title-news">Reglamentación de Torneos Singles de la ACSR</h1>
 
@@ -46,21 +46,21 @@ En el caso que haya una o ninguna inscripción, la categoría se declara desiert
 <br></br>
 
 -El puntaje a designarse sería el siguiente:  
-
+<br>
 1° - 200 puntos
-
+<br>
 2° - 150 puntos
-
+<br>
 3° y 4° - 100 puntos
-
+<br>
 5° al 8° - 50 puntos
-
+<br>
 9° al 16° - 25 puntos
-
+<br>
 17° al 32° - 12,5 puntos
-
+<br>
 33° a 64° - 6,75 puntos
-
+<br>
 Los draw se confeccionaran a simple eliminación excepto en Damas C, Menores y Principiantes, o cuando los jugadores sumen menos de 8, en cuyo caso se confeccionarán zonas.
 
 Los partidos se diputarán al mejor de 5 games, a 11 tantos.
