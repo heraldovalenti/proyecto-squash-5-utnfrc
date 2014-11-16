@@ -26,9 +26,10 @@
 <br></br>
 
 <p>Se informa que para poder participar de los torneos avalados por la ACS, es condición indispensable:
-
+<br></br>
 TENER LA CUOTA ANUAL PAGA ANTES DE COMENZAR EL TORNEO. EL PRECIO DE LA MEMBRECIA PARA EL AÑO 2014 ES DE $ 100 
 TRAER UN “APTO MEDICO” FIRMADO POR UN PROFESIONAL HABILITADO.
+<br></br>
 En caso de no contar con uno, por única vez y con validez para el torneo actual, podrá firmar un formulario de Responsabilidad ante cualquier inconveniente físico que pudiere sufrir durante el torneo.
 </p>
 

@@ -9,7 +9,7 @@
  	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">	
  	<link href="${resource(dir: 'css', file: 'bootstrap.min.css') }" type="text/css" rel="stylesheet">
  	
- 	<r:require modules="inicio,bootstrap"/> 	
+ 	<r:require modules="inicio,bootstrap"/>
 
 <r:layoutResources />
 
@@ -56,12 +56,12 @@
 										class="slider-description">
 										<div class="slider-meta">
 											<a title="PROXIMA FECHA" href="index.php?c=noticias">/
-												PROXIMA FECHA /</a> <i> — Sábado 21 de Septiembre de 2013</i>
+												PROXIMA FECHA /</a> <i> — Sábado 20 de Diciembre de 2014</i>
 										</div>
 										<h4>Ya estan abiertas las incripciones online para la
 											Fachada</h4>
 										<p>
-											Del 28 de Septiembre al 6 de Octubre se juega en La Fachada
+											Del 28 de Noviembre al 6 de Diciembre se juega en La Fachada
 											la 12ma fecha puntable de la ACSR. Inscribite Online Ahora.
 											...<a class="readmore" href="#">Leer Más </a>
 										</p>
@@ -71,7 +71,7 @@
 										class="slider-description">
 										<div class="slider-meta">
 											<a title="IMPERDIBLE" href="index.php?c=noticias">/
-												IMPERDIBLE /</a> <i> — Viernes 20 de Septiembre de 2013</i>
+												IMPERDIBLE /</a> <i> — Viernes 19 de Diciembre de 2014</i>
 										</div>
 										<h4>Argentina Vs Mexico</h4>
 										<p>
@@ -87,7 +87,7 @@
 										class="slider-description">
 										<div class="slider-meta">
 											<a title="TRAINING" href="index.php?c=noticias">/
-												TRAINING /</a> <i> — Jueves 19 de Septiembre de 2013</i>
+												TRAINING /</a> <i> — Viernes 19 de Diciembre de 2014</i>
 										</div>
 										<h4>MIGUEL ANGEL RODRIGUEZ</h4>
 										<p>
@@ -103,7 +103,7 @@
 										class="slider-description">
 										<div class="slider-meta">
 											<a title="NACIONAL MENORES" href="index.php?c=noticias">/
-												NACIONAL MENORES /</a> <i> — Domingo 25 de Agosto de 2013</i>
+												NACIONAL MENORES /</a> <i> — Domingo 21 de Diciembre de 2014</i>
 										</div>
 										<h4>Los menores cordobeses obtuvieron excelentes
 											resultados</h4>
@@ -126,20 +126,20 @@
 								<li><div>
 										<img src="images/noticias/1a.jpg" />
 										<h3>Argentina Vs Mexico</h3>
-										<span>20.09.2013</span> -Mira la final completa por equipos
+										<span>20.12.2014</span> -Mira la final completa por equipos
 										del torneo Panamericano por Equipos. E...
 									</div></li>
 								<li><div>
 										<img src="images/noticias/2a.jpg" />
 										<h3>MIGUEL ANGEL RODRIGUEZ</h3>
-										<span>19.09.2013</span> -Te mostramos algunos momentos del
+										<span>19.12.2014</span> -Te mostramos algunos momentos del
 										entrenamiento de Miguel Angel Rodriguez...
 									</div></li>
 								<li><div>
 										<img src="images/noticias/3a.png" />
 										<h3>Los menores cordobeses obtuvieron excelentes
 											resultados</h3>
-										<span>25.08.2013</span> - Colecci&oacute;n de noticias y
+										<span>25.10.2014</span> - Colecci&oacute;n de noticias y
 										documentos de interes contandote como fue ...
 									</div></li>
 							</ul>
@@ -160,9 +160,7 @@
 			<div class="second-part mt10">
 				<div class="grid_16 mt10">
 					<div class="grid_10">
-
-												
-								<g:render template="/secciones/headToHead" params="['jugador1': usuario1,'jugador2': usuario2,  'resultado':resultado, 'enfrentamientos':enfrentamientos, 'categoriaJugador1':categoriaJugador1, 'categoriaJugador2':categoriaJugador2]" />	
+		<g:render template="/secciones/headToHead" params="['jugador1': usuario1,'jugador2': usuario2,  'resultado':resultado, 'enfrentamientos':enfrentamientos, 'categoriaJugador1':categoriaJugador1, 'categoriaJugador2':categoriaJugador2]" />	
 												
 
 

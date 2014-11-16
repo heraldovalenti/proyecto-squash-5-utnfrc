@@ -99,7 +99,7 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
-def localProjectPath = "/home/heril/workspace-ggts-3.2.0.RELEASE"
+def localProjectPath = "D:/documentos/Dropbox/facu/2013/proyecto/tp-final/proyecto"
 fileuploader {
 	image {
 		path = localProjectPath + "/SistemaGestionTorneo/web-app/images/perfiles/"
