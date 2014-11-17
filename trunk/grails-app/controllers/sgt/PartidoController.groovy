@@ -221,11 +221,39 @@ class PartidoController {
 		Integer max = (params.max) ? Integer.parseInt(params.max) : 10
 		params.max = Math.min(max ?: 10, 100)
 		
-		def partidos=partidoService.listarPartidosTorneo(torneoInstance.id,categoriaSeleccionada?.id,params)
+		def partidos=partidoService.listarPartidosTorneo(torneoInstance.id,categoriaSeleccionada?.id,params)	
 		
 		def totalPartidos= partidos.getTotalCount()
 		
 		render(view: "listadoResultadosPartidoTorneo", model: [partidos:partidos,totalPartidos:totalPartidos,categorias:categorias,categoriaSeleccionada:categoriaSeleccionada])
+		
+	}
+	
+	def listarPartidosPorJugar(){
+		
+		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
+		torneoInstance = Torneo.get(torneoInstance.id)
+		def categoriaSeleccionada
+		def fechaSeleccionada
+		
+		if(params.categoria!=null && params.categoria!=""){
+		Long idCategoria=Long.parseLong(params.categoria)
+		categoriaSeleccionada=Categoria.get(idCategoria)
+		}
+		
+		if(params.fecha!=null && params.fecha!=""){
+			fechaSeleccionada=new SimpleDateFormat("dd/MM/yyyy").parse(params.fecha)
+		}
+		def categorias= torneoInstance?.detalles?.categoria
+		
+		Integer max = (params.max) ? Integer.parseInt(params.max) : 10
+		params.max = Math.min(max ?: 10, 100)
+		
+		def partidos=partidoService.listarPartidosPorJugar(torneoInstance,categoriaSeleccionada,fechaSeleccionada,params)
+		
+		def totalPartidos= partidos.getTotalCount()
+		
+		render(view: "listadoPartidosPorJugar", model: [partidos:partidos,totalPartidos:totalPartidos,categorias:categorias,categoriaSeleccionada:categoriaSeleccionada,fechaSeleccionada:fechaSeleccionada])
 		
 	}
 }
