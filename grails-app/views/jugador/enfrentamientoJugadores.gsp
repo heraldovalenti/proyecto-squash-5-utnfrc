@@ -28,10 +28,12 @@
 							${categoriaJugador1}
 						</div>
 						<div class="playerInfoRank">
-							<span>${titulosJugador1 }</span> Titulos
+							<g:if test="${ titulosJugador1==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>							
+							<span><a style="color: white;" href="#"> ${ titulosJugador1?.size() }</a></span> Titulos	
 						</div>
 						<div class="playerInfoRank">
-							<span>${finalesJugador1 }</span> Finales
+							<g:if test="${ finalesJugador1==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>								
+							<span><a style="color: white;" href="#"> ${ finalesJugador1?.size() }</a></span> Finales	
 						</div>
 
 					</div>
@@ -117,10 +119,12 @@
 							${categoriaJugador2}
 						</div>
 						<div class="playerInfoRank">
-							<span>${titulosJugador2 }</span> Titulos
+							<g:if test="${ titulosJugador2==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>							
+							<span><a style="color: white;" href="#"> ${ titulosJugador2?.size() }</a></span> Titulos	
 						</div>
 						<div class="playerInfoRank">
-							<span>${finalesJugador2 }</span> Finales
+							<g:if test="${ finalesJugador2==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>								
+							<span><a style="color: white;" href="#"> ${ finalesJugador2?.size() }</a></span> Finales	
 						</div>
 
 					</div>

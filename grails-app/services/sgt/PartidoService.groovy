@@ -56,16 +56,18 @@ class PartidoService {
 		return partidos		
 	}
 	
-	def listarFinalesJugador(Long idJugador){
+	def listarFinalesJugador(Long idJugador){	
 		
 		def partidos= listarPartidosJugador(idJugador)	
 		
-		int finales=0
+		def jugador= Usuario.get(idJugador)
+		
+		List finales= new LinkedList()
 		
 		for(Partido p:partidos){
 			
-			if(p.rondaPartido()==1){
-				finales ++
+			if(p.rondaPartido()==1 && p?.resultado?.ganador!=jugador){
+				finales.add(p)
 			}			
 		}
 		return finales
@@ -77,12 +79,12 @@ class PartidoService {
 		
 		def jugador= Usuario.get(idJugador)
 		
-		int titulos=0
+		List titulos= new LinkedList()
 		
 		for(Partido p:partidos){
 			
 			if(p?.rondaPartido()==1 && p?.resultado?.ganador==jugador){
-				titulos ++
+				titulos.add(p)
 			}
 		}
 		return titulos

@@ -138,8 +138,6 @@ class JugadoresService {
 			order("ordenPartido", "desc")
 		}
 		
-		System.out.println(partidos.toString())
-		
 		if(partidos.size()>0){
 			return partidos.first()
 		}

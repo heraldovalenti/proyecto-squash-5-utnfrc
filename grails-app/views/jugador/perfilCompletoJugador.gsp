@@ -86,16 +86,18 @@
 					</g:if>
 				</g:each>			
 			</div>
-			<div id="playerBioInfoTitulos">									
-				<span><a style="color: white;" href="#"> ${ titulosJugador }</a></span> titulos					
+			<div id="playerBioInfoTitulos">	
+				<g:if test="${ titulosJugador==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>							
+				<span><a style="color: white;" href="#"> ${ titulosJugador?.size() }</a></span> titulos					
 			</div>
-			<div id="playerBioInfoFinales">									
-				<span><a style="color: white;" href="#"> ${ finalesJugador }</a></span> finales				
+			<div id="playerBioInfoFinales">		
+				<g:if test="${ finalesJugador==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>								
+				<span><a style="color: white;" href="#"> ${ finalesJugador?.size() }</a></span> finales				
 			</div>
 			</div>
 		</div>
 	<input type="hidden" id="personaId" value="${usuarioInstance.persona.id}">	
-	<div class="box box-607  mt10">
+	<div class="box box-607 mt10">
 	
 	<h3 class=title-grey>Actividad de ${usuarioInstance.persona.nombre} ${usuarioInstance.persona.apellido} en el ${year } <g:select name="year" from="${2014..2000 }" value="${ year }"
 					class="profile-year" id="calendar_year" /></h3>
@@ -117,6 +119,50 @@
 	
 	</div>
 	
+	<div class="box box-607 mt10">
+	
+	<h3 class=title-grey>Titulos y Finales</h3>
+	<ul class="actividad-list">
+	<li style="width: 98%%;"><p class="mt10"><b>Titulos</b></p></li>
+	<g:if test="${ !titulosJugador }">
+			<li style="width: 98%%;"><p>${usuarioInstance?.persona?.nombre} no posee titulos</p></li>
+	</g:if>
+	<g:each in="${titulosJugador}" var="titulos">
+	<g:if test="${titulos!=null }">
+	<li style="width: 98%%;"><p>${titulos?.torneo} - ${titulos?.categoria}</p><br></li>
+	</g:if>
+	
+	</g:each>
+	</ul>
+	
+	<ul class="actividad-list">	
+	<li style="width: 98%%;"><p class="mt10"><b>Finales</b></p></li>
+	<g:if test="${ !finalesJugador }">
+			<li style="width: 98%%;"><p>${usuarioInstance?.persona?.nombre} no ha participado de finales</p></li>
+	</g:if>
+	<g:each in="${finalesJugador}" var="finales">
+	<g:if test="${finales!=null }">
+	<li style="width: 98%%;"><p>${finales?.torneo} - (${finales?.categoria})</p><br></li>
+	</g:if>
+	
+	</g:each>
+	</ul>	
+	
+	</div>	
+</div>
+
+<div class="grid_6 adds alpha omega mt10">
+	<div class="box mb10 box-335">
+	<h3 class="title-grey">Comparar a ${usuarioInstance?.persona?.nombre} con ..</h3>
+	<div class="inner-box">
+	<input type="text" name="s-player-comp" id="buscadorContrincante" placeholder="Escribir Nombre Jugador" style="width: 100%;"/>
+	<input type="hidden" id="contrincanteId" id="ply-1" name="ply-1" value="733">
+	<div id= "mostrarContrincante">
+	<span class="lupa" style="padding: 5px;"></span>
+	</div> 
+	</div>
+
+	</div>
 </div>
 </body>
 </html>
