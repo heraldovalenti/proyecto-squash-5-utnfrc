@@ -161,8 +161,31 @@
 	<span class="lupa" style="padding: 5px;"></span>
 	</div> 
 	</div>
-
 	</div>
+	
+	<div class="box mb10 box-335 mt10">
+	<h3 class="title-grey">Partidos en el torneo actual</h3>
+	<div class="inner-box">
+	<g:if test="${ !partidosTorneo }">
+			<li style="width: 98%%;"><p>${usuarioInstance?.persona?.nombre} no ha participado del Torneo Actual</p></li>
+	</g:if>
+	<g:each in="${partidosTorneo}" var="partido">
+	<g:if test="${partidosTorneo!=null }">
+	<li style="width: 98%%;"><p><b>${partido?.rondaPartidoString()}:</b><g:if test="${partido?.jugador1 == usuarioInstance}">
+	<g:if test="${!partido?.jugador2}">(Paso directo)</g:if>
+	<g:else> vs ${partido?.jugador2}</g:else> </g:if>
+	<g:elseif test="${partido?.jugador2 == usuarioInstance}">
+	<g:if test="${!partido?.jugador1}">(Paso directo)</g:if><g:else>  vs ${partido?.jugador1}</g:else> </g:elseif>
+	<g:if test="${ !partido?.resultado }">
+			(A disputarse)</g:if>	
+	<g:if test="${partido?.resultado!=null && partido?.resultado?.ganador == usuarioInstance}"> (Ganador)</g:if>
+	<g:elseif test="${partido?.resultado!=null && partido?.resultado?.ganador != usuarioInstance}">(Ganó ${partido?.resultado?.ganador} )</g:elseif></p>
+	
+	</g:if>
+	</g:each>
+	</div>	
+</div>
+
 </div>
 </body>
 </html>

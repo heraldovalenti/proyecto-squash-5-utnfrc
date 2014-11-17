@@ -146,5 +146,23 @@ class PartidoService {
 			throw new DiagramacionException(DiagramacionException.TORNEO_SIN_INSCRIPTOS)
 		}
 	}
+	
+	def listarPartidosTorneoJugador(Torneo t,Usuario j){
+		def p = Partido.createCriteria()
+		def partidos = p.list() {
+			and {
+				eq("torneo",t)
+				or{
+				eq("jugador1",j)
+				eq("jugador2",j)
+				}
+			}
+			order("categoria", "asc")
+			order("ordenPartido", "asc")			
+		}
+		
+		return partidos		
+		
+	}
 
 }
