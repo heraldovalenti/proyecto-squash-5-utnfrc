@@ -57,7 +57,6 @@ class JugadorController {
 		if (p) {
 			bindData(p,params)
 		} else {
-		System.out.println(params.toString())
 			p = new Persona(params)
 		}
 		try {
@@ -327,8 +326,6 @@ class JugadorController {
 		
 		def torneoInstanceList = jugadoresService.listaTorneosJugador(year,usuario)
 		
-		System.out.println(torneoInstanceList.toString())
-		
 		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo, torneos:torneoInstanceList, year:year])
 		
 		
@@ -372,9 +369,11 @@ class JugadorController {
 		
 		def torneoInstanceList = jugadoresService.listaTorneosJugador(year,usuario)
 		
-		System.out.println(torneoInstanceList.toString())
+		def titulosJugador=partidoService.listarTitulosJugador(usuario.id)
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo, torneos:torneoInstanceList,year:year])
+		def finalesJugador=partidoService.listarFinalesJugador(usuario.id)
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo, torneos:torneoInstanceList,year:year])
 		
 	}
 	
@@ -425,7 +424,6 @@ class JugadorController {
 		}			
 		
 		render(view: "enfrentamientoJugadores", model: [jugador1: usuario1,jugador2: usuario2, edadJugador1:edadJugador1, edadJugador2:edadJugador2, titulosJugador1:titulosJugador1, titulosJugador2:titulosJugador2, finalesJugador1:finalesJugador1, finalesJugador2:finalesJugador2, jugador1Ganados:jugador1Ganados,jugador2Ganados:jugador2Ganados, enfrentamientos:enfrentamientos, categoriaJugador1:categoriaSeleccionada1, categoriaJugador2:categoriaSeleccionada2])
-		
-		
+				
 	}
 }
