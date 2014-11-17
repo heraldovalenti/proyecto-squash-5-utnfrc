@@ -105,4 +105,8 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/perfilJugador.js'
 	}
+	listaPartidosPorJugar{
+		dependsOn 'jquery'
+		resource url: 'js/listaPartidosPorJugar.js'
+	}
 }

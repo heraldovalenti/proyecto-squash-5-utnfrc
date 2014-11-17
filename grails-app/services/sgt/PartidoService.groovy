@@ -164,5 +164,54 @@ class PartidoService {
 		return partidos		
 		
 	}
+	def listarPartidosPorJugar(Torneo t,Categoria cat,Date fecha,def params){
+		def p = Partido.createCriteria()
+		def partidos
+		if(t!=null && cat!=null && fecha!=null){
+			partidos = p.list(params) {
+				and {
+					eq("torneo",t)
+					eq("categoria",cat)
+					eq("fecha",fecha)
+					eq("estado","Creado")
+				}
+				order("categoria", "asc")
+			}
+		}
+		else if(t!=null && cat!=null){
+			partidos = p.list(params) {
+				and {
+					eq("torneo",t)
+					eq("categoria",cat)
+					eq("estado","Creado")
+				}
+				order("categoria", "asc")
+			}
+		}
+		else if(t!=null && fecha!=null){
+			partidos = p.list(params) {
+				and {
+					eq("torneo",t)
+					eq("fecha",fecha)
+					eq("estado","Creado")
+				}
+				order("categoria", "asc")
+			}
+			
+		}
+		else if(t!=null){
+			partidos = p.list(params) {
+				createAlias("torneo", "torneo", CriteriaSpecification.LEFT_JOIN)
+				and {
+					eq("torneo",t)
+					eq("estado","Creado")
+				}			
+			}
+			
+		}
+		
+		return partidos
+		
+	}
 
 }
