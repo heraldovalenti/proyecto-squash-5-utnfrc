@@ -110,4 +110,16 @@ class TorneoService {
 		}
 		return jugadores
 	}
+	
+	def torneoActual(){
+		def torneos = Torneo.list()
+		
+		for(Torneo t:torneos){
+			
+			if(t.enCurso()){
+				return t
+			}		
+			
+		}		
+	}
 }

@@ -23,6 +23,7 @@ class JugadorController {
 	def jugadorService
 	def categoriaJugadorService
 	def partidoService
+	def torneoService
 	
 	def index() {
 		Usuario userLogon = session.getAttribute("userLogon")
@@ -326,7 +327,11 @@ class JugadorController {
 		
 		def torneoInstanceList = jugadoresService.listaTorneosJugador(year,usuario)
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo, torneos:torneoInstanceList, year:year])
+		Torneo torneo=torneoService.torneoActual()
+		
+		def partidosTorneo=partidoService.listarPartidosTorneoJugador(torneo,usuario)
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo, torneos:torneoInstanceList, year:year, partidosTorneo:partidosTorneo])
 		
 		
 	}
@@ -373,7 +378,11 @@ class JugadorController {
 		
 		def finalesJugador=partidoService.listarFinalesJugador(usuario.id)
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo, torneos:torneoInstanceList,year:year])
+		Torneo torneo=torneoService.torneoActual()
+		
+		def partidosTorneo=partidoService.listarPartidosTorneoJugador(torneo,usuario)
+		
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias, titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo, torneos:torneoInstanceList,year:year,partidosTorneo:partidosTorneo])
 		
 	}
 	
