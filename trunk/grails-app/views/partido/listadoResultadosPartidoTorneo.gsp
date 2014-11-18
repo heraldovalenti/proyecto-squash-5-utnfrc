@@ -14,11 +14,15 @@
 			</ul>
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">
-			<h1>Informe de Resultados de partidos 
-				<g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
+			<h1>Informe de Resultados de partidos <g:if test="${categoriaSeleccionada!=null}"> en: ${categoriaSeleccionada}</g:if></h1>
+			<fieldset class="buttons">	
+			<div style="float: right">
+			<label>Categoría: </label>
+			<g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
 				optionKey="id" noSelection="['':'Todas']" class="profile-year" id="categoria" 
-				style="float: right; margin-right: 10px;"/>
-			</h1>
+				style="margin-right: 10px;"/>
+				</div>			
+			</fieldset>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

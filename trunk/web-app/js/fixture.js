@@ -4,9 +4,8 @@ $(function() {
 		$('#fixture').html('');
 		
 		 $('#fixture').bracket({
-		      init: obtenerPartidosPorCategoria()
-		    })
-		
+		      init: obtenerPartidosPorCategoria()		      
+		    })		
 		});	
 	
 	});
@@ -22,7 +21,8 @@ function obtenerPartidosPorCategoria(){
 		url : "generarFixturePorCategoria?categoria="+categoria,
 		success : function(data) {					
 					
-			result= generarPartidos(data);				
+			result= generarPartidos(data);	
+			
 				
 		}
 	});
@@ -45,7 +45,17 @@ function generarPartidos(part) {
 	$.each(part, function(key, value) {
 
 		if (value.ronda == value.cantidadRondas) {
-			teams.push([ value.jugador1, value.jugador2 ]);
+			if(value.jugador1=="null"){
+				teams.push([ " ", value.jugador2 ]);
+			}
+			else if(value.jugador2=="null"){
+				teams.push([ value.jugador1, " " ]);
+				
+			}
+			else{
+				teams.push([ value.jugador1, value.jugador2 ]);
+			}
+			
 		}
 
 		if (value.ronda == 5) {
@@ -156,6 +166,6 @@ function generarPartidos(part) {
 
 $(function() {		
     $('#fixture').bracket({
-      init: obtenerPartidosPorCategoria()
+      init: obtenerPartidosPorCategoria()      
     })
   })

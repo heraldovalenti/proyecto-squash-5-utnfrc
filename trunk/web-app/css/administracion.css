@@ -24,12 +24,7 @@ h1
     text-transform: uppercase;
     
     background: #B491A2;
-    background-image: linear-gradient(top , #B491A2 0%, #B491A2100%);
-    background-image: -o-linear-gradient(top , #B491A2 0%, #B491A2 100%);
-    background-image: -moz-linear-gradient(top , #B491A2 0%, #B491A2100%);
-    
-	background-image: -webkit-linear-gradient(top , #B491A2 0%, #B491A2100%);
-    background-image: -ms-linear-gradient(top , #B491A2 0%, #B491A2 100%);
+    background-image: -webkit-linear-gradient(top , #B491A2 0%, #C20046 100%);    
 }
 /*Titulo panel de administracion*/
 h3
