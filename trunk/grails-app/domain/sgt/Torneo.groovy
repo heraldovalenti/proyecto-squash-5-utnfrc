@@ -77,10 +77,11 @@ class Torneo {
 	
 	void asignarClub(Club club) {
 		this.club = club
+		if (this.creado()) this.estado = "Club Asignado"
 	}
 	
 	void abrirInscripcion() {
-		if (this.estado.equals("Creado") || this.estado.equals("Inscripcion Cerrada")) {
+		if ( this.creado() || this.inscripcionAbierta() || "Club Asignado".equals(this.estado) ) {
 			this.estado = "Inscripcion Abierta"
 		}
 	}

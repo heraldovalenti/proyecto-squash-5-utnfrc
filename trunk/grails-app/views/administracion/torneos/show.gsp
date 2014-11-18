@@ -125,7 +125,7 @@
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${torneoInstance?.id}" />
 					<g:link class="edit" controller="torneo" action="edit" id="${torneoInstance?.id}">Editar</g:link>
-					<g:actionSubmit class="delete deletion-button" action="delete" value="Eliminar" />
+					<g:link class="delete deletion-button" action="delete" id="${ torneoInstance?.id }">Eliminar</g:link>
 					<g:link controller="diagramacion" action="diagramacionTorneo" id="${ torneoInstance?.id }">Diagramacion</g:link>
 					<g:link controller="fixture">Fixture</g:link>
 					<g:link controller="partido" action="list1">Partidos</g:link>

@@ -111,15 +111,15 @@ class TorneoService {
 		return jugadores
 	}
 	
-	def torneoActual(){
-		def torneos = Torneo.list()
-		
-		for(Torneo t:torneos){
-			
-			if(t.enCurso()){
-				return t
-			}		
-			
-		}		
+	
+	Torneo torneoActual() {
+		def results = Torneo.createCriteria().list() {
+			or {
+				eq("estado", "En Curso")
+				gt("fechaInicioTorneo", new Date())
+			}
+			order("fechaInicioTorneo","asc")
+		}
+		if (results && !results.isEmpty()) return results[0]
 	}
 }
