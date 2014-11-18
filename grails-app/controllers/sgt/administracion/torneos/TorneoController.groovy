@@ -356,6 +356,11 @@ class TorneoController {
 		return torneoInstance
 	}
 	
+	def torneoActual() {
+		Torneo t = torneoService.torneoActual()
+		render t as JSON
+	}
+	
 	def verListadoPosiciones() {
 		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
 		torneoInstance = Torneo.get(torneoInstance.id)

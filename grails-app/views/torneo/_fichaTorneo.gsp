@@ -32,7 +32,8 @@
 				<span class="property-label">Club</span>
 				<span class="property-value">
 					<g:if test="${ torneo.club }">
-						${ torneo.club } - <g:link controller="club">VER CLUB</g:link>
+						${ torneo.club } - <g:link controller="club" action="listarClubes" 
+						params="[club: torneo.club.id]" class="create">VER CLUB</g:link>
 					</g:if>
 					<g:else>
 						No asignado
