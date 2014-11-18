@@ -14,11 +14,16 @@
 			</ul>
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">
-			<h1>Listado de Partidos por Disputarse				
-				<g:textField name="fecha" id="datepicker" value="${formatDate(format:"dd/MM/yyyy", date:fechaSeleccionada)}" placeholder="Seleccione una fecha.." style="float: right; margin-right: 10px;"/>			
-				<g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
-				optionKey="id" noSelection="['':'Todas']" class="profile-year" id="categoria" />
-			</h1>
+			<h1>Listado de Partidos por Disputarse <g:if test="${categoriaSeleccionada!=null}"> en: ${categoriaSeleccionada}</g:if></h1>
+			<fieldset class="buttons">	
+			<div style="float: right">
+			<label>Categoría: </label>
+			<g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
+			optionKey="id" noSelection="['':'Todas']" class="profile-year" id="categoria"/>	
+			<label>Fecha: </label>	
+			<g:textField name="fecha" id="datepicker" value="${formatDate(format:"dd/MM/yyyy", date:fechaSeleccionada)}" placeholder="Seleccione una fecha.." style="margin-right: 10px; background-color: white;"/>
+			</div>			
+			</fieldset>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
