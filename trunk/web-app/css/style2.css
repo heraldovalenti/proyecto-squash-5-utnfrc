@@ -4,10 +4,10 @@
 /* slider layout */
 .lof-slidecontent { position:relative;	overflow:hidden;	border:#F4F4F4 solid 1px; margin: 0 auto;}
 .lof-slidecontent .preload{	height:100%;	width:100%;	position:absolute;	top:0;	left:0;	z-index:100000;	text-align:center;	background:#FFF}
-.lof-slidecontent .preload div{	height:100%;	width:100%;	background:transparent url(../images/load-indicator.gif) no-repeat scroll 50% 50%;}
+.lof-slidecontent .preload div{	height:100%;	width:100%;	background:transparent url() no-repeat scroll 50% 50%;}
 
 .lof-slidecontent  .sliders-wrapper{	position:relative;	height:100%;	width:900px;	z-index:3px;	overflow:hidden; }
-.lof-slidecontent  ul.sliders-wrap-inner{overflow:hidden;	background:transparent url(../images/load-indicator.gif) no-repeat scroll 50% 50%;	padding:0px;	margin:0;	position:absolute;	overflow:hidden;}
+.lof-slidecontent  ul.sliders-wrap-inner{overflow:hidden;	background:transparent url() no-repeat scroll 50% 50%;	padding:0px;	margin:0;	position:absolute;	overflow:hidden;}
 .lof-slidecontent  ul.sliders-wrap-inner li{overflow:hidden;	padding:0px;margin:0px;	float:left;	position:relative;}
 .lof-slidecontent  .lof-opacity  li{position:absolute;	top:0;	left:0;	float:inherit; }
 
@@ -38,7 +38,7 @@ ul.sliders-wrap-inner li img{	padding:0px;	}
 .lof-slidecontent .slider-description a.readmore{color:#58B1EA; font-size:95%; }
 .lof-slidecontent .slider-description a{ color:#FFF; }
 .lof-slidecontent .slider-description {
-  background: url("../images/bg_trans.png") repeat-x scroll left top transparent;
+  background: url("") repeat-x scroll left top transparent;
   color: #FFFFFF;
   height: 100px;
   left: 0;
@@ -67,11 +67,11 @@ ul.sliders-wrap-inner li img{	padding:0px;	}
 
 /* item navigator */
 .lof-slidecontent ul.navigator-wrap-inner  li.active{
-	background:url(../images/arrow-bg.png) no-repeat scroll left center; 
+	background:url() no-repeat scroll left center; 
 	color:#FFF
 }
 .lof-slidecontent ul.navigator-wrap-inner  li >  div{
-	background:url(../images/transparent_bg.png) #000;
+	background:url() #000;
     background-image: linear-gradient(top , #000 0%, #161616 100%);
     background-image: -o-linear-gradient(top , #000 0%, #161616 100%);
     background-image: -moz-linear-gradient(top , #000 0%, #161616 100%);
@@ -128,15 +128,15 @@ ul.sliders-wrap-inner li img{	padding:0px;	}
 }
 .lof-slidecontent   .button-next {
 	right:0px;
-	background:url(../images/next.png) no-repeat right center;
+	background:url() no-repeat right center;
 }
 .lof-slidecontent  .button-previous {
 	left:0px;
-	background:url(../images/previous.png) no-repeat left center;
+	background:url() no-repeat left center;
 }
 
 .lof-slidecontent .button-control {
-  background: url("../images/transparent_bg.png") repeat scroll 0 0 transparent;
+  background: url("") repeat scroll 0 0 transparent;
   border-radius: 5px 5px 5px 5px;
   cursor: pointer;
   height: 20px;
@@ -148,8 +148,8 @@ ul.sliders-wrap-inner li img{	padding:0px;	}
 
 .lof-slidecontent .button-control span { display:block;  width:100%; height:100%;}
 .lof-slidecontent .action-start span  {
-	background:url(../images/play.png) no-repeat center center;
+	background:url() no-repeat center center;
 }
 .lof-slidecontent .action-stop span {
-	background:url(../images/pause.png) no-repeat center center;
+	background:url() no-repeat center center;
 }
