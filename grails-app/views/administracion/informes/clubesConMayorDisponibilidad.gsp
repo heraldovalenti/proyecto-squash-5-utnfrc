@@ -10,7 +10,7 @@
 	<body>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><g:link controller="partido" action="list1">Volver</g:link></li>
+				<li><g:link controller="administracion" action="index">Volver</g:link></li>
 			</ul>
 		</div>
 		<div id="list-partido" class="content scaffold-list" role="main">
