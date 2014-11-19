@@ -435,4 +435,19 @@ class JugadorController {
 		render(view: "enfrentamientoJugadores", model: [jugador1: usuario1,jugador2: usuario2, edadJugador1:edadJugador1, edadJugador2:edadJugador2, titulosJugador1:titulosJugador1, titulosJugador2:titulosJugador2, finalesJugador1:finalesJugador1, finalesJugador2:finalesJugador2, jugador1Ganados:jugador1Ganados,jugador2Ganados:jugador2Ganados, enfrentamientos:enfrentamientos, categoriaJugador1:categoriaSeleccionada1, categoriaJugador2:categoriaSeleccionada2])
 				
 	}
+	
+	def cantidadJugadoresPorCategoria(){
+		
+		def jugPorCategoria=[]
+		
+		jugPorCategoria[0]=jugadoresService.obtenerCantidadJugadoresPorCategoria()	
+		
+		render jugPorCategoria as JSON
+	}
+	
+	def verPorcentajeJugadoresPorCategoria(){
+		
+		render(view: "/administracion/informes/jugadoresPorCategoria")
+		
+	}
 }

@@ -210,4 +210,18 @@ class ClubController {
 		
 		render clubes as JSON
 	}
+	
+	def verClubesConMayorDisponibilidad(){
+		
+		render(view: "/administracion/informes/clubesConMayorDisponibilidad")
+		
+	}
+	
+	def disponibilidadClubes(){
+		
+		def disponibilidades=clubService.obtenerDisponibilidadClubes()
+		
+		render disponibilidades as JSON
+		
+	}
 }

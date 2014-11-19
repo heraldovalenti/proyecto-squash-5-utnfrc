@@ -109,4 +109,28 @@ modules = {
 		dependsOn 'jquery'
 		resource url: 'js/listaPartidosPorJugar.js'
 	}
+	graficoJugadoresPorCategoria {
+		dependsOn 'jquery'
+		resource url: 'js/informeJugadoresPorcategoria.js'
+		resource url: 'js/graficos/excanvas.js',disposition: "head"
+		resource url: 'js/graficos/jquery.min.js',disposition: "head"
+		resource url: 'js/graficos/jquery.jqplot.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.pieRenderer.min.js',disposition: "head"		
+		resource url: 'js/graficos/jquery.jqplot.min.css',disposition: "head"
+		
+	}
+	graficoClubesMayorDisponibilidad{
+		dependsOn 'jquery'
+		resource url: 'js/informeClubesMayorDisponibilidad.js'
+		resource url: 'js/graficos/excanvas.js',disposition: "head"
+		resource url: 'js/graficos/jquery.min.js',disposition: "head"
+		resource url: 'js/graficos/jquery.jqplot.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.barRenderer.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.categoryAxisRenderer.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.pointLabels.min.js',disposition: "head"	
+		resource url: 'js/graficos/jqplot.pieRenderer.min.js',disposition: "head"
+		resource url: 'js/graficos/jquery.jqplot.min.css',disposition: "head"
+		
+	}
+	
 }
