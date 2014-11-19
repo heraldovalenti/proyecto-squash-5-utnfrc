@@ -22,84 +22,84 @@
 									<li class=" home-player" id="jugador_8"><span class="rank">1</span>
 									<h2 class="name">
 											<span class="fname">GUILLERMO</span>&nbsp;&nbsp; <span
-												class="lname">EASDALE</span> <span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/8.jpg&w=111&h=149&zc=1</span>
+												class="lname">EASDALE</span> <span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/8.jpg&w=111&h=149&zc=1</span>
 											<span class="cat clear">PRIMERA</span><span class="age clear">27</span>
-											<span class="url clear">http://www.acsr.com.ar/perfiles/j8/easdale-guillermo.html</span>
+											<span class="url clear">/SistemaGestionTorneo/perfiles/j8/easdale-guillermo.html</span>
 										</h2> <span class="score">1350</span> <span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_775"><span
 										class="rank">2</span>
 									<h2 class="name">
 											<span class="fname">JUAN PABLO</span>&nbsp;&nbsp;<span
-												class="lname">PRAMPARO</span> <span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/775.jpg&w=111&h=149&zc=1</span>
+												class="lname">PRAMPARO</span> <span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/775.jpg&w=111&h=149&zc=1</span>
 											<span class="cat clear">PRIMERA</span> <span
-												class="age clear">33</span> <span class="url clear">http://www.acsr.com.ar/perfiles/j775/pramparo-juan-pablo.html</span>
+												class="age clear">33</span> <span class="url clear">/SistemaGestionTorneo/perfiles/j775/pramparo-juan-pablo.html</span>
 										</h2> <span class="score">1100</span> <span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_3"><span class="rank">3</span>
 									<h2 class="name">
 											<span class="fname">MARTIN</span>&nbsp;&nbsp;<span
-												class="lname">EASDALE</span> <span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/3.jpg&w=111&h=149&zc=1</span>
+												class="lname">EASDALE</span> <span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/3.jpg&w=111&h=149&zc=1</span>
 											<span class="cat clear">PRIMERA</span> <span
-												class="age clear">31</span><span class="url clear">http://www.acsr.com.ar/perfiles/j3/easdale-martin.html</span>
+												class="age clear">31</span><span class="url clear">/SistemaGestionTorneo/perfiles/j3/easdale-martin.html</span>
 										</h2> <span class="score">850</span><span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_18"><span
 										class="rank">4</span>
 									<h2 class="name">
 											<span class="fname">GUILLERMO </span>&nbsp;&nbsp; <span
-												class="lname">PEDERNERA</span> <span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/18.jpg&w=111&h=149&zc=1</span>
+												class="lname">PEDERNERA</span> <span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/18.jpg&w=111&h=149&zc=1</span>
 											<span class="cat clear">PRIMERA</span><span class="age clear">33</span>
-											<span class="url clear">http://www.acsr.com.ar/perfiles/j18/pedernera-guillermo-.html</span>
+											<span class="url clear">/SistemaGestionTorneo/perfiles/j18/pedernera-guillermo-.html</span>
 										</h2>
 										<span class="score">825</span> <span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_1"><span class="rank">5</span>
 									<h2 class="name">
 											<span class="fname">HERNAN JAVIER</span>&nbsp;&nbsp; <span
-												class="lname">D`ARCANGELO</span><span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/1.jpg&w=111&h=149&zc=1</span>
+												class="lname">D`ARCANGELO</span><span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/1.jpg&w=111&h=149&zc=1</span>
 											<span class="cat clear">PRIMERA</span> <span
-												class="age clear">32</span><span class="url clear">http://www.acsr.com.ar/perfiles/j1/d-arcangelo-hernan-javier.html</span>
+												class="age clear">32</span><span class="url clear">/SistemaGestionTorneo/perfiles/j1/d-arcangelo-hernan-javier.html</span>
 										</h2> <span class="score">600</span><span class="arrow"></span></li>
 									<li class="active home-player" id="jugador_733"><span
 										class="rank">6</span>
 									<h2 class="name">
 											<span class="fname">DAMIAN</span>&nbsp;&nbsp;<span
-												class="lname">PEREYRA</span><span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/733.jpg&w=111&h=149&zc=1</span><span
+												class="lname">PEREYRA</span><span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/733.jpg&w=111&h=149&zc=1</span><span
 												class="cat clear">PRIMERA</span><span class="age clear">2013</span><span
-												class="url clear">http://www.acsr.com.ar/perfiles/j733/pereyra-damian.html</span>
+												class="url clear">/SistemaGestionTorneo/perfiles/j733/pereyra-damian.html</span>
 										</h2>
 										<span class="score">425</span><span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_307"><span
 										class="rank">7</span>
 									<h2 class="name">
 											<span class="fname">FRANCISCO </span>&nbsp;&nbsp;<span
-												class="lname">BOBADILLA</span><span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/307.jpg&w=111&h=149&zc=1</span><span
+												class="lname">BOBADILLA</span><span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/307.jpg&w=111&h=149&zc=1</span><span
 												class="cat clear">PRIMERA</span><span class="age clear">32</span><span
-												class="url clear">http://www.acsr.com.ar/perfiles/j307/bobadilla-francisco-.html</span>
+												class="url clear">/SistemaGestionTorneo/perfiles/j307/bobadilla-francisco-.html</span>
 										</h2>
 										<span class="score">375</span><span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_746"><span
 										class="rank">8</span>
 									<h2 class="name">
 											<span class="fname">CARLOS</span>&nbsp;&nbsp;<span
-												class="lname">VILA</span><span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/746.jpg&w=111&h=149&zc=1</span><span
+												class="lname">VILA</span><span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/746.jpg&w=111&h=149&zc=1</span><span
 												class="cat clear">PRIMERA</span><span class="age clear">41</span><span
-												class="url clear">http://www.acsr.com.ar/perfiles/j746/vila-carlos.html</span>
+												class="url clear">/SistemaGestionTorneo/perfiles/j746/vila-carlos.html</span>
 										</h2>
 										<span class="score">287.5</span><span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_1312"><span
 										class="rank">9</span>
 									<h2 class="name">
 											<span class="fname">ROBERTO</span>&nbsp;&nbsp;<span
-												class="lname">GRASSO</span><span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/1312.jpg&w=111&h=149&zc=1</span><span
+												class="lname">GRASSO</span><span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/1312.jpg&w=111&h=149&zc=1</span><span
 												class="cat clear">PRIMERA</span><span class="age clear">2013</span><span
-												class="url clear">http://www.acsr.com.ar/perfiles/j1312/grasso-roberto.html</span>
+												class="url clear">/SistemaGestionTorneo/perfiles/j1312/grasso-roberto.html</span>
 										</h2>
 										<span class="score">250</span><span class="arrow"></span></li>
 									<li class=" home-player" id="jugador_1220"><span
 										class="rank">10</span>
 									<h2 class="name">
 											<span class="fname">MATIAS </span>&nbsp;&nbsp;<span
-												class="lname">KUPFERBERG</span><span class="img clear">images/img.php?src=http://www.acsr.com.ar/images/perfiles/1220.jpg&w=111&h=149&zc=1</span><span
+												class="lname">KUPFERBERG</span><span class="img clear">images/img.php?src=/SistemaGestionTorneo/images/perfiles/1220.jpg&w=111&h=149&zc=1</span><span
 												class="cat clear">PRIMERA</span><span class="age clear">14</span><span
-												class="url clear">http://www.acsr.com.ar/perfiles/j1220/kupferberg-matias-.html</span>
+												class="url clear">/SistemaGestionTorneo/perfiles/j1220/kupferberg-matias-.html</span>
 										</h2>
 										<span class="score">225</span><span class="arrow"></span></li>
 								</ul>

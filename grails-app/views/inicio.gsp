@@ -21,8 +21,8 @@
 	<div class="header mt20">
 
 	    <div class="logo" style="width: 100px;">
-	        <a href="http://www.acsr.com.ar/">
-	            <img src="http://www.acsr.com.ar/images/acs.png" alt="Logo Asociación Cordobesa de Squash Raquets" 
+	        <a href="/SistemaGestionTorneo">
+	            <img src="/SistemaGestionTorneo/images/acs.png" alt="Logo Asociación Cordobesa de Squash Raquets" 
 	            	title="Logo Asociación Cordobesa de Squash Raquets"/>
 	        </a>
 	    </div>
@@ -78,7 +78,7 @@
 											Mira la final completa por equipos del torneo Panamericano
 											por Equipos. El 3er Punto de la serie es imperdible. ...<a
 												class="readmore"
-												href="http://www.acsr.com.ar/noticias/a270/panamericano-2013-final-por-equipos.html#">Leer
+												href="/SistemaGestionTorneo/noticias/a270/panamericano-2013-final-por-equipos.html#">Leer
 												Más </a>
 										</p>
 									</div></li>
@@ -94,7 +94,7 @@
 											Te mostramos algunos momentos del entrenamiento de Miguel
 											Angel Rodriguez, considerado el jugador mas rapido del
 											circuito PSA. ...<a class="readmore"
-												href="http://www.acsr.com.ar/noticias/a272/entrenamiento-miguel-angel-rodriguez.html#">Leer
+												href="/SistemaGestionTorneo/noticias/a272/entrenamiento-miguel-angel-rodriguez.html#">Leer
 												Más </a>
 										</p>
 									</div></li>
@@ -110,7 +110,7 @@
 										<p>
 											Ramiro y Matias se destacaron en el Nacional de Puerto Madryn
 											...<a class="readmore"
-												href="http://www.acsr.com.ar/noticias/a269/impresionantes-conquistas-de-los-menores-cordobeses.html#">Leer
+												href="/SistemaGestionTorneo/noticias/a269/impresionantes-conquistas-de-los-menores-cordobeses.html#">Leer
 												Más </a>
 										</p>
 									</div>
