@@ -122,4 +122,42 @@ class ClubService {
 		def clubInicio= clubes.first() 		
 		return clubInicio
 	}
+	
+	def obtenerDisponibilidadClubes(){
+		
+		def clubes=Club.list()
+		
+		List disponibilidades = new ArrayList()
+		List club = new ArrayList()
+		List disp = new ArrayList()		
+		
+		
+		for(Club c:clubes){
+			
+			def disponibilidadClub=0
+			
+			def canchas= c?.canchas
+			
+			if(c?.canchas==null){
+				disp.add(0)
+			}
+			
+			for(Cancha can: canchas){
+				
+				if(can?.disponibilidad!=null){
+					disponibilidadClub+=can?.disponibilidad?.detalles?.size()
+				}							
+				
+			}
+			
+			club.add(c.nombre)
+			disp.add(disponibilidadClub)		
+		}
+		
+		disponibilidades.add(disp)
+		disponibilidades.add(club)	
+		
+		return disponibilidades
+		
+	}
 }

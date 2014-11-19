@@ -11,6 +11,7 @@ class JugadoresService {
    def torneoService
    
 	def listarJugadoresPorCategoria(String categoria,def params){
+		
 		def c = Usuario.createCriteria()
 		def jugadoresCategoria = c.list(params) {
 			createAlias("jugador", "jug", CriteriaSpecification.LEFT_JOIN)
@@ -25,7 +26,6 @@ class JugadoresService {
 			}
 			order("pers.apellido", "asc")
 		}
-		
 		return jugadoresCategoria
 	}
    
@@ -145,6 +145,47 @@ class JugadoresService {
 			return null;
 		}
 		
+		
+	}
+	
+	def jugadoresPorCategoria(String categoria){
+		
+		def c = Usuario.createCriteria()
+		def jugadoresCategoria = c.list() {
+			createAlias("jugador", "jug", CriteriaSpecification.LEFT_JOIN)
+			createAlias("jug.categoriasJugador","catJ", CriteriaSpecification.LEFT_JOIN)
+			createAlias("catJ.categoria","cat", CriteriaSpecification.LEFT_JOIN)
+			createAlias("persona","pers",CriteriaSpecification.LEFT_JOIN)
+			and {
+				isNotNull("jugador")
+				isNotEmpty("jug.categoriasJugador")
+				eq("catJ.estado","Asignada")
+				eq("cat.nombre", categoria)
+			}
+			order("pers.apellido", "asc")
+		}
+		return jugadoresCategoria.size()
+	}
+	
+	def obtenerCantidadJugadoresPorCategoria(){
+		
+		def categorias= Categoria.list()
+		
+		List cantJugCategoria = new ArrayList()		
+		
+		for (Categoria c:categorias){
+			
+			def arrayCategoria=[]
+			
+			def cant=jugadoresPorCategoria(c.nombre)
+			arrayCategoria[0]= c.nombre
+			arrayCategoria[1]= cant
+			
+			cantJugCategoria.add(arrayCategoria)	
+			
+		}
+		
+		return cantJugCategoria	
 		
 	}
 }
