@@ -139,7 +139,7 @@ a:hover {text-decoration:none;}
 .box-150 {width: 150px;}
 .box-150-Porcent {width: 150%}
 .box-shadow {position: absolute; display: block; height: 20px; bottom: 0; background: white; width: 100%; text-align: center; line-height: 20px; cursor: pointer;}
-.ac-arrow {position: absolute; right: 5px; top: 5px; background: url(images/ac-arrow.png) top left no-repeat;display: block; width: 24px; height: 24px; cursor: pointer;}
+.ac-arrow {position: absolute; right: 5px; top: 5px; background: top left no-repeat;display: block; width: 24px; height: 24px; cursor: pointer;}
 .ul-box-half {  display: block;  float: left;  position: relative;  width: 250px;}
 
 .ul-box-3 {  display: block;  float: left;  position: relative;  width: 182px;}
@@ -503,7 +503,7 @@ width:300px;
  */
  
 #atpNavBar {
-    /*background:url("images/atp_nav_bar_bg.png") repeat-x scroll 0 0 transparent;*/
+    
     
     background: #F3F3F3;
     background-image: linear-gradient(top , #F3F3F3 0%, #DBDBDB 100%);
@@ -554,7 +554,7 @@ width:300px;
     .tour-more .more {position: absolute; display: none;width: 992px; left: 0px; top: 30px; background: #FFF; min-height: 100px; z-index: 5000;}
         .tour-more:hover .more {display: block;}
             .tour-more .more h2 {  border-bottom: 1px solid #D2D2D2;  color: #666666;  display: block;  float: left;  font-size: 18px;  font-weight: bold;  line-height: 34px;  position: relative;  text-align: left;  text-indent: 60px;  text-transform: uppercase;  width: 100%;}
-            .tour-more .more h2.acs-loguito {background: url(images/loguito.jpg) no-repeat left top;}
+            .tour-more .more h2.acs-loguito {background: no-repeat left top;}
         .more.more1 {left: -175px;}
         .more.more2 {left: -287px;}
         
@@ -601,11 +601,11 @@ width:300px;
           width: 35px;
         }
 
-.tournaments ul li.wt250 a {background:url("images/wt_250.gif") no-repeat center left;}
-.tournaments ul li.wt500 a {background:url("images/wt_500.gif") no-repeat center left;}
-.tournaments ul li.wt1000 a {background:url("images/wt_1000.gif") no-repeat center left;}
-.tournaments ul li.wtGrandSlam a {background:url("images/wt_GrandSlam.gif") no-repeat center left;}
-.tournaments ul li.wtDavis a {background:url("images/wt_davis.gif") no-repeat center left;}
+.tournaments ul li.wt250 a {background:url("") no-repeat center left;}
+.tournaments ul li.wt500 a {background:url("") no-repeat center left;}
+.tournaments ul li.wt1000 a {background:url("") no-repeat center left;}
+.tournaments ul li.wtGrandSlam a {background:url("") no-repeat center left;}
+.tournaments ul li.wtDavis a {background:url("") no-repeat center left;}
 
 .tournament-tips {border-top: 1px solid #d2d2d2; padding: 4px 0;}
     .tournament-tips p {  line-height: 35px;  margin: 0;  padding: 0;  text-align: left; }
@@ -713,34 +713,34 @@ h3.tournament-title2 {
             }
 
  
-/*#atpNavBarCredentials {background:url("images/your_credentials.gif") no-repeat scroll 0 0 transparent;float:left;height:22px;margin:3px 0 0 95px;min-width:142px;padding-left:144px;}
+/*#atpNavBarCredentials {background:url("") no-repeat scroll 0 0 transparent;float:left;height:22px;margin:3px 0 0 95px;min-width:142px;padding-left:144px;}
 #atpNavBarCredentials a {color:#888888;float:left;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:22px;line-height:22px;text-align:center;}
-#atpNavBarCredentials a#atpNavBarLogin {background:url("images/credential_login.gif") no-repeat scroll 0 0 transparent;min-width:51px;}
-#atpNavBarCredentials a#atpNavBarSignup {background:url("images/credential_signup.gif") no-repeat scroll 0 0 transparent;width:60px;}
+#atpNavBarCredentials a#atpNavBarLogin {background:url("") no-repeat scroll 0 0 transparent;min-width:51px;}
+#atpNavBarCredentials a#atpNavBarSignup {background:url("") no-repeat scroll 0 0 transparent;width:60px;}
 #atpNavBar #atpNavBarCredentials a:hover {background-position:0 -22px;text-decoration:none;}
-#atpNavBar #atpNavBarCredentials .loggedIn {background:url("images/credential_loggedin.gif") no-repeat scroll right top transparent;min-width:51px;padding:0 4px;}
+#atpNavBar #atpNavBarCredentials .loggedIn {background:url("") no-repeat scroll right top transparent;min-width:51px;padding:0 4px;}
 
-#atpNavBarInner {background:url("images/atp_nav_bar_center.gif") no-repeat scroll 0 0 transparent;height:28px;margin:0 auto;position:relative;width:985px;z-index:99999;}
-#atpNetworkTitle {background:url("images/pro_tennis_network_title.gif") no-repeat scroll 10px 10px transparent;float:left;height:28px;text-indent:-9999px;width:208px;}
+#atpNavBarInner {background:url("") no-repeat scroll 0 0 transparent;height:28px;margin:0 auto;position:relative;width:985px;z-index:99999;}
+#atpNetworkTitle {background:url("") no-repeat scroll 10px 10px transparent;float:left;height:28px;text-indent:-9999px;width:208px;}
 #atpNavNetwork li {float:left;}
 #atpNavNetwork li:hover ul, #atpNavNetwork li.sfhover ul {display:block;}
-#atpNetworkNavMens a#atpNetworkNavMensLink {background:url("images/mens_tour_nav.gif") no-repeat scroll 0 0 transparent;display:block;height:28px;text-indent:-9999px;width:100px;}
+#atpNetworkNavMens a#atpNetworkNavMensLink {background:url("") no-repeat scroll 0 0 transparent;display:block;height:28px;text-indent:-9999px;width:100px;}
 #atpNetworkNavMens:hover a#atpNetworkNavMensLink, 
 #atpNetworkNavWomens:hover a#atpNetworkNavWomensLink {background-position:0 -28px;}
-#atpNetworkNavWomens a#atpNetworkNavWomensLink {background:url("images/womens_tour_nav.gif") no-repeat scroll right top transparent;display:block;height:28px;text-indent:-9999px;width:120px;}
+#atpNetworkNavWomens a#atpNetworkNavWomensLink {background:url("") no-repeat scroll right top transparent;display:block;height:28px;text-indent:-9999px;width:120px;}
 #atpNavNetwork li.sfhover a#atpNetworkNavMensLink, 
 #atpNavNetwork li.sfhover a#atpNetworkNavWomensLink {background-position:0 -28px;}
-#globalBarLanguage {background:url("images/language_drop.gif") no-repeat scroll 0 0 transparent;height:22px;overflow:hidden;padding:0 2px 0 1px;position:absolute;right:9px;top:3px;width:118px;}
+#globalBarLanguage {background:url("") no-repeat scroll 0 0 transparent;height:22px;overflow:hidden;padding:0 2px 0 1px;position:absolute;right:9px;top:3px;width:118px;}
 .globalBarLanguageShown {background-position:-121px 0 !important;height:67px !important;}
 #globalBarLanguage li a {color:#888888;display:block;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:22px;line-height:22px;overflow:hidden;padding-left:37px;width:81px;}
 #globalBarLanguage li a:hover {background-position:0 -22px !important;text-decoration:none;}
-#globalBarLanguage li a#languageEnglish {background:url("images/language_english.gif") no-repeat scroll 0 0 transparent;}
-#globalBarLanguage li a#languageSpanish {background:url("images/language_spanish.gif") no-repeat scroll 0 0 transparent;}
-#globalBarLanguage li a#languageChinese {background:url("images/language_chinese.gif") no-repeat scroll 0 0 transparent;}
+#globalBarLanguage li a#languageEnglish {background:url("") no-repeat scroll 0 0 transparent;}
+#globalBarLanguage li a#languageSpanish {background:url("") no-repeat scroll 0 0 transparent;}
+#globalBarLanguage li a#languageChinese {background:url("") no-repeat scroll 0 0 transparent;}
 .globalBarRibbonWrap {background:none repeat scroll 0 0 white;border:3px solid #B0B0B0;display:none;left:0;min-height:10px;position:absolute;top:28px;width:979px;z-index:99999 !important;}
-.globalBarRibbonTitle {background:url("images/ribbon_logo.gif") no-repeat scroll 0 0 transparent;height:34px;margin:6px 7px 5px;padding-left:63px;width:900px;}
+.globalBarRibbonTitle {background:url("") no-repeat scroll 0 0 transparent;height:34px;margin:6px 7px 5px;padding-left:63px;width:900px;}
 #menTourLink {height:34px;left:6px;position:absolute;text-indent:-4000px;top:6px;width:92px;}
-#atpNetworkNavWomens .globalBarRibbonTitle {background:url("images/ribbon_logo_womens.gif") no-repeat scroll 0 0 transparent;padding-left:100px;width:865px;}
+#atpNetworkNavWomens .globalBarRibbonTitle {background:url("") no-repeat scroll 0 0 transparent;padding-left:100px;width:865px;}
 #atpNetworkNavWomens .globalBarRibbonTitle .floatLeft {margin-right:5px;}
 #womenTourLink {height:34px;left:6px;position:absolute;text-indent:-4000px;top:6px;width:92px;}
 .globalBarRibbonKey {border-top:1px solid #B1B1B1;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;margin:0 7px;padding:10px 0 3px;}
@@ -762,14 +762,14 @@ h3.tournament-title2 {
 .worldTourDatesCol li.tLive2 {background: none;width: 240px; font: normal 11px verdana, arial, helvetica;overflow:inherit;}
 .worldTourDatesCol li.tLive span {float:left;font-weight:bold;padding:0 5px;width:70px;}
 .worldTourDatesCol li.tor {color:#072442;font:150%/100% "Lucida Grande",Arial,sans-serif;letter-spacing: 0px;}  */ 
-.genericButton  {    background: url("images/generic_button.gif") no-repeat scroll left top transparent;
+.genericButton  {    background: url("") no-repeat scroll left top transparent;
 
   
     margin-left: 5px;
     min-height: 1%;
     padding: 0 0 0 3px;
     position: relative;margin-top: 3px;}
-.genericButton button, a.genericButton span {background:url("images/generic_button.gif") no-repeat scroll right top transparent;border:0 none;color:#FFFFFF;cursor:pointer;font-size:10px;font-weight:bold;height:17px;line-height:20px;margin-right:-3px;padding:0 25px 3px 2px;width:auto;}
+.genericButton button, a.genericButton span {background:url("") no-repeat scroll right top transparent;border:0 none;color:#FFFFFF;cursor:pointer;font-size:10px;font-weight:bold;height:17px;line-height:20px;margin-right:-3px;padding:0 25px 3px 2px;width:auto;}
 a.genericButton span {display:block;}.genericButton:hover {background-position:left bottom;text-decoration:none;}
 .genericButton:hover button, .genericButton:hover span {background-position:right bottom;}
 * html .genericButton button {overflow:visible;}
@@ -802,7 +802,7 @@ height: 60px;
 }
 
 .header-search {
-  background: url("images/bg-top.png") no-repeat scroll right top;
+  background: url("") no-repeat scroll right top;
   height: 29px;
   margin: 0 auto;
   width: 992px;
@@ -811,7 +811,7 @@ height: 60px;
 .header-search .search .search-input {position: relative;float: left;display: block;   width: 180px;height: 29px;}
 .header-search .search .search-input input{padding: 2px 1px;  margin-left: 25px;margin-top: 5px;width: 150px;font-size: 9px;}
 .header-search .search .search-btn {position: relative;float: left;display: block;height: 29px;}
-.header-nav {background:url("images/menu_top_off.png") repeat-x scroll left top transparent;height:33px;margin:0 auto;position:relative;width:980px;z-index:4999;}
+.header-nav {background:url("") repeat-x scroll left top transparent;height:33px;margin:0 auto;position:relative;width:980px;z-index:4999;}
 
 /*
 * Menu Principal
@@ -820,12 +820,12 @@ height: 60px;
 #header-menu {border-left:1px solid #445B7D;display:block;height:33px;margin:0 auto;width:980px;padding: 0;}
 #header-menu li {border-left:1px solid #445B7D;display:block;float:left;height:33px;width: auto;position: relative;text-align: center;}
 #header-menu li a {font: normal 13px verdana, arial, helvetica;   color:#FFF;display:block;height:33px;line-height:33px;overflow:hidden;text-decoration:none !important;}
-header-menu .nav-media {background: transparent url(images/bg-nav.gif) repeat scroll left bottom;}
+header-menu .nav-media {background: transparent url() repeat scroll left bottom;}
 #header-menu .nav-media:hover,  
 #header-menu li a:hover,  
-#header-menu li a.destacado{background:transparent url(images/bg-nav.gif) repeat scroll center center; font-weight: 700;}
+#header-menu li a.destacado{background:transparent url() repeat scroll center center; font-weight: 700;}
 #header-menu .nav-on, 
-#header-menu .nav-on:hover {background:#FFFFFF url(images/bg-nav.gif) repeat scroll center top;color:#333;}
+#header-menu .nav-on:hover {background:#FFFFFF url() repeat scroll center top;color:#333;}
 #header-menu #nav-newspulse img {right:5px;top:0;}
 
 .inicio{ width: 28px !important; }
@@ -984,7 +984,7 @@ width:130px;
 }
 
 a.moreLink {
-  background: url("images/arrow_read.gif") no-repeat scroll 0 3px transparent;
+  background: url("") no-repeat scroll 0 3px transparent;
   color: #6DD7FE;
   display: block;
   float: left;
@@ -1056,20 +1056,20 @@ a.moreLink {
 
 .tab-content {  background: none repeat scroll 0 0 #042B56; color: #FFFFFF; /* display: none;*/ font-size: 13px; padding: 8px; width: 305px;}
 .ranking-home .tab-content {margin: 10px;}
-.ranking-home .tab-content li {background: url(images/rankings-listing-bg.png) repeat-x scroll left top transparent; clear: both; cursor: pointer; height: 27px; line-height: 27px; margin-bottom: 1px; overflow: hidden; position: relative;}
+.ranking-home .tab-content li {background: url() repeat-x scroll left top transparent; clear: both; cursor: pointer; height: 27px; line-height: 27px; margin-bottom: 1px; overflow: hidden; position: relative;}
 .ranking-home .tab-content li > * {display: inline; float: left; padding: 0 10px;}
 .ranking-home .tab-content li .rank { border-right: 1px solid #042B57; font-size: 18px; font-weight: bold; height: 27px; padding: 0; text-align: center; width: 35px;}
 .ranking-home .tab-content li .name {  color: #6DD7FE;  font-size: 12px;  margin: 0;  overflow: hidden;  text-overflow: ellipsis;  white-space: nowrap;  width: 180px;}
 .ranking-home .tab-content li .name .lname { text-transform: uppercase; font-weight: bold;}
 .ranking-home  .tab-content li .score { float: right; padding: 0 20px 0 0;}
-.ranking-home .tab-content .active .arrow { background: url("images/rankings-sprite.png") no-repeat scroll left -3px transparent; display: block; height: 27px; position: absolute; right: -12px; top: 0;  width: 10px;}
+.ranking-home .tab-content .active .arrow { background: url("") no-repeat scroll left -3px transparent; display: block; height: 27px; position: absolute; right: -12px; top: 0;  width: 10px;}
 .ranking-home .tab-content li.active { background-position: left bottom; height: 33px; line-height: 33px; overflow: visible;}
 .ranking-home .tab-content li, 
 .ranking-home .tab-content li.active { height: 27px; line-height: 27px;}
 
 
-.ranking-home .single-rankings-content .rankings-info{background:url(images/rankings-info-bg.png) repeat-x scroll left top transparent;color:#FFF;height:297px;position:absolute;right:10px;top:10px;width:255px;z-index:5;}
-.ranking-home .single-rankings-content .player-image{background:url(images/rankings-info-bg.png) repeat-x scroll left top transparent;border:1px solid #CB1E24;float:left;margin:0 10px 10px;position:relative;width:100px;}
+.ranking-home .single-rankings-content .rankings-info{background:url() repeat-x scroll left top transparent;color:#FFF;height:297px;position:absolute;right:10px;top:10px;width:255px;z-index:5;}
+.ranking-home .single-rankings-content .player-image{background:url() repeat-x scroll left top transparent;border:1px solid #CB1E24;float:left;margin:0 10px 10px;position:relative;width:100px;}
 .ranking-home .single-rankings-content .rankings-info .name{display:block;float:left;font-size:12px;margin:10px 0;position:relative;width:100%;z-index:303!important;}
 .ranking-home .single-rankings-content .rankings-info a{color:#6DD7FE;display:inline-block;font-size:14px;font-weight:700;line-height:20px;margin-top:2px;text-indent:10px;}
 .ranking-home .single-rankings-content .rankings-info .name .lname{display:inline;font-size:13px;font-weight:700;margin:0;text-transform:uppercase;}
@@ -1116,9 +1116,9 @@ a.moreLink {
 .head2headModule .moduleContentInner{background:none;}
 .head2headEntryFields{padding-left:6px;}
 .moduleContentInner p{padding:7px 6px 0;}
-.head2headEntryFields p{color:#002864;font-size:22px;width:74px;float:left;height:31px;text-align:center;margin:0;padding:0;line-height:28px;background:url(images/head2head_module_vs.gif) no-repeat top center;text-indent:-9999px;}
-.head2headEntryField2,.head2headEntryField1{background:url(images/autoComp_1.gif) no-repeat 0 0;height:21px;width:183px;padding:5px 10px 5px 10px;float:left;}
-.head2headEntryField2{background-image:url(images/autoComp_2.gif);}
+.head2headEntryFields p{color:#002864;font-size:22px;width:74px;float:left;height:31px;text-align:center;margin:0;padding:0;line-height:28px;background:url() no-repeat top center;text-indent:-9999px;}
+.head2headEntryField2,.head2headEntryField1{background: no-repeat 0 0;height:21px;width:183px;padding:5px 10px 5px 10px;float:left;}
+.head2headEntryField2{}
 .head2headEntryField2 input,.head2headEntryField1 input{
 	border:0;
 	height:20px;
@@ -1127,40 +1127,40 @@ a.moreLink {
 	padding:5px 5px 5px 5px;
 	width:180px;
 	}
-.miniHead2headModule .head2headEntryField2{background-image:url(images/autoComp_3.gif);width:151px;}
+.miniHead2headModule .head2headEntryField2{background-image:width:151px;}
 .miniHead2headModule .head2headEntryField2 input{width:145px;}
 .miniHead2headModule p{margin:5px 5px 10px;}
 .head2headEntryFields{padding-left:6px;}
 .head2headEntryFields .genericButton{float:left;clear:none;margin:6px 0 0 10px;}
 .head2headEntryFields .genericButton button{height:20px;_overflow-y:hidden;}
-.head2headPremade{background:url(images/head2head_space_bg.jpg) no-repeat 0 0;height:177px;width:633px;clear:both;float:left;margin:6px 5px 6px 6px;_margin:6px 3px 6px 3px;}
+.head2headPremade{background: no-repeat 0 0;height:177px;width:633px;clear:both;float:left;margin:6px 5px 6px 6px;_margin:6px 3px 6px 3px;}
 .head2headPremade{background:none repeat scroll 0 0 transparent;height:172px;margin:0;width:648px;}
-.head2headPremade .actionShot{background:url(images/head2head_player_photo.png) no-repeat 0 0;padding:12px;margin:16px 21px 15px;_margin:16px 21px 15px 9px;float:left;}
+.head2headPremade .actionShot{background:url() no-repeat 0 0;padding:12px;margin:16px 21px 15px;_margin:16px 21px 15px 9px;float:left;}
 .head2headPreStats a:hover{color:#FFF;text-decoration:none;}
-.head2headPreStats h4{background:url(images/head2head_data_title.gif) repeat-x 0 0;height:25px;font-size:12px;color:#002864;font-family:Arial, Helvetica, sans-serif;line-height:25px;text-align:center;}
+.head2headPreStats h4{background: repeat-x 0 0;height:25px;font-size:12px;color:#002864;font-family:Arial, Helvetica, sans-serif;line-height:25px;text-align:center;}
 .head2headPreName1{margin-right:22px;}
 .head2headPreName1,.head2headPreName2{color:#00aff0;font-size:16px;font-weight:700;float:left;width:147px;height:33px;text-align:center;padding-top:10px;}
 p.head2headPreScore{clear:both;float:left;width:100%;text-align:center;color:#FFF;font-size:15px;padding:5px 0 16px;_padding-bottom:0;font-weight:700;_position:relative;margin:0;}
 p.head2headPreLinks{text-align:center;clear:both;padding-top:12px;}
-.head2headPreLinks a.genericButton{float:none;clear:none;/*background:url(images/generic_button.png) no-repeat top left;*/background-image:url(images/generic_button.png);padding-top:4px;padding-bottom:2px;_padding-top:0;_padding-bottom:0;padding-top:0;padding-bottom:0;text-align:left;margin-right:10px;font-family:arial;}
-.head2headPreLinks a.genericButton span{/*background:url(images/generic_button.png) no-repeat top right;*/background-image:url(images/generic_button.png);margin-top:-4px;padding-top:5px;/*padding-bottom:3px;*/padding-bottom:2px;margin-right:-4px;display:inline;padding:4px 25px 4px 0;_padding:0 25px 0 0;}
+.head2headPreLinks a.genericButton{float:none;clear:none;/*background:url() no-repeat top left;*/background-image:url();padding-top:4px;padding-bottom:2px;_padding-top:0;_padding-bottom:0;padding-top:0;padding-bottom:0;text-align:left;margin-right:10px;font-family:arial;}
+.head2headPreLinks a.genericButton span{/*background:url() no-repeat top right;*/background-image:url();margin-top:-4px;padding-top:5px;/*padding-bottom:3px;*/padding-bottom:2px;margin-right:-4px;display:inline;padding:4px 25px 4px 0;_padding:0 25px 0 0;}
 .head2headPreLinks a.genericButton:hover{background-position:left -20px;_background-position:left bottom;}
-.head2headPreLinks a.genericButton:hover span{background-position:right -20px;_background:url(images/generic_button.png) no-repeat bottom right;}
+.head2headPreLinks a.genericButton:hover span{background-position:right -20px;_background:url() no-repeat bottom right;}
 .head2headPremade{background:none;margin:0;width:648px;height:172px;}
 .head2headPremade .actionShot{margin:0;padding:12px 10px;background:none;}
 .head2headPremade .actionShot img{border:1px solid #8a8a8a;}
-.head2headPreStats{background:url(images/h2h_new_vs.gif) no-repeat scroll center 28px #034475;height:150px;margin-top:12px;padding:1px;width:335px;float:left;}
+.head2headPreStats{background:url() no-repeat scroll center 28px #034475;height:150px;margin-top:12px;padding:1px;width:335px;float:left;}
 .head2headBlurb{float:left;}
-h4 a{float:right;background:url(images/link_chevrons_white.gif) no-repeat scroll left center transparent;padding-left:14px;font-size:12px;color:#00bdd9;}
+h4 a{float:right;background:url() no-repeat scroll left center transparent;padding-left:14px;font-size:12px;color:#00bdd9;}
 .reliabilityLink{width:380px;margin-left:-1px;}
 h4 a:hover{color:#00bdd9;text-decoration:underline;}
 .head2headPreName1,.head2headPreName2{text-align:center;width:148px;}
 p.head2headPreScore{float:none;font-size:26px!important;font-weight:700;margin:0;padding:0!important;position:relative;text-align:center;top:-6px;width:auto;}
 .head2headPreName1{margin-right:36px;text-align:center;}
 .head2headPreStats h4{text-align:center;color:#666;font-size:13px;font-weight:700;padding:0 9px;height:28px;line-height:28px;}
-.genericButton,.genericButton button,a.genericButton span{background-image:url(images/generic_button_h2h_new.gif);}
-.head2headEntryField1{background-image:url(images/h2h_new_input_1.png);height:22px; position: relative;}
-.head2headEntryField2{background-image:url(images/h2h_new_input_2.png);height:22px; position: relative;}
+.genericButton,.genericButton button,a.genericButton span{background-image:url();}
+.head2headEntryField1{background-image:url();height:22px; position: relative;}
+.head2headEntryField2{background-image:url();height:22px; position: relative;}
 .moduleContentInner p{color:#FFF;font-size:11px;padding-left:17px;}
 .head2headEntryFields p{background:none;text-indent:0;font-size:11px;color:#FFF;padding-left:0;}
 p.head2headPreLinks{padding-left:0;text-align:center;}
@@ -1204,7 +1204,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 #playerBioHeadShotCopy {
-  background: url("images/headshot_copy_bg.png") repeat scroll 0 0 transparent;
+  background: url("images/") repeat scroll 0 0 transparent;
   bottom: 0;
   color: white;
   font-family: Verdana,Arial,Helvetica,sans-serif;
@@ -1222,7 +1222,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 #head2HeadMain .playerColumn .playerInfoRank {
-  background: url("images/player_bio_info_flag_bg.gif") repeat-x scroll left bottom #395B82;
+  background: url("") repeat-x scroll left bottom #395B82;
   border: 1px solid #33517D;
   clear: both;
   color: white;
@@ -1373,7 +1373,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 .inside .insideInner a.insideItem  {
-  background: url("images/inside_bg.gif") no-repeat scroll right bottom transparent;
+  background: url("") no-repeat scroll right bottom transparent;
   color: #666666;
   float: left;
   font-family: Verdana,Arial,Helvetica,sans-serif;
@@ -1385,13 +1385,13 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 .inside .insideInner a.insideItem:hover  {
-  background: url("images/inside_hover.gif") no-repeat scroll right bottom transparent;
+  background: url("") no-repeat scroll right bottom transparent;
 }
 
 .inside .insideInner a.insideItem:last-child {margin-right: 0;}
 
 .inside .insideInner a.insideItem span.playButton {
-  background: url("images/play.png") no-repeat scroll 0 0 transparent;
+  background: url("") no-repeat scroll 0 0 transparent;
   display: block;
   height: 58px;
   left: 50%;
@@ -1461,7 +1461,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 }
 
 .ranking-top {width: 530px;  height: auto;text-align: left;border: 1px solid #e0e0e0; }
-.ranking-top .titulo {width: 527px; text-align: left; background: url("images/title.jpg") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
+.ranking-top .titulo {width: 527px; text-align: left; background: url("") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
 .ranking-top .titulo a {color: #183353; text-decoration: none; font-weight: bold; font:150%/100% "Lucida Grande",Arial,sans-serif;letter-spacing: 0px;line-height: 33px; padding-left: 10px;}
 .ranking-top p {color: #333; padding: 3px 8px}
 
@@ -1529,7 +1529,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 .rankingProfileImage a {position:static;}
 .rankingProfileImage img {height:140px;width:108px;}
 .overlayRankings {
-	background:url("images/spanwhite.png") no-repeat scroll left top transparent;
+	background:url("") no-repeat scroll left top transparent;
 	display:block;
 	height:140px;
 	left:5px;position:absolute;
@@ -1570,24 +1570,24 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
     width:100%;   
     text-align: left;
 }
-#playerBioHeadShotCopy  {background:url("images/headshot_copy_bg.png") repeat scroll 0 0 transparent;bottom:0;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:15px;left:11px;line-height:15px;padding:0 4px;position:absolute;width:140px;}
+#playerBioHeadShotCopy  {background:url("s") repeat scroll 0 0 transparent;bottom:0;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:15px;left:11px;line-height:15px;padding:0 4px;position:absolute;width:140px;}
 #playerBioHeadShot img {border:1px solid white;}
 #playerBioInfoList {float:left;padding:4px 0;width:342px;}
 #playerBioInfoList li {border-bottom:1px solid #1A4675;color:white;font-size:11px;font-weight:normal;line-height:28px;min-height:28px;}
 #playerBioInfoList li span {float:left;font-weight:bold;padding:0 10px;width:99px;}
 #playerBioInfoExtra  {float:left;padding:9px 10px 5px;width:70px;}
-#playerBioInfoExtra #playerBioInfoRank {background:url("images/player_bio_info_flag_bg.gif") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:43px;margin-bottom:10px;padding:0 5px 5px;text-align:center;}
+#playerBioInfoExtra #playerBioInfoRank {background:url("") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:43px;margin-bottom:10px;padding:0 5px 5px;text-align:center;}
 #playerBioInfoExtra #playerBioInfoRank span {display:block;font-family:Arial,Helvetica,sans-serif;font-size:30px;font-weight:bold;line-height:30px;}
-#playerBioInfoExtra #playerBioInfoTitulos {background:url("images/player_bio_info_flag_bg.gif") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:43px;margin-bottom:10px;padding:0 5px 5px;text-align:center;}
+#playerBioInfoExtra #playerBioInfoTitulos {background:url("") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:43px;margin-bottom:10px;padding:0 5px 5px;text-align:center;}
 #playerBioInfoExtra #playerBioInfoTitulos span {display:block;font-family:Arial,Helvetica,sans-serif;font-size:30px;font-weight:bold;line-height:30px;}
-#playerBioInfoExtra #playerBioInfoFinales {background:url("images/player_bio_info_flag_bg.gif") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:43px;margin-bottom:10px;padding:0 5px 5px;text-align:center;}
+#playerBioInfoExtra #playerBioInfoFinales {background:url("") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:43px;margin-bottom:10px;padding:0 5px 5px;text-align:center;}
 #playerBioInfoExtra #playerBioInfoFinales span {display:block;font-family:Arial,Helvetica,sans-serif;font-size:30px;font-weight:bold;line-height:30px;}
-#playerBioInfoExtra #playerBioInfoFlag {background:url("images/player_bio_info_flag_bg.gif") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:70px;margin-bottom:10px;padding:3px 5px;text-align:center;}
+#playerBioInfoExtra #playerBioInfoFlag {background:url("") repeat-x scroll left bottom #395B82;border:1px solid #334C73;color:white;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;height:70px;margin-bottom:10px;padding:3px 5px;text-align:center;}
 #playerBioInfoExtra #playerBioInfoFlag img {margin-bottom:5px;}
 #playerBioInfoExtra #playerBioInfoFlag p {margin:0;}
 
 .actividad-top {margin-top: 10px; width: 530px;  min-height: 50px;text-align: left;border: 1px solid #e0e0e0; }
-.actividad-top .titulo {width: 527px; text-align: left; background: url("images/title.jpg") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
+.actividad-top .titulo {width: 527px; text-align: left; background: url("") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
 .actividad-top .titulo a {color: #183353; text-decoration: none; font-weight: bold; font:150%/100% "Lucida Grande",Arial,sans-serif;letter-spacing: 0px;line-height: 33px; padding-left: 10px;}
 .actividad-top p {color: #333; padding: 3px 8px}
 .actividad-top p em{color: green; padding: 3px 8px}
@@ -1633,7 +1633,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 
 
 .perfiles-top {margin-top: 10px; width: 530px;  min-height: 50px;text-align: left;border: 1px solid #e0e0e0; }
-.perfiles-top .titulo {width: 527px; text-align: left; background: url("images/title.jpg") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
+.perfiles-top .titulo {width: 527px; text-align: left; background: url("") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
 .perfiles-top .titulo a {color: #183353; text-decoration: none; font-weight: bold; font:150%/100% "Lucida Grande",Arial,sans-serif;letter-spacing: 0px;line-height: 33px; padding-left: 10px;}
 .perfiles-top p {color: #333; padding: 3px 8px}
 .perfiles-top p em{color: green; padding: 3px 8px}
@@ -1671,7 +1671,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 */
 
 .perfil-destacado {width: 100%;height: auto;margin-top: 0px; text-align: left;}
-.perfil-destacado .nombre {background: url("images/menu_top_off.png") repeat-x scroll left top transparent;height: 33px; overflow: hidden;}
+.perfil-destacado .nombre {background: url("") repeat-x scroll left top transparent;height: 33px; overflow: hidden;}
 .perfil-destacado .nombre a{color: #FFF; text-decoration: none; font-weight: bold;font:120%/100% "Lucida Grande",Arial,sans-serif;letter-spacing:0px;line-height: 33px; padding-left: 10px;}
 .perfil-destacado .foto{width: 100%;height: 190px;margin-top: 1px;}
 .perfil-destacado .caracteristicas {margin-top : 1px;}
@@ -1680,7 +1680,7 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 .perfil-destacado .caracteristicas p em { font-weight: normal;   letter-spacing:0px;}
 
 .comparativas-dest {width: 397px;  min-height: 120px;margin-top: 10px;text-align: left;border: 1px solid #e0e0e0;}
-.comparativas-dest .titulo {text-align: center; background: url("images/menu_top_off.png") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
+.comparativas-dest .titulo {text-align: center; background: url("") repeat-x scroll left top transparent;height: 33px; border: 1px solid white;}
 .comparativas-dest .titulo a {color: #FFF; text-decoration: none; font-weight: bold;font:180%/100% "Lucida Grande",Arial,sans-serif;letter-spacing: 0px;line-height: 33px; padding-left: 10px;}
 .comparativas-dest p {color: #333; padding: 3px 8px}
 
@@ -1701,13 +1701,13 @@ p.head2headPreLinks{padding-left:0;text-align:center;}
 #footersocial {border-bottom:1px solid #CCCCCC;border-top:1px solid #CCCCCC;clear:both;height:40px;list-style:none outside none;width:100%;}
 #footersocial li {border-left:1px solid #CCCCCC;display:block;float:left;height:28px;padding-top:12px;text-align:center;width:159px;}
 #footersocial img {border:medium none;margin-right:5px;vertical-align:middle;}
-#footerlinks {background:url("images/footerlinks_bg.png") repeat-x scroll left top #D6D6D6;clear:both;list-style:none outside none;min-height:160px;padding-top:10px;}
+#footerlinks {background:url("") repeat-x scroll left top #D6D6D6;clear:both;list-style:none outside none;min-height:160px;padding-top:10px;}
 #footerlinks li {display:block;float:left;width:180px;}
 #footerlinks li ul {margin:10px 0 10px 10px;}
 #footerlinks li ul#leftLinks {padding-left:30px;}
 #footerlinks li ul li {margin:0 0 0 45px;padding:2px;text-align:left;}
 #footerlinks li h4, #footerlinks li h4 a {color:#000000;font-weight:bold;margin:0;}
-#copyright {background:url("images/copyright_bg.png") repeat-x scroll left top #CCCCCC;border-top:1px solid #395073;clear:both;color:#395073;font:11px "Century Gothic",Calibri,"Lucida Sans",Helvetica,sans-serif;padding:8px;text-align:center;}
+#copyright {background:url("") repeat-x scroll left top #CCCCCC;border-top:1px solid #395073;clear:both;color:#395073;font:11px "Century Gothic",Calibri,"Lucida Sans",Helvetica,sans-serif;padding:8px;text-align:center;}
 #copyright a {color:white;font:11px "Century Gothic",Calibri,"Lucida Sans",Helvetica,sans-serif;text-decoration:none;}
 #copyright a:hover {color:white;text-decoration:none;}
 
@@ -1907,7 +1907,7 @@ padding:0;
 .forms p {margin-bottom: 0!important;}
 
 .forms {
-  background: url("images/noise.png") repeat scroll 0 0 transparent;
+  background: url("") repeat scroll 0 0 transparent;
   height: 100%;
   left: 0;
   margin-top: -1px;
@@ -1936,7 +1936,7 @@ padding:0;
 }
 
 .forms .form_box_a {
-  background: url("images/noise2.png") repeat scroll 0 0 transparent;
+  background: url("") repeat scroll 0 0 transparent;
   border: 1px solid #ABABAB;
   box-shadow: 0 3px 8px -1px rgba(10, 10, 10, 0.3);
   
@@ -1978,27 +1978,27 @@ padding:0;
 }
 
 .forms #registro .form_box_b {
-  /*background: url("../images/stomatologist.png") no-repeat scroll 11px 11px transparent; */
+  /*background: url("") no-repeat scroll 11px 11px transparent; */
 }
 
 .forms #micuenta .form_box_b {
-  background: url("images/security-2.png") no-repeat scroll 11px 11px transparent;
+  background: url("") no-repeat scroll 11px 11px transparent;
 }
 
 .forms #contacto .form_box_b {
-  background: url("images/mail-27.png") no-repeat scroll 11px 21px transparent;
+  background: url("g") no-repeat scroll 11px 21px transparent;
 }
 
 .forms #forgot_password .form_box_b {
-  background: url("images/password.png") no-repeat scroll 11px 11px transparent;
+  background: url("") no-repeat scroll 11px 11px transparent;
 }
 
 .forms #decidir_aviso_previo .form_box_b {
-  background: url("images/botonsps.gif") no-repeat scroll 11px 11px transparent;
+  background: url("") no-repeat scroll 11px 11px transparent;
 }
 
 .forms #agregar .form_box_b {
-  background: url("images/ok.png") no-repeat scroll 11px 11px transparent;
+  background: url("") no-repeat scroll 11px 11px transparent;
 }
 
 .forms .form_box_a .form_box_b input.errori, .forms .form_box_a .form_box_b select.errori {border: 1px solid red;}
@@ -2164,7 +2164,7 @@ margin-left: -312px;
 .forms registro {}
 
 .forms .form_box_a a.modalCloseImg {
-  background: url("images/x.png") no-repeat scroll 0 0 transparent;
+  background: url("") no-repeat scroll 0 0 transparent;
   cursor: pointer;
   display: inline;
   height: 34px;
@@ -2175,7 +2175,7 @@ margin-left: -312px;
   z-index: 3200;
 }
 
-#quickBag {   background: url("images/added_bg.gif") no-repeat scroll right bottom #FFFFFF;  border: 1px solid #AAAAAA;  height: 165px;  left: 752px;  margin: 0 auto;  position: absolute;  width: 267px;  z-index: 999; display: none;}
+#quickBag {   background: url("") no-repeat scroll right bottom #FFFFFF;  border: 1px solid #AAAAAA;  height: 165px;  left: 752px;  margin: 0 auto;  position: absolute;  width: 267px;  z-index: 999; display: none;}
     .addclose {  background-color: #AAAAAA;  color: #FFFFFF;  font-size: 10px;  font-weight: 700;  height: 17px;  text-transform: uppercase;  width: 267px;}
     .addcloseleft {  float: left;  padding-top: 2px;  width: 230px;}
     .addcloseright {  float: none;  font-size: 1px;  line-height: 1px;  width: auto;}
@@ -2186,7 +2186,7 @@ margin-left: -312px;
     .qbDetails {  float: left;  margin: 10px 0 0;  width: 160px;}
     h2.qbMan {  font-size: 12px !important;  font-weight: bold;}
     .qbName {  font-size: 11px;}
-    .qbButtons {  background: url("images/dashed_gradient.gif") no-repeat scroll 0 0 transparent;  color: #7D7D7D;  float: left;  margin-top: 10px;  padding-top: 7px;  width: 100%;}
+    .qbButtons {  background: url("") no-repeat scroll 0 0 transparent;  color: #7D7D7D;  float: left;  margin-top: 10px;  padding-top: 7px;  width: 100%;}
     .full_box {  height: 100%;  overflow: auto;}
 
 
@@ -2210,7 +2210,7 @@ margin-left: -312px;
     position: fixed!important;
 }
 .searchInput{
-    background: url("images/fdoinput.png") no-repeat scroll left top transparent;
+    background: url("") no-repeat scroll left top transparent;
     border: medium none;
     float: left;
     height: 22px;
@@ -2439,10 +2439,10 @@ ul.qj-list li.img img {
     width:25px;
     display:block;
     z-index:30;
-    background:url('images/live_stream_bg.gif') no-repeat right top;
+    background:url('') no-repeat right top;
 }
 .miniScoreBoardLinks {
-  background: url("images/scoreboard_links.png") no-repeat scroll 0 0 transparent;
+  background: url("") no-repeat scroll 0 0 transparent;
   height: 13px;
   left: 0;
   position: absolute;
@@ -2457,14 +2457,14 @@ ul.qj-list li.img img {
     text-transform:uppercase;
     padding-left:14px;
     font-weight:bold;
-    background:url('images/header_link_bullets.png') no-repeat scroll 2px 2px;
+    background:url('') no-repeat scroll 2px 2px;
     position:absolute;
     top:0px;
 }
 .miniScoreBoardLinks a.liveStream:hover,
 .miniScoreBoardLinks a.liveScoresLink:hover 
 {
-    background:url('images/link_chevrons_black_hover.gif') no-repeat 2px 2px;
+    background:url('') no-repeat 2px 2px;
     text-decoration:none;
     color:white;
 }
@@ -2484,17 +2484,17 @@ ul.qj-list li.img img {
 }
 
 .headerScoreboard1500 {
-    background:url('images/header_scoreboard_cyan.gif') bottom left no-repeat;
+    background:url('') bottom left no-repeat;
 }
 
 .headerScoreboard1000 {
-    background:url('images/header_scoreboard_gold.gif') bottom left no-repeat;
+    background:url('') bottom left no-repeat;
 }
 .headerScoreboard500 {
-    background:url('images/header_scoreboard_silver.gif') bottom left no-repeat;
+    background:url('') bottom left no-repeat;
 }
 .headerScoreboard250, .headerScoreboardWT {
-    background:url('images/header_scoreboard_black.gif') bottom left no-repeat;
+    background:url('') bottom left no-repeat;
 }
 .headerLiveScoreBox .loadingBox {
     position:absolute;
@@ -2502,7 +2502,7 @@ ul.qj-list li.img img {
     left:50%;
     margin-top:-12px;
     margin-left:-12px;
-    background:url('images/scoreboard_loader.gif') no-repeat 0 0;
+    background:url('') no-repeat 0 0;
     height:24px;
     width:24px;
 }
@@ -2552,25 +2552,25 @@ ul.qj-list li.img img {
     height:14px;
 }
 .headerScoreboard1500 table td {
-    background:url('images/header_scoreboard_blue_row.gif') top left repeat-x;
+    background:url('') top left repeat-x;
     vertical-align:top;
     line-height:13px;
 }
 
 .headerScoreboard1000 table td {
-  background: url("images/header_scoreboard_gold_row.gif") repeat-x scroll left top transparent !important;
+  background: url("") repeat-x scroll left top transparent !important;
   border: medium none !important;
   line-height: 13px;
   padding: 0 !important;
   vertical-align: top;
 }
 .headerScoreboard500 table td {
-    background:url('images/header_scoreboard_silver_row.gif') top left repeat-x;
+    background:url('') top left repeat-x;
     vertical-align:top;
     line-height:13px;
 }
 .headerScoreboard250 table td, .headerScoreboardWT table td {
-    background:url('images/header_scoreboard_black_row.gif') top left repeat-x;
+    background:url('') top left repeat-x;
     vertical-align:top;
     line-height:13px;
 }
@@ -2584,23 +2584,23 @@ table td .scoreaboardPlayerName {
 }
 
 .headerScoreboard1500 table td .scoreWin1500Bg {
-    background:url('images/scoreboard_check_blue.gif') no-repeat 2px 3px;
+    background:url('') no-repeat 2px 3px;
 }
 .headerScoreboard1000 table td .scoreWin1000Bg, .zona-detalles .scoreWin1000Bg {
-    background:url('images/scoreboard_check_gold.gif') no-repeat 2px 3px;
+    background:url('') no-repeat 2px 3px;
 }
 .headerScoreboard500 table td .scoreWin500Bg {
-    background:url('images/scoreboard_check_gray.gif') no-repeat 2px 3px;
+    background:url('') no-repeat 2px 3px;
 }
 .headerScoreboard250 table td .scoreWin250Bg, .headerScoreboardWT table td .scoreWinWTBg {
-    background:url('images/scoreboard_check_black.gif') no-repeat 2px 3px;
+    background:url('') no-repeat 2px 3px;
 }
 table td .scoreSrv1500Bg,
 table td .scoreSrv1000Bg,
 table td .scoreSrv500Bg,
 table td .scoreSrv250Bg,
 table td .scoreSrvWTBg {
-    background:url('images/scoreboard_dot.gif') no-repeat 3px 4px;
+    background:url('') no-repeat 3px 4px;
 }
 .headerLiveScoreBox table td.scoreCell {
     text-align:center;
