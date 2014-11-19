@@ -21,8 +21,8 @@
 	
 	<div class="header mt20">
 	    <div class="logo" style="width: 100px;">
-	        <a href="http://www.acsr.com.ar/">
-	            <img src="http://www.acsr.com.ar/images/acs.png" 
+	        <a href="/SistemaGestionTorneo">
+	            <img src="/SistemaGestionTorneo/images/acs.png" 
 	            	alt="Logo Asociación Cordobesa de Squash Raquets" 
 	            	title="Logo Asociación Cordobesa de Squash Raquets"/>
 	        </a>
