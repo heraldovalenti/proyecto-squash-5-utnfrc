@@ -138,9 +138,9 @@ class ClubService {
 			
 			def canchas= c?.canchas
 			
-			if(c?.canchas==null){
+			/*if(c?.canchas==null){
 				disp.add(0)
-			}
+			}*/
 			
 			for(Cancha can: canchas){
 				

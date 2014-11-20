@@ -3,8 +3,9 @@
     
 	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
 	<link href="${resource(dir: 'css', file: 'administracion.css') }" type="text/css" rel="stylesheet">
-	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css" rel="stylesheet">  
+	<link href="${resource(dir: 'css', file: 'tabla.css') }" type="text/css" rel="stylesheet"> 
    
+   <r:require module="jquery" />
 	<g:layoutHead/>
 	<r:layoutResources />
 </head>

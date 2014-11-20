@@ -406,4 +406,19 @@ class TorneoController {
 		}
 		
 	}
+	
+	def verInscriptosPorTorneo(){
+		
+		render(view: "/administracion/informes/inscriptosPorTorneo")
+	}
+	
+	def calcularInscriptosTorneoPorAnio(){
+		
+		Integer year = (params.year != null && !params.year.isEmpty()) ?
+		Integer.parseInt(params.year) : Calendar.getInstance().get(Calendar.YEAR);
+		
+		def inscriptos= torneoService.obtenerInscriptosTorneoPorAnio(year)		
+		
+		render inscriptos as JSON
+	}
 }

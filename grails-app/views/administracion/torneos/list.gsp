@@ -11,6 +11,7 @@
 		<div class="nav" >
 			<ul>
 				<li><g:link class="create" controller="torneo" action="nuevoTorneo">Nuevo Torneo</g:link></li>
+				<li><g:link class="create" controller="torneo" action="verInscriptosPorTorneo">Inscriptos en Torneo por Año</g:link></li>
 			</ul>
 		</div>
 		<div id="list-torneo" class="content scaffold-list" >
