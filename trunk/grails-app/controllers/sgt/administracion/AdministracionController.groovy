@@ -1,13 +1,15 @@
 package sgt.administracion
 
-import sgt.Rol;
-import sgt.Usuario;
+import sgt.Torneo
 
 class AdministracionController {
 	
+	def torneoService
+	def categoriaJugadorService
+	
 	def index() {
-		def u = (sgt.Usuario)session.getAttribute("userLogon")
-		
-		render(view: "/administracion/inicio")
-	}	
+		Boolean solicitudesPendientes = categoriaJugadorService.listaSolicitudesCategorias().total > 0
+		List torneosEnCurso = torneoService.torneosEnCurso()
+		render(view: "/administracion/inicio", model: [torneosEnCurso: torneosEnCurso, solicitudesPendientes: solicitudesPendientes])
+	}
 }

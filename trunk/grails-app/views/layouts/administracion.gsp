@@ -13,12 +13,12 @@
 <body>	
 
 <!-- BARRA DE USUARIO -->
-	<g:render template="/administracion/barraAdministracion" />
+	<g:render template="/usuario/barraUsuario" />
 		
 	<div class="header mt20">
 	    <div class="logo" style="width: 100px;">
 	        <a href="/SistemaGestionTorneo">
-	            <img src="images/acs.png" alt="Logo Asociación Cordobesa de Squash Raquets" 
+	            <img src="${ resource(dir: 'images', file: 'acs.png') }" alt="Logo Asociación Cordobesa de Squash Raquets" 
 	            	title="Logo Asociación Cordobesa de Squash Raquets"/>
 	        </a>
 	    </div>  			

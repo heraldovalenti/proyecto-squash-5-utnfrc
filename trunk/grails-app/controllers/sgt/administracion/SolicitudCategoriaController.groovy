@@ -41,4 +41,10 @@ class SolicitudCategoriaController {
 		}
 		redirect(action: "list")
 	}
+	
+	def verPerfilJugador(Long id) {
+		CategoriaJugador c = CategoriaJugador.get(id)
+		Usuario u = Usuario.findByJugador(c.jugador)
+		chain(controller: "jugador", action: "cargarPerfilCompleto", params: [usuario: u.id])
+	}
 }

@@ -19,25 +19,31 @@ class InscripcionTorneoController {
 			return
 		}
 		
+		if (!userLogon.esJugador()) {
+			flash.message = "Solo los jugadores pueden inscribirse a torneos"
+			redirect(controller: "torneo", action: "verTorneo", params: [idTorneo: idTorneo])
+			return
+		}
+		
 		Torneo torneo = Torneo.get(idTorneo)
 		def idUsuario = userLogon.id
 		
 		try {
 			inscripcionTorneoService.inscribirJugadorTorneo(idTorneo, idUsuario)
 			flash.message = "Inscripcion realizada"
-			chain(action: "inscripcionesJugador")
+			redirect(action: "inscripcionesJugador")
 		} catch (TorneoNotFoundException e) {
 			flash.exception = e
-			chain(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
+			redirect(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
 		} catch (UnregisteredJugadorException e) {
 			flash.message = "Debe registrar sus datos personales para poder realizar inscripciones"
-			chain(controller: "jugador", action: "datosPersonales")
+			redirect(controller: "jugador", action: "datosPersonales")
 		} catch(InscripcionTorneoException e) {
 			flash.exception = e
-			chain(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
+			redirect(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
 		} catch (e) {
 			flash.exception = e
-			chain(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
+			redirect(controller: "torneo", action: "verTorneo", params: [idTorneo: torneo.id])
 		}
 	}
 	
