@@ -111,7 +111,6 @@ class TorneoService {
 		return jugadores
 	}
 	
-	
 	Torneo torneoActual() {
 		def results = Torneo.createCriteria().list() {
 			or {
@@ -121,5 +120,19 @@ class TorneoService {
 			order("fechaInicioTorneo","asc")
 		}
 		if (results && !results.isEmpty()) return results[0]
+	}
+	
+	def torneosEnCurso() {
+		def results = Torneo.createCriteria().list() {
+			or {
+				eq("estado", "En Curso")
+				eq("estado", "Inscripcion Abierta")
+				eq("estado", "Inscripcion Cerrada")
+				eq("estado", "Inscripcion Finalizada")
+				gt("fechaInicioTorneo", new Date())
+			}
+			order("fechaInicioTorneo","asc")
+		}
+		return results
 	}
 }

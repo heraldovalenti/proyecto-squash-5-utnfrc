@@ -25,9 +25,12 @@
 		</div>
 		
 		<div class="tour-title tour-more fr">
+			<%--
 			<g:link controller="jugador" action="index" class="button_small green" style="margin: 3px">
-			Panel de control personal
+				Panel de control personal
 			</g:link>
+			--%>
+			<g:linkPanelPersonal />
 		</div>
 		</g:else>
 	</div>

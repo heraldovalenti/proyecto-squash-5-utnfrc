@@ -4,14 +4,14 @@ class TorneoActualTagLib {
 	
 	def torneoService
 	def filesService
-	
+		
 	def torneoActual = {
 		Torneo t = torneoService.torneoActual()
-		out << t?.id
+		out << ( (t) ? t.id : "null" )
 	}
 	
 	def logoTorneoActual = { attrs ->
-		def img = "default.jpg"
+		def img = "default_club.jpg"
 		def dir = filesService.retrieveImagesDir()
 		Torneo t = torneoService.torneoActual()
 		if(t.imagen){

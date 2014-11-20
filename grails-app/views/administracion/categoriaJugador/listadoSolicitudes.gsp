@@ -1,5 +1,4 @@
 <%@ page import="sgt.CategoriaJugador"%>
-<%@ page import="sgt.SolicitudCategoria"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,7 +33,7 @@
 						</td>
 						<td>${ solicitud.solicitudCategoria.categoria }</td>
 						<td>
-							<a href="#">Ver perfil</a>
+							<g:link controller="solicitudCategoria" action="verPerfilJugador" id="${ solicitud.solicitudCategoria.id }">Ver perfil</g:link>
 							<g:link controller="solicitudCategoria" action="aceptarSolicitud" id="${ solicitud.solicitudCategoria.id }">Aceptar</g:link>
 							<g:link controller="solicitudCategoria" action="rechazarSolicitud" id="${ solicitud.solicitudCategoria.id }">Rechazar</g:link>
 						</td>
