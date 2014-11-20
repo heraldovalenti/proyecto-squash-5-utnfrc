@@ -6,7 +6,14 @@ $(function(){
 		dataType : "json",
 		url : "cantidadJugadoresPorCategoria",
 		success : function(data) {
-			cargarGrafico(data);
+			if(data[0][0]==null){
+				var callback = function() { window.location = "verPorcentajeJugadoresPorCategoria"; };
+				var text = "No existen jugadores registrados en las categorias del club";
+				dialogs.showMessageDialog(text,callback)	
+			}
+			else{
+				cargarGrafico(data);	
+			}
 		}
 	});	
 	

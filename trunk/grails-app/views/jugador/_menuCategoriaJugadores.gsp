@@ -9,7 +9,7 @@
 		<div id="news-result" class="inner-box">
 			<ul id="menuCategoria">
 				<li><a href="#">Masculinos</a>
-					<ul>
+					<ul class="menu">
 						<g:each in="${categorias}" var="categoria">
 							<g:if test="${categoria.modalidadCategoria == 'Masculino'}">
 								<g:if test="${tipo == 'jugador'}">
@@ -30,7 +30,7 @@
 					</ul>
 				</li>
 				<li><a href="#">Femeninos</a>
-					<ul>
+					<ul class="menu">
 						<g:each in="${categorias}" var="categoria">
 							<g:if test="${categoria.modalidadCategoria == 'Femenino'}">
 								<g:if test="${tipo == 'jugador'}">

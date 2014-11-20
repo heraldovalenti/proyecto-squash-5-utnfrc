@@ -4,22 +4,46 @@ $(function(){
 		type : "GET",
 		contentType : "application/json",
 		dataType : "json",
-		url : "disponibilidadClubes",
+		url : "calcularInscriptosTorneoPorAnio",
 		success : function(data) {
 			if(data[0][0]==null){
-				var callback = function() { window.location = "verClubesConMayorDisponibilidad"; };
-				var text = "No hay definidas disponibilidades horarias de los clubes";
+				var callback = function() { window.location = "verInscriptosPorTorneo"; };
+				var text = "No existen inscriptos para torneos del"+ $("#calendar_year").val();
 				dialogs.showMessageDialog(text,callback)	
 			}
 			else{
 				cargarGrafico(data);	
-			}
+			}	
+			
 		}
 	});	
 	
 	
 });
 
+$(function() {
+	$("#calendar_year").bind("change", function() {
+		var year = $("#calendar_year").val();		
+		$.ajax({
+			type : "GET",
+			contentType : "application/json",
+			dataType : "json",
+			url : "calcularInscriptosTorneoPorAnio?year="+year,
+			success : function(data) {
+				if(data[0][0]==null){
+					var callback = function() { window.location = "verInscriptosPorTorneo"; };
+					var text = "No existen inscriptos para torneos del "+ $("#calendar_year").val();
+					dialogs.showMessageDialog(text,callback)	
+				}
+				else{
+					$("#showDialogDiv").remove();
+					cargarGrafico(data);	
+				}	
+				
+			}
+		});	
+	});
+});
 
 
 function cargarGrafico(data){

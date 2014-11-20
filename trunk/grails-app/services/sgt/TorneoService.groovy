@@ -135,4 +135,37 @@ class TorneoService {
 		}
 		return results
 	}
+	
+	def obtenerInscriptosTorneoPorAnio(Integer year){
+		
+		def torneos=listaTorneos(year)
+		
+		List inscripcionesAnuales = new ArrayList()
+		List torneosAnuales = new ArrayList()
+		List insc = new ArrayList()
+		
+		
+		for(Torneo t:torneos){
+			
+			def inscripciones=0
+			
+			def detalles= t?.detalles			
+			
+			for(DetalleTorneo dt: detalles){
+				
+				inscripciones+=dt.inscripciones.size()				
+				
+			}
+			if(inscripciones>0){
+				torneosAnuales.add(t.nombre)
+				insc.add(inscripciones)
+			}			
+		}
+		
+		inscripcionesAnuales.add(insc)
+		inscripcionesAnuales.add(torneosAnuales)
+		
+		return inscripcionesAnuales
+		
+	}
 }

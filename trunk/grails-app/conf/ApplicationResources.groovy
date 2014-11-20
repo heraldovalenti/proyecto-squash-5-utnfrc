@@ -133,4 +133,17 @@ modules = {
 		
 	}
 	
+	graficoInscriptosPorTorneo{
+		dependsOn 'dialogs'	
+		resource url: 'js/informeInscriptosPorTorneo.js'
+		resource url: 'js/graficos/excanvas.js',disposition: "head"
+		resource url: 'js/graficos/jquery.jqplot.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.barRenderer.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.categoryAxisRenderer.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.pointLabels.min.js',disposition: "head"
+		resource url: 'js/graficos/jqplot.pieRenderer.min.js',disposition: "head"
+		resource url: 'js/graficos/jquery.jqplot.min.css',disposition: "head"
+		
+	}
+	
 }
