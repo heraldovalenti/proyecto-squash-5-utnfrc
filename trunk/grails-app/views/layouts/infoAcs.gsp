@@ -1,29 +1,20 @@
-<%@ page import="sgt.Persona" %>
 <html>
 <head>
+	<title>La ACS</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title><g:layoutTitle default="Grails"/></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<r:require module="jquery"/>
 	
     <link href="${resource(dir: 'css', file: 'css.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'calendar.css')}" type="text/css" rel="stylesheet">
- 	
  	<link href="${resource(dir: 'css', file: 'main.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet">
- 	
  	<link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css" rel="stylesheet">
         
-   	<style>
-   		ul.lof-main-wapper li {
-  			position:relative;    
-		}
-	</style>  
-   
 	<g:layoutHead/>
-	<r:require modules="calendario,jquery"/>
 	<r:layoutResources />
 </head>
 <body>
@@ -40,6 +31,8 @@
     
     	<!-- TORNEO ACTUAL -->
 	    <g:render template="/secciones/torneoActual" />
+	    
+	    <g:render template="/secciones/sponsors" />
 				
 	</div>
 	
@@ -50,7 +43,6 @@
 	<div class="container_16">
 		<div class="slides-home raised">
 			<div class="second-part mt10">
-			<h3 class="title"> Informe Anual</h3>
 				<div class="menu_jugador">
 					<g:render template="/acsInfo/menuInfo" />
 				</div>
@@ -59,11 +51,6 @@
 				</div>
 				
 				<!-- PIE DE PAGINA -->
-				<div class="footer" role="contentinfo"></div>
-				<div id="spinner" class="spinner" style="display:none;">
-					<g:message code="spinner.alt" default="Loading&hellip;"/>
-				</div>
-				<g:javascript library="application"/>
 				<r:layoutResources />
 			</div>
 		</div>
