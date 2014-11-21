@@ -1,8 +1,3 @@
-<head>
-<link href="${resource(dir: 'css', file: 'jugador.css') }"
-	type="text/css" rel="stylesheet" />
-</head>
-<body>
 <div class="mb10">
 	<div id="news-result" class="inner-box">
 		<ul>
@@ -13,4 +8,3 @@
 		</ul>
 	</div>
 </div>
-</body>

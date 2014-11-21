@@ -1,15 +1,11 @@
 <html>
  <head>
- <meta name="layout" content="main">
+ <meta name="layout" content="infoAcs">
 
  </head>
 
 <body>	
 <h3 class="title">¿Quienes somos?</h3>
-
-<div class="menu_jugador" style="margin-top: 0.8em;">
-		<g:render template="/acsInfo/menuInfo" />
-</div>
 
 <div class="grid_16 mt10 mb10">
 		<div class="grid_10">
