@@ -12,13 +12,14 @@ $(function() {
 
 function obtenerPartidosPorCategoria(){
 	var categoria = $("#categoria").val();
+	var url = "/" + window.location.pathname.split("/")[1] + "/fixture/generarFixturePorCategoria?categoria="+categoria;
 	var JSON;
 	$.ajax({
 		type : "GET",
 		contentType : "application/json",
 		dataType : "json",
 		async: false,
-		url : "generarFixturePorCategoria?categoria="+categoria,
+		url : url,
 		success : function(data) {					
 					
 			result= generarPartidos(data);	

@@ -368,6 +368,12 @@ class TorneoController {
 		render(view:"/administracion/fixture/show", model: [categorias: categorias])
 	}
 	
+	def verFixture(Long id) {
+		def torneo = Torneo.get(id)
+		def categoriaSeleccionada = DetalleTorneo.get(params.categoria)
+		render(view:"/torneo/verFixture", model: [torneo:torneo, categoriaSeleccionada: categoriaSeleccionada])
+	}
+	
 	def listarPosiciones(){
 		def torneoInstance = (sgt.Torneo)session.getAttribute("torneoSeleccionado")
 		torneoInstance = Torneo.get(torneoInstance.id)

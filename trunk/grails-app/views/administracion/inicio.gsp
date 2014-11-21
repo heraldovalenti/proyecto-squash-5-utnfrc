@@ -17,7 +17,7 @@
 					<g:each in="${ torneosEnCurso }" var="torneo">
 						<ul style="list-style: none; padding: 0px;">
 							<li>
-								<g:link controller="torneo" action="show" id="${ torneo.id }">${ torneo.nombre }</g:link>
+								<g:link controller="torneo" action="show" id="${ torneo.id }">${ torneo.nombre } (${ torneo.estado })</g:link>
 							</li>
 						</ul>
 					</g:each>

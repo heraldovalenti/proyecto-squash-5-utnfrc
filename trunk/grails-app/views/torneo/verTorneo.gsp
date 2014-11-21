@@ -4,6 +4,7 @@
 <html>
 <head>
 	<meta name="layout" content="main">
+	<r:require module="jquery"/>
 </head>
 <body>
 	<div class="box-968 fl">
@@ -16,19 +17,16 @@
 		
 		<g:if test="${ torneo }">
 			
-			<g:render template="/torneo/fichaTorneo" model="[torneo: torneo]"/>
+			<g:render template="fichaTorneo" model="[torneo: torneo]"/>
 		
-			<g:if test="${ torneo.inscripcionAbierta() }">
-			<div class="box box-335 fr mt10 mr5">
-				<h3>Inscripcion online</h3>
-				<div class="mt10 ml10 mr10 mb10">
-					<g:link controller="inscripcionTorneo" action="inscribirJugadorTorneo" 
-					params="[idTorneo: torneo.id]" class="button green">Inscripción</g:link>
-				</div>
-			</div>
-			</g:if>
+			<g:render template="inscripcionTorneo" model="[torneo: torneo]"/>
+			
+			<g:render template="draws" model="[torneo: torneo]"/>
+			
+			<g:render template="quienesJuegan" model="[torneo: torneo]"/>
 			
 		</g:if>
+		
 		
 	</div>
 </body>
