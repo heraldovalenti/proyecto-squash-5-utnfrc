@@ -19,8 +19,8 @@
 				
 				<div class="headerLiveScoreBox headerScoreboard1000" id="headerLiveScoreBox1">
 					<div class="miniScoreBoardLinks">
-						<a href="#" class="liveStream">${ partido.categoria.nombre }</a>
-						<a href="#" class="liveScoresLink">${ partido.horaDesde }:00</a>
+						<a class="liveStream">${ partido.categoria.nombre }</a>
+						<a class="liveScoresLink">${ partido.horaDesde }:00</a>
 					</div>
 					<table cellspacing="1" cellpadding="1" border="0" class="headerLiveScore" style="border: none;">
 						<tbody>
@@ -36,7 +36,12 @@
 									<g:if test="${ partido.resultado?.ganador && partido.resultado.ganador == partido.jugador1 }">
 										scoreWin1000Bg 
 									</g:if>">
-										<a href="" class="miniPlayername">${ partido.jugador1?.persona }</a>
+									
+									<g:if test="${ partido.jugador1 }">
+									<g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario: partido.jugador1.id]" class="miniPlayername">
+										${ partido.jugador1?.persona }
+									</g:link>
+									</g:if>
 									</span>
 								</td>
 								<td width="25" class="scoreCell">
@@ -50,7 +55,13 @@
 									<g:if test="${ partido.resultado?.ganador && partido.resultado.ganador == partido.jugador2 }">
 										scoreWin1000Bg 
 									</g:if>">
-										<a href="" class="miniPlayername">${ partido.jugador2?.persona }</a>
+									
+									<g:if test="${ partido.jugador2 }">
+									<g:link controller="jugador" action="cargarPerfilCompleto" params="[usuario: partido.jugador2.id]" class="miniPlayername">
+										${ partido.jugador2?.persona }
+									</g:link>
+									</g:if>
+									
 									</span>
 								</td>
 								<td width="25" class="scoreCell">
