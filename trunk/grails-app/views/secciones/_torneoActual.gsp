@@ -4,7 +4,7 @@
 <g:if test="${ idTorneo != 'null' }">
 
 <div class="live-tour" >
-   	<div id="headerLiveScoreBox1" class="headerLiveScoreBox ">
+   	<div id="headerLiveScoreBox1" class="headerLiveScoreBox" style="width: 250px; height: 60px;">
 		<div class="backgroundFrame"></div>
 		<img class="scoreboardLogo" src="<g:logoTorneoActual />" height="55">
 		
