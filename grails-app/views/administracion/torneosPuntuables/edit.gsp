@@ -7,14 +7,11 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-torneoPuntuable" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" controller="torneoPuntuable" action="show" id="${ torneoPuntuableInstance?.id }">Volver</g:link></li>
-				<li><g:link class="list" controller="torneoPuntuable" action="list">Volver al listado de Torneos</g:link></li>
-				
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="torneoPuntuable" action="show" id="${ torneoPuntuableInstance?.id }"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+    		<g:link controller="torneoPuntuable" action="list"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver al listado de Torneos</span> </g:link>
+		</fieldset>				
+		
 		<div id="edit-torneoPuntuable" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">

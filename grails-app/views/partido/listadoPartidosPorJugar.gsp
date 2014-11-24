@@ -8,11 +8,9 @@
 		<r:require module="listaPartidosPorJugar"/>
 	</head>	
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link controller="partido" action="list1">Volver</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="partido" action="list1"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+		</fieldset>
 		<div id="list-partido" class="content scaffold-list" role="main">
 			<h1>Listado de Partidos por Disputarse <g:if test="${categoriaSeleccionada!=null}"> en: ${categoriaSeleccionada}</g:if></h1>
 			<fieldset class="buttons">	
@@ -28,6 +26,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<table>
+			<g:if test="${ partidos?.size()>0 }">
 				<thead>
 					<tr>
 						
@@ -69,6 +68,14 @@
 			<div class="pagination">
 				<g:paginate total="${totalPartidos}" />
 			</div>
+			
+		</g:if>
+			
+		<g:else>
+			
+			<h2>No se han encontrado partidos</h2>	
+	
+		</g:else>
 		</div>
 	</body>
 </html>

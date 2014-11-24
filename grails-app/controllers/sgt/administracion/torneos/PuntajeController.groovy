@@ -35,9 +35,16 @@ class PuntajeController {
 		params.max = Math.min(max ?: 10, 100)
 		def Long idTorneo = session.getAttribute("idTorneo")
 		def TorneoPuntuable torneoPuntuableInstance = TorneoPuntuable.get(idTorneo)
-		def puntajeInstanceList = torneoPuntuableInstance.puntajes
+		def puntajeInstanceList = torneoPuntuableInstance?.puntajes
+		def puntajeInstanceTotal
+		if(!puntajeInstanceList){
+			puntajeInstanceTotal=0
+		}
+		else{
+			puntajeInstanceTotal=puntajeInstanceList?.size()
+		}
 		
-		render(view: "/administracion/puntajes/list", model: [puntajeInstanceList: puntajeInstanceList, puntajeInstanceTotal: puntajeInstanceList.size()])
+		render(view: "/administracion/puntajes/list", model: [puntajeInstanceList: puntajeInstanceList, puntajeInstanceTotal: puntajeInstanceTotal])
 	}
 	
 	def create() {

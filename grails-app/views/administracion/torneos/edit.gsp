@@ -6,12 +6,11 @@
 	</head>
 	<body>
 	
-		<div class="nav" >
-			<ul>
-				<li><g:link class="create" controller="torneo" action="show" id="${ torneoInstance?.id }">Volver</g:link></li>
-				<li><g:link class="list" controller="torneo" action="list">Volver al listado de torneos</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="torneo" action="show" id="${ torneoInstance?.id }"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+    		<g:link controller="torneo" action="list"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver al listado de torneos</span> </g:link>
+		</fieldset>
+	
 		<div id="edit-torneo" class="content scaffold-edit" >
 			<h1>Torneo</h1>
 			

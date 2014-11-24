@@ -7,8 +7,8 @@
 		<meta name="layout" content="main">
 	</g:else>
 </head>
-<body>
+<body><%--
 	<h1>Perfil de jugador</h1>
-	<g:render template="/jugador/perfilJugador" model="${ perfil }" var="perfil"/>
+	--%><g:render template="/jugador/perfilJugador" model="${ perfil }" var="perfil"/>
 </body>
 </html>

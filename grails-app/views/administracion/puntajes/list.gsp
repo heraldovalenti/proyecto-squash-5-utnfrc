@@ -8,17 +8,20 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link controller="puntaje" action="volverTorneo">Volver</g:link></li>
-				<li><g:link class="create" controller="puntaje" action="create">Nuevo puntaje</g:link></li>
-			</ul>
-		</div>
+	
+		<fieldset class="buttons">
+    		<g:link controller="puntaje" action="volverTorneo"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+    		<g:link controller="puntaje" action="create"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Nuevo puntaje</span> </g:link>
+		</fieldset>
+		
 		<div id="list-puntaje" class="content scaffold-list" role="main">
 			<h1>Puntajes para Torneo Puntuable</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			
+			<g:if test="${ puntajeInstanceList?.size()>0 }">
+			
 			<table>
 				<thead>
 					<tr>
@@ -42,6 +45,14 @@
 			<div class="pagination">
 				<g:paginate total="${puntajeInstanceTotal}" />
 			</div>
+			
+			</g:if>
+			
+			<g:else>
+			
+				<h2>No se han cargado puntajes todavia</h2>	
+	
+			</g:else>
 		</div>
 	</body>
 </html>

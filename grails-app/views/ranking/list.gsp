@@ -8,18 +8,18 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-ranking" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link action="create"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Nuevo Ranking</span> </g:link>
+		</fieldset>
+	
 		<div id="list-ranking" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			
+			<g:if test="${ rankingInstanceList?.size()>0 }">			
+			
 			<table>
 				<thead>
 					<tr>
@@ -50,6 +50,16 @@
 			<div class="pagination">
 				<g:paginate total="${rankingInstanceTotal}" />
 			</div>
+			
+				
+			</g:if>
+			
+			<g:else>
+			
+				<h2>No se han cargado rankings todavia</h2>	
+	
+			</g:else>
+			
 		</div>
 	</body>
 </html>

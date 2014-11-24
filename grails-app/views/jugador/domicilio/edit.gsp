@@ -9,7 +9,7 @@
 			<g:link action="datosDomicilio">Volver</g:link>
 		</g:if>
 		<div id="edit-domicilio" class="content scaffold-create" role="main">
-			<h1>Domicilio de club</h1>
+			<h1>Datos del Domicilio</h1>
 			<g:render template="/utils/messages"/>
 			
 			<g:form action="saveDomicilio">				

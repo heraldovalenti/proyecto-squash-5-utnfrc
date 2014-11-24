@@ -9,8 +9,7 @@
 	<body>
 		
 		<div class="nav" role="navigation">
-			<ul>
-				
+			<ul>				
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
