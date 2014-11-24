@@ -310,7 +310,9 @@ class TorneoController {
 	
 	def verTorneo() {
 		Torneo torneo = Torneo.get(params.idTorneo)
-		render(view: "verTorneo", model: [torneo: torneo])
+		session.setAttribute("torneoSeleccionado", torneo)
+		def diagramacion = torneoService.diagramacionTorneoPorFecha(torneo)
+		render(view: "verTorneo", model: [torneo: torneo, diagramacion: diagramacion])
 	}
 	
 	/**

@@ -2442,7 +2442,7 @@ ul.qj-list li.img img {
     background:url('') no-repeat right top;
 }
 .miniScoreBoardLinks {
-  background: url("") no-repeat scroll 0 0 transparent;
+  background: url("./images/scoreboard_links.png") no-repeat scroll 0 0 transparent;
   height: 13px;
   left: 0;
   position: absolute;
@@ -2457,14 +2457,14 @@ ul.qj-list li.img img {
     text-transform:uppercase;
     padding-left:14px;
     font-weight:bold;
-    background:url('') no-repeat scroll 2px 2px;
+    background: url('./images/header_link_bullets.png') no-repeat scroll 2px 2px;
     position:absolute;
     top:0px;
 }
 .miniScoreBoardLinks a.liveStream:hover,
 .miniScoreBoardLinks a.liveScoresLink:hover 
 {
-    background:url('') no-repeat 2px 2px;
+    background: url('./images/link_chevrons_black_hover.gif') no-repeat 2px 2px;
     text-decoration:none;
     color:white;
 }
@@ -2488,7 +2488,7 @@ ul.qj-list li.img img {
 }
 
 .headerScoreboard1000 {
-    background:url('') bottom left no-repeat;
+    background: url('./images/header_scoreboard_gold.gif') bottom left no-repeat;
 }
 .headerScoreboard500 {
     background:url('') bottom left no-repeat;
@@ -2510,12 +2510,12 @@ ul.qj-list li.img img {
   color: white;
   float: left;
   font-size: 10px;
-  height: 6.5em;
+  height: 53px;
   line-height: 14px;
   margin: 5px 3px;
   padding: 3px 6px 6px;
   position: relative;
-  width: 292px;;
+  width: 165px;
 }
 #headerLiveScoreBox3 {
     margin-right:0;
@@ -2545,7 +2545,7 @@ ul.qj-list li.img img {
   height: 41px;
   left: 6px;
   position: absolute;
-  width: 143px;
+  width: 165px;
   z-index: 10;
 }
 .headerLiveScoreBox table td {
@@ -2558,11 +2558,11 @@ ul.qj-list li.img img {
 }
 
 .headerScoreboard1000 table td {
-  background: url("") repeat-x scroll left top transparent !important;
-  border: medium none !important;
-  line-height: 13px;
-  padding: 0 !important;
-  vertical-align: top;
+	background: url("./images/header_scoreboard_gold_row.gif") repeat-x scroll left top transparent !important;
+	border: medium none !important;
+	line-height: 13px;
+	padding: 0 !important;
+	vertical-align: top;
 }
 .headerScoreboard500 table td {
     background:url('') top left repeat-x;
@@ -2587,7 +2587,7 @@ table td .scoreaboardPlayerName {
     background:url('') no-repeat 2px 3px;
 }
 .headerScoreboard1000 table td .scoreWin1000Bg, .zona-detalles .scoreWin1000Bg {
-    background:url('') no-repeat 2px 3px;
+    background: url('./images/scoreboard_check_gold.gif') no-repeat 2px 3px;
 }
 .headerScoreboard500 table td .scoreWin500Bg {
     background:url('') no-repeat 2px 3px;
@@ -2658,4 +2658,13 @@ table td .scoreSrvWTBg {
 
 ul.lof-main-wapper li {
 	position: relative;
+}
+
+table.headerLiveScore th,
+table.headerLiveScore tr,
+table.headerLiveScore th:hover,
+table.headerLiveScore tr:hover { 
+	background: none;
+	color: #FFFFFF !important;
+	font-weight: normal;
 }

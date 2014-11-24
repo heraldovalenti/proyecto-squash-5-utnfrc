@@ -25,8 +25,9 @@
 			
 			<g:render template="quienesJuegan" model="[torneo: torneo]"/>
 			
+			<g:render template="diagramacionTorneo" model="[diagramacion: diagramacion]"/>
+			
 		</g:if>
-		
 		
 	</div>
 </body>
