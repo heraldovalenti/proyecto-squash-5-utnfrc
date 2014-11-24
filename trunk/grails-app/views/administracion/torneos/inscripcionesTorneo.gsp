@@ -7,11 +7,10 @@
 		<meta name="layout" content="administracion">
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="create" controller="torneo" action="show" id="${ torneoInstance?.id }">Volver</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="torneo" action="show" id="${ torneoInstance?.id }"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+		</fieldset>
+		
 		<div id="list-torneo" class="content scaffold-list" role="main">
 			<h1>Inscripciones a torneo</h1>
 			<g:if test="${flash.message}">

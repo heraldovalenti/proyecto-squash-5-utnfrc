@@ -3,18 +3,19 @@
 	<meta name="layout" content="jugador">
 </head>
 <body>
+
 	<h3 class="title mt10">Categorias de jugador</h3>
 		
 	<g:render template="/utils/messages" />
 		
 	<g:if test="${ solicitud }">
 	<div class="mt10 ml10 mb10 mr20 box-607 box odd">
-		<h1 class="title-news mt10 mb10">Solicitud de categoria</h1>
+		<h1 class="title-news mt10 mb10">Solicitud de categoría</h1>
 		<div class="fl" style="width: 100%;">
 			<ol class="property-list ma00 pa00">
 				
 				<li class="fieldcontain">
-					<span class="property-label">En categoria</span>
+					<span class="property-label">En categoría</span>
 					<span class="property-value">${ solicitud.categoria }</span>
 				</li>
 				

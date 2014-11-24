@@ -6,7 +6,7 @@
 	</head>
 	<body>		
 		<div id="show-domicilio" class="content scaffold-show" >
-			<h1>Domicilio de club</h1>
+			<h1>Datos del Domicilio</h1>
 			<g:render template="/utils/messages"/>
 			<ol class="property-list domicilio">
 			

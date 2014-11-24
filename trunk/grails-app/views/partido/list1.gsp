@@ -8,19 +8,20 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#list-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" controller="torneo" action="show" id="${torneoInstance.id}">Volver</g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="list" controller="partido" action="listarResultadosPartidosTorneo">Informe Resultados Partidos</g:link></li>
-				<li><g:link class="list" controller="partido" action="listarPartidosPorJugar">Informe Partidos por Jugar</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="torneo" action="show" id="${torneoInstance.id}"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+    		<g:link controller="partido" action="create"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Nuevo Partido</span> </g:link> 
+    		<g:link controller="partido" action="listarResultadosPartidosTorneo"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-document"></span><span style="padding-left: 18px;">Informe Resultados Partidos</span></g:link>
+			<g:link controller="partido" action="listarPartidosPorJugar"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-document"></span><span style="padding-left: 18px;">Informe Partidos por Jugar</span></g:link> 	
+		</fieldset>
+				
+	
 		<div id="list-partido" class="content scaffold-list" role="main">
 			<h1>Listado de partidos de ${torneoInstance.nombre}</h1>
 			
 			<g:render template="/utils/messages" />
+			
+			<g:if test="${ partidoInstanceList?.size()>0 }">
 
 			<table>
 				<thead>
@@ -70,6 +71,13 @@
 			<div class="pagination">
 				<g:paginate total="${partidoInstanceTotal}" />
 			</div>
+		</g:if>
+			
+		<g:else>
+			
+			<h2>No hay partidos registrados en el torneo</h2>	
+	
+		</g:else>
 		</div>
 	</body>
 </html>

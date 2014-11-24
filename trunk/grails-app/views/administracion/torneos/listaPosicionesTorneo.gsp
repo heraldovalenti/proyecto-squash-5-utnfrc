@@ -8,12 +8,11 @@
 		<r:require module="listaPosicionesTorneo"/>
 	</head>	
 	<body>
-		<a href="#list-partido" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="list" controller="torneo" action="show" id="${torneoInstance.id}">Volver</g:link></li>
-			</ul>
-		</div>
+	
+		<fieldset class="buttons">
+    		<g:link controller="torneo" action="show" id="${torneoInstance.id}"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+		</fieldset>
+		
 		<div id="list-partido" class="content scaffold-list" role="main">
 			<h1>Posiciones del torneo (${categoriaSeleccionada?.toString()}) <g:select name="categoria" from='${categorias}' value="${categoriaSeleccionada?.id }"
 					optionKey="id" class="profile-year" id="categoria" style="margin-left: 10%;

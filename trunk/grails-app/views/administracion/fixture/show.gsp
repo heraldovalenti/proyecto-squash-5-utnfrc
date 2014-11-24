@@ -6,11 +6,11 @@
 	<r:require module="fixture" />
 </head>
 <body>
-	<div class="nav">
-		<ul>
-			<li><g:link controller="diagramacion" action="verTorneo" >Volver</g:link>
-		</ul>
-	</div>
+	
+	<fieldset class="buttons">
+    		<g:link controller="diagramacion" action="verTorneo"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+	</fieldset>
+	
 	
 	<h3>Fixture del Torneo:</h3>
 	<fieldset class="buttons">	

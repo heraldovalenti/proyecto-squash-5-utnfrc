@@ -8,12 +8,11 @@
 	</head>
 	<body>
 		
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link controller="categoria" action="show" id="${ categoriaInstance?.id }">Volver</g:link></li>
-				<li><g:link controller="categoria" action="list">Volver al listado</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="categoria" action="show" id="${ categoriaInstance?.id }"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+    		<g:link controller="categoria" action="list"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver al listado</span> </g:link>
+		</fieldset>
+	
 		<div id="edit-categoria" class="content scaffold-edit" role="main">
 			<h1>Edicion de categoria</h1>
 			<g:if test="${flash.message}">

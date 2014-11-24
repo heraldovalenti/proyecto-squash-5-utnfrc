@@ -12,6 +12,8 @@
 			<h1>Postulaciones a torneo</h1>
 			<g:render template="/utils/messages"/>
 			
+			<g:if test="${ postulacionInstanceList.size()>0 }">			
+			
 			<table>
 				<thead>
 					<tr>	
@@ -42,6 +44,16 @@
 			<div class="pagination">
 				<g:paginate total="${postulacionInstanceTotal}" />
 			</div>
+			
+				
+			</g:if>
+			
+			<g:else>
+			
+				<h2>No existen postulaciones a torneos actualmente</h2>	
+	
+			</g:else>
+			
 		</div>
 	</body>
 </html>

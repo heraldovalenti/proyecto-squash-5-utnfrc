@@ -5,9 +5,7 @@
 	<meta name="layout" content="club">
 </head>
 <body>
-	<div>
-	<h1>Perfil publico de club</h1>
-	
+	<div>	
 	<g:if test="${ club }">
 		<g:render template="clubCard" />
 	</g:if>

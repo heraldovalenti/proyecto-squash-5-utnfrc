@@ -11,6 +11,8 @@
 		
 		<g:render template="/utils/messages" />
 		
+		<g:if test="${ solicitudes?.size()>0 }">	
+		
 		<table>
 			<thead>
 				<tr>
@@ -44,6 +46,14 @@
 		<div class="pagination">
 			<g:paginate total="${ total }" />
 		</div>
+		
+		</g:if>
+			
+		<g:else>
+			
+			<h2>No hay solicitudes de categorías pendientes</h2>	
+	
+		</g:else>
 	</div>
 </body>
 </html>

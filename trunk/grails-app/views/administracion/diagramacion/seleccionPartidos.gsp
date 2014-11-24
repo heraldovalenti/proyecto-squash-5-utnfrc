@@ -7,12 +7,11 @@
 	<meta name="layout" content="administracion">
 </head>
 <body>
-	<div class="nav">
-		<ul>
-			<li><g:link action="verTorneo" >Volver</g:link>
-			<li><g:link action="diagramacionHorarios" id="${ torneo.id }">Diagramacion manual</g:link>
-		</ul>
-	</div>
+	<fieldset class="buttons">
+    		<g:link action="verTorneo"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
+    		<g:link action="diagramacionHorarios" id="${ torneo.id }"><span  style="position: absolute; height: 18px" class="ui-icon ui-icon-bookmark"></span><span style="padding-left: 18px;">Diagramacion manual</span> </g:link>
+	</fieldset>
+	
 	<div id="seleccion-partidos" class="content scaffold-create">
 		<h1>Seleccion de partidos para diagramacion automatica</h1>
 			

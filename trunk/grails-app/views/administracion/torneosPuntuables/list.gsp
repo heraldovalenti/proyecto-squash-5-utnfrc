@@ -8,11 +8,11 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link class="create" controller="torneoPuntuable" action="create" namespace="admin">Nuevo Torneo Puntuable</g:link></li>
-			</ul>
-		</div>
+	
+		<fieldset class="buttons">
+    		<g:link controller="torneoPuntuable" action="create"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Nuevo Torneo Puntuable</span> </g:link> 	
+		</fieldset>				
+		
 		<div id="list-torneoPuntuable" class="content scaffold-list" role="main">
 			<h1>Lista de Torneos Puntuables</h1>
 			<g:if test="${flash.message}">

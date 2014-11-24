@@ -8,11 +8,10 @@
 	</head>
 	<body>
 		
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link controller="categoria" action="list">Volver</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="categoria" action="list"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+		</fieldset>
+		
 		<div id="create-categoria" class="content scaffold-create" role="main">
 			<h1>Nueva categoria</h1>
 			<g:if test="${flash.message}">

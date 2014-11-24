@@ -6,12 +6,7 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 		<r:require module="graficoInscriptosPorTorneo"/>
 	</head>	
-	<body>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><g:link controller="administracion" action="index">Volver</g:link></li>
-			</ul>
-		</div>
+	<body>		
 		<div id="list-partido" class="content scaffold-list" role="main">
 			<h1>Gráfico de Jugadores Inscriptos por Torneo en 
 			<g:select name="year" from="${2014..2000 }"	class="profile-year" id="calendar_year" />
