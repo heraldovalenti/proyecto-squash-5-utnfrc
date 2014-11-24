@@ -3,7 +3,7 @@
 	<meta name="layout" content="jugador">
 </head>
 <body>
-	<h3>Categoria de jugador</h3>
+	<h3 class="title mt10">Categorias de jugador</h3>
 		
 	<g:render template="/utils/messages" />
 		
