@@ -168,4 +168,43 @@ class TorneoService {
 		return inscripcionesAnuales
 		
 	}
+	
+	def diagramacionTorneoPorFecha(Torneo t) {
+		def partidos = Partido.createCriteria().list {
+			and {
+				eq("torneo", t)
+				isNotNull("fecha")
+				isNotNull("horaDesde")
+			}
+		}
+		Map<Date,List<Partido>> partidosPorFecha = new HashMap<Date,List<Partido>>()
+		for (p in partidos) {
+			Date d = p.fecha
+			List<Partido> partidosParaFecha = partidosPorFecha.get(d)
+			if (!partidosParaFecha) {
+				partidosParaFecha = new ArrayList<Partido>()
+				partidosPorFecha.put(d, partidosParaFecha)
+			}
+			partidosParaFecha.add(p)
+		}
+		List<Date> keyFechas = new ArrayList<Date>(partidosPorFecha.keySet())
+		Collections.sort(keyFechas)
+		List<Map<Date,List<Partido>>> res = new ArrayList()
+		for (d in keyFechas) {
+			List<Partido> partidosParaFecha = partidosPorFecha.get(d)
+			Collections.sort(partidosParaFecha, new Comparator<Partido>() {
+				@Override
+				int compare(Partido p1, Partido p2) {
+					try {
+						int horaDesde1 = Integer.parseInt(p1.horaDesde)
+						int horaDesde2 = Integer.parseInt(p2.horaDesde)
+						return (horaDesde1 - horaDesde2)
+					} catch (e) {}
+					return 0
+				}
+			})
+			res.add([fecha: d, partidos: partidosPorFecha.get(d)])
+		}
+		return res
+	}
 }

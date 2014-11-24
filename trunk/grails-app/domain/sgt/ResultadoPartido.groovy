@@ -9,6 +9,21 @@ class ResultadoPartido {
 	static belongsTo = [partido: Partido]
 	static hasMany = [detalles: DetalleResultados]	
 	
+	int resultadoJugador1() {
+		int res = 0
+		for (d in detalles) {
+			if (d.jugador1 > d.jugador2) res++
+		}
+		return res
+	}
+	
+	int resultadoJugador2() {
+		int res = 0
+		for (d in detalles) {
+			if (d.jugador2 > d.jugador1) res++
+		}
+		return res
+	}
 	
 	String toString() {
 		return detalles.toString()
