@@ -6,7 +6,7 @@
 	<meta name="layout" content="jugador">
 </head>
 <body>
-	<h3>Inscripciones a torneos</h3>
+	<h3 class="title mt10">Inscripciones a torneos</h3>
 	
 	<g:render template="/utils/messages" />
 	
