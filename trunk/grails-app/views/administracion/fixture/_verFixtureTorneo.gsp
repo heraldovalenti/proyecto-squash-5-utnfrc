@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
 <r:require module="fixture" />
-</head>
-<body>
 
-	<div id="fixture" style="width: 100%; height: 100%"></div>
-
-</body>
-</html>
+<div id="fixture" style="min-height: 93px; min-width: 800px;"></div>

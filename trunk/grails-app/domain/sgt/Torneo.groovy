@@ -133,7 +133,10 @@ class Torneo {
 	}
 	
 	Boolean esPostulable() {
-		return this.creado() && !this.clubAsignado()
+		return ( 
+			( this.creado() || this.inscripcionAbierta() 
+			|| this.inscripcionCerrada() || this.inscripcionFinalizada() ) 
+			&& !this.clubAsignado() )
 	}
 	
 	Boolean clubAsignado() {
