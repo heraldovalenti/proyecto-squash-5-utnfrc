@@ -1,6 +1,8 @@
 package sgt.administracion.torneos
 
+import sgt.Club
 import sgt.PostulacionTorneo
+import sgt.Torneo
 
 class PostulacionTorneoService {
 	

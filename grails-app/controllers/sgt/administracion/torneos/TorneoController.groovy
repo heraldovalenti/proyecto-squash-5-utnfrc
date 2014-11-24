@@ -1,11 +1,13 @@
 package sgt.administracion.torneos
 
 import grails.converters.*
+
 import java.text.SimpleDateFormat
 
 import org.springframework.dao.DataIntegrityViolationException
 
 import sgt.Categoria
+import sgt.Club
 import sgt.DetalleTorneo
 import sgt.InscripcionTorneo
 import sgt.PostulacionTorneo
@@ -426,5 +428,40 @@ class TorneoController {
 		def inscriptos= torneoService.obtenerInscriptosTorneoPorAnio(year)		
 		
 		render inscriptos as JSON
+	}
+	
+	def seleccionarClubParaTorneo() {
+		Torneo t = session.getAttribute("torneoSeleccionado")
+		if ( t.creado() || t.inscripcionAbierta() || t.inscripcionCerrada() || t.inscripcionFinalizada() ) {
+			def clubList = Club.list(params)
+			render(view: "/administracion/torneos/seleccionClubParaTorneo", model: [torneo: t, clubList: clubList])
+		} else {
+			flash.message = "El estado del torneo no permite cambiar el club"
+			redirect(controller: "torneo", action: "show", id: t.id)
+		}
+	}
+	
+	def quitarAsignacionClub() {
+		Torneo t = session.getAttribute("torneoSeleccionado")
+		if ( t.creado() || t.inscripcionAbierta() || t.inscripcionCerrada() || t.inscripcionFinalizada() ) {
+			t = Torneo.get(t.id)
+			t.club = null
+			t.save()
+			flash.message = "Asignacion de club eliminada"
+			redirect(controller: "torneo", action: "show", id: t.id)
+		} else {
+			flash.message = "El estado del torneo no permite cambiar el club"
+			redirect(controller: "torneo", action: "show", id: t.id)
+		}
+	}
+	
+	def asignarClubATorneo(Long id) {
+		Torneo t = session.getAttribute("torneoSeleccionado")
+		t = Torneo.get(t.id)
+		Club c = Club.get(id)
+		t.club = c
+		t.save()
+		flash.message = "Club asignado"
+		redirect(controller: "torneo", action: "show", id: t.id)
 	}
 }

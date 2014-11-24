@@ -17,6 +17,8 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			
+			<g:if test="${ !postulacionInstanceList.isEmpty() }">
 			<table>
 				<thead>
 					<tr>
@@ -58,6 +60,13 @@
 				</g:each>
 				</tbody>
 			</table>
+			</g:if>
+			
+			<g:else>
+			<p>No existen postulaciones de clubes para el torneo.</p>
+			<g:link controller="torneo" action="seleccionarClubParaTorneo">Asignar un club al torneo</g:link>
+			</g:else>
+			
 		</div>
 		<r:require modules="torneos, dialogs" />
 	</body>

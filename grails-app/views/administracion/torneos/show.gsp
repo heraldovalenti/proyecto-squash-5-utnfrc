@@ -79,7 +79,16 @@
 				<li class="fieldcontain">
 					<span id="club-label" class="property-label">Club</span>
 					<g:if test="${torneoInstance?.club}">
-						<span class="property-value" >${ torneoInstance?.club?.toString() }</span>
+						<span class="property-value" >
+							${ torneoInstance?.club?.toString() }
+							<g:if test="${ torneoInstance?.creado() || torneoInstance?.inscripcionAbierta() 
+								|| torneoInstance?.inscripcionCerrada() || torneoInstance?.inscripcionFinalizada() }">
+							 -
+							<g:link controller="torneo" action="seleccionarClubParaTorneo">Cambiar</g:link>
+							/
+							<g:link controller="torneo" action="quitarAsignacionClub">Quitar asignacion</g:link>
+							</g:if>
+						</span>
 					</g:if>	
 					<g:else>
 						<span class="property-value">
