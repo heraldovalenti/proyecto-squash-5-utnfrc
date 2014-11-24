@@ -1,14 +1,23 @@
-$(function() {
-	$("#categoria").bind("change", function() {
-		
-		$('#fixture').html('');
-		
-		 $('#fixture').bracket({
-		      init: obtenerPartidosPorCategoria()		      
-		    })		
-		});	
+$( document ).ready( function() {
+	$("#categoria").bind("change", function() {	renderFixture(); });
+	renderFixture();
+});
 	
-	});
+
+function renderFixture() {
+	$('#fixture').html('');
+	
+	try {
+		$('#fixture').bracket({
+			init: obtenerPartidosPorCategoria()
+		})		
+	} catch (e) {
+		$("<h2/>").html("No hay partidos para la categoria seleccionada").appendTo( $('#fixture') );
+	}
+	//esconde tercer puesto
+	var np_divs = $(".np");
+	$(np_divs[np_divs.length - 1]).hide();
+}
 
 function obtenerPartidosPorCategoria(){
 	var categoria = $("#categoria").val();
@@ -20,14 +29,11 @@ function obtenerPartidosPorCategoria(){
 		dataType : "json",
 		async: false,
 		url : url,
-		success : function(data) {					
-					
-			result= generarPartidos(data);	
-			
-				
+		success : function(data) {
+			result= generarPartidos(data);
 		}
 	});
-	return result;	
+	return result;
 }
 
 
@@ -163,10 +169,3 @@ function generarPartidos(part) {
 	return partidos;
 
 }
-
-
-$(function() {		
-    $('#fixture').bracket({
-      init: obtenerPartidosPorCategoria()      
-    })
-  })

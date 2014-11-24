@@ -7,6 +7,14 @@
 <body>
 	<div class="box-968 fl">
 	
+		<div class="box box-607 fl mt10 ml10 mb10" style="overflow: scroll;">
+			<h3 style="min-width: 800px;">Draw: ${ categoriaSeleccionada.categoria }</h3>
+			
+			<g:field type="hidden" name="categoria" value="${ categoriaSeleccionada.categoria }" />
+			
+			<g:render template="/administracion/fixture/verFixtureTorneo"/>
+		</div>
+	
 		<div class="box box-335 fr mt10 mr5">
 			<h3>informacion de torneo</h3>
 			<div class="mt10 ml10 mr10 mb10">
@@ -19,16 +27,8 @@
 				params="[idTorneo: torneo.id]" class="button blue">Volver al torneo</g:link>
 			</div>
 		</div>
-		<div class="box box-607 fl mt10 ml10 mb10" style="overflow: scroll;">
-			<h3>Draw: ${ categoriaSeleccionada.categoria }</h3>
-			
-			<g:field type="hidden" name="categoria" value="${ categoriaSeleccionada.categoria }" />
-			
-			<g:render template="/administracion/fixture/verFixtureTorneo"/>
-		</div>
 		
 		<g:render template="draws" />
-		
 	</div>
 </body>
 </html>
