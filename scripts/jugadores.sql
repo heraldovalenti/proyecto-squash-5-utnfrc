@@ -152,7 +152,7 @@ insert into persona (id,version,nombre,apellido,sexo,fecha_nacimiento) values
 (32,1,'Gerardo','Principi','Masculino','1993-03-23'),
 (33,1,'Lionel','Messi','Masculino','1993-03-23'),
 (34,1,'Diego','Armando','Masculino','1993-03-23'),
-(35,1,'Diego','Elias','Masculino','1993-03-23'),--42
+(35,1,'Diego','Elias','Masculino','1993-03-23'),
 (36,1,'Ayrton','Pagotti','Masculino','1993-03-23'),
 (37,1,'Juan','Perez','Masculino','1993-03-23'),
 (38,1,'Ernesto','Martinez','Masculino','1993-03-23'),
