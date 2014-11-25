@@ -6,7 +6,9 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link class="create" controller="postulacionTorneo" action="listadoPostulaciones">Volver</g:link>
+		<fieldset class="buttons">
+    		<g:link controller="postulacionTorneo" action="listadoPostulaciones"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+		</fieldset>
 		<div id="list-club" class="content scaffold-list" role="main">
 			<h1>Torneos postulables</h1>
 			<g:render template="/utils/messages"/>

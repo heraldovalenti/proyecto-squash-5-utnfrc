@@ -2,7 +2,7 @@ table.calendar {
     border: 1px solid #000000;
 }
 
-table.calendar td.time-hour {
+table.calendar td.time-hour th.day {
     border-top: 1px solid #A9A9A9;
     border-right: 1px solid #A9A9A9;    
     background-color: #efefef;
@@ -42,4 +42,15 @@ td.selected {
 td.unselected {
 	background: #FFFFFF;
 	
+}
+tr{
+	background-color: #7CB5EE !important;
+}
+th.day{	
+ 	border-top: 1px solid #A9A9A9 !important;
+    border-right: 1px solid #A9A9A9 !important;    
+    background-color: #7CB5EE !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    color: black !important;
 }

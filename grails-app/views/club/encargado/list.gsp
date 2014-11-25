@@ -6,7 +6,9 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link action="create" >Registrar nuevo encargado</g:link>
+	<fieldset class="buttons">
+    		<g:link action="create" ><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-person"></span><span style="padding-left: 18px;">Nuevo Encargado</span> </g:link>
+	</fieldset>
 		<div id="list-encargados" class="content scaffold-list" role="main">
 			<h1>Encargados de Club</h1>
 			<g:if test="${flash.message}">

@@ -7,7 +7,9 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link class="create" controller="postulacionTorneo" action="listadoTorneosPostulables">Postularse a torneos</g:link>
+	<fieldset class="buttons">
+    	<g:link controller="postulacionTorneo" action="listadoTorneosPostulables"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Postularse a Torneo</span> </g:link> 	
+	</fieldset>
 		<div id="list-club" class="content scaffold-list" role="main">
 			<h1>Postulaciones a torneo</h1>
 			<g:render template="/utils/messages"/>

@@ -6,7 +6,9 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link controller="cancha" action="list" namespace="club">Volver al listado de canchas</g:link>
+		<fieldset class="buttons">
+    		<g:link controller="cancha" action="list" namespace="club"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver al listado de Canchas</span> </g:link> 	
+		</fieldset>
 		
 		<div id="show-cancha" class="content scaffold-show" role="main">
 			<h1>Datos de cancha</h1>

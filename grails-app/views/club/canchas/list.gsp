@@ -6,7 +6,9 @@
 </head>
 
 <body>
-	<g:link class="create" action="create" controller="cancha" >Registrar nueva cancha</g:link>
+	<fieldset class="buttons">
+    	<g:link controller="cancha" action="create"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Nueva Cancha</span> </g:link> 	
+	</fieldset>
 	<div id="list-cancha" class="content scaffold-list" >
 		<h1>Listado de canchas del club</h1>
 		<g:if test="${flash.message}">

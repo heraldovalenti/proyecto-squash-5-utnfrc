@@ -8,11 +8,10 @@
 		<meta name="layout" content="administracion">
 	</head>
 	<body>
-		<div class="nav">
-			<ul>				
-				<li><g:link controller="partido" action="show1" id="${ partido.id }">Volver</g:link></li>
-			</ul>
-		</div>
+		<fieldset class="buttons">
+    		<g:link controller="partido" action="show1" id="${ partido.id }"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+		</fieldset>
+		
 		<div id="show-resultadoPartido" class="content scaffold-show">
 			<h1>Resultado de partido</h1>
 			

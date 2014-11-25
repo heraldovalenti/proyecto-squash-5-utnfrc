@@ -1,18 +1,12 @@
 div.menu_jugador {
 	float: left;
-	width: 20%;
-	background: #183353;
-    background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -o-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -webkit-linear-gradient(top , #00AFF0 0%, #183353 100%);
-    background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%); 
-	
+	width: 20.5%;
 }
 
 div.contenido_jugador {
 	float: left;
-	width: 80%;
+	width: 77%;
+	margin-left: 20px;
 	background: #FFFFFF;
 }
 div.noticias{
@@ -25,7 +19,34 @@ div.noticias{
     background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);
     background-image: -webkit-linear-gradient(top , #00AFF0 0%, #183353 100%);
     background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%); 
-}	
+}
+#news-result ul {
+	margin: 0px;
+}
+#news-result li:hover a{ color: black;}
+
+/*item del menu de adm*/
+#news-result li a{   
+	display: block;
+	line-height: 20px;
+	padding: 5px;	  		
+	white-space: nowrap;
+	margin-right: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	border: 1px solid #000000;
+	height: 20px;	
+	list-style-type: none;
+	font: 18px arial;
+	color: #FFFFFF;
+	background: #183353;
+    background-image: linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -o-linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -moz-linear-gradient(top , #00AFF0 0%, #183353 100%);    
+	background-image: -webkit-linear-gradient(top , #00AFF0 0%, #183353 100%);
+    background-image: -ms-linear-gradient(top , #00AFF0 0%, #183353 100%); 
+	}
+	
 display: block;
 	line-height: 14px;
 	padding: 5px;	  		

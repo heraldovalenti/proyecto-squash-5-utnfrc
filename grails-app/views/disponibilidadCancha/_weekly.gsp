@@ -4,27 +4,27 @@
             <%-- Empty header for the time column --%>
             <th></th>
             <%--<g:each in="${0..<7}">
-                --%><th><%--
+                --%><th class="day"><%--
                     <g:formatDate format="EEEE" date="${startDate + it}" />
                 --%>
                 lunes
                 </th>
-                <th>
+                <th class="day">
                 martes
                 </th>
-                <th>
+                <th class="day">
                 miercoles	
                 </th>
-                <th>
+                <th class="day">
                 jueves
                 </th>
-                <th>
+                <th class="day">
                 viernes
                 </th>
-                <th>
+                <th class="day">
                 sabado
                 </th>
-                <th>
+                <th class="day">
                 domingo
                 </th><%--             
                 
