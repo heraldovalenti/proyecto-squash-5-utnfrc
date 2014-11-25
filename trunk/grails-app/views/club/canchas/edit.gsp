@@ -5,7 +5,9 @@
 	<meta name="layout" content="club">
 </head>
 <body>
-	<g:link controller="cancha" action="show" params="[cancha: cancha.id]">Volver</g:link>
+	<fieldset class="buttons">
+    	<g:link controller="cancha" action="show" params="[cancha: cancha.id]"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+	</fieldset>
 	<div id="edit-cancha" class="content scaffold-edit" >
 		
 		<h1>Datos de cancha</h1>

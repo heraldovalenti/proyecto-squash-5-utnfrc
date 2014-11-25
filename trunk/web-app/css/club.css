@@ -1,10 +1,10 @@
 /*Imagen de fondo y cuerpo de pagina*/
 body {
-  background: url("fondoClub1.jpg") no-repeat scroll center 30px / 100% auto #1B7DC3;
+  background: url("fondoClub1.jpg") no-repeat scroll center 30px / 100% auto #D3DADD;
   background-image: url("fondoClub1.jpg");
   background-repeat: no-repeat;
   background-position: center 30px;
-  background-color: #1B7DC3;
+  background-color: #D3DADD;
   background-size: 100%;
   margin: 0px;
   
@@ -25,6 +25,28 @@ h1
     
     background: #efefef;
     
+}
+h2
+{
+	font-size: 16px;
+	font-weight: bold;
+	color: #183353;
+	font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0 1px 0 #fff;
+	text-align:center;
+	filter: dropshadow(color=#fff, offx=0, offy=1);
+	line-height: 30px;
+	margin-bottom: 24px;
+	margin-left:25px;
+	border: 1px solid #000000 !important;	
+    background-color: #efefef;
+	overflow: hidden;
+	padding: 0.3em;
+	   -moz-box-shadow: 0 0 3px 1px #aaaaaa;
+	-webkit-box-shadow: 0 0 3px 1px #aaaaaa;
+	        box-shadow: 0 0 3px 1px #aaaaaa;
+	margin: 0.1em 0 0 0;
+	border: none;
 }
 /* div contenedor de menu y contenido central */
 div.main_club {
@@ -105,6 +127,7 @@ div.noticias{
 	border: 1px solid;
 	height: 20px;	
 	list-style-type: none;
+	text-decoration: inherit;
 	font: 18px arial;
 	color: #FFFFFF;
 	background: #183353;

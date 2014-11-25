@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<fieldset class="buttons">
-    		<g:link action="list"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-person"></span><span style="padding-left: 18px;">Roles</span> </g:link>
+    		<g:link controller="rol" action="list"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-person"></span><span style="padding-left: 18px;">Roles</span> </g:link>
     		<g:link action="create"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-circle-plus"></span><span style="padding-left: 18px;">Agregar Permiso</span> </g:link>
 		</fieldset>
 		

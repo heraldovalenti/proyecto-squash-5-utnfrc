@@ -6,7 +6,9 @@
 </head>
 
 <body>
-	<g:link controller="cancha" action="list">Volver</g:link>
+	<fieldset class="buttons">
+    	<g:link controller="cancha" action="list"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+	</fieldset>
 	<div id="create-cancha" class="content scaffold-create" >
 		<h1>Registro de nueva cancha</h1>
 		<g:render template="/utils/messages"/>

@@ -5,7 +5,7 @@
 
 	<div class="box mb10 box-225">
 		<h3 class="title">Clubes de Córdoba</h3>
-		<div id="news-result" class="inner-box">
+		<div id="menu-clubes" class="inner-box">
 		<li>				
                 <input type="text" id="buscadorClubes" placeholder="Ingrese un Club" name="search-top" class="autocomplete ac_input" id="search-top">
                 <input type="hidden" id="clubId" class="autoCompId"/> 
@@ -18,7 +18,7 @@
             
         </li>
 			<g:each in="${listadoClub}" var="club">
-				<li><a><g:link controller="club" action="listarClubes" params="[club:club.id]">${ club.nombre }</g:link></a></li>
+				<li style="padding: 5px;"><g:link controller="club" action="listarClubes" params="[club:club.id]">${ club.nombre }</g:link></li>
 			</g:each>
 		</div>
 	</div>

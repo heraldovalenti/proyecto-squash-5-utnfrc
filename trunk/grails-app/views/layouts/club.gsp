@@ -13,6 +13,8 @@
   			position:relative;    
 		}
 	</style>  
+	
+	 <r:require module="jquery" />
    
 	<g:layoutHead/>
 	

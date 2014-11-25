@@ -6,14 +6,7 @@
         
 	</head>
     <body>
-    	<h1 class="mb20">Disponibilidad horaria</h1>
-    	<div class="nav">
-    		<ul>
-    			<li>
-			    	<g:link controller="cancha" action="show" params="[cancha: cancha.id]">Volver</g:link>
-    			</li>
-    		</ul>
-    	</div>
+    	<h1 class="mb20">Disponibilidad horaria</h1>    	
 		<g:weekly/>
 		<fieldset class="buttons">
 			<g:actionSubmit id="guardarDisponibilidad" class="save" value="Guardar" />

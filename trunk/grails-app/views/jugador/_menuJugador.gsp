@@ -1,5 +1,5 @@
 <div class="mb10">
-	<div id="news-result" class="inner-box">
+	<div id="news-result">
 		<ul>
 			<li><g:link controller="jugador" action="perfilJugador">Ver mi perfil</g:link></li>
 			<li><g:link controller="jugador" action="datosPersonales">Datos personales</g:link></li>

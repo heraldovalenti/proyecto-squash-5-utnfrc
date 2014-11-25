@@ -22,7 +22,7 @@
 				
 					<g:else>
 					<li>
-						Aun no se han registrado servicios
+						<h2>Aun no se han registrado servicios</h2>
 					</li>
 					</g:else>
 				</ul>

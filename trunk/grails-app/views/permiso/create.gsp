@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<fieldset class="buttons">
-    		<g:link action="list"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-person"></span><span style="padding-left: 18px;">Roles</span> </g:link>
+    		<g:link action="list"><span  style="position: absolute; height: 20px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link>
 		</fieldset>
 		
 		<div id="create-permiso" class="content scaffold-create" role="main">

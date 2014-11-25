@@ -6,7 +6,9 @@
 		<meta name="layout" content="club">
 	</head>
 	<body>
-		<g:link action="show" params="[encargado: usuarioEncargado.id]">Volver</g:link>
+		<fieldset class="buttons">
+    		<g:link action="show" params="[encargado: usuarioEncargado.id]"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+		</fieldset>
 		<div id="edit-encargado" class="content scaffold-edit" role="main">
 			<h1>Encargado de Club</h1>
 			<g:render template="/utils/messages"/>
