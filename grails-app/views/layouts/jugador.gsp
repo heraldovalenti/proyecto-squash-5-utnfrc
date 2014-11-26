@@ -11,6 +11,7 @@
  	<link href="${resource(dir: 'css', file: 'jugador.css') }" type="text/css" rel="stylesheet"/>
  	
 	<g:layoutHead/>
+	<r:require module="jquery" />
 	<r:layoutResources />
 </head>
 	
@@ -30,6 +31,8 @@
     
     	<!-- TORNEO ACTUAL -->
 	    <g:render template="/secciones/torneoActual" />
+	    
+	    <g:render template="/secciones/sponsors" />
 				
 	</div>
 	

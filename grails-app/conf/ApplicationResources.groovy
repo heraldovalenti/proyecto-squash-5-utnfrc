@@ -70,8 +70,8 @@ modules = {
 	inicio{
 		dependsOn 'jquery'
 		resource url: 'js/slider.js'
-		resource url: 'http://www.acsr.com.ar/js/news/js/jquery.easing.js'
-		resource url: 'http://www.acsr.com.ar/js/news/js/script.js'
+		//resource url: 'http://www.acsr.com.ar/js/news/js/jquery.easing.js'
+		resource url: 'js/script.js'
 	}
 	fechas{
 		dependsOn 'jquery'

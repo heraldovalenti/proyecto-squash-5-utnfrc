@@ -20,6 +20,7 @@
 	</style>  
    
 	<g:layoutHead/>
+	<r:require module="jquery" />
 	<r:layoutResources />
 </head>
 	
@@ -41,6 +42,8 @@
 	</div>	
 		<!-- TORNEO ACTUAL -->
 	    <g:render template="/secciones/torneoActual" />
+	    
+	    <g:render template="/secciones/sponsors" />
 				
 	</div>
 	

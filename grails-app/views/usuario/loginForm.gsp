@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title><g:message code="iniciosesion.titulo" /></title>
+	<title>Inicio de sesion</title>
 	<meta name="layout" content="login" />
 	
 	<link href="${resource(dir: 'css', file: 'errors.css') }" type="text/css" rel="stylesheet"><%--
@@ -14,7 +14,7 @@
 <body><%--	
 	 div para formulario de inicio de sesion -->		
 		--%><!-- titulo de inicio de sesion -->
-		<h3 class="title"><g:message code="iniciosesion.titulo" /></h3>		
+		<h3 class="title">Incio de sesion</h3>		
 			
 			<!-- control de visualizacion de mensajes de error -->
 			<g:if test="${flash.message}">
