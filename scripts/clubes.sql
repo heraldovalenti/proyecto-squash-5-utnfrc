@@ -1,3 +1,5 @@
+/* REQUIERE EJEMPLOS-USUARIOS */
+
 insert into domicilio (id,version,calle,numero,piso,departamento,ciudad,codigo_postal,provincia) values
 (1,1,'Velez Sardfield','1134',null,null,'Cordoba',5000,'Cordoba'),
 (2,1,'Belgrano','389',null,null,'Cordoba',5000,'Cordoba'),
