@@ -55,16 +55,31 @@
 				<g:if test="${ perfil.categoria }">
 					<li>
 						<span>Categoria: </span>
-						${ perfil.categoria } 
-						<g:if test="${ perfil.ranking }">
-							 - ${ message(code:'none', default: '#') }${ perfil.ranking }
-						</g:if>
-						<g:else>
-							 - ${ message(code:'none', default: '#') }N/A
-						</g:else>
+						${ perfil.categoria } 						
 					</li>
 				</g:if>
 			</ul>
+			
+			<div id="playerBioInfoExtra">
+			<div id="playerBioInfoRank">
+				<g:if test="${rankings.size()>0}">
+				<g:each in="${rankings}" var="ranking">
+					<g:if test="${ranking?.categoria == categoriaSeleccionada}">						
+							<span><a style="color: white;" href="#"> #${ ranking?.puesto }</a></span> ${categoriaSeleccionada?.nombre}									
+					</g:if>					
+				</g:each>
+				</g:if>	
+				<g:else> <span><a style="color: white;" href="#"> - </a></span> ranking</g:else>		
+			</div>
+			<div id="playerBioInfoTitulos">	
+				<g:if test="${ titulosJugador==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>							
+				<span><a style="color: white;" href="#"> ${ titulosJugador?.size() }</a></span> titulos					
+			</div>
+			<div id="playerBioInfoFinales">		
+				<g:if test="${ finalesJugador==null }"><span><a style="color: white;" href="#"> 0</a></span></g:if>								
+				<span><a style="color: white;" href="#"> ${ finalesJugador?.size() }</a></span> finales				
+			</div>
+			</div>
 		</div>
 	</div>
 </div>

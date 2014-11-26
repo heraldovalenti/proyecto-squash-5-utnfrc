@@ -11,15 +11,15 @@
 		<div class="Singles"></div>
 		<div class="singlesRankName">
 			<span>
-				<a href="#">${ usuarioInstance.persona.apellido }</a>
-				<a href="#">${ usuarioInstance.persona.nombre }</a>				
+				<a href="#">${ usuarioInstance?.persona?.apellido }</a>
+				<a href="#">${ usuarioInstance?.persona?.nombre }</a>				
 			</span>
 		</div>
 		<div class="singlesRank">Brazo:
-		<span><a href="#">${ usuarioInstance.jugador.brazo }</a></span>		
+		<span><a href="#">${ usuarioInstance?.jugador?.brazo }</a></span>		
 		</div>
 		<div class="singlesRank">Fecha de Nacimiento:
-		<span><a href="#"><g:formatDate date="${ usuarioInstance.persona.fechaNacimiento }" format="dd-MM-yyyy"/></a></span>		
+		<span><a href="#"><g:formatDate date="${ usuarioInstance?.persona?.fechaNacimiento }" format="dd-MM-yyyy"/></a></span>		
 		</div>
 		
 		<div class="viewFull">

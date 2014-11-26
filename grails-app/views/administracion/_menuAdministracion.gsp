@@ -11,9 +11,7 @@
 			<ul class="menu" style="padding-left: 10px !important;">
 				<li style="display:none;"><g:link controller="torneoPuntuable" title="Torneos Puntuables">Torneos Puntuables</g:link></li> 
 				<li style="display:none;"><g:link controller="torneo" action="verInscriptosPorTorneo" title="Gráfico de Cantidad de Jugadores Inscriptos a Torneos por Año">Inscriptos en Torneo por Año</g:link></li>				
-			</ul>			
-			<li><g:link controller="puntaje">Puntajes</g:link></li>		
-			<li><g:link controller="ranking">Rankings</g:link></li>
+			</ul>		
 			<li><g:link controller="categoria">Categorias</g:link></li>
 			<li><g:link controller="solicitudCategoria" action="list">Solicitudes de categoria</g:link></li>
 			<li><g:link controller="usuarioScaffold">Usuarios</g:link></li>	
