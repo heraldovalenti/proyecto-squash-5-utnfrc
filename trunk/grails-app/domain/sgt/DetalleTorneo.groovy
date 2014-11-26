@@ -27,8 +27,12 @@ class DetalleTorneo {
 		return torneo.toString() + "(en " + categoria.toString() + ")"
 	}
 	
-	def Integer cantidadInscriptos() {
-		return this.getInscripciones().size()
+	int cantidadInscriptos() {
+		int res = 0
+		for (i in inscripciones) {
+			if ( i.esVinculada() || i.esDiagramada() ) res++
+		}
+		return res
 	}
 	
 	@Override

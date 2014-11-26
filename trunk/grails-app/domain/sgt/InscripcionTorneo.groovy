@@ -24,6 +24,10 @@ class InscripcionTorneo {
 		return this.estado.equals("Cancelada")
 	}
 	
+	boolean esDiagramada() {
+		return "Diagramada".equals(this.estado)
+	}
+	
 	boolean cancelable() {
 		return this.estado.equals("Vinculada")
 	}
