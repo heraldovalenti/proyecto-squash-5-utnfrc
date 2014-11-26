@@ -1,6 +1,5 @@
 <html>
 <head>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
@@ -8,11 +7,8 @@
  	<link href="${resource(dir: 'css', file: 'grid_16.css') }" type="text/css" rel="stylesheet">
  	<link href="${resource(dir: 'css', file: 'style2.css') }" type="text/css" rel="stylesheet">	
  	<link href="${resource(dir: 'css', file: 'bootstrap.min.css') }" type="text/css" rel="stylesheet">
- 	
- 	<r:require modules="inicio,bootstrap"/>
-
+	<r:require module="jquery" />
 <r:layoutResources />
-
 </head>
 <body>
 	<!-- BARRA DE USUARIO -->
@@ -160,19 +156,17 @@
 			<div class="second-part mt10">
 				<div class="grid_16 mt10">
 					<div class="grid_10">
-		<g:render template="/secciones/headToHead" params="['jugador1': usuario1,'jugador2': usuario2,  'resultado':resultado, 'enfrentamientos':enfrentamientos, 'categoriaJugador1':categoriaJugador1, 'categoriaJugador2':categoriaJugador2]" />	
-												
-
-
+						<g:render template="/secciones/headToHead" 
+							params="['jugador1': usuario1,'jugador2': usuario2,  'resultado':resultado, 'enfrentamientos':enfrentamientos, 'categoriaJugador1':categoriaJugador1, 'categoriaJugador2':categoriaJugador2]" />	
+					</div>
 				</div>
-			</div>
-		</div>						
+			</div>						
 <!----------------- CIERRA PANEL DE ABAJO DEL SLIDER-------------------->
 	
 	</div>		
 	
 </div>
-
+<r:require modules="inicio,bootstrap"/>
 <r:layoutResources />
 </body> 
 </html>
