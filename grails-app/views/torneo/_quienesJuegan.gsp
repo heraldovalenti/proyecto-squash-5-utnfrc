@@ -5,7 +5,7 @@
 		<ul>
 			<g:each in="${ torneo.detalles }" var="detalle" status="i">
 			<li>
-				<a href="#quienes-juegan-${ (i + 1) }">${ detalle.categoria } (${ detalle.inscripciones.size() })</a>
+				<a href="#quienes-juegan-${ (i + 1) }">${ detalle.categoria } (${ detalle.cantidadInscriptos() })</a>
 			</li>
 			</g:each>
 		</ul>
@@ -13,6 +13,7 @@
 		<div id="quienes-juegan-${ (i + 1) }" class="clear-fix">
 			<g:if test="${ detalle.inscripciones.isEmpty() }"><h1>No hay inscriptos para la categoria</h1></g:if>
 			<g:each in="${ detalle.inscripciones }" var="inscripto">
+			<g:if test="${ inscripto.esVinculada() || inscripto.esDiagramada() }">
 			<ul class="qj-list">
 				<li class="img">
 					<img src="<g:imagenPerfilJugador usuario="${ inscripto.usuario }" jugador="${ inscripto.usuario.jugador }"/>" 
@@ -24,6 +25,7 @@
 					</g:link>
 				</li>
 			</ul>
+			</g:if>
 			</g:each>
 		</div>
 		</g:each>
