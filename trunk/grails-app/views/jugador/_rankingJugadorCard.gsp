@@ -11,17 +11,17 @@
 		<div class="Singles"></div>
 		<div class="singlesRankName">
 			<span>	
-				<a href="#">${ usuarioInstance.persona.apellido }</a>			
-				<a href="#">${ usuarioInstance.persona.nombre }</a>				
+				<a href="#">${ usuarioInstance?.persona?.apellido }</a>			
+				<a href="#">${ usuarioInstance?.persona?.nombre }</a>				
 			</span>
 		</div>		
-		<g:each in="${usuarioInstance.jugador.rankings}" var="ranking">
-			<g:if test="${ranking.categoria.nombre == categoria}">
+		<g:each in="${usuarioInstance?.jugador?.rankings}" var="ranking">
+			<g:if test="${ranking?.categoria?.nombre == categoria}">
 			<div class="singlesRank">Posición:
-				<span><a href="#"> #${ ranking.puesto }</a></span>
+				<span><a href="#"> #${ ranking?.puesto }</a></span>
 			</div>
 			<div class="singlesRank">Puntos:
-				<span><a href="#">${ ranking.puntaje }</a></span>
+				<span><a href="#">${ ranking?.puntaje }</a></span>
 			</div>
 			</g:if>
 		</g:each>		

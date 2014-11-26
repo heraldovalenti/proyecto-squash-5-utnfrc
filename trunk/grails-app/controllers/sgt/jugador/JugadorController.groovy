@@ -228,18 +228,18 @@ class JugadorController {
 			u = session.getAttribute("userLogon")
 			u = Usuario.get(u.id)
 		}
-		def datosPersonales = jugadorService.getDatosPersonales(u)
+		def datosPersonales = jugadorService.getDatosPersonales(u)		
 		if (u && datosPersonales) {
 			def perfil = new PerfilJugador()
-			if (u.persona?.nombre) perfil.setNombre(u.persona.nombre)
-			if (u.persona?.apellido) perfil.setApellido(u.persona.apellido)
-			if (u.persona?.lugarNacimiento) perfil.setLugarNacimiento(u.persona.lugarNacimiento)
-			if (u.persona?.fechaNacimiento) perfil.setFechaNacimiento(u.persona.fechaNacimiento)
-			if (u.jugador?.altura) perfil.setAltura(u.jugador.altura)
-			if (u.jugador?.peso) perfil.setPeso(u.jugador.peso)
-			if (u.jugador?.brazo) perfil.setBrazo(u.jugador.brazo)
-			if (u.jugador?.juegaDesde) perfil.setJuegaDesde(u.jugador.juegaDesde)
-			if (u.persona?.domicilio) perfil.setResidencia(u.persona?.domicilio.toString())
+			if (u.persona?.nombre) perfil.setNombre(u.persona?.nombre)
+			if (u.persona?.apellido) perfil.setApellido(u.persona?.apellido)
+			if (u.persona?.lugarNacimiento) perfil.setLugarNacimiento(u.persona?.lugarNacimiento)
+			if (u.persona?.fechaNacimiento) perfil.setFechaNacimiento(u.persona?.fechaNacimiento)
+			if (u.jugador?.altura) perfil.setAltura(u.jugador?.altura)
+			if (u.jugador?.peso) perfil.setPeso(u.jugador?.peso)
+			if (u.jugador?.brazo) perfil.setBrazo(u.jugador?.brazo)
+			if (u.jugador?.juegaDesde) perfil.setJuegaDesde(u.jugador?.juegaDesde)
+			if (u.persona?.domicilio) perfil.setResidencia(u.persona?.domicilio?.toString())
 	
 			String imagenPerfil = g.imagenPerfilJugador(jugador: u.jugador).toString()
 			perfil.setImagenPerfil(imagenPerfil)
@@ -248,8 +248,15 @@ class JugadorController {
 			if (categoriaJugador) {
 				perfil.setCategoria(categoriaJugador.categoria?.toString())
 			}
+			def titulosJugador=partidoService.listarTitulosJugador(u.id)
 			
-			render(view: '/jugador/showPerfil', model: [perfil: perfil, layout: 'jugador'])
+			def finalesJugador=partidoService.listarFinalesJugador(u.id)
+			
+			def rankings=u?.jugador?.rankings			
+		
+			def categoriaSeleccionada= categoriaJugador?.categoria
+			
+			render(view: '/jugador/showPerfil', model: [perfil: perfil, titulosJugador:titulosJugador, finalesJugador:finalesJugador, rankings:rankings, categoriaSeleccionada:categoriaSeleccionada, layout: 'jugador'])
 		} else {
 			flash.message = "Debe registrar sus datos personales para generar el perfil de jugador"
 			chain(action: "datosPersonales")
@@ -316,7 +323,14 @@ class JugadorController {
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
-		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)	
+		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.id)
+		
+		def categoriaSeleccionada=categoriaJugador?.categoria
+		
+		def edad
+		if(usuario?.persona?.fechaNacimiento!=null){
+			edad= jugadoresService.calcularEdad(usuario?.persona?.fechaNacimiento)
+		}
 		
 		def titulosJugador=partidoService.listarTitulosJugador(usuario.id)
 		
@@ -331,7 +345,7 @@ class JugadorController {
 		
 		def partidosTorneo=partidoService.listarPartidosTorneoJugador(torneo,usuario)
 		
-		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoria, tipo:tipo, torneos:torneoInstanceList, year:year, partidosTorneo:partidosTorneo])
+		render(view: "perfilCompletoJugador", model: [usuarioInstance: usuario, edad:edad, categorias:categorias,titulosJugador:titulosJugador, finalesJugador:finalesJugador, categoriaSeleccionada:categoriaSeleccionada, tipo:tipo, torneos:torneoInstanceList, year:year, partidosTorneo:partidosTorneo])
 		
 		
 	}
@@ -361,13 +375,13 @@ class JugadorController {
 		
 		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.id)
 		
-		def categoriaSeleccionada= categoriaJugador?.categoria?.nombre
+		def categoriaSeleccionada=categoriaJugador?.categoria
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
 		def tipo="jugador"
 		
-		def edad= jugadoresService.calcularEdad(usuario.persona.fechaNacimiento)
+		def edad= jugadoresService.calcularEdad(usuario?.persona?.fechaNacimiento)
 		
 		Integer year = (params.year != null && !params.year.isEmpty()) ?
 		Integer.parseInt(params.year) : Calendar.getInstance().get(Calendar.YEAR);

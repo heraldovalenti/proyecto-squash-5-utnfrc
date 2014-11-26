@@ -109,7 +109,8 @@ class JugadoresService {
 			createAlias("detalles","det", CriteriaSpecification.LEFT_JOIN)
 			createAlias("det.inscripciones","insc", CriteriaSpecification.LEFT_JOIN)
 			and {
-				eq("insc.usuario",usuario)				
+				eq("insc.usuario",usuario)	
+				eq("insc.estado","Vinculada")			
 			}
 		}
 		def torneosFiltrados = new LinkedList()

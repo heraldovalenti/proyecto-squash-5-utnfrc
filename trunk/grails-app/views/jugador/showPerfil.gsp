@@ -8,6 +8,6 @@
 	</g:else>
 </head>
 <body>
-	<g:render template="/jugador/perfilJugador" model="${ perfil }" var="perfil"/>
+	<g:render template="/jugador/perfilJugador" model="['perfil':perfil,'titulosJugador':titulosJugador,'finalesJugador':finalesJugador,'rankings':rankings, 'categoriaSeleccionada':categoriaSeleccionada]"/>
 </body>
 </html>

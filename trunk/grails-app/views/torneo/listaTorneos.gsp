@@ -16,7 +16,7 @@
 			</h3>
 			
 			<g:if test="${ !torneoInstanceList }">
-			<h1 class="mt20">No existen torneos para el calendario seleccionado</h1>
+			<h2 class="mt20">No existen torneos para el calendario seleccionado</h2>
 			</g:if>
 			
 			<div class="inner-box">
