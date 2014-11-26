@@ -1,5 +1,15 @@
 /* REQUERIDOS: JUGADORES */
 
+/* Ranking para jugadores de categoria A - Damas */
+insert into ranking (id,version,jugador_id,categoria_id,puesto,puntaje) values
+(1,1,1,1,1,1000),
+(2,1,2,1,2, 900),
+(3,1,3,1,3, 800),
+(4,1,4,1,4, 700),
+(5,1,5,1,5, 600),
+(6,1,6,1,6, 500),
+(7,1,7,1,7, 400);
+
 /* Ranking para jugadores de categoria 1 (Primera) */
 insert into ranking (id,version,jugador_id,categoria_id,puesto,puntaje) values
 (1,1,1,1,1,1000),

@@ -53,77 +53,72 @@ insert into jugador (id,version,peso,juega_desde,imagen_id,disponibilidad_id,bra
 (51,1,82.3,'2001-08-17',null,null,'Derecho',179.0),
 (52,1,82.3,'2001-08-17',null,null,'Derecho',179.0),
 (53,1,82.3,'2001-08-17',null,null,'Derecho',179.0),
-(54,1,82.3,'2001-08-17',null,null,'Derecho',179.0),
-(55,1,82.3,'2001-08-17',null,null,'Derecho',179.0),
-(56,1,82.3,'2001-08-17',null,null,'Derecho',179.0),
-(57,1,82.3,'2001-08-17',null,null,'Derecho',179.0);		
+(54,1,82.3,'2001-08-17',null,null,'Derecho',179.0);
+
 
 update usuario set jugador_id = 1 where id = 1;
 update usuario set jugador_id = 2 where id = 2;
 update usuario set jugador_id = 3 where id = 3;
 update usuario set jugador_id = 4 where id = 4;
-update usuario set jugador_id = 5 where id = 12;
-update usuario set jugador_id = 6 where id = 13;
-update usuario set jugador_id = 7 where id = 14;
-update usuario set jugador_id = 8 where id = 15;
-update usuario set jugador_id = 9 where id = 16;
-update usuario set jugador_id = 10 where id = 17;
-update usuario set jugador_id = 11 where id = 18;
-update usuario set jugador_id = 12 where id = 19;
-update usuario set jugador_id = 13 where id = 20;
-update usuario set jugador_id = 14 where id = 21;
-update usuario set jugador_id = 15 where id = 22;
-update usuario set jugador_id = 16 where id = 23;
-update usuario set jugador_id = 17 where id = 24;
-update usuario set jugador_id = 18 where id = 25;
-update usuario set jugador_id = 19 where id = 26;
-update usuario set jugador_id = 20 where id = 27;
-update usuario set jugador_id = 21 where id = 28;
-update usuario set jugador_id = 22 where id = 29;
-update usuario set jugador_id = 23 where id = 30;
-update usuario set jugador_id = 24 where id = 31;
-update usuario set jugador_id = 25 where id = 32;
-update usuario set jugador_id = 26 where id = 33;
-update usuario set jugador_id = 27 where id = 34;
-update usuario set jugador_id = 28 where id = 35;
-update usuario set jugador_id = 29 where id = 36;
-update usuario set jugador_id = 30 where id = 37;
-update usuario set jugador_id = 31 where id = 38;
-update usuario set jugador_id = 32 where id = 39;
-update usuario set jugador_id = 33 where id = 40;
-update usuario set jugador_id = 34 where id = 41;
-update usuario set jugador_id = 35 where id = 42;
-update usuario set jugador_id = 36 where id = 43;
-update usuario set jugador_id = 37 where id = 44;
-update usuario set jugador_id = 38 where id = 45;
-update usuario set jugador_id = 39 where id = 46;
-update usuario set jugador_id = 40 where id = 47;
-update usuario set jugador_id = 41 where id = 48;
-update usuario set jugador_id = 42 where id = 49;
-update usuario set jugador_id = 43 where id = 50;
-update usuario set jugador_id = 44 where id = 51;
-update usuario set jugador_id = 45 where id = 52;
-update usuario set jugador_id = 46 where id = 53;
-update usuario set jugador_id = 47 where id = 54;
-update usuario set jugador_id = 48 where id = 55;
-update usuario set jugador_id = 49 where id = 56;
-update usuario set jugador_id = 50 where id = 57;
-update usuario set jugador_id = 51 where id = 58;
-update usuario set jugador_id = 52 where id = 59;
-update usuario set jugador_id = 53 where id = 60;
-update usuario set jugador_id = 54 where id = 61;
-update usuario set jugador_id = 55 where id = 62;
-update usuario set jugador_id = 56 where id = 63;
-update usuario set jugador_id = 57 where id = 64;
+update usuario set jugador_id = 5 where id = 5;
+update usuario set jugador_id = 6 where id = 6;
+update usuario set jugador_id = 7 where id = 7;
+update usuario set jugador_id = 8 where id = 8;
+update usuario set jugador_id = 9 where id = 9;
+update usuario set jugador_id = 10 where id = 10;
+update usuario set jugador_id = 11 where id = 11;
+update usuario set jugador_id = 12 where id = 12;
+update usuario set jugador_id = 13 where id = 13;
+update usuario set jugador_id = 14 where id = 14;
+update usuario set jugador_id = 15 where id = 15;
+update usuario set jugador_id = 16 where id = 16;
+update usuario set jugador_id = 17 where id = 17;
+update usuario set jugador_id = 18 where id = 18;
+update usuario set jugador_id = 19 where id = 19;
+update usuario set jugador_id = 20 where id = 20;
+update usuario set jugador_id = 21 where id = 21;
+update usuario set jugador_id = 22 where id = 22;
+update usuario set jugador_id = 23 where id = 23;
+update usuario set jugador_id = 24 where id = 24;
+update usuario set jugador_id = 25 where id = 25;
+update usuario set jugador_id = 26 where id = 26;
+update usuario set jugador_id = 27 where id = 27;
+update usuario set jugador_id = 28 where id = 28;
+update usuario set jugador_id = 29 where id = 29;
+update usuario set jugador_id = 30 where id = 30;
+update usuario set jugador_id = 31 where id = 31;
+update usuario set jugador_id = 32 where id = 32;
+update usuario set jugador_id = 33 where id = 33;
+update usuario set jugador_id = 34 where id = 34;
+update usuario set jugador_id = 35 where id = 35;
+update usuario set jugador_id = 36 where id = 36;
+update usuario set jugador_id = 37 where id = 37;
+update usuario set jugador_id = 38 where id = 38;
+update usuario set jugador_id = 39 where id = 39;
+update usuario set jugador_id = 40 where id = 40;
+update usuario set jugador_id = 41 where id = 41;
+update usuario set jugador_id = 42 where id = 42;
+update usuario set jugador_id = 43 where id = 43;
+update usuario set jugador_id = 44 where id = 44;
+update usuario set jugador_id = 45 where id = 45;
+update usuario set jugador_id = 46 where id = 46;
+update usuario set jugador_id = 47 where id = 47;
+update usuario set jugador_id = 48 where id = 48;
+update usuario set jugador_id = 49 where id = 49;
+update usuario set jugador_id = 50 where id = 50;
+update usuario set jugador_id = 51 where id = 51;
+update usuario set jugador_id = 52 where id = 52;
+update usuario set jugador_id = 53 where id = 53;
+update usuario set jugador_id = 54 where id = 54;
 
 
 insert into persona (id,version,nombre,apellido,sexo,fecha_nacimiento) values
 (1,1,'Heraldo Raul','Valenti','Masculino','1989-08-22'),
 (2,1,'Guillermo','Fank','Masculino','1990-03-03'),
 (3,1,'Matias','Del Carlo','Masculino','1989-07-19'),
-(4,1,'Pedro','Gonzalez','Masculino','1978-02-21'),
-(5,1,'Marcos','Antunez','Masculino','1985-10-12'),
-(6,1,'Ernesto','Ramirez','Masculino','1976-12-09'),
+(4,1,'David','Coppa','Masculino','1978-02-21'),
+(5,1,'Alberto','Valenti','Masculino','1963-04-01'),
+(6,1,'Tadeo','Valenti','Masculino','1992-03-19'),
 (7,1,'Jorge','Steffolani','Masculino','1969-09-21'),
 (8,1,'Oscar','Marquesin','Masculino','1981-04-27'),
 (9,1,'Juan','Pierletti','Masculino','1973-07-30'),
@@ -167,13 +162,11 @@ insert into persona (id,version,nombre,apellido,sexo,fecha_nacimiento) values
 (47,1,'Gaston','Alonzo','Masculino','1993-03-23'),
 (48,1,'Diego','Murua','Masculino','1993-03-23'),
 (49,1,'Yan','Nekola','Masculino','1993-03-23'),
-(50,1,'Tomas','Juncos','Masculino','1993-03-23'),
-(51,1,'Tomas','Estevez','Masculino','1993-03-23'),
-(52,1,'Daniel','Orpianessi','Masculino','1993-03-23'),
-(53,1,'Pedro','Juan','Masculino','1993-03-23'),
-(54,1,'Emiliano','Giraudo','Masculino','1993-03-23');
-
-
+(50,1,'Brenda','Molinari','Femenino','1991-01-26'),
+(51,1,'Lucila','Valenti','Femenino','2002-11-16'),
+(52,1,'Nadia','Balbuena','Femenino','1991-01-26'),
+(53,1,'Nancy','Deleu','Femenino','1965-06-15'),
+(54,1,'Armenia','Bustamante','Femenino','1950-01-01');
 
 update usuario set persona_id = 1 where id = 1;
 update usuario set persona_id = 2 where id = 2;
@@ -181,49 +174,54 @@ update usuario set persona_id = 3 where id = 3;
 update usuario set persona_id = 4 where id = 4;
 update usuario set persona_id = 5 where id = 5;
 update usuario set persona_id = 6 where id = 6;
-update usuario set persona_id = 7 where id = 12;
-update usuario set persona_id = 8 where id = 13;
-update usuario set persona_id = 9 where id = 14;
-update usuario set persona_id = 10 where id = 15;
-update usuario set persona_id = 11 where id = 16;
-update usuario set persona_id = 12 where id = 17;
-update usuario set persona_id = 13 where id = 18;
-update usuario set persona_id = 14 where id = 19;
-update usuario set persona_id = 15 where id = 20;
-update usuario set persona_id = 16 where id = 21;
-update usuario set persona_id = 17 where id = 22;
-update usuario set persona_id = 18 where id = 23;
-update usuario set persona_id = 19 where id = 24;
-update usuario set persona_id = 20 where id = 25;
-update usuario set persona_id = 21 where id = 26;
-update usuario set persona_id = 22 where id = 27;
-update usuario set persona_id = 23 where id = 28;
-update usuario set persona_id = 24 where id = 29;
-update usuario set persona_id = 25 where id = 30;
-update usuario set persona_id = 26 where id = 31;
-update usuario set persona_id = 27 where id = 32;
-update usuario set persona_id = 28 where id = 33;
-update usuario set persona_id = 29 where id = 34;
-update usuario set persona_id = 30 where id = 35;
-update usuario set persona_id = 31 where id = 36;
-update usuario set persona_id = 32 where id = 37;
-update usuario set persona_id = 33 where id = 38;
-update usuario set persona_id = 34 where id = 39;
-update usuario set persona_id = 35 where id = 40;
-update usuario set persona_id = 36 where id = 41;
-update usuario set persona_id = 37 where id = 42;
-update usuario set persona_id = 38 where id = 43;
-update usuario set persona_id = 39 where id = 44;
-update usuario set persona_id = 40 where id = 45;
-update usuario set persona_id = 41 where id = 46;
-update usuario set persona_id = 42 where id = 47;
-update usuario set persona_id = 43 where id = 48;
-update usuario set persona_id = 44 where id = 49;
-update usuario set persona_id = 45 where id = 50;
-update usuario set persona_id = 46 where id = 51;
-update usuario set persona_id = 47 where id = 52;
-update usuario set persona_id = 48 where id = 53;
-update usuario set persona_id = 49 where id = 54;
+update usuario set persona_id = 7 where id = 7;
+update usuario set persona_id = 8 where id = 8;
+update usuario set persona_id = 9 where id = 9;
+update usuario set persona_id = 10 where id = 10;
+update usuario set persona_id = 11 where id = 11;
+update usuario set persona_id = 12 where id = 12;
+update usuario set persona_id = 13 where id = 13;
+update usuario set persona_id = 14 where id = 14;
+update usuario set persona_id = 15 where id = 15;
+update usuario set persona_id = 16 where id = 16;
+update usuario set persona_id = 17 where id = 17;
+update usuario set persona_id = 18 where id = 18;
+update usuario set persona_id = 19 where id = 19;
+update usuario set persona_id = 20 where id = 20;
+update usuario set persona_id = 21 where id = 21;
+update usuario set persona_id = 22 where id = 22;
+update usuario set persona_id = 23 where id = 23;
+update usuario set persona_id = 24 where id = 24;
+update usuario set persona_id = 25 where id = 25;
+update usuario set persona_id = 26 where id = 26;
+update usuario set persona_id = 27 where id = 27;
+update usuario set persona_id = 28 where id = 28;
+update usuario set persona_id = 29 where id = 29;
+update usuario set persona_id = 30 where id = 30;
+update usuario set persona_id = 31 where id = 31;
+update usuario set persona_id = 32 where id = 32;
+update usuario set persona_id = 33 where id = 33;
+update usuario set persona_id = 34 where id = 34;
+update usuario set persona_id = 35 where id = 35;
+update usuario set persona_id = 36 where id = 36;
+update usuario set persona_id = 37 where id = 37;
+update usuario set persona_id = 38 where id = 38;
+update usuario set persona_id = 39 where id = 39;
+update usuario set persona_id = 40 where id = 40;
+update usuario set persona_id = 41 where id = 41;
+update usuario set persona_id = 42 where id = 42;
+update usuario set persona_id = 43 where id = 43;
+update usuario set persona_id = 44 where id = 44;
+update usuario set persona_id = 45 where id = 45;
+update usuario set persona_id = 46 where id = 46;
+update usuario set persona_id = 47 where id = 47;
+update usuario set persona_id = 48 where id = 48;
+update usuario set persona_id = 49 where id = 49;
+update usuario set persona_id = 50 where id = 50;
+update usuario set persona_id = 51 where id = 51;
+update usuario set persona_id = 52 where id = 52;
+update usuario set persona_id = 53 where id = 53;
+update usuario set persona_id = 54 where id = 54;
 
 
 insert into categoria_jugador (id,version,jugador_id,categoria_id,fecha_inicio,fecha_fin,estado,descripcion) values
@@ -231,58 +229,53 @@ insert into categoria_jugador (id,version,jugador_id,categoria_id,fecha_inicio,f
 (2,1,2,1,'2000-01-01',null,'Asignada','categoria de jugador guillef'),
 (3,1,3,1,'2000-01-01',null,'Asignada','categoria de jugador matidc'),
 (4,1,4,1,'2000-01-01',null,'Asignada','categoria de jugador davidc'),
-(5,1,5,1,'2000-01-01',null,'Asignada','categoria de jugador '),
+(5,1,5,1,'2000-01-01',null,'Asignada','categoria de jugador'),
 (6,1,6,1,'2000-01-01',null,'Asignada','categoria de jugador'),
 (7,1,7,1,'2000-01-01',null,'Asignada','categoria de jugador'),
-(8,1,8,2,'2000-01-01',null,'Asignada','categoria de jugador'),
-(9,1,9,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(8,1,8,1,'2000-01-01',null,'Asignada','categoria de jugador'),
+(9,1,9,1,'2000-01-01',null,'Asignada','categoria de jugador'),
 (10,1,10,2,'2000-01-01',null,'Asignada','categoria de jugador'),
 (11,1,11,2,'2000-01-01',null,'Asignada','categoria de jugador'),
 (12,1,12,2,'2000-01-01',null,'Asignada','categoria de jugador'),
 (13,1,13,2,'2000-01-01',null,'Asignada','categoria de jugador'),
 (14,1,14,2,'2000-01-01',null,'Asignada','categoria de jugador'),
-(15,1,15,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(16,1,16,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(17,1,17,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(18,1,18,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(19,1,19,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(57,1,20,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(58,1,8,1,'2000-01-01',null,'Asignada','categoria de jugador'),
-(59,1,9,1,'2000-01-01',null,'Asignada','categoria de jugador'),
-(20,1,21,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(21,1,22,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(22,1,23,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(23,1,24,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(24,1,25,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(25,1,26,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(26,1,27,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(27,1,28,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(28,1,29,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(29,1,30,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(30,1,31,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(31,1,32,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(32,1,33,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(33,1,34,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(34,1,35,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(35,1,36,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(36,1,37,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(37,1,38,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(38,1,39,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(39,1,40,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(40,1,41,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(41,1,42,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(42,1,43,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(43,1,44,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(44,1,45,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(45,1,46,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(46,1,47,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(47,1,48,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(48,1,49,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(49,1,50,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(50,1,51,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(51,1,52,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(52,1,53,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(53,1,54,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(54,1,55,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(55,1,56,3,'2000-01-01',null,'Asignada','categoria de jugador'),
-(56,1,57,3,'2000-01-01',null,'Asignada','categoria de jugador');
+(15,1,15,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(16,1,16,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(17,1,17,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(18,1,18,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(19,1,19,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(20,1,20,2,'2000-01-01',null,'Asignada','categoria de jugador'),
+(21,1,21,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(22,1,22,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(23,1,23,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(24,1,24,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(25,1,25,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(26,1,26,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(27,1,27,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(28,1,28,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(29,1,29,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(30,1,30,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(31,1,31,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(32,1,32,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(33,1,33,3,'2000-01-01',null,'Asignada','categoria de jugador'),
+(34,1,34,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(35,1,35,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(36,1,36,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(37,1,37,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(38,1,38,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(39,1,39,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(40,1,40,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(41,1,41,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(42,1,42,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(43,1,43,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(44,1,44,4,'2000-01-01',null,'Asignada','categoria de jugador'),
+(45,1,45,5,'2000-01-01',null,'Asignada','categoria de jugador'),
+(46,1,46,5,'2000-01-01',null,'Asignada','categoria de jugador'),
+(47,1,47,5,'2000-01-01',null,'Asignada','categoria de jugador'),
+(48,1,48,5,'2000-01-01',null,'Asignada','categoria de jugador'),
+(49,1,49,5,'2000-01-01',null,'Asignada','categoria de jugador'),
+(50,1,50,8,'2000-01-01',null,'Asignada','categoria de jugador'),
+(51,1,51,8,'2000-01-01',null,'Asignada','categoria de jugador'),
+(52,1,52,8,'2000-01-01',null,'Asignada','categoria de jugador'),
+(53,1,53,8,'2000-01-01',null,'Asignada','categoria de jugador'),
+(54,1,54,8,'2000-01-01',null,'Asignada','categoria de jugador');
