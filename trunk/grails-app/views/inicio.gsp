@@ -158,9 +158,14 @@
 					<div class="grid_10">
 						<g:render template="/secciones/headToHead" 
 							params="['jugador1': usuario1,'jugador2': usuario2,  'resultado':resultado, 'enfrentamientos':enfrentamientos, 'categoriaJugador1':categoriaJugador1, 'categoriaJugador2':categoriaJugador2]" />	
+						
 					</div>
 				</div>
-			</div>						
+				<div  style="float: left;margin-top: 20px ;margin-right: 0px;
+   				 margin-left: 10px;"><img src="images/img.jpg"  width="340" height="275" border="0"></div>
+				
+			</div>
+									
 <!----------------- CIERRA PANEL DE ABAJO DEL SLIDER-------------------->
 	
 	</div>		
