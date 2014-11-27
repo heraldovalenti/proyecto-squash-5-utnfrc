@@ -20,6 +20,10 @@ margin-right: 5%;"/></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			<g:if test="${ !jugadores || jugadores.empty() }">
+				<h2>No existen resultados para esta categoría</h2>
+			</g:if>
+			<g:else>
 			<table>				
 				<tbody>
 				<g:each in="${jugadores}" status="i" var="jugadorInstance">
@@ -43,6 +47,7 @@ margin-right: 5%;"/></h1>
 				</g:each>
 				</tbody>
 			</table>
+			</g:else>
 			<%--<div class="pagination">
 				<g:paginate total="${totalJugadores}" />
 			</div>

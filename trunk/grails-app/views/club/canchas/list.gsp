@@ -16,6 +16,10 @@
 				${flash.message}
 			</div>
 		</g:if>
+		<g:if test="${ !encargadosClub || encargadosClub.empty() }">
+				<h2>No existen encargados registrados</h2>
+		</g:if>
+		<g:else>
 		<table>
 			<thead>
 				<tr>
@@ -56,6 +60,7 @@
 				</g:each>
 			</tbody>
 		</table>
+		</g:else>
 		<div class="message">* Click sobre el numero de alguna cancha para más opciones</div>
 	</div>
 </body>

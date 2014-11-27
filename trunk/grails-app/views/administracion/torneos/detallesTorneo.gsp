@@ -20,6 +20,10 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
+			<g:if test="${ !detalleTorneoInstanceList || detalleTorneoInstanceList.empty() }">
+				<h2>No existen categorias a disputarse en el torneo</h2>
+			</g:if>
+			<g:else>
 			<table>
 				<thead>
 					<tr>
@@ -45,6 +49,7 @@
 			<div class="pagination">
 				<g:paginate total="${ detalleInstanceTotal }" />
 			</div>
+			</g:else>
 		</div>
 	</body>
 </html>

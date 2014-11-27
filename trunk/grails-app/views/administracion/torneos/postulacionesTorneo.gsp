@@ -63,7 +63,8 @@
 			</g:if>
 			
 			<g:else>
-			<p>No existen postulaciones de clubes para el torneo.</p>
+			<h2>No existen postulaciones de clubes para el torneo.</h2>
+			<br>
 			<g:link controller="torneo" action="seleccionarClubParaTorneo">Asignar un club al torneo</g:link>
 			</g:else>
 			

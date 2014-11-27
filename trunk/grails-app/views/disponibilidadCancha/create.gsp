@@ -9,13 +9,9 @@
     <body>
 
     	<h1 class="mb20">Disponibilidad horaria</h1>
-    	<div class="nav">
-    		<ul>
-    			<li>
-			    	<g:link controller="cancha" action="show" params="[cancha: cancha.id]">Volver</g:link>
-    			</li>
-    		</ul>
-    	</div>
+    	<fieldset class="buttons">
+    		<g:link controller="cancha" action="show" params="[cancha: cancha.id]"><span  style="position: absolute; height: 23px"class="ui-icon ui-icon-arrowthickstop-1-w"></span><span style="padding-left: 18px;">Volver</span> </g:link> 	
+		</fieldset>    	
 
         <g:weekly/>
 		<fieldset class="buttons">
