@@ -5,8 +5,9 @@ padding: 0px!important;">
 	<h3 class="title">${ club.nombre }</h3>
 	<div class="perfil-club-logo">
 		<div class="fieldcontain">
-			<div class="vista-previa" 
-				style="background-image: url(<g:imagenPerfilClub club="${ club }"/>);">
+			<div class="vista-previa" >
+				<img width="160" height="200" 
+					src="<g:imagenPerfilClub club="${ club }"/>" >
 			</div>
 		</div>
 	</div>

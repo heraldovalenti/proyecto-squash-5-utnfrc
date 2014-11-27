@@ -129,6 +129,8 @@ class TorneoService {
 				eq("estado", "Inscripcion Abierta")
 				eq("estado", "Inscripcion Cerrada")
 				eq("estado", "Inscripcion Finalizada")
+				eq("estado", "Finalizado")
+				eq("estado", "Diagramado")
 				gt("fechaInicioTorneo", new Date())
 			}
 			order("fechaInicioTorneo","asc")

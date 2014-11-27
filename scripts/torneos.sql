@@ -16,40 +16,40 @@ insert into torneo_puntuable (id,version,nombre,orden_anual,activo) values
 insert into torneo (id,version,club_id,estado,nombre,puntuable,torneo_puntuable_id,imagen_id,
 fecha_alta,fecha_inicio_inscripcion,fecha_fin_inscripcion,fecha_inicio_torneo,fecha_fin_torneo) values
 (1,1,null,'Inscripcion Abierta','I Fecha Puntuable 2014', true,1,null,
-'2014-01-01','2014-01-01','2014-12-25','2014-12-26','2014-12-27'),
+'2014-01-01','2014-01-01','2014-11-30','2014-12-01','2014-12-10'),
 
-(2,1,null,'Inscripcion Abierta','II Fecha Puntuable 2014', true,2,null,
-'2014-01-01','2014-03-01','2014-12-10','2014-12-15','2014-12-25'),
+(2,1,null,'Inscripcion Finalizada','II Fecha Puntuable 2014', true,2,null,
+'2014-01-01','2014-11-10','2014-11-25','2014-12-02','2014-12-14'), #TODO: actualizar fechas para presentacion final 
 
-(3,1,null,'Inscripcion Abierta','III Fecha Puntuable 2014', true,3,null,
-'2014-03-01','2014-03-01','2014-12-10','2014-12-15','2014-12-25'),
+(3,1,null,'Finalizado','III Fecha Puntuable 2014', true,3,null,
+'2014-01-01','2014-11-01','2014-11-10','2014-11-15','2014-11-25'), #TODO: actualizar fechas para presentacion final
 
-(4,1,null,'Finalizado','IV Fecha Puntuable 2014', true,4,null,
+(4,1,null,'Ranking Actualizado','IV Fecha Puntuable 2014', true,4,null,
 '2014-01-01','2014-01-01','2014-01-02','2014-01-03','2014-01-04'),
 
-(5,1,null,'Finalizado','V Fecha Puntuable 2014', true,5,null,
+(5,1,null,'Ranking Actualizado','V Fecha Puntuable 2014', true,5,null,
 '2014-02-01','2014-02-01','2014-02-02','2014-02-03','2014-02-04'),
 
-(6,1,null,'Finalizado','VI Fecha Puntuable 2014', true,6,null,
-'2014-03-01','2014-03-01','2014-03-02','2014-03-03','2014-03-04'),
+(6,1,null,'Ranking Actualizado','VI Fecha Puntuable 2014', true,6,null,
+'2014-03-01','2014-03-01','2014-03-02','2014-03-03','2014-03-04');
 
-(7,1,null,'Finalizado','VII Fecha Puntuable 2014', true,7,null,
+/*(7,1,null,'Ranking Actualizado','VII Fecha Puntuable 2014', true,7,null, #removidos 6 torneos para vision mas clara
 '2014-04-01','2014-04-01','2014-04-02','2014-04-03','2014-04-04'),
 
-(8,1,null,'Finalizado','VIII Fecha Puntuable 2014', true,8,null,
+(8,1,null,'Ranking Actualizado','VIII Fecha Puntuable 2014', true,8,null,
 '2014-05-01','2014-05-01','2014-05-02','2014-05-03','2014-05-04'),
 
-(9,1,null,'Finalizado','XI Fecha Puntuable 2014', true,9,null,
+(9,1,null,'Ranking Actualizado','XI Fecha Puntuable 2014', true,9,null,
 '2014-06-01','2014-06-01','2014-06-02','2014-06-03','2014-06-04'),
 
-(10,1,null,'Finalizado','X Fecha Puntuable 2014', true,10,null,
+(10,1,null,'Ranking Actualizado','X Fecha Puntuable 2014', true,10,null,
 '2014-07-01','2014-07-01','2014-07-02','2014-07-03','2014-07-04'),
 
-(11,1,null,'Finalizado','XI Fecha Puntuable 2014', true,11,null,
+(11,1,null,'Ranking Actualizado','XI Fecha Puntuable 2014', true,11,null,
 '2014-08-01','2014-08-01','2014-08-02','2014-08-03','2014-08-04'),
 
-(12,1,null,'Finalizado','XII Fecha Puntuable 2014', true,12,null,
-'2014-09-01','2014-09-01','2014-09-02','2014-09-03','2014-09-04');
+(12,1,null,'Ranking Actualizado','XII Fecha Puntuable 2014', true,12,null,
+'2014-09-01','2014-09-01','2014-09-02','2014-09-03','2014-09-04');*/
 
 /* ASIGNACIONES DE CLUB Y POSTULACIONES */
 update torneo set club_id = 9 where id = 2;/*quality*/

@@ -17,7 +17,7 @@
 		
 		<g:if test="${ torneo }">
 			
-			<g:render template="fichaTorneo" model="[torneo: torneo]"/>
+			<g:render template="fichaTorneo" model="[torneo: torneo]"/> 
 		
 			<g:render template="inscripcionTorneo" model="[torneo: torneo]"/>
 			

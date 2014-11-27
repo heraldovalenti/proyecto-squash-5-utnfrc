@@ -5,7 +5,7 @@
 		<ul>
 			<g:each in="${ torneo.detalles }" var="detalle" status="i">
 			<li>
-				<a href="#quienes-juegan-${ (i + 1) }">${ detalle.categoria } (${ detalle.cantidadInscriptos() })</a>
+				<a href="#quienes-juegan-${ (i + 1) }">${ detalle.categoria.nombre } (${ detalle.cantidadInscriptos() })</a>
 			</li>
 			</g:each>
 		</ul>

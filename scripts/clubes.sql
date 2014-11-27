@@ -40,9 +40,9 @@ update usuario set club_id = 10 where id =109;
 update usuario set club_id = 11 where id =110;
 
 insert into cancha (id,version,club_id,numero,nombre,tipo_suelo,techada,disponibilidad_id) values
-(1, 1,1,1,'M1','Cemento',true,null),
-(2, 1,1,2,'M2','Cemento',true,null),
-(3, 1,1,3,'M3','Cemento',true,null),
+(1, 1,9,1,'Q01','Cemento',true,null),
+(2, 1,1,1,'M1','Cemento',true,null),
+(3, 1,1,2,'M2','Cemento',true,null),
 (4, 1,1,4,'M4','Cemento',true,null),
 (5, 1,2,1,'F1','Parquet',true,null),
 (6, 1,2,2,'F2','Parquet',true,null),
@@ -65,20 +65,6 @@ insert into cancha (id,version,club_id,numero,nombre,tipo_suelo,techada,disponib
 (23,1,8,1,'CABJ-01','Parquet',true,null),
 (24,1,8,2,'CABJ-02','Parquet',true,null),
 (25,1,8,3,'CABJ-03','Parquet',true,null),
-(26,1,9,1,'Q01','Parquet',true,null),
-(27,1,10,1,'B1','Parquet',true,null),
-(28,1,11,1,'T1','Parquet',true,null),
-(29,1,11,2,'T2','Parquet',true,null);
-
-
-
-/*
-update torneo set club_id = 1 where id = 1;
-update torneo set club_id = 2 where id = 2;
-update torneo set club_id = 3 where id = 3;
-update torneo set club_id =4 where id = 4;
-update torneo set club_id = 5 where id = 5;
-update torneo set club_id = 1 where id = 6;
-update torneo set club_id = 1 where id = 7;
-update torneo set club_id = 1 where id = 8;
-*/
+(26,1,10,1,'B1','Parquet',true,null),
+(27,1,11,1,'T1','Parquet',true,null),
+(28,1,11,2,'T2','Parquet',true,null);
