@@ -1,9 +1,11 @@
+var dataReady = { canchas: false, torneo: false, partidos: false };
 var canchas = {};
 var partidos = {};
 var torneo = null;
 var diasTorneo = [];
 var fechaSeleccionada = null;
 var diasSemana = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+
 
 $(document).ready( function() {
 	initDiagramacionCanchas();
@@ -16,6 +18,14 @@ function initDiagramacionCanchas() {
 	loadCanchas();
 	loadTorneo();
 	loadPartidos();
+}
+
+function renderLoadedData() {
+	if (!( dataReady.canchas && dataReady.torneo && dataReady.partidos )) return;
+	renderCanchas();
+	loadDiasTorneo();
+	renderPanelesRonda();
+	setFechaSeleccionada(0);
 }
 
 function setEventosAcciones() {
@@ -192,7 +202,7 @@ function renderDiagramacionCanchas() {
 function renderCanchas() {
 	for (var i = 0; i < canchas.length; i++) {
 		var cancha = canchas[i];
-		var idCancha = "cancha-" + cancha.numero;
+		var idCancha = "cancha-" + cancha.id;
 		var li = $("<li/>").appendTo("#diagramacion-canchas ul");
 		$("<a/>").html("#"+cancha.numero).attr("href","#"+idCancha).appendTo(li);
 		$("<div/>").attr("id",idCancha).appendTo("#diagramacion-canchas");
@@ -205,7 +215,9 @@ function loadTorneo() {
 		url: "/SistemaGestionTorneo/diagramacion/getDatosTorneo",
 		success: function(data) {
 			torneo = data;
-			loadDiasTorneo();
+			//loadDiasTorneo();
+			dataReady.torneo = true;
+			renderLoadedData();
 		}
 	});
 }
@@ -244,7 +256,7 @@ function renderHorariosCanchas() {
 	for (var i = 0; i < canchas.length; i++) {
 		var cancha = canchas[i];
 		//limpiar los horarios de la cancha
-		var idCancha = "cancha-" + cancha.numero;
+		var idCancha = "cancha-" + cancha.id;
 		var divCancha = $("#" + idCancha)
 		$(divCancha).empty();
 		//buscar los horarios del dia seleccionado
@@ -307,8 +319,10 @@ function loadCanchas() {
 		url: "/SistemaGestionTorneo/diagramacion/getCanchas",
 		success: function(data) {
 			canchas = data;
-			renderCanchas();
-			setFechaSeleccionada(0);
+			//renderCanchas();
+			//setFechaSeleccionada(0);
+			dataReady.canchas = true;
+			renderLoadedData();
 		}
 	});
 }
@@ -322,7 +336,9 @@ function loadPartidos() {
 				var partidoId = partido.id;
 				partidos[partidoId] = partido;
 			}
-			renderPanelesRonda();
+			//renderPanelesRonda();
+			dataReady.partidos = true;
+			renderLoadedData();
 		}
 	});
 }
@@ -357,7 +373,7 @@ function appendPartido(partido, contenedor) {
 	} else if ( $(contenedor).hasClass("horario-cancha") ) {
 		var partidoId = partido.id.split("-")[1];
 		var partido = partidos[partidoId];
-		var canchaId = contenedor.parentElement.id.split("-")[1];
+		var canchaId = $(contenedor).parent().attr("id").split("-")[1];
 		var fecha = fechaSeleccionada;
 		var inicio = Number($(contenedor).attr("hora"));
 		var fin = inicio + 1;
