@@ -4,8 +4,9 @@
 	<h3 class="title">${ torneo.nombre }</h3>
 	<div class="fl ml10 mb10">
 		<div class="fieldcontain">
-			<div class="vista-previa" 
-				style="background-image: url(<g:imagenPerfilClub club="${ null }"/>);"> 
+			<div class="vista-previa">
+				<img width="160" height="200" 
+					src="<g:imagenTorneo torneo="${ torneo }" />"> 
 			</div>
 		</div>
 	</div>

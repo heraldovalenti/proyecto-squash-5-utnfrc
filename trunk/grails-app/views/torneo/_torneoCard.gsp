@@ -3,7 +3,7 @@
 	<div class="rankingProfileImage">
 		<a href="#">
 			<img width="108" height="140" 
-				src="${ resource(dir: 'images', file: 'acs_afiche.JPG') }">
+				src="<g:imagenTorneo torneo="${ torneoInstance }" />">
 			<span class="overlayRankings"></span>
 		</a>
 	</div>

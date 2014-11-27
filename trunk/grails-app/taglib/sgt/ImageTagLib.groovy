@@ -27,4 +27,14 @@ class ImageTagLib {
 		}
 		out << g.resource(dir: dir, file: img)
 	}
+	
+	def imagenTorneo={ attrs ->
+		def torneo = attrs.torneo
+		def dir = filesService.retrieveImagesDir()
+		def img = "default_club.JPG"
+		if(torneo && torneo.imagen){
+			img = torneo.imagen.nombre
+		}
+		out << g.resource(dir: dir, file: img)
+	}
 }
