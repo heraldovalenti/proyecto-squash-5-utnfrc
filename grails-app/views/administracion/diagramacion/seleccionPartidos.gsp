@@ -62,7 +62,7 @@
 				
 				<div class="fieldcontain required">
 					<label for="fechaFinDiagramacion">
-						Fecha inicio diagramacion
+						Fecha fin diagramacion
 						<span class="required-indicator">*</span>
 					</label>	
 					<g:textField name="fechaFin" class="date-picker"
