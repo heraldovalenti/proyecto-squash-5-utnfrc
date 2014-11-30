@@ -20,8 +20,8 @@ margin-right: 5%;"/></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
-			<g:if test="${ !jugadores || jugadores.empty() }">
-				<h2>No existen resultados para esta categorÃ­a</h2>
+			<g:if test="${ !jugadores || jugadores.isEmpty() }">
+				<h2>No hay resultados para esta categoría</h2>
 			</g:if>
 			<g:else>
 			<table>				
