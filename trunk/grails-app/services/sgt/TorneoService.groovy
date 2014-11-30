@@ -67,7 +67,7 @@ class TorneoService {
 		if (!t) {
 			throw new TorneoNotFoundException()
 		}
-		if (!t.finalizado()) {
+		if (!t.finalizado() || !t.rankingActualizado()) {
 			throw new EstadoTorneoException()
 		}
 		return listaPosiciones(t,categoria)
