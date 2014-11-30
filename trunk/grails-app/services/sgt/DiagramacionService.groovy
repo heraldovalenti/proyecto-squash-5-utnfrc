@@ -39,7 +39,7 @@ class DiagramacionService {
 			Usuario jugador1 = Usuario.findByJugador(Jugador.get(partido.jugador1.id))
 			Usuario jugador2 = (partido.directo) ? null : Usuario.findByJugador(Jugador.get(partido.jugador2.id))
 			Torneo t = torneo.torneo
-			Integer ordenPartido = partido.numero
+			Integer ordenPartido = partido.ordenLLave
 			Partido p = new Partido(jugador1: jugador1, jugador2: jugador2, 
 				torneo: t, ordenPartido: ordenPartido, categoria: torneo.categoria)
 			p.crear()
