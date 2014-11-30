@@ -16,8 +16,8 @@
 				${flash.message}
 			</div>
 		</g:if>
-		<g:if test="${ !encargadosClub || encargadosClub.empty() }">
-				<h2>No existen encargados registrados</h2>
+		<g:if test="${ !canchas || canchas.isEmpty() }">
+				<h2>No existen canchas registradas</h2>
 		</g:if>
 		<g:else>
 		<table>
