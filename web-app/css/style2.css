@@ -3,7 +3,7 @@
 
 /* slider layout */
 .lof-slidecontent { position:relative;	overflow:hidden;	border:#F4F4F4 solid 1px; margin: 0 auto;}
-.lof-slidecontent .preload{	height:100%;	width:100%;	position:absolute;	top:0;	left:0;	z-index:100000;	text-align:center;	background:#FFF}
+.lof-slidecontent .preload{	height:100%;	width:100%;	position:absolute;	top:0;	left:0;	z-index:100000;	text-align:justify;	background:#FFF}
 .lof-slidecontent .preload div{	height:100%;	width:100%;	background:transparent url() no-repeat scroll 50% 50%;}
 
 .lof-slidecontent  .sliders-wrapper{	position:relative;	height:100%;	width:900px;	z-index:3px;	overflow:hidden; }
