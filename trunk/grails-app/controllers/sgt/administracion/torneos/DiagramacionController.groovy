@@ -11,6 +11,7 @@ import sgt.Cancha
 import sgt.Club
 import sgt.Partido
 import sgt.Torneo
+import sgt.Usuario
 import sgt.exceptions.DiagramacionException
 import sgt.exceptions.TorneoNotFoundException
 
@@ -141,6 +142,8 @@ class DiagramacionController {
 				estado: it.estado,
 				jugador1: it.jugador1.toString(),
 				jugador2: it.jugador2.toString(),
+				jugador1_id: it.jugador1?.id,
+				jugador2_id: it.jugador2?.id,
 				cancha: it.cancha?.id,
 				categoria: it.categoria.toString(),
 				orden: it.ordenPartido,
@@ -180,5 +183,36 @@ class DiagramacionController {
 	def verTorneo() {
 		Torneo t = getTorneo()
 		chain(controller: "torneo", action: "show", id: t.id)
+	}
+	
+	def verDisponibilidadHorariaJugador(Long id) {
+		Usuario u = Usuario.get(id)
+		Torneo t = getTorneo()
+		int[][] disponibilidad = null
+		if (u.jugador.disponibilidad && !u.jugador.disponibilidad?.detalles?.isEmpty() ) {
+			disponibilidad = new int[16][7]
+			for (d in u.jugador.disponibilidad.detalles) {
+				int hora = d.hora - 8
+				int dia = 0; //lunes
+				if ("martes".equals(d.dia)) dia = 1
+				if ("miercoles".equals(d.dia)) dia = 2
+				if ("jueves".equals(d.dia)) dia = 3
+				if ("viernes".equals(d.dia)) dia = 4
+				if ("sabado".equals(d.dia)) dia = 5
+				if ("domingo".equals(d.dia)) dia = 6
+				disponibilidad[hora][dia] = 1
+			}
+		}
+		render(view: "/administracion/diagramacion/disponibilidadJugador", model:[torneo: t, usuario: u, disponibilidad: disponibilidad])
+	}
+	
+	def getDisponibilidadJugador(Long id) {
+		Usuario u = Usuario.get(id)
+		def jugador = u?.toString()
+		def disponibilidad = u?.jugador?.disponibilidad?.detalles
+		def res = [jugador: null, disponibilidad: null]
+		if ( jugador ) res.jugador = jugador.toString()
+		if ( disponibilidad ) res.disponibilidad = disponibilidad
+		render res as JSON
 	}
 }
