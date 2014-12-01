@@ -26,7 +26,40 @@ function renderLoadedData() {
 	loadDiasTorneo();
 	renderPanelesRonda();
 	setFechaSeleccionada(0);
+	$(".jugador").click( function(event) {
+		var jugadorSpan = $(event.currentTarget)
+		showDisponibilidadHoraria(jugadorSpan); 
+	});
 }
+
+function showDisponibilidadHoraria(jugadorSpan) {
+	var idJugador = $(jugadorSpan).attr("id");
+	idJugador = idJugador.split("-")[1];
+	if (idJugador == "null") return;
+	var fullPath = window.location.pathname.split("/");
+	window.location = "/" + fullPath[1] + "/" + fullPath[2] + "/verDisponibilidadHorariaJugador/" + idJugador;
+}
+/*
+function renderDisponibilidadHoraria(div,data) {
+	$("#disponibilidadJugador").remove();
+	var disponibilidadDiv = $("<div/>")
+		.attr("id","disponibilidadJugador")
+		.appendTo("body");
+	var disponibilidad = {};
+	disponibilidad["lunes"] = new Array(16);
+	disponibilidad["martes"] = new Array(16);
+	disponibilidad["miercoles"] = new Array(16);
+	disponibilidad["jueves"] = new Array(16);
+	disponibilidad["viernes"] = new Array(16);
+	disponibilidad["sabado"] = new Array(16);
+	disponibilidad["domingo"] = new Array(16);
+	
+	for (var i = 0; i < data.disponibilidad.length; i++) {
+		
+	}
+	var table = $("<table/>").appendTo(disponibilidadDiv);
+	var hora = 8;
+}*/
 
 function setEventosAcciones() {
 	$("#action-cancelar").click( function(event) {
@@ -116,34 +149,12 @@ function renderPartidos() {
 			var divRonda = $("#ronda-" + partido.ronda);
 			var divPartido = $("#ronda-" + partido.ronda + " #partido-" + partido.id);
 			if (divPartido.length !== 0) continue;
-			var div = $("<div/>")
-				.addClass("partido ui-widget-header ui-corner-all")
-				.attr("id","partido-" + partido.id)
-				.attr("ronda", partido.ronda)
-				.appendTo(divRonda);
-			var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
-			var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
-			var ronda_estado = partido.rondaString;
-			if (partido.estado === "Finalizado") ronda_estado = ronda_estado + " (Finalizado)";
-			$("<span/>").addClass("info").html(ronda_estado).appendTo(div);
-			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
-			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
-			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);
+			var div = createPartidoDiv(partido);
+			$(div).appendTo(divRonda);
 		} else if( new Date(partido.fecha).getTime() === fechaSeleccionada.getTime() ) {
 			var divHorario = $("#cancha-" + partido.cancha + " div[hora='" + partido.inicio + "']");
-			var div = $("<div/>")
-			.addClass("partido ui-widget-header ui-corner-all")
-			.attr("id","partido-" + partido.id)
-			.attr("ronda", partido.ronda)
-			.appendTo(divHorario);
-			var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
-			var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
-			var ronda_estado = partido.rondaString;
-			if (partido.estado === "Finalizado") ronda_estado = ronda_estado + " (Finalizado)";
-			$("<span/>").addClass("info").html(ronda_estado).appendTo(div);
-			$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
-			$("<span/>").addClass("jugador").html(jugador1).appendTo(div);
-			$("<span/>").addClass("jugador").html(jugador2).appendTo(div);
+			var div = createPartidoDiv(partido);
+			$(div).appendTo(divHorario);
 		}
 	}
 	$(".partido").draggable({
@@ -151,6 +162,22 @@ function renderPartidos() {
 		revertDuration: 200,
 		opacity: 0.5,
 	});
+}
+
+function createPartidoDiv(partido) {
+	var div = $("<div/>")
+		.addClass("partido ui-widget-header ui-corner-all")
+		.attr("id","partido-" + partido.id)
+		.attr("ronda", partido.ronda);
+	var jugador1 = (partido.jugador1 != "null") ? partido.jugador1 : "?????";
+	var jugador2 = (partido.jugador2 != "null") ? partido.jugador2 : "?????";
+	var ronda_estado = partido.rondaString;
+	if (partido.estado === "Finalizado") ronda_estado = ronda_estado + " (Finalizado)";
+	$("<span/>").addClass("info").html(ronda_estado).appendTo(div);
+	$("<span/>").addClass("info").html(partido.categoria).appendTo(div);
+	$("<span/>").addClass("jugador").attr("id","jugador-" + partido.jugador1_id ).html(jugador1).appendTo(div);
+	$("<span/>").addClass("jugador").attr("id","jugador-" + partido.jugador2_id ).html(jugador2).appendTo(div);
+	return div;
 }
 
 function renderDiagramacionCanchas() {
@@ -382,4 +409,9 @@ function appendPartido(partido, contenedor) {
 		partido.inicio = inicio;
 		partido.fin = fin;
 	}
+}
+
+function getDiagramacionUrl() {
+	var fullPath = window.location.pathname.split("/");
+	return ( fullPath[0] + "/" + fullPath[1] + "/");
 }
