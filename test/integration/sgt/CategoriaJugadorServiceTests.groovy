@@ -37,7 +37,7 @@ class CategoriaJugadorServiceTests {
 	void getCategoriaJugadorFailTest() {
 		Exception result = null
 		try {
-			CategoriaJugador categoriaJugador = categoriaJugadorService.getCategoriaJugador(10)
+			CategoriaJugador categoriaJugador = categoriaJugadorService.getCategoriaJugador(100)
 		} catch (e) {
 			result = e
 		}

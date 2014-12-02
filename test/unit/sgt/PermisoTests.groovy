@@ -14,8 +14,8 @@ class PermisoTests {
     def testSetterNombre(){
 		def permiso = new Permiso()
 		def n ="Marcos"
-		permiso.nombre=n
-		assert permiso.nombre.equals(n)
+		permiso.action=n
+		assert permiso.action.equals(n)
 	}
 	
 }
