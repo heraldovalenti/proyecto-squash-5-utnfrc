@@ -119,7 +119,7 @@ class ClubServiceTests {
 			correo: "info@nuevo_encargado.com")
 		Persona p = new Persona(nombre: "Fulano", apellido: "De Tal", 
 			tipoDocumento: "DNI", numeroDocumento: 0, 
-			sexo: "Masculino", fechaNacimiento: new Date())
+			sexo: "Masculino", fechaNacimiento: new Date(new Date().getTime() - (1000 * 60 * 60 * 60 * 24 * 365 * 20)))
 			
 		clubService.agregarEncargado(c,u,p)
 		
@@ -133,7 +133,8 @@ class ClubServiceTests {
 		Rol rolEncargado = Rol.findByNombre("Encargado club")
 		Persona p = new Persona(nombre: "Fulano", apellido: "De Tal",
 			tipoDocumento: "DNI", numeroDocumento: 0,
-			sexo: "Masculino", fechaNacimiento: new Date()).save(flush: true, failOnError: true)
+			sexo: "Masculino", 
+			fechaNacimiento: new Date(new Date().getTime() - (1000 * 60 * 60 * 60 * 24 * 365 * 20))).save(flush: true, failOnError: true)
 		Usuario u = new Usuario(nombreUsuario: "nuevo_encargado", password: "nuevo_encargado",
 				correo: "info@nuevo_encargado.com", persona: p, rol: rolEncargado,
 				activo: true).save(flush: true, failOnError: true)

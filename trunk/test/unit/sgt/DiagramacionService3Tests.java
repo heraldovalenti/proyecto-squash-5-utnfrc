@@ -16,9 +16,9 @@ public class DiagramacionService3Tests {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date inicio, fin;
 		inicio = sdf.parse("01/01/2014");
-		fin = sdf.parse("10/01/2014");
+		fin = sdf.parse("04/01/2014");
 		int duracion = service.duracionDiagramacion(inicio, fin);
-		Assert.assertEquals(9, duracion);
+		Assert.assertEquals(3, duracion);
 	}
 	
 	@Test
@@ -37,9 +37,9 @@ public class DiagramacionService3Tests {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date inicio, fin;
 		inicio = sdf.parse("31/12/2014");
-		fin = sdf.parse("10/01/2015");
+		fin = sdf.parse("04/01/2015");
 		int duracion = service.duracionDiagramacion(inicio, fin);
-		Assert.assertEquals(10, duracion);
+		Assert.assertEquals(4, duracion);
 	}
 
 }

@@ -27,7 +27,7 @@ class SqlLoaderServiceTests {
 		sqlLoaderService.loadInsertFile("ejemplos-usuarios.sql")
 		
 		userCount = Usuario.count()
-		Assert.assertEquals(11, userCount)
+		Assert.assertEquals(27, userCount)
 		def heraldov = Usuario.findByNombreUsuario("heraldov")
 		Assert.assertNotNull(heraldov)
 		Assert.assertEquals("heraldovalenti@gmail.com", heraldov.correo)

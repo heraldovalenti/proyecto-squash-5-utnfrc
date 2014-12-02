@@ -23,9 +23,9 @@ class JugadoresServiceTests {
     @Test
     void listarJugadoresPorCategoriaTest() {
 		def results1 = jugadoresService.listarJugadoresPorCategoria("Primera",[a: "", b: ""])
-		Assert.assertEquals(1, results1.size())
+		Assert.assertEquals(9, results1.size())
 		
 		def results2 = jugadoresService.listarJugadoresPorCategoria("Tercera",[a: "", b: ""])
-		Assert.assertEquals(2, results2.size())
+		Assert.assertEquals(6, results2.size())
     }
 }
