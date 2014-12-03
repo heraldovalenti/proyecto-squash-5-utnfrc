@@ -373,7 +373,7 @@ class JugadorController {
 		
 		def usuario=Usuario.findByPersona(persona)
 		
-		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.id)
+		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.jugador?.id)
 		
 		def categoriaSeleccionada=categoriaJugador?.categoria
 		
@@ -408,7 +408,7 @@ class JugadorController {
 		
 		def usuario1=Usuario.findByPersona(persona1)
 		
-		def categoriaJugador1=categoriaJugadorService.getCategoriaJugador(usuario1.id)
+		def categoriaJugador1=categoriaJugadorService.getCategoriaJugador(usuario1.jugador?.id)
 		
 		def categoriaSeleccionada1= categoriaJugador1?.categoria?.nombre
 		
@@ -418,7 +418,7 @@ class JugadorController {
 		
 		def usuario2=Usuario.findByPersona(persona2)
 		
-		def categoriaJugador2=categoriaJugadorService.getCategoriaJugador(usuario2.id)
+		def categoriaJugador2=categoriaJugadorService.getCategoriaJugador(usuario2.jugador?.id)
 		
 		def categoriaSeleccionada2= categoriaJugador2?.categoria?.nombre
 		
