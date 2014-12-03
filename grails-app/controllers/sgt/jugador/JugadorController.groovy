@@ -323,7 +323,7 @@ class JugadorController {
 		
 		def categorias=jugadoresService.obtenerCategorias()
 		
-		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.id)
+		def categoriaJugador=categoriaJugadorService.getCategoriaJugador(usuario.jugador?.id)
 		
 		def categoriaSeleccionada=categoriaJugador?.categoria
 		
