@@ -22,11 +22,7 @@ class TorneoActualTagLib {
 	
 	def nombreTorneoActual = { attrs ->
 		Torneo t = torneoService.torneoActual()
-		if (t.club) {
-			out << t.toString() + " - " + t.club.toString()		
-		} else {
-			out << t
-		}
+		out << t.toString()
 	}
 	
 	def fechasTorneoActual = { attrs ->
