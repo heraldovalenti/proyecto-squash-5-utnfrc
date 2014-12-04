@@ -67,10 +67,11 @@ class TorneoService {
 		if (!t) {
 			throw new TorneoNotFoundException()
 		}
-		if (!t.finalizado() || !t.rankingActualizado()) {
+		if ( t.finalizado() || t.rankingActualizado() ) {
+			return listaPosiciones(t,categoria)
+		} else {
 			throw new EstadoTorneoException()
 		}
-		return listaPosiciones(t,categoria)
 	}
 	
 	def listaPosiciones(Torneo t,Categoria cat) {

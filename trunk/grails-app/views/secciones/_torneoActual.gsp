@@ -14,7 +14,7 @@
 		<p class="headerScorebrdPlace"><g:fechasTorneoActual /></p>
 		<p class="headScorebrdTitle" style="margin-top: 5px;">
 			<g:link controller="torneo" action="verTorneo" params="[idTorneo: idTorneo]"
-				class="ml10 button_small blue">Informacion del Torneo</g:link>
+				class="ml10 button_small blue" style="margin-top: -20px; float: right;">Informacion del Torneo</g:link>
 		</p>
 	</div>
 </div>
